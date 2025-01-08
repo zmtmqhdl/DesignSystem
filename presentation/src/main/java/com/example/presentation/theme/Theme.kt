@@ -50,7 +50,7 @@ fun DesignSystemTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typographya,
+        typography = Typography,
         content = content
     )
 }

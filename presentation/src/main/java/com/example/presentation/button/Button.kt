@@ -1,340 +1,211 @@
 package com.example.presentation.button
 
+import android.app.Notification
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.presentation.theme.FontSize
-import com.example.presentation.theme.FontWeight
-import com.example.presentation.theme.Shape
-import com.example.presentation.theme.Space
+import com.example.presentation.theme.ButtonStyle
+import com.example.presentation.theme.DesignSystemColor
+import com.example.presentation.theme.DesignSystemShape
+import com.example.presentation.theme.DesignSystemFontSize
+import com.example.presentation.theme.DesignSystemFontWeight
+import com.example.presentation.theme.DesignSystemSpace
 
 object Button {
     object Primary {
-        object Xlarge {
-            object XXXL {
-                @Composable
-                fun Bold(
-                    text: String,
-                    onClick: () -> Unit
-                ) {
-                    Button(
-                        onClick = onClick,
-                        modifier = Modifier.height(48.dp),
-                        shape = Shape.RoundedRectangle,
-                        contentPadding = PaddingValues(
-                            start = Space.M,
-                            end = Space.M
-                        )
-                    ) {
-                        Text(
-                            text = text,
-                            fontSize = FontSize.XXXL,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
-                }
-
-                @Composable
-                fun Medium(
-                    text: String,
-                    onClick: () -> Unit
-                ) {
-                    Button(
-                        onClick = onClick,
-                        modifier = Modifier.height(48.dp),
-                        shape = Shape.RoundedRectangle,
-                        contentPadding = PaddingValues(
-                            start = Space.M,
-                            end = Space.M
-                        )
-                    ) {
-                        Text(
-                            text = text,
-                            fontSize = FontSize.XXXL,
-                            fontWeight = FontWeight.Medium
-                        )
-                    }
-                }
-
-                @Composable
-                fun Regular(
-                    text: String,
-                    onClick: () -> Unit
-                ) {
-                    Button(
-                        onClick = onClick,
-                        modifier = Modifier.height(48.dp),
-                        shape = Shape.RoundedRectangle,
-                        contentPadding = PaddingValues(
-                            start = Space.M,
-                            end = Space.M
-                        )
-                    ) {
-                        Text(
-                            text = text,
-                            fontSize = FontSize.XXXL,
-                            fontWeight = FontWeight.Regular
-                        )
-                    }
-                }
-            }
-            object XXL {
-
-            }
-            object XL {
-
-            }
-            object L {
-
-            }
-            object M {
-
-            }
-            object S {
-
-            }
-            object XS {
-
-            }
-            object XXS {
-
+        @Composable
+        fun Xlarge(
+            text: String,
+            onClick: () -> Unit,
+            style: ButtonStyle,
+            state: Boolean = true
+        ) {
+            Button(
+                onClick = onClick,
+                modifier = if (state) {
+                    Modifier
+                        .height(48.dp)
+                        .background(style.outlineColor)
+                } else {
+                    Modifier
+                        .height(48.dp)
+                        .background(DesignSystemColor.A)
+                },
+                enabled = state,
+                shape = DesignSystemShape.RoundedRectangle,
+                colors = if (state) ButtonDefaults.buttonColors(style.backgroundColor) else ButtonDefaults.buttonColors(
+                    DesignSystemColor.A
+                ),
+                contentPadding = PaddingValues(
+                    start = DesignSystemSpace.M,
+                    end = DesignSystemSpace.M
+                )
+            ) {
+                Text(
+                    text = text,
+                    color = if (state) style.fontColor else DesignSystemColor.A,
+                    fontSize = DesignSystemFontSize.XL,
+                    fontWeight = DesignSystemFontWeight.Regular
+                )
             }
         }
-        object Large {
 
+        @Composable
+        fun Large(
+            text: String,
+            onClick: () -> Unit,
+            style: ButtonStyle,
+            state: Boolean = true
+        ) {
+            Button(
+                onClick = onClick,
+                modifier = if (state) {
+                    Modifier
+                        .height(44.dp)
+                        .background(style.outlineColor)
+                } else {
+                    Modifier
+                        .height(44.dp)
+                        .background(DesignSystemColor.A)
+                },
+                enabled = state,
+                shape = DesignSystemShape.RoundedRectangle,
+                colors = if (state) ButtonDefaults.buttonColors(style.backgroundColor) else ButtonDefaults.buttonColors(
+                    DesignSystemColor.A
+                ),
+                contentPadding = PaddingValues(
+                    start = DesignSystemSpace.M,
+                    end = DesignSystemSpace.M
+                )
+            ) {
+                Text(
+                    text = text,
+                    color = if (state) style.fontColor else DesignSystemColor.A,
+                    fontSize = DesignSystemFontSize.L,
+                    fontWeight = DesignSystemFontWeight.Regular
+                )
+            }
         }
-        object Medium {
 
+        @Composable
+        fun Medium(
+            text: String,
+            onClick: () -> Unit,
+            style: ButtonStyle,
+            state: Boolean = true
+        ) {
+            Button(
+                onClick = onClick,
+                modifier = if (state) {
+                    Modifier
+                        .height(36.dp)
+                        .background(style.outlineColor)
+                } else {
+                    Modifier
+                        .height(36.dp)
+                        .background(DesignSystemColor.A)
+                },
+                enabled = state,
+                shape = DesignSystemShape.RoundedRectangle,
+                colors = if (state) ButtonDefaults.buttonColors(style.backgroundColor) else ButtonDefaults.buttonColors(
+                    DesignSystemColor.A
+                ),
+                contentPadding = PaddingValues(
+                    start = DesignSystemSpace.M,
+                    end = DesignSystemSpace.M
+                )
+            ) {
+                Text(
+                    text = text,
+                    color = if (state) style.fontColor else DesignSystemColor.A,
+                    fontSize = DesignSystemFontSize.M,
+                    fontWeight = DesignSystemFontWeight.Regular
+                )
+            }
         }
-        object Small {
 
+        @Composable
+        fun Small(
+            text: String,
+            onClick: () -> Unit,
+            style: ButtonStyle,
+            state: Boolean = true
+        ) {
+            Button(
+                onClick = onClick,
+                modifier = if (state) {
+                    Modifier
+                        .height(32.dp)
+                        .background(style.outlineColor)
+                } else {
+                    Modifier
+                        .height(32.dp)
+                        .background(DesignSystemColor.A)
+                },
+                enabled = state,
+                shape = DesignSystemShape.RoundedRectangle,
+                colors = if (state) ButtonDefaults.buttonColors(style.backgroundColor) else ButtonDefaults.buttonColors(
+                    DesignSystemColor.A
+                ),
+                contentPadding = PaddingValues(
+                    start = DesignSystemSpace.S,
+                    end = DesignSystemSpace.S
+                )
+            ) {
+                Text(
+                    text = text,
+                    color = if (state) style.fontColor else DesignSystemColor.A,
+                    fontSize = DesignSystemFontSize.S,
+                    fontWeight = DesignSystemFontWeight.Regular
+                )
+            }
         }
-        object Tiny
-    }
-    object Secondary {
 
-    }
-
-    object Disable {
-
+        @Composable
+        fun Tiny(
+            text: String,
+            onClick: () -> Unit,
+            style: ButtonStyle,
+            state: Boolean = true
+        ) {
+            Button(
+                onClick = onClick,
+                modifier = if (state) {
+                    Modifier
+                        .height(28.dp)
+                        .background(style.outlineColor)
+                } else {
+                    Modifier
+                        .height(28.dp)
+                        .background(DesignSystemColor.A)
+                },
+                enabled = state,
+                shape = DesignSystemShape.RoundedRectangle,
+                colors = if (state) ButtonDefaults.buttonColors(style.backgroundColor) else ButtonDefaults.buttonColors(
+                    DesignSystemColor.A
+                ),
+                contentPadding = PaddingValues(
+                    start = DesignSystemSpace.S,
+                    end = DesignSystemSpace.S
+                )
+            ) {
+                Text(
+                    text = text,
+                    color = if (state) style.fontColor else DesignSystemColor.A,
+                    fontSize = DesignSystemFontSize.XS,
+                    fontWeight = DesignSystemFontWeight.Regular
+                )
+            }
+        }
     }
 }
 
+object Secondary {
 
-
-
-
-
-
-
-
-object PrimaryButton {
-    @Composable
-    fun Bold(
-        text: String,
-        onClick: () -> Unit
-    ) {
-        Button(
-            onClick = onClick,
-            modifier = Modifier.height(48.dp),
-            shape = Shape.RoundedRectangle,
-            contentPadding = PaddingValues(
-                start = Space.M,
-                end = Space.M
-            )
-        ) {
-            Text(
-                text = text
-            )
-        }
-    }
-
-    @Composable
-    fun Large(
-        text: String,
-        onClick: () -> Unit
-    ) {
-        Button(
-            onClick = onClick,
-            modifier = Modifier.height(44.dp),
-            shape = Shape.RoundedRectangle,
-            contentPadding = PaddingValues(
-                start = Space.M,
-                end = Space.M
-            )
-        ) {
-            Text(
-                text = text
-            )
-        }
-    }
-
-    @Composable
-    fun Medium(
-        text: String,
-        onClick: () -> Unit
-    ) {
-        Button(
-            onClick = onClick,
-            modifier = Modifier.height(36.dp),
-            shape = Shape.RoundedRectangle,
-            contentPadding = PaddingValues(
-                start = Space.M,
-                end = Space.M
-            )
-        ) {
-            Text(
-                text = text
-            )
-        }
-    }
-
-    @Composable
-    fun Small(
-        text: String,
-        onClick: () -> Unit
-    ) {
-        Button(
-            onClick = onClick,
-            modifier = Modifier.height(32.dp),
-            shape = Shape.RoundedRectangle,
-            contentPadding = PaddingValues(
-                start = Space.XS,
-                end = Space.XS
-            )
-        ) {
-            Text(
-                text = text
-            )
-        }
-    }
-
-    @Composable
-    fun Tiny(
-        text: String,
-        onClick: () -> Unit
-    ) {
-        Button(
-            onClick = onClick,
-            modifier = Modifier.height(28.dp),
-            shape = Shape.RoundedRectangle,
-            contentPadding = PaddingValues(
-                start = Space.XS,
-                end = Space.XS
-            )
-        ) {
-            Text(
-                text = text
-            )
-        }
-    }
-
-}
-
-// Secondary
-
-object SecondaryButton {
-    @Composable
-    fun Xlarge(
-        text: String,
-        onClick: () -> Unit
-    ) {
-        Button(
-            onClick = onClick,
-            modifier = Modifier.height(48.dp),
-            shape = Shape.RoundedRectangle,
-            contentPadding = PaddingValues(
-                start = Space.M,
-                end = Space.M
-            )
-        ) {
-            Text(
-                text = text
-            )
-        }
-    }
-
-    @Composable
-    fun Large(
-        text: String,
-        onClick: () -> Unit
-    ) {
-        Button(
-            onClick = onClick,
-            modifier = Modifier.height(44.dp),
-            shape = Shape.RoundedRectangle,
-            contentPadding = PaddingValues(
-                start = Space.M,
-                end = Space.M
-            )
-        ) {
-            Text(
-                text = text
-            )
-        }
-    }
-
-    @Composable
-    fun Medium(
-        text: String,
-        onClick: () -> Unit
-    ) {
-        Button(
-            onClick = onClick,
-            modifier = Modifier.height(36.dp),
-            shape = Shape.RoundedRectangle,
-            contentPadding = PaddingValues(
-                start = Space.M,
-                end = Space.M
-            )
-        ) {
-            Text(
-                text = text
-            )
-        }
-    }
-
-    @Composable
-    fun Small(
-        text: String,
-        onClick: () -> Unit
-    ) {
-        Button(
-            onClick = onClick,
-            modifier = Modifier.height(32.dp),
-            shape = Shape.RoundedRectangle,
-            contentPadding = PaddingValues(
-                start = Space.XS,
-                end = Space.XS
-            )
-        ) {
-            Text(
-                text = text
-            )
-        }
-    }
-
-    @Composable
-    fun Tiny(
-        text: String,
-        onClick: () -> Unit
-    ) {
-        Button(
-            onClick = onClick,
-            modifier = Modifier.height(28.dp),
-            shape = Shape.RoundedRectangle,
-            contentPadding = PaddingValues(
-                start = Space.XS,
-                end = Space.XS
-            )
-        ) {
-            Text(
-                text = text
-            )
-        }
-    }
 }

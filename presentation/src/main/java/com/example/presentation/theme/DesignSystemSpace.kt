@@ -2,7 +2,7 @@ package com.example.presentation.theme
 
 import androidx.compose.ui.unit.dp
 
-object Space {
+object DesignSystemSpace {
     val XXXS = 2.dp
     val XXS = 4.dp
     val XS = 8.dp
