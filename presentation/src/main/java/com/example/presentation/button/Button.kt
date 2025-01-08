@@ -16,6 +16,7 @@ import com.example.presentation.theme.DesignSystemShape
 import com.example.presentation.theme.DesignSystemFontSize
 import com.example.presentation.theme.DesignSystemFontWeight
 import com.example.presentation.theme.DesignSystemSpace
+import com.example.presentation.theme.ProjectColor
 
 object Button {
     object Primary {
@@ -23,7 +24,6 @@ object Button {
         fun Xlarge(
             text: String,
             onClick: () -> Unit,
-            style: ButtonStyle,
             state: Boolean = true
         ) {
             Button(
@@ -31,7 +31,7 @@ object Button {
                 modifier = if (state) {
                     Modifier
                         .height(48.dp)
-                        .background(style.outlineColor)
+                        .background(ProjectColor.PrimaryOutline)
                 } else {
                     Modifier
                         .height(48.dp)
@@ -39,7 +39,7 @@ object Button {
                 },
                 enabled = state,
                 shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(style.backgroundColor) else ButtonDefaults.buttonColors(
+                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
                     DesignSystemColor.A
                 ),
                 contentPadding = PaddingValues(
@@ -49,9 +49,9 @@ object Button {
             ) {
                 Text(
                     text = text,
-                    color = if (state) style.fontColor else DesignSystemColor.A,
+                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.A,
                     fontSize = DesignSystemFontSize.XL,
-                    fontWeight = DesignSystemFontWeight.Regular
+                    fontWeight = DesignSystemFontWeight.Regular,
                 )
             }
         }
@@ -68,7 +68,7 @@ object Button {
                 modifier = if (state) {
                     Modifier
                         .height(44.dp)
-                        .background(style.outlineColor)
+                        .background(ProjectColor.PrimaryOutline)
                 } else {
                     Modifier
                         .height(44.dp)
@@ -76,7 +76,7 @@ object Button {
                 },
                 enabled = state,
                 shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(style.backgroundColor) else ButtonDefaults.buttonColors(
+                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
                     DesignSystemColor.A
                 ),
                 contentPadding = PaddingValues(
@@ -86,7 +86,7 @@ object Button {
             ) {
                 Text(
                     text = text,
-                    color = if (state) style.fontColor else DesignSystemColor.A,
+                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.A,
                     fontSize = DesignSystemFontSize.L,
                     fontWeight = DesignSystemFontWeight.Regular
                 )
@@ -105,7 +105,7 @@ object Button {
                 modifier = if (state) {
                     Modifier
                         .height(36.dp)
-                        .background(style.outlineColor)
+                        .background(ProjectColor.PrimaryOutline)
                 } else {
                     Modifier
                         .height(36.dp)
@@ -113,7 +113,7 @@ object Button {
                 },
                 enabled = state,
                 shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(style.backgroundColor) else ButtonDefaults.buttonColors(
+                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
                     DesignSystemColor.A
                 ),
                 contentPadding = PaddingValues(
@@ -123,7 +123,7 @@ object Button {
             ) {
                 Text(
                     text = text,
-                    color = if (state) style.fontColor else DesignSystemColor.A,
+                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.A,
                     fontSize = DesignSystemFontSize.M,
                     fontWeight = DesignSystemFontWeight.Regular
                 )
@@ -142,7 +142,7 @@ object Button {
                 modifier = if (state) {
                     Modifier
                         .height(32.dp)
-                        .background(style.outlineColor)
+                        .background(ProjectColor.PrimaryOutline)
                 } else {
                     Modifier
                         .height(32.dp)
@@ -150,7 +150,7 @@ object Button {
                 },
                 enabled = state,
                 shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(style.backgroundColor) else ButtonDefaults.buttonColors(
+                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
                     DesignSystemColor.A
                 ),
                 contentPadding = PaddingValues(
@@ -160,9 +160,9 @@ object Button {
             ) {
                 Text(
                     text = text,
-                    color = if (state) style.fontColor else DesignSystemColor.A,
+                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.A,
                     fontSize = DesignSystemFontSize.S,
-                    fontWeight = DesignSystemFontWeight.Regular
+                    fontWeight = DesignSystemFontWeight.Regular,
                 )
             }
         }
@@ -179,7 +179,7 @@ object Button {
                 modifier = if (state) {
                     Modifier
                         .height(28.dp)
-                        .background(style.outlineColor)
+                        .background(ProjectColor.PrimaryOutline)
                 } else {
                     Modifier
                         .height(28.dp)
@@ -187,7 +187,7 @@ object Button {
                 },
                 enabled = state,
                 shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(style.backgroundColor) else ButtonDefaults.buttonColors(
+                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
                     DesignSystemColor.A
                 ),
                 contentPadding = PaddingValues(
@@ -197,7 +197,7 @@ object Button {
             ) {
                 Text(
                     text = text,
-                    color = if (state) style.fontColor else DesignSystemColor.A,
+                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.A,
                     fontSize = DesignSystemFontSize.XS,
                     fontWeight = DesignSystemFontWeight.Regular
                 )

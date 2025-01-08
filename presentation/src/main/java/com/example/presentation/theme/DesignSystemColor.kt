@@ -10,6 +10,12 @@ val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
+data class ButtonStyle(
+    val fontColor: Color,
+    val backgroundColor: Color,
+    val outlineColor: Color,
+)
+
 object DesignSystemColor {
     val WarningFontColor = Color(0xFFED2B2A)
     val WarningBackground = Color(0xFFFDD8D9)
@@ -31,8 +37,12 @@ object DesignSystemColor {
     val A = Color(0xFFFDD000)
 }
 
-data class ButtonStyle(
-    val fontColor: Color,
-    val backgroundColor: Color,
-    val outlineColor: Color
-)
+object ProjectColor {
+    val PrimaryFontColor = Color(0xFFFFFFFF)
+    val PrimaryBackground = Color(0xFFFFFFFF)
+    val PrimaryOutline = Color(0xFFFFFFFF)
+
+    val SecondaryFontColor = Color(0xFFFFFFFF)
+    val SecondaryBackground = Color(0xFFFFFFFF)
+    val SecondaryOutline = Color(0xFFFFFFFF)
+}
