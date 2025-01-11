@@ -63,10 +63,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.activity.compose)
-
     implementation(project(":domain"))
-
     implementation(libs.hilt)
     debugImplementation(libs.androidx.ui.test.manifest)
     kapt(libs.hilt.compiler)
+    implementation(libs.androidx.navigation.compose)
 }

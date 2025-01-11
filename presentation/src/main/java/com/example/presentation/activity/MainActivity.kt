@@ -11,6 +11,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.example.presentation.app.App
+import com.example.presentation.button.DesignSystemButton
+import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,22 +22,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DesignSystemTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                App()
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Column(modifier = modifier) {
-        Text(
-            text = "Hello, $name!0"
-        )
     }
 }

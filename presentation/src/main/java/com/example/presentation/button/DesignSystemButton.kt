@@ -11,12 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.presentation.theme.DesignSystemColor
 import com.example.presentation.theme.DesignSystemShape
-import com.example.presentation.theme.DesignSystemFontSize
-import com.example.presentation.theme.DesignSystemFontWeight
+import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemSpace
 import com.example.presentation.theme.ProjectColor
 
-object Button {
+object DesignSystemButton {
     object Primary {
         @Composable
         fun Xlarge(
@@ -48,8 +47,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.XL,
-                    fontWeight = DesignSystemFontWeight.Regular,
+                    style = DesignSystemFontStyle.XL.Regular
                 )
             }
         }
@@ -84,8 +82,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.L,
-                    fontWeight = DesignSystemFontWeight.Regular
+                    style = DesignSystemFontStyle.L.Regular,
                 )
             }
         }
@@ -120,8 +117,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.M,
-                    fontWeight = DesignSystemFontWeight.Regular
+                    style = DesignSystemFontStyle.M.Regular
                 )
             }
         }
@@ -156,8 +152,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.S,
-                    fontWeight = DesignSystemFontWeight.Regular,
+                    style = DesignSystemFontStyle.S.Regular
                 )
             }
         }
@@ -192,8 +187,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.XS,
-                    fontWeight = DesignSystemFontWeight.Regular
+                    style = DesignSystemFontStyle.XS.Regular
                 )
             }
         }
@@ -230,8 +224,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) ProjectColor.SecondaryFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.XL,
-                    fontWeight = DesignSystemFontWeight.Regular,
+                    style = DesignSystemFontStyle.XL.Regular
                 )
             }
         }
@@ -266,8 +259,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) ProjectColor.SecondaryFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.L,
-                    fontWeight = DesignSystemFontWeight.Regular
+                    style = DesignSystemFontStyle.L.Regular
                 )
             }
         }
@@ -302,8 +294,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) ProjectColor.SecondaryFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.M,
-                    fontWeight = DesignSystemFontWeight.Regular
+                    style = DesignSystemFontStyle.M.Regular
                 )
             }
         }
@@ -338,8 +329,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) ProjectColor.SecondaryFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.S,
-                    fontWeight = DesignSystemFontWeight.Regular,
+                    style = DesignSystemFontStyle.S.Regular
                 )
             }
         }
@@ -374,8 +364,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) ProjectColor.SecondaryFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.XS,
-                    fontWeight = DesignSystemFontWeight.Regular
+                    style = DesignSystemFontStyle.XS.Regular
                 )
             }
         }
@@ -412,8 +401,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) DesignSystemColor.WarningFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.XL,
-                    fontWeight = DesignSystemFontWeight.Regular,
+                    style = DesignSystemFontStyle.XL.Regular
                 )
             }
         }
@@ -448,8 +436,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) DesignSystemColor.WarningFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.L,
-                    fontWeight = DesignSystemFontWeight.Regular
+                    style = DesignSystemFontStyle.L.Regular
                 )
             }
         }
@@ -484,8 +471,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) DesignSystemColor.WarningFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.M,
-                    fontWeight = DesignSystemFontWeight.Regular
+                    style = DesignSystemFontStyle.M.Regular
                 )
             }
         }
@@ -520,8 +506,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) DesignSystemColor.WarningFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.S,
-                    fontWeight = DesignSystemFontWeight.Regular,
+                    style = DesignSystemFontStyle.S.Regular
                 )
             }
         }
@@ -556,8 +541,7 @@ object Button {
                 Text(
                     text = text,
                     color = if (state) DesignSystemColor.WarningFontColor else DesignSystemColor.DisableOutline,
-                    fontSize = DesignSystemFontSize.XS,
-                    fontWeight = DesignSystemFontWeight.Regular
+                    style = DesignSystemFontStyle.XS.Regular
                 )
             }
         }
