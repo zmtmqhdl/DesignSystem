@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.library)
+    id("com.android.application")
     alias(libs.plugins.kotlin.android)
     id("org.jetbrains.kotlin.plugin.compose")
 
@@ -15,7 +15,7 @@ android {
         minSdk = 35
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+        proguardFiles("proguard-rules.pro")
     }
 
     buildTypes {

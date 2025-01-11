@@ -1,4 +1,4 @@
-package com.example.presentation.button
+package com.example.presentation.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
