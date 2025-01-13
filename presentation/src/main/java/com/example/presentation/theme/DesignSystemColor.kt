@@ -33,11 +33,11 @@ object DesignSystemColor {
 }
 
 object ProjectColor {
-    val PrimaryFontColor = Color(0xFFED2B2A)
-    val PrimaryBackground = Color(0xFFED2B2A)
-    val PrimaryOutline = Color(0xFFED2B2A)
+    val PrimaryFontColor = Color(0xFF067CFB)
+    val PrimaryBackground = Color(0xFFC9E6FD)
+    val PrimaryOutline = Color(0xFFECF5FD)
 
-    val SecondaryFontColor = Color(0xFFFFFFFF)
-    val SecondaryBackground = Color(0xFFFFFFFF)
-    val SecondaryOutline = Color(0xFFFFFFFF)
+    val SecondaryFontColor = Color(0xFF00C200)
+    val SecondaryBackground = Color(0xFFA4F29F)
+    val SecondaryOutline = Color(0xFFE3FAE1)
 }
