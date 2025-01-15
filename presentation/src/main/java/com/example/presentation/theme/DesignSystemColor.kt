@@ -30,6 +30,9 @@ object DesignSystemColor {
     val DisableFontColor = Color(0xFFFDD000)
     val DisableBackground = Color(0xFFFDD000)
     val DisableOutline = Color(0xFFFDD000)
+
+    val White = Color(0xFFFFFFFF)
+    val Black = Color(0xFF000000)
 }
 
 object ProjectColor {

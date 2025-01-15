@@ -10,11 +10,10 @@ import com.example.presentation.theme.DesignSystemSpace
 
 @Composable
 fun PrimaryColumn(
-    modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit
 ) {
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .padding(start = DesignSystemSpace.M, top = DesignSystemSpace.M, end = DesignSystemSpace.M),
         content = content
