@@ -33,6 +33,7 @@ object DesignSystemColor {
 
     val White = Color(0xFFFFFFFF)
     val Black = Color(0xFF000000)
+    val Gray600 = Color(0xFF757575)
 }
 
 object ProjectColor {
