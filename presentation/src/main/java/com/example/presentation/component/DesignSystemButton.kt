@@ -8,7 +8,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -16,16 +15,13 @@ import com.example.presentation.theme.DesignSystemColor
 import com.example.presentation.theme.DesignSystemShape
 import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemSpace
-import com.example.presentation.theme.ProjectColor
 
 @Composable
 fun PrimaryButton(
     text: String,
     onClick: () -> Unit,
     state: Boolean = true,
-    outline: Color,
-    font: Color,
-    background: Color,
+    color: DesignSystemColor,
     space: Dp,
     style: TextStyle
 ) {
@@ -34,16 +30,16 @@ fun PrimaryButton(
         modifier = if (state) {
             Modifier
                 .height(48.dp)
-                .background(outline)
+                .background(color.outline)
         } else {
             Modifier
                 .height(48.dp)
-                .background(DesignSystemColor.DisableOutline)
+                .background(DesignSystemColor.Disable.outline)
         },
         enabled = state,
         shape = DesignSystemShape.RoundedRectangle,
-        colors = if (state) ButtonDefaults.buttonColors(background) else ButtonDefaults.buttonColors(
-            DesignSystemColor.DisableBackground
+        colors = if (state) ButtonDefaults.buttonColors(color.background) else ButtonDefaults.buttonColors(
+            DesignSystemColor.Disable.background
         ),
         contentPadding = PaddingValues(
             start = space,
@@ -52,7 +48,7 @@ fun PrimaryButton(
     ) {
         Text(
             text = text,
-            color = if (state) font else DesignSystemColor.DisableOutline,
+            color = if (state) color.fontColor else DesignSystemColor.Disable.fontColor,
             style = style
         )
     }
@@ -66,33 +62,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(48.dp)
-                        .background(ProjectColor.PrimaryOutline)
-                } else {
-                    Modifier
-                        .height(48.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.M,
-                    end = DesignSystemSpace.M
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.XL.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Primary,
+                space = DesignSystemSpace.M,
+                style = DesignSystemFontStyle.XL.Regular
+            )
         }
 
         @Composable
@@ -101,33 +78,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(44.dp)
-                        .background(ProjectColor.PrimaryOutline)
-                } else {
-                    Modifier
-                        .height(44.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.M,
-                    end = DesignSystemSpace.M
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.L.Regular,
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Primary,
+                space = DesignSystemSpace.M,
+                style = DesignSystemFontStyle.L.Regular
+            )
         }
 
         @Composable
@@ -136,33 +94,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(36.dp)
-                        .background(ProjectColor.PrimaryOutline)
-                } else {
-                    Modifier
-                        .height(36.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.M,
-                    end = DesignSystemSpace.M
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.M.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Primary,
+                space = DesignSystemSpace.M,
+                style = DesignSystemFontStyle.M.Regular
+            )
         }
 
         @Composable
@@ -171,33 +110,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(32.dp)
-                        .background(ProjectColor.PrimaryOutline)
-                } else {
-                    Modifier
-                        .height(32.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.S,
-                    end = DesignSystemSpace.S
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.S.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Primary,
+                space = DesignSystemSpace.S,
+                style = DesignSystemFontStyle.S.Regular
+            )
         }
 
         @Composable
@@ -206,33 +126,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(28.dp)
-                        .background(ProjectColor.PrimaryOutline)
-                } else {
-                    Modifier
-                        .height(28.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.S,
-                    end = DesignSystemSpace.S
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.XS.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Primary,
+                space = DesignSystemSpace.S,
+                style = DesignSystemFontStyle.XS.Regular
+            )
         }
     }
 
@@ -243,33 +144,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(48.dp)
-                        .background(ProjectColor.PrimaryOutline)
-                } else {
-                    Modifier
-                        .height(48.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.M,
-                    end = DesignSystemSpace.M
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.XL.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Primary,
+                space = DesignSystemSpace.M,
+                style = DesignSystemFontStyle.XL.Regular
+            )
         }
 
         @Composable
@@ -278,33 +160,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(44.dp)
-                        .background(ProjectColor.PrimaryOutline)
-                } else {
-                    Modifier
-                        .height(44.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.M,
-                    end = DesignSystemSpace.M
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.L.Regular,
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Primary,
+                space = DesignSystemSpace.M,
+                style = DesignSystemFontStyle.L.Regular
+            )
         }
 
         @Composable
@@ -313,33 +176,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(36.dp)
-                        .background(ProjectColor.PrimaryOutline)
-                } else {
-                    Modifier
-                        .height(36.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.M,
-                    end = DesignSystemSpace.M
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.M.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Primary,
+                space = DesignSystemSpace.M,
+                style = DesignSystemFontStyle.M.Regular
+            )
         }
 
         @Composable
@@ -348,33 +192,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(32.dp)
-                        .background(ProjectColor.PrimaryOutline)
-                } else {
-                    Modifier
-                        .height(32.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.S,
-                    end = DesignSystemSpace.S
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.S.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Primary,
+                space = DesignSystemSpace.S,
+                style = DesignSystemFontStyle.S.Regular
+            )
         }
 
         @Composable
@@ -383,33 +208,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(28.dp)
-                        .background(ProjectColor.PrimaryOutline)
-                } else {
-                    Modifier
-                        .height(28.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.PrimaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.S,
-                    end = DesignSystemSpace.S
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.PrimaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.XS.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Primary,
+                space = DesignSystemSpace.S,
+                style = DesignSystemFontStyle.XS.Regular
+            )
         }
     }
 
@@ -420,33 +226,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(48.dp)
-                        .background(ProjectColor.SecondaryOutline)
-                } else {
-                    Modifier
-                        .height(48.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.SecondaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.M,
-                    end = DesignSystemSpace.M
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.SecondaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.XL.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Secondary,
+                space = DesignSystemSpace.M,
+                style = DesignSystemFontStyle.XL.Regular
+            )
         }
 
         @Composable
@@ -455,33 +242,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(44.dp)
-                        .background(ProjectColor.SecondaryOutline)
-                } else {
-                    Modifier
-                        .height(44.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.SecondaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.M,
-                    end = DesignSystemSpace.M
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.SecondaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.L.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Secondary,
+                space = DesignSystemSpace.M,
+                style = DesignSystemFontStyle.L.Regular
+            )
         }
 
         @Composable
@@ -490,33 +258,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(36.dp)
-                        .background(ProjectColor.SecondaryOutline)
-                } else {
-                    Modifier
-                        .height(36.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.SecondaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.M,
-                    end = DesignSystemSpace.M
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.SecondaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.M.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Secondary,
+                space = DesignSystemSpace.M,
+                style = DesignSystemFontStyle.M.Regular
+            )
         }
 
         @Composable
@@ -525,33 +274,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(32.dp)
-                        .background(ProjectColor.SecondaryOutline)
-                } else {
-                    Modifier
-                        .height(32.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.SecondaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.S,
-                    end = DesignSystemSpace.S
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.SecondaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.S.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Secondary,
+                space = DesignSystemSpace.S,
+                style = DesignSystemFontStyle.S.Regular
+            )
         }
 
         @Composable
@@ -560,33 +290,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(28.dp)
-                        .background(ProjectColor.SecondaryOutline)
-                } else {
-                    Modifier
-                        .height(28.dp)
-                        .background(DesignSystemColor.DisableFontColor)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(ProjectColor.SecondaryBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.S,
-                    end = DesignSystemSpace.S
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) ProjectColor.SecondaryFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.XS.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Secondary,
+                space = DesignSystemSpace.S,
+                style = DesignSystemFontStyle.XS.Regular
+            )
         }
     }
 
@@ -597,33 +308,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(48.dp)
-                        .background(DesignSystemColor.WarningOutline)
-                } else {
-                    Modifier
-                        .height(48.dp)
-                        .background(DesignSystemColor.DisableOutline)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(DesignSystemColor.WarningBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.M,
-                    end = DesignSystemSpace.M
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) DesignSystemColor.WarningFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.XL.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Warning,
+                space = DesignSystemSpace.M,
+                style = DesignSystemFontStyle.XL.Regular
+            )
         }
 
         @Composable
@@ -632,33 +324,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(44.dp)
-                        .background(DesignSystemColor.WarningOutline)
-                } else {
-                    Modifier
-                        .height(44.dp)
-                        .background(DesignSystemColor.DisableOutline)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(DesignSystemColor.WarningBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.M,
-                    end = DesignSystemSpace.M
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) DesignSystemColor.WarningFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.L.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Warning,
+                space = DesignSystemSpace.M,
+                style = DesignSystemFontStyle.L.Regular
+            )
         }
 
         @Composable
@@ -667,33 +340,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(36.dp)
-                        .background(DesignSystemColor.WarningOutline)
-                } else {
-                    Modifier
-                        .height(36.dp)
-                        .background(DesignSystemColor.DisableOutline)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(DesignSystemColor.WarningBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.M,
-                    end = DesignSystemSpace.M
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) DesignSystemColor.WarningFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.M.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Warning,
+                space = DesignSystemSpace.M,
+                style = DesignSystemFontStyle.M.Regular
+            )
         }
 
         @Composable
@@ -702,33 +356,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(32.dp)
-                        .background(DesignSystemColor.WarningOutline)
-                } else {
-                    Modifier
-                        .height(32.dp)
-                        .background(DesignSystemColor.DisableOutline)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(DesignSystemColor.WarningBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.S,
-                    end = DesignSystemSpace.S
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) DesignSystemColor.WarningFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.S.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Warning,
+                space = DesignSystemSpace.S,
+                style = DesignSystemFontStyle.S.Regular
+            )
         }
 
         @Composable
@@ -737,33 +372,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             state: Boolean = true
         ) {
-            Button(
+            PrimaryButton(
+                text = text,
                 onClick = onClick,
-                modifier = if (state) {
-                    Modifier
-                        .height(28.dp)
-                        .background(DesignSystemColor.WarningOutline)
-                } else {
-                    Modifier
-                        .height(28.dp)
-                        .background(DesignSystemColor.DisableOutline)
-                },
-                enabled = state,
-                shape = DesignSystemShape.RoundedRectangle,
-                colors = if (state) ButtonDefaults.buttonColors(DesignSystemColor.WarningBackground) else ButtonDefaults.buttonColors(
-                    DesignSystemColor.DisableBackground
-                ),
-                contentPadding = PaddingValues(
-                    start = DesignSystemSpace.S,
-                    end = DesignSystemSpace.S
-                )
-            ) {
-                Text(
-                    text = text,
-                    color = if (state) DesignSystemColor.WarningFontColor else DesignSystemColor.DisableOutline,
-                    style = DesignSystemFontStyle.XS.Regular
-                )
-            }
+                state = state,
+                color = DesignSystemColor.Warning,
+                space = DesignSystemSpace.S,
+                style = DesignSystemFontStyle.XS.Regular
+            )
         }
     }
 }

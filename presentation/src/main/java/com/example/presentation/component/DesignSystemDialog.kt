@@ -16,7 +16,6 @@ import com.example.presentation.theme.DesignSystemColor
 import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemShape
 import com.example.presentation.theme.DesignSystemSpace
-import com.example.presentation.theme.ProjectColor
 
 @Composable
 fun Overlay() {
@@ -54,7 +53,7 @@ fun PrimarySurface(
                     Text(text = title, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemColor.Black, style = DesignSystemFontStyle.XL.Bold)
                 }
                 if (certification != "") {
-                    Text(text = certification, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = ProjectColor.PrimaryFontColor, style = DesignSystemFontStyle.XXL.Regular)
+                    Text(text = certification, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemColor.PrimaryFontColor, style = DesignSystemFontStyle.XXL.Regular)
                 }
                 if (subText != "") {
                     Text(text = subText, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemColor.Gray600, style = DesignSystemFontStyle.S.Regular)
