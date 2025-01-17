@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.example.presentation.theme.DesignSystemColor
 import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemShape
+import com.example.presentation.theme.DesignSystemSingleColor
 import com.example.presentation.theme.DesignSystemSpace
 
 @Composable
@@ -28,9 +29,9 @@ fun Overlay() {
 fun PrimarySurface(
     title: String = "",
     certification: String = "",
-    subText: String = "",
+    subTitle: String = "",
     text: String,
-    buttonContent: @Composable () -> Unit
+    content: @Composable () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -43,22 +44,22 @@ fun PrimarySurface(
                 .wrapContentHeight()
                 .padding(start = DesignSystemSpace.M, top = DesignSystemSpace.XXL, end = DesignSystemSpace.M, bottom = DesignSystemSpace.XXL),
             shape = DesignSystemShape.RoundedRectangle,
-            color = DesignSystemColor.White,
+            color = DesignSystemSingleColor.White
         ) {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 if (title != "") {
-                    Text(text = title, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemColor.Black, style = DesignSystemFontStyle.XL.Bold)
+                    Text(text = title, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemSingleColor.Black, style = DesignSystemFontStyle.XL.Bold)
                 }
                 if (certification != "") {
-                    Text(text = certification, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemColor.PrimaryFontColor, style = DesignSystemFontStyle.XXL.Regular)
+                    Text(text = certification, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemColor.Primary.fontColor, style = DesignSystemFontStyle.XXL.Regular)
                 }
-                if (subText != "") {
-                    Text(text = subText, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemColor.Gray600, style = DesignSystemFontStyle.S.Regular)
+                if (subTitle != "") {
+                    Text(text = subTitle, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemSingleColor.Gray600, style = DesignSystemFontStyle.S.Regular)
                 }
-                Text(text = text,color = DesignSystemColor.Black, style = DesignSystemFontStyle.M.Regular)
+                Text(text = text,color = DesignSystemSingleColor.Black, style = DesignSystemFontStyle.M.Regular)
             }
         }
         Surface(
@@ -66,7 +67,7 @@ fun PrimarySurface(
                 .width(280.dp)
                 .wrapContentHeight()
         ) {
-            buttonContent()
+            content()
         }
     }
 }
@@ -77,7 +78,7 @@ object DesignSystemDialog {
         fun Primary(
             title: String = "",
             certification: String = "",
-            subText: String = "",
+            subTitle: String = "",
             text: String,
             buttonText: String,
             onClick: () -> Unit
@@ -85,10 +86,10 @@ object DesignSystemDialog {
             PrimarySurface(
                 title = title,
                 certification = certification,
-                subText = subText,
+                subTitle = subTitle,
                 text = text,
             ) {
-                DesignSystemButton.Primary.Large(
+                DesignSystemButton.CTA.Medium(
                     text = buttonText,
                     onClick = onClick,
                 )
