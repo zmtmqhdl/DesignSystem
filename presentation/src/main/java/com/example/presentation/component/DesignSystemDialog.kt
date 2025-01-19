@@ -29,7 +29,7 @@ fun Overlay() {
 fun PrimarySurface(
     title: String = "",
     certification: String = "",
-    subTitle: String = "",
+    subText: String = "",
     text: String,
     content: @Composable () -> Unit
 ) {
@@ -56,8 +56,8 @@ fun PrimarySurface(
                 if (certification != "") {
                     Text(text = certification, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemColor.Primary.fontColor, style = DesignSystemFontStyle.XXL.Regular)
                 }
-                if (subTitle != "") {
-                    Text(text = subTitle, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemSingleColor.Gray600, style = DesignSystemFontStyle.S.Regular)
+                if (subText != "") {
+                    Text(text = subText, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemSingleColor.Gray600, style = DesignSystemFontStyle.S.Regular)
                 }
                 Text(text = text,color = DesignSystemSingleColor.Black, style = DesignSystemFontStyle.M.Regular)
             }
@@ -86,7 +86,7 @@ object DesignSystemDialog {
             PrimarySurface(
                 title = title,
                 certification = certification,
-                subTitle = subTitle,
+                subText = subTitle,
                 text = text,
             ) {
                 DesignSystemButton.CTA.Medium(
