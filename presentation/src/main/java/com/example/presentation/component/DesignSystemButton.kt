@@ -2,6 +2,7 @@ package com.example.presentation.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -10,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import com.example.presentation.theme.DesignSystemColor
 import com.example.presentation.theme.DesignSystemShape
 import com.example.presentation.theme.DesignSystemFontStyle
@@ -22,19 +22,20 @@ fun PrimaryButton(
     onClick: () -> Unit,
     state: Boolean = true,
     color: DesignSystemColor,
+    modifier: Modifier = Modifier
+        .fillMaxWidth(),
+    height: Dp,
     space: Dp,
     style: TextStyle
 ) {
     Button(
         onClick = onClick,
         modifier = if (state) {
-            Modifier
-                .height(48.dp)
-                .background(color.outline)
+            modifier
+                .height(height)
         } else {
-            Modifier
-                .height(48.dp)
-                .background(DesignSystemColor.Disable.outline)
+            modifier
+                .height(height)
         },
         enabled = state,
         shape = DesignSystemShape.RoundedRectangle,
@@ -67,7 +68,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
-                space = DesignSystemSpace.M,
+                height = DesignSystemSpace.Space12,
+                space = DesignSystemSpace.Space4,
                 style = DesignSystemFontStyle.XL.Regular
             )
         }
@@ -83,7 +85,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
-                space = DesignSystemSpace.M,
+                height = DesignSystemSpace.Space11,
+                space = DesignSystemSpace.Space4,
                 style = DesignSystemFontStyle.L.Regular
             )
         }
@@ -99,7 +102,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
-                space = DesignSystemSpace.M,
+                height = DesignSystemSpace.Space9,
+                space = DesignSystemSpace.Space4,
                 style = DesignSystemFontStyle.M.Regular
             )
         }
@@ -115,7 +119,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
-                space = DesignSystemSpace.S,
+                height = DesignSystemSpace.Space8,
+                space = DesignSystemSpace.Space3,
                 style = DesignSystemFontStyle.S.Regular
             )
         }
@@ -131,7 +136,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
-                space = DesignSystemSpace.S,
+                height = DesignSystemSpace.Space7,
+                space = DesignSystemSpace.Space3,
                 style = DesignSystemFontStyle.XS.Regular
             )
         }
@@ -149,7 +155,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
-                space = DesignSystemSpace.M,
+                height = DesignSystemSpace.Space12,
+                space = DesignSystemSpace.Space4,
                 style = DesignSystemFontStyle.XL.Regular
             )
         }
@@ -165,7 +172,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
-                space = DesignSystemSpace.M,
+                height = DesignSystemSpace.Space11,
+                space = DesignSystemSpace.Space4,
                 style = DesignSystemFontStyle.L.Regular
             )
         }
@@ -181,7 +189,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
-                space = DesignSystemSpace.M,
+                height = DesignSystemSpace.Space9,
+                space = DesignSystemSpace.Space4,
                 style = DesignSystemFontStyle.M.Regular
             )
         }
@@ -197,7 +206,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
-                space = DesignSystemSpace.S,
+                height = DesignSystemSpace.Space8,
+                space = DesignSystemSpace.Space3,
                 style = DesignSystemFontStyle.S.Regular
             )
         }
@@ -213,7 +223,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
-                space = DesignSystemSpace.S,
+                height = DesignSystemSpace.Space7,
+                space = DesignSystemSpace.Space3,
                 style = DesignSystemFontStyle.XS.Regular
             )
         }
@@ -231,7 +242,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Secondary,
-                space = DesignSystemSpace.M,
+                height = DesignSystemSpace.Space12,
+                space = DesignSystemSpace.Space4,
                 style = DesignSystemFontStyle.XL.Regular
             )
         }
@@ -247,7 +259,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Secondary,
-                space = DesignSystemSpace.M,
+                height = DesignSystemSpace.Space11,
+                space = DesignSystemSpace.Space4,
                 style = DesignSystemFontStyle.L.Regular
             )
         }
@@ -263,7 +276,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Secondary,
-                space = DesignSystemSpace.M,
+                height = DesignSystemSpace.Space9,
+                space = DesignSystemSpace.Space4,
                 style = DesignSystemFontStyle.M.Regular
             )
         }
@@ -279,7 +293,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Secondary,
-                space = DesignSystemSpace.S,
+                height = DesignSystemSpace.Space8,
+                space = DesignSystemSpace.Space3,
                 style = DesignSystemFontStyle.S.Regular
             )
         }
@@ -295,7 +310,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Secondary,
-                space = DesignSystemSpace.S,
+                height = DesignSystemSpace.Space7,
+                space = DesignSystemSpace.Space3,
                 style = DesignSystemFontStyle.XS.Regular
             )
         }
@@ -313,7 +329,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Warning,
-                space = DesignSystemSpace.M,
+                height = DesignSystemSpace.Space12,
+                space = DesignSystemSpace.Space4,
                 style = DesignSystemFontStyle.XL.Regular
             )
         }
@@ -329,7 +346,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Warning,
-                space = DesignSystemSpace.M,
+                height = DesignSystemSpace.Space11,
+                space = DesignSystemSpace.Space4,
                 style = DesignSystemFontStyle.L.Regular
             )
         }
@@ -345,7 +363,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Warning,
-                space = DesignSystemSpace.M,
+                height = DesignSystemSpace.Space9,
+                space = DesignSystemSpace.Space4,
                 style = DesignSystemFontStyle.M.Regular
             )
         }
@@ -361,7 +380,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Warning,
-                space = DesignSystemSpace.S,
+                height = DesignSystemSpace.Space8,
+                space = DesignSystemSpace.Space3,
                 style = DesignSystemFontStyle.S.Regular
             )
         }
@@ -377,7 +397,8 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Warning,
-                space = DesignSystemSpace.S,
+                height = DesignSystemSpace.Space7,
+                space = DesignSystemSpace.Space3,
                 style = DesignSystemFontStyle.XS.Regular
             )
         }

@@ -9,14 +9,14 @@ import androidx.compose.ui.unit.sp
 import com.example.presentation.R
 
 object DesignSystemFontSize {
-    val XXXL = 24.sp
-    val XXL = 22.sp
-    val XL = 20.sp
-    val L = 18.sp
-    val M = 16.sp
-    val S = 14.sp
-    val XS = 12.sp
-    val XXS = 11.sp
+    val FontSize1 = 11.sp
+    val FontSize2 = 12.sp
+    val FontSize3 = 14.sp
+    val FontSize4 = 16.sp
+    val FontSize5 = 18.sp
+    val FontSize6 = 20.sp
+    val FontSize7 = 22.sp
+    val FontSize8 = 24.sp
 }
 
 object DesignSystemFontWeight {
@@ -29,136 +29,136 @@ object DesignSystemFontStyle {
     object XXXL {
         val Bold = TextStyle(
             fontFamily = FontFamily(Font(R.font.bold)),
-            fontSize = DesignSystemFontSize.XXXL,
+            fontSize = DesignSystemFontSize.FontSize8,
             fontWeight = DesignSystemFontWeight.Bold,
         )
         val Medium = TextStyle(
             fontFamily = FontFamily(Font(R.font.medium)),
-            fontSize = DesignSystemFontSize.XXXL,
+            fontSize = DesignSystemFontSize.FontSize8,
             fontWeight = DesignSystemFontWeight.Medium
         )
         val Regular = TextStyle(
             fontFamily = FontFamily(Font(R.font.regular)),
-            fontSize = DesignSystemFontSize.XXXL,
+            fontSize = DesignSystemFontSize.FontSize8,
             fontWeight = DesignSystemFontWeight.Regular
         )
     }
     object XXL {
         val Bold = TextStyle(
             fontFamily = FontFamily(Font(R.font.bold)),
-            fontSize = DesignSystemFontSize.XXL,
+            fontSize = DesignSystemFontSize.FontSize7,
             fontWeight = DesignSystemFontWeight.Bold
         )
         val Medium = TextStyle(
             fontFamily = FontFamily(Font(R.font.medium)),
-            fontSize = DesignSystemFontSize.XXL,
+            fontSize = DesignSystemFontSize.FontSize7,
             fontWeight = DesignSystemFontWeight.Medium
         )
         val Regular = TextStyle(
             fontFamily = FontFamily(Font(R.font.regular)),
-            fontSize = DesignSystemFontSize.XXL,
+            fontSize = DesignSystemFontSize.FontSize7,
             fontWeight = DesignSystemFontWeight.Regular
         )
     }
     object XL {
         val Bold = TextStyle(
             fontFamily = FontFamily(Font(R.font.bold)),
-            fontSize = DesignSystemFontSize.XL,
+            fontSize = DesignSystemFontSize.FontSize6,
             fontWeight = DesignSystemFontWeight.Bold
         )
         val Medium = TextStyle(
             fontFamily = FontFamily(Font(R.font.medium)),
-            fontSize = DesignSystemFontSize.XL,
+            fontSize = DesignSystemFontSize.FontSize6,
             fontWeight = DesignSystemFontWeight.Medium
         )
         val Regular = TextStyle(
             fontFamily = FontFamily(Font(R.font.regular)),
-            fontSize = DesignSystemFontSize.XL,
+            fontSize = DesignSystemFontSize.FontSize6,
             fontWeight = DesignSystemFontWeight.Regular
         )
     }
     object L {
         val Bold = TextStyle(
             fontFamily = FontFamily(Font(R.font.bold)),
-            fontSize = DesignSystemFontSize.L,
+            fontSize = DesignSystemFontSize.FontSize5,
             fontWeight = DesignSystemFontWeight.Bold
         )
         val Medium = TextStyle(
             fontFamily = FontFamily(Font(R.font.medium)),
-            fontSize = DesignSystemFontSize.L,
+            fontSize = DesignSystemFontSize.FontSize5,
             fontWeight = DesignSystemFontWeight.Medium
         )
         val Regular = TextStyle(
             fontFamily = FontFamily(Font(R.font.regular)),
-            fontSize = DesignSystemFontSize.L,
+            fontSize = DesignSystemFontSize.FontSize5,
             fontWeight = DesignSystemFontWeight.Regular
         )
     }
     object M {
         val Bold = TextStyle(
             fontFamily = FontFamily(Font(R.font.bold)),
-            fontSize = DesignSystemFontSize.M,
+            fontSize = DesignSystemFontSize.FontSize4,
             fontWeight = DesignSystemFontWeight.Bold
         )
         val Medium = TextStyle(
             fontFamily = FontFamily(Font(R.font.medium)),
-            fontSize = DesignSystemFontSize.M,
+            fontSize = DesignSystemFontSize.FontSize4,
             fontWeight = DesignSystemFontWeight.Medium
         )
         val Regular = TextStyle(
             fontFamily = FontFamily(Font(R.font.regular)),
-            fontSize = DesignSystemFontSize.M,
+            fontSize = DesignSystemFontSize.FontSize4,
             fontWeight = DesignSystemFontWeight.Regular
         )
     }
     object S {
         val Bold = TextStyle(
             fontFamily = FontFamily(Font(R.font.bold)),
-            fontSize = DesignSystemFontSize.S,
+            fontSize = DesignSystemFontSize.FontSize3,
             fontWeight = DesignSystemFontWeight.Bold
         )
         val Medium = TextStyle(
             fontFamily = FontFamily(Font(R.font.medium)),
-            fontSize = DesignSystemFontSize.S,
+            fontSize = DesignSystemFontSize.FontSize3,
             fontWeight = DesignSystemFontWeight.Medium
         )
         val Regular = TextStyle(
             fontFamily = FontFamily(Font(R.font.regular)),
-            fontSize = DesignSystemFontSize.S,
+            fontSize = DesignSystemFontSize.FontSize3,
             fontWeight = DesignSystemFontWeight.Regular
         )
     }
     object XS {
         val Bold = TextStyle(
             fontFamily = FontFamily(Font(R.font.bold)),
-            fontSize = DesignSystemFontSize.XS,
+            fontSize = DesignSystemFontSize.FontSize2,
             fontWeight = DesignSystemFontWeight.Bold
         )
         val Medium = TextStyle(
             fontFamily = FontFamily(Font(R.font.medium)),
-            fontSize = DesignSystemFontSize.XS,
+            fontSize = DesignSystemFontSize.FontSize2,
             fontWeight = DesignSystemFontWeight.Medium
         )
         val Regular = TextStyle(
             fontFamily = FontFamily(Font(R.font.regular)),
-            fontSize = DesignSystemFontSize.XS,
+            fontSize = DesignSystemFontSize.FontSize2,
             fontWeight = DesignSystemFontWeight.Regular
         )
     }
     object XXS {
         val Bold = TextStyle(
             fontFamily = FontFamily(Font(R.font.bold)),
-            fontSize = DesignSystemFontSize.XXS,
+            fontSize = DesignSystemFontSize.FontSize1,
             fontWeight = DesignSystemFontWeight.Bold
         )
         val Medium = TextStyle(
             fontFamily = FontFamily(Font(R.font.medium)),
-            fontSize = DesignSystemFontSize.XXS,
+            fontSize = DesignSystemFontSize.FontSize1,
             fontWeight = DesignSystemFontWeight.Medium
         )
         val Regular = TextStyle(
             fontFamily = FontFamily(Font(R.font.regular)),
-            fontSize = DesignSystemFontSize.XXS,
+            fontSize = DesignSystemFontSize.FontSize1,
             fontWeight = DesignSystemFontWeight.Regular
         )
     }

@@ -1,8 +1,11 @@
 package com.example.presentation.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -11,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.presentation.theme.DesignSystemColor
 import com.example.presentation.theme.DesignSystemFontStyle
@@ -19,10 +23,17 @@ import com.example.presentation.theme.DesignSystemSingleColor
 import com.example.presentation.theme.DesignSystemSpace
 
 @Composable
-fun Overlay() {
+fun Overlay(
+    content: @Composable () -> Unit
+) {
     Box(
-        modifier = Modifier.fillMaxSize()
-    ) {}
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = DesignSystemSingleColor.Gray600),
+        contentAlignment = Alignment.Center
+    ) {
+        content()
+    }
 }
 
 @Composable
@@ -39,36 +50,63 @@ fun PrimarySurface(
             .wrapContentHeight()
     ) {
         Surface(
-            modifier = Modifier
-                .width(280.dp)
-                .wrapContentHeight()
-                .padding(start = DesignSystemSpace.M, top = DesignSystemSpace.XXL, end = DesignSystemSpace.M, bottom = DesignSystemSpace.XXL),
             shape = DesignSystemShape.RoundedRectangle,
             color = DesignSystemSingleColor.White
         ) {
             Column(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.width(280.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                Spacer(modifier = Modifier.height(DesignSystemSpace.Space8))
                 if (title != "") {
-                    Text(text = title, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemSingleColor.Black, style = DesignSystemFontStyle.XL.Bold)
+                    Text(
+                        text = title,
+                        modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                        color = DesignSystemSingleColor.Black,
+                        style = DesignSystemFontStyle.XL.Bold
+                    )
                 }
                 if (certification != "") {
-                    Text(text = certification, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemColor.Primary.fontColor, style = DesignSystemFontStyle.XXL.Regular)
+                    Text(
+                        text = certification,
+                        modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                        color = DesignSystemColor.Primary.fontColor,
+                        style = DesignSystemFontStyle.XXL.Regular
+                    )
                 }
                 if (subText != "") {
-                    Text(text = subText, modifier = Modifier.padding(bottom = DesignSystemSpace.XS), color = DesignSystemSingleColor.Gray600, style = DesignSystemFontStyle.S.Regular)
+                    Text(
+                        text = subText,
+                        modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                        color = DesignSystemSingleColor.Gray600,
+                        style = DesignSystemFontStyle.S.Regular
+                    )
                 }
-                Text(text = text,color = DesignSystemSingleColor.Black, style = DesignSystemFontStyle.M.Regular)
+                Text(
+                    text = text,
+                    modifier = Modifier.padding(bottom = DesignSystemSpace.Space8),
+                    color = DesignSystemSingleColor.Black,
+                    style = DesignSystemFontStyle.M.Regular
+                )
+                content()
+                Spacer(modifier = Modifier.height(DesignSystemSpace.Space8))
             }
         }
-        Surface(
-            modifier = Modifier
-                .width(280.dp)
-                .wrapContentHeight()
-        ) {
-            content()
-        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewPrimary() {
+    Overlay {
+        DesignSystemDialog.Single.Primary (
+            title = "Sample",
+            certification = "Sample",
+            subTitle = "Sample Subtitle",
+            text = "This is the main text",
+            buttonText = "취소",
+            onClick = { },
+        )
     }
 }
 
@@ -99,9 +137,63 @@ object DesignSystemDialog {
 
     object Double {
         @Composable
-        fun Column() {}
+        fun Column(
+            title: String = "",
+            certification: String = "",
+            subTitle: String = "",
+            text: String,
+            buttonText1: String,
+            buttonText2: String,
+            onClick1: () -> Unit,
+            onClick2: () -> Unit
+        ) {
+            PrimarySurface(
+                title = title,
+                certification = certification,
+                subText = subTitle,
+                text = text,
+            ) {
+                Column {
+                    DesignSystemButton.CTA.Medium(
+                        text = buttonText2,
+                        onClick = onClick2,
+                    )
+                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space2))
+                    DesignSystemButton.Primary.Medium(
+                        text = buttonText1,
+                        onClick = onClick1,
+                    )
+                }
+            }
+        }
 
         @Composable
-        fun Row() {}
+        fun Row(
+            title: String = "",
+            certification: String = "",
+            subTitle: String = "",
+            text: String,
+            buttonText1: String,
+            buttonText2: String,
+            onClick1: () -> Unit,
+            onClick2: () -> Unit
+        ) {
+            PrimarySurface(
+                title = title,
+                certification = certification,
+                subText = subTitle,
+                text = text,
+            ) {
+                DesignSystemButton.CTA.Medium(
+                    text = buttonText2,
+                    onClick = onClick2,
+                )
+                DesignSystemButton.Primary.Medium(
+                    text = buttonText1,
+                    onClick = onClick1,
+                )
+            }
+        }
     }
 }
+

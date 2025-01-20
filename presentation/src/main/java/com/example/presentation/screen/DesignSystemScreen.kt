@@ -14,7 +14,7 @@ fun PrimaryColumn(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(start = DesignSystemSpace.M, top = DesignSystemSpace.M, end = DesignSystemSpace.M),
+            .padding(start = DesignSystemSpace.Space4, top = DesignSystemSpace.Space4, end = DesignSystemSpace.Space4),
     ) {
         content()
     }
