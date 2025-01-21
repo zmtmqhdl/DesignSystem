@@ -3,6 +3,7 @@ package com.example.presentation.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -42,7 +43,7 @@ fun PrimarySurface(
     certification: String = "",
     subText: String = "",
     text: String,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -50,14 +51,14 @@ fun PrimarySurface(
             .wrapContentHeight()
     ) {
         Surface(
-            shape = DesignSystemShape.RoundedRectangle,
+            shape = DesignSystemShape.PrimaryButtonShape,
             color = DesignSystemSingleColor.White
         ) {
             Column(
-                modifier = Modifier.width(280.dp),
+                modifier = Modifier.width(280.dp).padding(start = DesignSystemSpace.Space4, end = DesignSystemSpace.Space4),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.height(DesignSystemSpace.Space8))
+                Spacer(modifier = Modifier.height(DesignSystemSpace.Space4))
                 if (title != "") {
                     Text(
                         text = title,
@@ -84,12 +85,12 @@ fun PrimarySurface(
                 }
                 Text(
                     text = text,
-                    modifier = Modifier.padding(bottom = DesignSystemSpace.Space8),
+                    modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),
                     color = DesignSystemSingleColor.Black,
                     style = DesignSystemFontStyle.M.Regular
                 )
                 content()
-                Spacer(modifier = Modifier.height(DesignSystemSpace.Space8))
+                Spacer(modifier = Modifier.height(DesignSystemSpace.Space4))
             }
         }
     }
@@ -99,13 +100,15 @@ fun PrimarySurface(
 @Composable
 fun PreviewPrimary() {
     Overlay {
-        DesignSystemDialog.Single.Primary (
+        DesignSystemDialog.Double.Row (
             title = "Sample",
             certification = "Sample",
             subTitle = "Sample Subtitle",
             text = "This is the main text",
-            buttonText = "취소",
-            onClick = { },
+            buttonText1 = "취소",
+            buttonText2 = "취소2",
+            onClick1 = { },
+            onClick2 = { },
         )
     }
 }
@@ -158,7 +161,7 @@ object DesignSystemDialog {
                         text = buttonText2,
                         onClick = onClick2,
                     )
-                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space2))
+                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space3))
                     DesignSystemButton.Primary.Medium(
                         text = buttonText1,
                         onClick = onClick1,
@@ -176,7 +179,7 @@ object DesignSystemDialog {
             buttonText1: String,
             buttonText2: String,
             onClick1: () -> Unit,
-            onClick2: () -> Unit
+            onClick2: () -> Unit,
         ) {
             PrimarySurface(
                 title = title,
@@ -184,14 +187,19 @@ object DesignSystemDialog {
                 subText = subTitle,
                 text = text,
             ) {
-                DesignSystemButton.CTA.Medium(
-                    text = buttonText2,
-                    onClick = onClick2,
-                )
-                DesignSystemButton.Primary.Medium(
-                    text = buttonText1,
-                    onClick = onClick1,
-                )
+                Row {
+                    DesignSystemButton.CTA.Medium(
+                        text = buttonText2,
+                        onClick = onClick2,
+                        width = 120.dp
+                    )
+                    Spacer(modifier = Modifier.width(DesignSystemSpace.Space2))
+                    DesignSystemButton.Primary.Medium(
+                        text = buttonText1,
+                        onClick = onClick1,
+                        width = 120.dp
+                    )
+                }
             }
         }
     }

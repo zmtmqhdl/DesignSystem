@@ -6,6 +6,7 @@ import androidx.compose.ui.unit.dp
 
 object DesignSystemShape {
     val Rectangle = RoundedCornerShape(0.dp)
-    val RoundedRectangle = RoundedCornerShape(DesignSystemSpace.Space2)
+    val PrimaryButtonShape = RoundedCornerShape(DesignSystemSpace.Space2)
+    val ActionButtonShape = RoundedCornerShape(DesignSystemSpace.Space4)
     val Circle = CircleShape
 }

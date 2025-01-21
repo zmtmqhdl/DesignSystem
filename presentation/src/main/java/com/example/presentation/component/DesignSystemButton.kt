@@ -1,14 +1,17 @@
 package com.example.presentation.component
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.example.presentation.theme.DesignSystemColor
@@ -20,25 +23,28 @@ import com.example.presentation.theme.DesignSystemSpace
 fun PrimaryButton(
     text: String,
     onClick: () -> Unit,
-    state: Boolean = true,
+    state: Boolean,
     color: DesignSystemColor,
-    modifier: Modifier = Modifier
-        .fillMaxWidth(),
+    width: Dp ?= null,
     height: Dp,
     space: Dp,
-    style: TextStyle
+    style: TextStyle,
+    icon: ImageVector ?= null,
+    iconPosition: String ?= null,
 ) {
     Button(
         onClick = onClick,
-        modifier = if (state) {
-            modifier
+        modifier = if (width != null) {
+            Modifier
+                .width(width)
                 .height(height)
         } else {
-            modifier
+            Modifier
+                .fillMaxWidth()
                 .height(height)
         },
         enabled = state,
-        shape = DesignSystemShape.RoundedRectangle,
+        shape = DesignSystemShape.PrimaryButtonShape,
         colors = if (state) ButtonDefaults.buttonColors(color.background) else ButtonDefaults.buttonColors(
             DesignSystemColor.Disable.background
         ),
@@ -47,11 +53,25 @@ fun PrimaryButton(
             end = space
         )
     ) {
+        if (iconPosition == "left" && icon != null) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                modifier = Modifier.padding(end = DesignSystemSpace.Space1)
+            )
+        }
         Text(
             text = text,
             color = if (state) color.fontColor else DesignSystemColor.Disable.fontColor,
             style = style
         )
+        if (iconPosition == "right" && icon != null) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                modifier = Modifier.padding(start = DesignSystemSpace.Space1)
+            )
+        }
     }
 }
 
@@ -61,16 +81,22 @@ object DesignSystemButton {
         fun Xlarge(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
+                width = width,
                 height = DesignSystemSpace.Space12,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.XL.Regular
+                style = DesignSystemFontStyle.XL.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -78,16 +104,23 @@ object DesignSystemButton {
         fun Large(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
+
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
+                width = width,
                 height = DesignSystemSpace.Space11,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.L.Regular
+                style = DesignSystemFontStyle.L.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -95,16 +128,22 @@ object DesignSystemButton {
         fun Medium(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
+                width = width,
                 height = DesignSystemSpace.Space9,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.M.Regular
+                style = DesignSystemFontStyle.M.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -112,16 +151,22 @@ object DesignSystemButton {
         fun Small(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
+                width = width,
                 height = DesignSystemSpace.Space8,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.S.Regular
+                style = DesignSystemFontStyle.S.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -129,16 +174,22 @@ object DesignSystemButton {
         fun Tiny(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
+                width = width,
                 height = DesignSystemSpace.Space7,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.XS.Regular
+                style = DesignSystemFontStyle.XS.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
     }
@@ -148,16 +199,22 @@ object DesignSystemButton {
         fun Xlarge(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
+                width = width,
                 height = DesignSystemSpace.Space12,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.XL.Regular
+                style = DesignSystemFontStyle.XL.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -165,16 +222,22 @@ object DesignSystemButton {
         fun Large(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
+                width = width,
                 height = DesignSystemSpace.Space11,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.L.Regular
+                style = DesignSystemFontStyle.L.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -182,16 +245,22 @@ object DesignSystemButton {
         fun Medium(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
+                width = width,
                 height = DesignSystemSpace.Space9,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.M.Regular
+                style = DesignSystemFontStyle.M.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -199,16 +268,22 @@ object DesignSystemButton {
         fun Small(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
+                width = width,
                 height = DesignSystemSpace.Space8,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.S.Regular
+                style = DesignSystemFontStyle.S.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -216,16 +291,22 @@ object DesignSystemButton {
         fun Tiny(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Primary,
+                width = width,
                 height = DesignSystemSpace.Space7,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.XS.Regular
+                style = DesignSystemFontStyle.XS.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
     }
@@ -235,16 +316,22 @@ object DesignSystemButton {
         fun Xlarge(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Secondary,
+                width = width,
                 height = DesignSystemSpace.Space12,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.XL.Regular
+                style = DesignSystemFontStyle.XL.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -252,16 +339,22 @@ object DesignSystemButton {
         fun Large(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Secondary,
+                width = width,
                 height = DesignSystemSpace.Space11,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.L.Regular
+                style = DesignSystemFontStyle.L.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -269,16 +362,22 @@ object DesignSystemButton {
         fun Medium(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Secondary,
+                width = width,
                 height = DesignSystemSpace.Space9,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.M.Regular
+                style = DesignSystemFontStyle.M.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -286,16 +385,22 @@ object DesignSystemButton {
         fun Small(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Secondary,
+                width = width,
                 height = DesignSystemSpace.Space8,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.S.Regular
+                style = DesignSystemFontStyle.S.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -303,16 +408,22 @@ object DesignSystemButton {
         fun Tiny(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Secondary,
+                width = width,
                 height = DesignSystemSpace.Space7,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.XS.Regular
+                style = DesignSystemFontStyle.XS.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
     }
@@ -322,16 +433,22 @@ object DesignSystemButton {
         fun Xlarge(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Warning,
+                width = width,
                 height = DesignSystemSpace.Space12,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.XL.Regular
+                style = DesignSystemFontStyle.XL.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -339,16 +456,22 @@ object DesignSystemButton {
         fun Large(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Warning,
+                width = width,
                 height = DesignSystemSpace.Space11,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.L.Regular
+                style = DesignSystemFontStyle.L.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -356,16 +479,22 @@ object DesignSystemButton {
         fun Medium(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Warning,
+                width = width,
                 height = DesignSystemSpace.Space9,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.M.Regular
+                style = DesignSystemFontStyle.M.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -373,16 +502,22 @@ object DesignSystemButton {
         fun Small(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Warning,
+                width = width,
                 height = DesignSystemSpace.Space8,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.S.Regular
+                style = DesignSystemFontStyle.S.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
 
@@ -390,16 +525,22 @@ object DesignSystemButton {
         fun Tiny(
             text: String,
             onClick: () -> Unit,
-            state: Boolean = true
+            width: Dp ?= null,
+            state: Boolean = true,
+            icon: ImageVector ?= null,
+            iconPosition: String ?= null,
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 state = state,
                 color = DesignSystemColor.Warning,
+                width = width,
                 height = DesignSystemSpace.Space7,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.XS.Regular
+                style = DesignSystemFontStyle.XS.Regular,
+                icon = icon,
+                iconPosition = iconPosition
             )
         }
     }
