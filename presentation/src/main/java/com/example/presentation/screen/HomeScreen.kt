@@ -1,5 +1,7 @@
 package com.example.presentation.screen
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -14,6 +16,11 @@ fun HomeScreen(
     val text by homeViewModel.text.collectAsState()
 
     PrimaryColumn {
-        DesignSystemButton.Primary.Large(text = text, onClick = onNext)
+        DesignSystemButton.CTA.Large(
+            text = "안녕?",
+            onClick = {},
+            icon = Icons.Filled.Refresh,
+            iconPosition = "left"
+        )
     }
 }
