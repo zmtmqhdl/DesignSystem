@@ -1,10 +1,11 @@
 plugins {
-    id("com.android.application")
     alias(libs.plugins.kotlin.android)
     id("org.jetbrains.kotlin.plugin.compose")
 
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.kapt)
+
+    id("com.android.library")
 }
 
 android {

@@ -8,6 +8,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor() : ViewModel() {
-    private val _text = MutableStateFlow("d")
+    private val _text = MutableStateFlow("abcdefg")
     val text: StateFlow<String> = _text
 }
