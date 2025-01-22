@@ -96,23 +96,6 @@ fun PrimarySurface(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewPrimary() {
-    Overlay {
-        DesignSystemDialog.Double.Row (
-            title = "Sample",
-            certification = "Sample",
-            subTitle = "Sample Subtitle",
-            text = "This is the main text",
-            buttonText1 = "취소",
-            buttonText2 = "취소2",
-            onClick1 = { },
-            onClick2 = { },
-        )
-    }
-}
-
 object DesignSystemDialog {
     object Single {
         @Composable
