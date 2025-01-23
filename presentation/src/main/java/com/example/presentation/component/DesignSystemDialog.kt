@@ -55,7 +55,9 @@ fun PrimarySurface(
             color = DesignSystemSingleColor.White
         ) {
             Column(
-                modifier = Modifier.width(280.dp).padding(start = DesignSystemSpace.Space4, end = DesignSystemSpace.Space4),
+                modifier = Modifier
+                    .width(280.dp)
+                    .padding(start = DesignSystemSpace.Space4, end = DesignSystemSpace.Space4),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Spacer(modifier = Modifier.height(DesignSystemSpace.Space4))
