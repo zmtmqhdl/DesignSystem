@@ -21,9 +21,10 @@ fun PrimaryNudging(
     title: String? = null,
     text: String,
     content: @Composable () -> Unit,
+    onDisMissRequest: () -> Unit,
 ) {
     ModalBottomSheet(
-        onDismissRequest = { },
+        onDismissRequest = onDisMissRequest,
         modifier = Modifier.padding(start = DesignSystemSpace.Space2, end = DesignSystemSpace.Space2, bottom = DesignSystemSpace.Space2),
         shape = DesignSystemShape.PrimaryBottomSheepShape,
         containerColor = DesignSystemSingleColor.White,

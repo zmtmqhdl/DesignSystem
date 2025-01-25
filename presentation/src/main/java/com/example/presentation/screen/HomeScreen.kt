@@ -30,14 +30,12 @@ fun HomeScreen(
 
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val scope = rememberCoroutineScope()
-    var showBottomSheet by remember { mutableStateOf(false) }
 
     PrimaryColumn {
         Spacer(modifier = Modifier.height(50.dp))
         DesignSystemButton.CTA.Large(
             text = "안녕dd?",
             onClick = {
-                showBottomSheet = true
                 scope.launch { sheetState.show() }
             },
             icon = "icon_forward",
@@ -45,18 +43,17 @@ fun HomeScreen(
         )
     }
 
-    if (showBottomSheet) {
+    if (sheetState.isVisible) {
         PrimaryNudging(
             title = "타이틀",
             text = "테스트",
+            onDisMissRequest = {
+                scope.launch { sheetState.hide() }
+            },
             content = { DesignSystemButton.CTA.Large(
                 text = "축소",
                 onClick = {
-                    scope.launch { sheetState.hide() }.invokeOnCompletion {
-                        if (!sheetState.isVisible) {
-                            showBottomSheet = false
-                        }
-                    }
+                        scope.launch { sheetState.hide() }
                 },
                 icon = "icon_forward",
                 iconPosition = "right"
