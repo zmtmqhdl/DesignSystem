@@ -15,7 +15,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.presentation.theme.DesignSystemColor
 import com.example.presentation.theme.DesignSystemFontStyle
@@ -24,84 +23,79 @@ import com.example.presentation.theme.DesignSystemSingleColor
 import com.example.presentation.theme.DesignSystemSpace
 
 @Composable
-fun Overlay(
-    content: @Composable () -> Unit
-) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = DesignSystemSingleColor.Gray600),
-        contentAlignment = Alignment.Center
-    ) {
-        content()
-    }
-}
-
-@Composable
-fun PrimarySurface(
+fun PrimaryDialog(
     title: String = "",
     certification: String = "",
     subText: String = "",
     text: String,
     content: @Composable () -> Unit,
 ) {
-    Column(
+
+    Box(
         modifier = Modifier
-            .width(280.dp)
-            .wrapContentHeight()
+            .fillMaxSize()
+            .background(color = DesignSystemSingleColor.Gray600),
+        contentAlignment = Alignment.Center
     ) {
-        Surface(
-            shape = DesignSystemShape.PrimaryButtonShape,
-            color = DesignSystemSingleColor.White
+        Column(
+            modifier = Modifier
+                .width(280.dp)
+                .wrapContentHeight()
         ) {
-            Column(
-                modifier = Modifier
-                    .width(280.dp)
-                    .padding(start = DesignSystemSpace.Space4, end = DesignSystemSpace.Space4),
-                horizontalAlignment = Alignment.CenterHorizontally
+            Surface(
+                shape = DesignSystemShape.PrimaryDialogShape,
+                color = DesignSystemSingleColor.White
             ) {
-                Spacer(modifier = Modifier.height(DesignSystemSpace.Space4))
-                if (title != "") {
+                Column(
+                    modifier = Modifier
+                        .width(280.dp)
+                        .padding(start = DesignSystemSpace.Space4, end = DesignSystemSpace.Space4),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space4))
+                    if (title != "") {
+                        Text(
+                            text = title,
+                            modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                            color = DesignSystemSingleColor.Black,
+                            style = DesignSystemFontStyle.XL.Bold
+                        )
+                    }
+                    if (certification != "") {
+                        Text(
+                            text = certification,
+                            modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                            color = DesignSystemColor.Primary.fontColor,
+                            style = DesignSystemFontStyle.XXL.Regular
+                        )
+                    }
+                    if (subText != "") {
+                        Text(
+                            text = subText,
+                            modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                            color = DesignSystemSingleColor.Gray600,
+                            style = DesignSystemFontStyle.S.Regular
+                        )
+                    }
                     Text(
-                        text = title,
-                        modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                        text = text,
+                        modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),
                         color = DesignSystemSingleColor.Black,
-                        style = DesignSystemFontStyle.XL.Bold
+                        style = DesignSystemFontStyle.M.Regular
                     )
+                    content()
+                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space4))
                 }
-                if (certification != "") {
-                    Text(
-                        text = certification,
-                        modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
-                        color = DesignSystemColor.Primary.fontColor,
-                        style = DesignSystemFontStyle.XXL.Regular
-                    )
-                }
-                if (subText != "") {
-                    Text(
-                        text = subText,
-                        modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
-                        color = DesignSystemSingleColor.Gray600,
-                        style = DesignSystemFontStyle.S.Regular
-                    )
-                }
-                Text(
-                    text = text,
-                    modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),
-                    color = DesignSystemSingleColor.Black,
-                    style = DesignSystemFontStyle.M.Regular
-                )
-                content()
-                Spacer(modifier = Modifier.height(DesignSystemSpace.Space4))
             }
         }
     }
+
 }
 
 object DesignSystemDialog {
     object Single {
         @Composable
-        fun Primary(
+        fun SingleArrangement(
             title: String = "",
             certification: String = "",
             subTitle: String = "",
@@ -109,7 +103,7 @@ object DesignSystemDialog {
             buttonText: String,
             onClick: () -> Unit
         ) {
-            PrimarySurface(
+            PrimaryDialog(
                 title = title,
                 certification = certification,
                 subText = subTitle,
@@ -125,7 +119,7 @@ object DesignSystemDialog {
 
     object Double {
         @Composable
-        fun Column(
+        fun ColumnArrangement(
             title: String = "",
             certification: String = "",
             subTitle: String = "",
@@ -135,7 +129,7 @@ object DesignSystemDialog {
             onClick1: () -> Unit,
             onClick2: () -> Unit
         ) {
-            PrimarySurface(
+            PrimaryDialog(
                 title = title,
                 certification = certification,
                 subText = subTitle,
@@ -156,7 +150,7 @@ object DesignSystemDialog {
         }
 
         @Composable
-        fun Row(
+        fun RowArrangement(
             title: String = "",
             certification: String = "",
             subTitle: String = "",
@@ -166,7 +160,7 @@ object DesignSystemDialog {
             onClick1: () -> Unit,
             onClick2: () -> Unit,
         ) {
-            PrimarySurface(
+            PrimaryDialog(
                 title = title,
                 certification = certification,
                 subText = subTitle,

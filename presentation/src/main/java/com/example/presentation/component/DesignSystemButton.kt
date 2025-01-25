@@ -67,6 +67,24 @@ fun PrimaryButton(
     }
 }
 
+@Composable
+fun PrimaryIconButton(
+    onClick: () -> Unit,
+    icon: String
+) {
+    Button(
+        onClick = onClick,
+        modifier = Modifier
+            .width(DesignSystemSpace.Space2)
+            .height(DesignSystemSpace.Space2)
+    ) {
+        DesignSystemIcon(
+            name = icon
+        )
+    }
+}
+
+
 object DesignSystemButton {
     object CTA {
         @Composable
@@ -532,6 +550,16 @@ object DesignSystemButton {
                 style = DesignSystemFontStyle.XS.Regular,
                 icon = icon,
                 iconPosition = iconPosition
+            )
+        }
+    }
+
+    object Icon {
+        @Composable
+        fun Cancel() {
+            PrimaryIconButton(
+                onClick = {},
+                icon = "icon_close"
             )
         }
     }
