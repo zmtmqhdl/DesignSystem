@@ -1,7 +1,6 @@
 package com.example.presentation.component
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -9,13 +8,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemShape
@@ -27,45 +20,39 @@ import com.example.presentation.theme.DesignSystemSpace
 fun PrimaryNudging(
     title: String? = null,
     text: String,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
-    val sheetState = rememberModalBottomSheetState()
-    val scope = rememberCoroutineScope()
-    var showBottomSheet by remember { mutableStateOf(false) }
     ModalBottomSheet(
         onDismissRequest = { },
         modifier = Modifier.padding(start = DesignSystemSpace.Space2, end = DesignSystemSpace.Space2, bottom = DesignSystemSpace.Space2),
         shape = DesignSystemShape.PrimaryBottomSheepShape,
+        containerColor = DesignSystemSingleColor.White,
+        dragHandle = null
     ) {
         Surface(
+            color = DesignSystemSingleColor.White,
             modifier = Modifier
                 .padding(start = DesignSystemSpace.Space4, end = DesignSystemSpace.Space4, bottom = DesignSystemSpace.Space4)
         ) {
-            Column() {}
-            Row (
-                modifier = Modifier
-                    .height(DesignSystemSpace.Space10)
-
-            ){
-                Spacer(modifier = Modifier.weight(1f))
-                DesignSystemButton.Icon.Cancel()
-            }
-            if (title != null) {
+            Column() {
+                Spacer(modifier = Modifier.height(DesignSystemSpace.Space10))
+                if (title != null) {
+                    Text(
+                        text = title,
+                        modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                        color = DesignSystemSingleColor.Black,
+                        style = DesignSystemFontStyle.XL.Bold
+                    )
+                }
                 Text(
-                    text = title,
-                    modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                    text = text,
+                    modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),
                     color = DesignSystemSingleColor.Black,
-                    style = DesignSystemFontStyle.XL.Bold
+                    style = DesignSystemFontStyle.M.Regular
                 )
+                Spacer(modifier = Modifier.height(DesignSystemSpace.Space6))
+                content()
             }
-            Text(
-                text = text,
-                modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),
-                color = DesignSystemSingleColor.Black,
-                style = DesignSystemFontStyle.M.Regular
-            )
-            Spacer(modifier = Modifier.height(DesignSystemSpace.Space6))
-            content()
         }
     }
 }

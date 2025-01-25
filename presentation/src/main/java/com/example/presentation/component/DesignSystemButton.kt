@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -13,7 +14,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.example.presentation.theme.DesignSystemColor
 import com.example.presentation.theme.DesignSystemShape
 import com.example.presentation.theme.DesignSystemFontStyle
@@ -67,22 +70,18 @@ fun PrimaryButton(
     }
 }
 
-@Composable
-fun PrimaryIconButton(
-    onClick: () -> Unit,
-    icon: String
-) {
-    Button(
-        onClick = onClick,
-        modifier = Modifier
-            .width(DesignSystemSpace.Space2)
-            .height(DesignSystemSpace.Space2)
-    ) {
-        DesignSystemIcon(
-            name = icon
-        )
-    }
-}
+//@Composable
+//fun PrimaryIconButton(
+//    onClick: () -> Unit,
+//    icon: String
+//) {
+//
+//        DesignSystemIcon(
+//            name = icon
+//        )
+//
+//}
+
 
 
 object DesignSystemButton {
@@ -554,14 +553,14 @@ object DesignSystemButton {
         }
     }
 
-    object Icon {
-        @Composable
-        fun Cancel() {
-            PrimaryIconButton(
-                onClick = {},
-                icon = "icon_close"
-            )
-        }
-    }
+//    object Icon {
+//        @Composable
+//        fun Cancel() {
+//            PrimaryIconButton(
+//                onClick = {},
+//                icon = "icon_close"
+//            )
+//        }
+//    }
 }
 
