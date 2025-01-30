@@ -70,19 +70,6 @@ fun PrimaryButton(
     }
 }
 
-//@Composable
-//fun PrimaryIconButton(
-//    onClick: () -> Unit,
-//    icon: String
-//) {
-//
-//        DesignSystemIcon(
-//            name = icon
-//        )
-//
-//}
-
-
 
 object DesignSystemButton {
     object CTA {

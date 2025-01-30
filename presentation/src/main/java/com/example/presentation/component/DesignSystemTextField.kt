@@ -3,19 +3,26 @@ package com.example.presentation.component
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 
-@Composable
-fun test() {
-    var text by remember { mutableStateOf("") }
-
-    OutlinedTextField(
-        value = text,
-        onValueChange = { text = it },
-        label = { Text("Label") },
-        singleLine = true
-    )
+object DesignSystemTextField {
+    object Outlined {
+        @Composable
+        fun Primary(
+            text: String,
+            onValueChange: (String) -> Unit,
+            label: String,
+            leadingIconName: String? = null,
+            trailIconName: String? = null,
+        ) {
+            OutlinedTextField(
+                value = text,
+                onValueChange = onValueChange,
+                label = { Text(label) },
+                leadingIcon = leadingIconName?.let { { DesignSystemIcon(name = it) } },
+                trailingIcon = trailIconName?.let { { DesignSystemIcon(name = it) } },
+                singleLine = true
+            )
+        }
+    }
 }
+

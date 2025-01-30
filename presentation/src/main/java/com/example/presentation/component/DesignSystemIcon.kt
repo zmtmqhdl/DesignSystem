@@ -21,7 +21,7 @@ fun DesignSystemIcon(
     name: String,
     text: String? = null,
     color: Color = DesignSystemSingleColor.Black,
-    iconPosition: String = "left",
+    iconPosition: String? = null,
 ) {
     Icon(
         painter = painterResource(id = name.toDrawableRes()),
@@ -29,8 +29,11 @@ fun DesignSystemIcon(
         tint = color,
         modifier = if (iconPosition == "left") {
             Modifier.padding(end = DesignSystemSpace.Space1)
-        } else {
+        } else if (iconPosition == "right") {
             Modifier.padding(start = DesignSystemSpace.Space1)
+        } else {
+            Modifier
         }
+
     )
 }

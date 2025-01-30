@@ -50,14 +50,15 @@ fun PrimaryModal(
             ) {
                 Column() {
                     Spacer(modifier = Modifier.height(DesignSystemSpace.Space10))
-                    if (title != null) {
+                    title?.let {
                         Text(
-                            text = title,
+                            text = it,
                             modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
                             color = DesignSystemSingleColor.Black,
                             style = DesignSystemFontStyle.XL.Bold
                         )
                     }
+
                     Text(
                         text = text,
                         modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),

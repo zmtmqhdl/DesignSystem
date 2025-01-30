@@ -24,13 +24,12 @@ import com.example.presentation.theme.DesignSystemSpace
 
 @Composable
 fun PrimaryDialog(
-    title: String = "",
-    certification: String = "",
-    subText: String = "",
+    title: String? = null,
+    certification: String? = null,
+    subText: String? = null,
     text: String,
     content: @Composable () -> Unit,
 ) {
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -53,25 +52,25 @@ fun PrimaryDialog(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Spacer(modifier = Modifier.height(DesignSystemSpace.Space4))
-                    if (title != "") {
+                    title?.let {
                         Text(
-                            text = title,
+                            text = it,
                             modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
                             color = DesignSystemSingleColor.Black,
                             style = DesignSystemFontStyle.XL.Bold
                         )
                     }
-                    if (certification != "") {
+                    certification?.let {
                         Text(
-                            text = certification,
+                            text = it,
                             modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
                             color = DesignSystemColor.Primary.fontColor,
                             style = DesignSystemFontStyle.XXL.Regular
                         )
                     }
-                    if (subText != "") {
+                    subText?.let {
                         Text(
-                            text = subText,
+                            text = it,
                             modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
                             color = DesignSystemSingleColor.Gray600,
                             style = DesignSystemFontStyle.S.Regular
@@ -89,7 +88,6 @@ fun PrimaryDialog(
             }
         }
     }
-
 }
 
 object DesignSystemDialog {
@@ -120,9 +118,9 @@ object DesignSystemDialog {
     object Double {
         @Composable
         fun ColumnArrangement(
-            title: String = "",
-            certification: String = "",
-            subTitle: String = "",
+            title: String? = null,
+            certification: String? = null,
+            subText: String? = null,
             text: String,
             buttonText1: String,
             buttonText2: String,
@@ -132,7 +130,7 @@ object DesignSystemDialog {
             PrimaryDialog(
                 title = title,
                 certification = certification,
-                subText = subTitle,
+                subText = subText,
                 text = text,
             ) {
                 Column {
@@ -151,9 +149,9 @@ object DesignSystemDialog {
 
         @Composable
         fun RowArrangement(
-            title: String = "",
-            certification: String = "",
-            subTitle: String = "",
+            title: String? = null,
+            certification: String? = null,
+            subText: String? = null,
             text: String,
             buttonText1: String,
             buttonText2: String,
@@ -163,7 +161,7 @@ object DesignSystemDialog {
             PrimaryDialog(
                 title = title,
                 certification = certification,
-                subText = subTitle,
+                subText = subText,
                 text = text,
             ) {
                 Row {
