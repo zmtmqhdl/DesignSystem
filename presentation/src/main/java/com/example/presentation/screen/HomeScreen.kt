@@ -10,11 +10,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.presentation.component.DesignSystemButton
-import com.example.presentation.component.PrimaryNudging
+import com.example.presentation.component.PrimaryModal
+import com.example.presentation.component.test
 import com.example.presentation.viewModel.HomeViewModel
 import kotlinx.coroutines.launch
 
@@ -25,39 +25,44 @@ fun HomeScreen(
     homeViewModel: HomeViewModel,
     onNext: () -> Unit
 ) {
-
     val text by homeViewModel.text.collectAsState()
 
-    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val showModalBottomSheet =remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
+    val state = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
     PrimaryColumn {
         Spacer(modifier = Modifier.height(50.dp))
         DesignSystemButton.CTA.Large(
-            text = "안녕dd?",
+            text = "확대",
             onClick = {
-                scope.launch { sheetState.show() }
+                showModalBottomSheet.value = !showModalBottomSheet.value
             },
             icon = "icon_forward",
             iconPosition = "right"
         )
+        test()
     }
 
-    if (sheetState.isVisible) {
-        PrimaryNudging(
-            title = "타이틀",
-            text = "테스트",
-            onDisMissRequest = {
-                scope.launch { sheetState.hide() }
-            },
-            content = { DesignSystemButton.CTA.Large(
+    PrimaryModal(
+        title = "타이틀",
+        text = "테스트",
+        onDisMissRequest = { showModalBottomSheet.value = false },
+        content = {
+            DesignSystemButton.CTA.Large(
                 text = "축소",
                 onClick = {
-                        scope.launch { sheetState.hide() }
+                    scope.launch { state.hide() }.invokeOnCompletion {
+                        if (!state.isVisible) {
+                            showModalBottomSheet.value = false
+                        }
+                    }
                 },
                 icon = "icon_forward",
                 iconPosition = "right"
-            ) }
-        )
-    }
+            )
+        },
+        show = showModalBottomSheet,
+        state = state
+    )
 }
