@@ -94,9 +94,9 @@ object DesignSystemDialog {
     object Single {
         @Composable
         fun SingleArrangement(
-            title: String = "",
-            certification: String = "",
-            subTitle: String = "",
+            title: String? = null,
+            certification: String? = null,
+            subText: String? = null,
             text: String,
             buttonText: String,
             onClick: () -> Unit
@@ -104,7 +104,7 @@ object DesignSystemDialog {
             PrimaryDialog(
                 title = title,
                 certification = certification,
-                subText = subTitle,
+                subText = subText,
                 text = text,
             ) {
                 DesignSystemButton.CTA.Medium(

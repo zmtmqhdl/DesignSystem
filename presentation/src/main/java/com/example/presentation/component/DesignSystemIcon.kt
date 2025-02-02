@@ -27,12 +27,16 @@ fun DesignSystemIcon(
         painter = painterResource(id = name.toDrawableRes()),
         contentDescription = text,
         tint = color,
-        modifier = if (iconPosition == "left") {
-            Modifier.padding(end = DesignSystemSpace.Space1)
-        } else if (iconPosition == "right") {
-            Modifier.padding(start = DesignSystemSpace.Space1)
-        } else {
-            Modifier
+        modifier = when (iconPosition) {
+            "left" -> {
+                Modifier.padding(end = DesignSystemSpace.Space1)
+            }
+            "right" -> {
+                Modifier.padding(start = DesignSystemSpace.Space1)
+            }
+            else -> {
+                Modifier
+            }
         }
 
     )

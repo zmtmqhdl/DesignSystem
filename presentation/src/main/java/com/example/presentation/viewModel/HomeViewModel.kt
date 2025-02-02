@@ -14,7 +14,6 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     private val _sheetState = MutableStateFlow(false)
     val sheetState: StateFlow<Boolean> = _sheetState
 
-    // Sheet를 열거나 닫는 함수
     fun showSheet() {
         _sheetState.value = true
     }

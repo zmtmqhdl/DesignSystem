@@ -48,7 +48,7 @@ fun PrimaryModal(
                     bottom = DesignSystemSpace.Space4
                 )
             ) {
-                Column() {
+                Column {
                     Spacer(modifier = Modifier.height(DesignSystemSpace.Space10))
                     title?.let {
                         Text(

@@ -41,7 +41,6 @@ fun HomeScreen(
             icon = "icon_forward",
             iconPosition = "right"
         )
-        test()
     }
 
     PrimaryModal(
