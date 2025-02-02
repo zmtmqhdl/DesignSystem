@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.presentation.component.DesignSystemButton
 import com.example.presentation.component.PrimaryModal
-import com.example.presentation.component.test
 import com.example.presentation.viewModel.HomeViewModel
 import kotlinx.coroutines.launch
 
