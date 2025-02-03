@@ -3,9 +3,9 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
 
     alias(libs.plugins.hilt)
-    alias(libs.plugins.kotlin.kapt)
 
     id("com.android.library")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -67,7 +67,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(libs.hilt)
     debugImplementation(libs.androidx.ui.test.manifest)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
 }
