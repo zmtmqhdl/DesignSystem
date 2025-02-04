@@ -24,7 +24,7 @@ fun HomeScreen(
     homeViewModel: HomeViewModel,
     onNext: () -> Unit
 ) {
-    val text by homeViewModel.text.collectAsState()
+    val userText by homeViewModel.userText.collectAsState()
 
     val showModalBottomSheet =remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
@@ -35,6 +35,11 @@ fun HomeScreen(
         DesignSystemButton.CTA.Large(
             text = "확대",
             onClick = {
+                homeViewModel.insertUser("이수국", 20)
+                scope.launch {
+                    kotlinx.coroutines.delay(1000)
+                    homeViewModel.loadUserById(1)
+                }
                 showModalBottomSheet.value = !showModalBottomSheet.value
             },
             icon = "icon_forward",
@@ -44,7 +49,7 @@ fun HomeScreen(
 
     PrimaryModal(
         title = "타이틀",
-        text = "테스트",
+        text = userText,
         onDisMissRequest = { showModalBottomSheet.value = false },
         content = {
             DesignSystemButton.CTA.Large(
