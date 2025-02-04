@@ -35,7 +35,7 @@ fun HomeScreen(
         DesignSystemButton.CTA.Large(
             text = "확대",
             onClick = {
-                homeViewModel.insertUser("이수국", 20)
+                homeViewModel.insertUser("zz", 20)
                 scope.launch {
                     kotlinx.coroutines.delay(1000)
                     homeViewModel.loadUserById(1)
