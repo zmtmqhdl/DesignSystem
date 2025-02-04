@@ -3,6 +3,7 @@ package com.example.presentation.screen
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -25,6 +26,7 @@ fun HomeScreen(
     onNext: () -> Unit
 ) {
     val userText by homeViewModel.userText.collectAsState()
+    val post by homeViewModel.post.collectAsState()
 
     val showModalBottomSheet =remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
@@ -41,10 +43,16 @@ fun HomeScreen(
                     homeViewModel.loadUserById(1)
                 }
                 showModalBottomSheet.value = !showModalBottomSheet.value
+                homeViewModel.fetchPost((1))
             },
             icon = "icon_forward",
             iconPosition = "right"
         )
+        Spacer(modifier = Modifier.height(16.dp))
+        post?.let {
+            Text("Title: ${it.title}")
+            Text("Body: ${it.body}")
+        } ?: Text("No data yet")
     }
 
     PrimaryModal(

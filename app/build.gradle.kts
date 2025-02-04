@@ -60,11 +60,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
-
     implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":presentation"))
-
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
 }
