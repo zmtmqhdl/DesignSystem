@@ -28,6 +28,7 @@ fun HomeScreen(
     val userText by homeViewModel.userText.collectAsState()
     val post by homeViewModel.post.collectAsState()
 
+
     val showModalBottomSheet =remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
     val state = rememberModalBottomSheetState(skipPartiallyExpanded = true)

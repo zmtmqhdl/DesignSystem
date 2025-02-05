@@ -2,7 +2,7 @@ package com.example.designsystem.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.data.room.ExampleDatabase
+import com.example.data.room.RoomDatabase
 import com.example.data.room.RoomDao
 import com.example.data.repository.RoomRepository
 import com.example.data.repository.RoomRepositoryImpl
@@ -19,16 +19,16 @@ object RoomModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context): ExampleDatabase {
+    fun provideDatabase(@ApplicationContext context: Context): RoomDatabase {
         return Room.databaseBuilder(
             context.applicationContext,
-            ExampleDatabase::class.java,
+            RoomDatabase::class.java,
             "example_database"
         ).build()
     }
 
     @Provides
-    fun provideExampleDao(database: ExampleDatabase): RoomDao {
+    fun provideExampleDao(database: RoomDatabase): RoomDao {
         return database.userDao()
     }
 
