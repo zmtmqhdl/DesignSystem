@@ -49,4 +49,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
 }

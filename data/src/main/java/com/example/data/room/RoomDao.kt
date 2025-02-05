@@ -3,10 +3,10 @@ package com.example.data.room
 import androidx.room.*
 
 @Dao
-interface ExampleDao {
+interface RoomDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(user: ExampleEntity)
+    suspend fun insert(user: RoomEntity)
 
     @Query("SELECT * FROM user_table WHERE id = :userId")
-    suspend fun getUserById(userId: Int): ExampleEntity?
+    suspend fun getUserById(userId: Int): RoomEntity?
 }

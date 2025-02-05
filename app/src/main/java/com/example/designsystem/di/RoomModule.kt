@@ -3,9 +3,9 @@ package com.example.designsystem.di
 import android.content.Context
 import androidx.room.Room
 import com.example.data.room.ExampleDatabase
-import com.example.data.room.ExampleDao
-import com.example.data.repository.ExampleRepository
-import com.example.data.repository.ExampleRepositoryImplementation
+import com.example.data.room.RoomDao
+import com.example.data.repository.RoomRepository
+import com.example.data.repository.RoomRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DatabaseModule {
+object RoomModule {
 
     @Provides
     @Singleton
@@ -28,12 +28,12 @@ object DatabaseModule {
     }
 
     @Provides
-    fun provideExampleDao(database: ExampleDatabase): ExampleDao {
+    fun provideExampleDao(database: ExampleDatabase): RoomDao {
         return database.userDao()
     }
 
     @Provides
-    fun provideExampleRepository(dao: ExampleDao): ExampleRepository {
-        return ExampleRepositoryImplementation(dao)
+    fun provideExampleRepository(dao: RoomDao): RoomRepository {
+        return RoomRepositoryImpl(dao)
     }
 }
