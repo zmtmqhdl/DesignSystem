@@ -2,7 +2,7 @@ package com.example.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.data.retrofit.PostResponse
+import com.example.data.retrofit.Example
 import com.example.data.retrofit.RetrofitClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -45,13 +45,13 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private val _post = MutableStateFlow<PostResponse?>(null)
+    private val _post = MutableStateFlow<Example?>(null)
     val post = _post.asStateFlow()
 
     fun fetchPost(postId: Int) {
         viewModelScope.launch {
             try {
-                val response = RetrofitClient.apiService.getPost(postId)
+                val response = RetrofitClient.retrofitService.getExample(postId)
                 _post.value = response
             } catch (e: Exception) {
                 e.printStackTrace()

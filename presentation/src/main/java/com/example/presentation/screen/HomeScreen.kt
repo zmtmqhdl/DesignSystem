@@ -50,9 +50,8 @@ fun HomeScreen(
         )
         Spacer(modifier = Modifier.height(16.dp))
         post?.let {
-            Text("Title: ${it.title}")
-            Text("Body: ${it.body}")
-        } ?: Text("No data yet")
+            Text(it.title)
+        }
     }
 
     PrimaryModal(
