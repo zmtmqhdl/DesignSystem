@@ -52,7 +52,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.runtime)
-    implementation(libs.okhttp)
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
 }
