@@ -51,7 +51,7 @@ class HomeViewModel @Inject constructor(
     fun fetchPost(postId: Int) {
         viewModelScope.launch {
             try {
-                val response = RetrofitClient.retrofitService.getExample(postId)
+                val response = RetrofitClient.retrofitService.get(postId)
                 _post.value = response
             } catch (e: Exception) {
                 e.printStackTrace()

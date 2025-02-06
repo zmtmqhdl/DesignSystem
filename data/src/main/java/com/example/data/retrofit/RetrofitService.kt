@@ -13,7 +13,7 @@ import retrofit2.http.Query
 
 interface RetrofitService {
     @GET("todos/{id}")
-    suspend fun getExample(@Path("id") postId: Int): RetrofitData
+    suspend fun get(@Path("id") postId: Int): RetrofitData
 
     @GET("todos")
     suspend fun getQuery(
