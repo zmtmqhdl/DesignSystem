@@ -1,5 +1,6 @@
 package com.example.data.retrofit
 
+import com.example.data.model.RetrofitData
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -10,32 +11,25 @@ import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-data class Example(
-    val userId: Int = 0,
-    val id: Int = 0,
-    val title: String = "",
-    val completed: Boolean = false
-)
-
 interface RetrofitService {
     @GET("todos/{id}")
-    suspend fun getExample(@Path("id") postId: Int): Example
+    suspend fun getExample(@Path("id") postId: Int): RetrofitData
 
     @GET("todos")
-    suspend fun getQueryExample(
+    suspend fun getQuery(
         @Query("userId") userId: Int,
         @Query("completed") completed: Boolean
-    ): List<Example>
+    ): List<RetrofitData>
 
     @POST("todos")
-    suspend fun postExample(@Body newExample: Example): Example
+    suspend fun post(@Body newExample: RetrofitData): RetrofitData
 
     @PUT("todos/{id}")
-    suspend fun putExample(@Path("id") postId: Int, @Body updatedExample: Example): Example
+    suspend fun put(@Path("id") postId: Int, @Body updatedExample: RetrofitData): RetrofitData
 
     @PATCH("todos/{id}")
-    suspend fun patchExample(@Path("id") postId: Int, @Body partialUpdate: Map<String, Any>): Example
+    suspend fun patch(@Path("id") postId: Int, @Body partialUpdate: Map<String, Any>): RetrofitData
 
     @DELETE("todos/{id}")
-    suspend fun deleteExample(@Path("id") postId: Int): Response<Unit>
+    suspend fun delete(@Path("id") postId: Int): Response<Unit>
 }

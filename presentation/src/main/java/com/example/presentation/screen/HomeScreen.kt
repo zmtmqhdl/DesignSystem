@@ -29,7 +29,7 @@ fun HomeScreen(
     val post by homeViewModel.post.collectAsState()
 
 
-    val showModalBottomSheet =remember { mutableStateOf(false) }
+    val showModalBottomSheet by homeViewModel.sheetState.collectAsState()
     val scope = rememberCoroutineScope()
     val state = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
@@ -43,7 +43,7 @@ fun HomeScreen(
                     kotlinx.coroutines.delay(1000)
                     homeViewModel.loadUserById(1)
                 }
-                showModalBottomSheet.value = !showModalBottomSheet.value
+                homeViewModel.showSheet()
                 homeViewModel.fetchPost((1))
             },
             icon = "icon_forward",
@@ -58,14 +58,14 @@ fun HomeScreen(
     PrimaryModal(
         title = "타이틀",
         text = userText,
-        onDisMissRequest = { showModalBottomSheet.value = false },
+        onDisMissRequest = { homeViewModel.hideSheet() },
         content = {
             DesignSystemButton.CTA.Large(
                 text = "축소",
                 onClick = {
                     scope.launch { state.hide() }.invokeOnCompletion {
                         if (!state.isVisible) {
-                            showModalBottomSheet.value = false
+                            homeViewModel.hideSheet()
                         }
                     }
                 },

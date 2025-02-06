@@ -14,18 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.presentation.component.DesignSystemButton
 import com.example.presentation.component.PrimaryModal
-import com.example.presentation.viewModel.HomeViewModel
+import com.example.presentation.viewModel.BottomSheetViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun DetailScreen(
-    homeViewModel: HomeViewModel,
-    onNext: () -> Unit
+fun BottomSheetScreen(
+    bottomSheetViewModel: BottomSheetViewModel,
 ) {
-    val userText by homeViewModel.userText.collectAsState()
+    val showModalBottomSheet by bottomSheetViewModel.sheetState.collectAsState()
 
-    val showModalBottomSheet = remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
     val state = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
@@ -34,12 +32,10 @@ fun DetailScreen(
         DesignSystemButton.CTA.Large(
             text = "확대",
             onClick = {
-                homeViewModel.insertUser("zz", 20)
                 scope.launch {
                     kotlinx.coroutines.delay(1000)
-                    homeViewModel.loadUserById(1)
                 }
-                showModalBottomSheet.value = !showModalBottomSheet.value
+                bottomSheetViewModel.showSheet()
             },
             icon = "icon_forward",
             iconPosition = "right"
@@ -48,15 +44,15 @@ fun DetailScreen(
 
     PrimaryModal(
         title = "타이틀",
-        text = userText,
-        onDisMissRequest = { showModalBottomSheet.value = false },
+        text = "test",
+        onDisMissRequest = { bottomSheetViewModel.hideSheet() },
         content = {
             DesignSystemButton.CTA.Large(
                 text = "축소",
                 onClick = {
                     scope.launch { state.hide() }.invokeOnCompletion {
                         if (!state.isVisible) {
-                            showModalBottomSheet.value = false
+                            bottomSheetViewModel.hideSheet()
                         }
                     }
                 },

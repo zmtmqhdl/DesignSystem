@@ -24,10 +24,10 @@ fun PrimaryModal(
     text: String,
     content: @Composable () -> Unit,
     onDisMissRequest: () -> Unit,
-    show: MutableState<Boolean>,
+    show: Boolean,
     state: SheetState
 ) {
-    if (show.value) {
+    if (show) {
         ModalBottomSheet(
             onDismissRequest = onDisMissRequest,
             sheetState = state,
