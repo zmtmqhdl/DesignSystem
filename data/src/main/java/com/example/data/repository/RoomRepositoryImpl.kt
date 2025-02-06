@@ -12,4 +12,5 @@ class RoomRepositoryImpl @Inject constructor(private val dao: RoomDao) : RoomRep
     override suspend fun getUserById(id: Int): RoomEntity? {
         return dao.getUserById(id)
     }
+
 }
