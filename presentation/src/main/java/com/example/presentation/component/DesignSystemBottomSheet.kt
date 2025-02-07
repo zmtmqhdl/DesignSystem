@@ -10,7 +10,6 @@ import androidx.compose.material3.SheetState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemShape
