@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
@@ -21,10 +22,10 @@ import com.example.presentation.theme.DesignSystemSpace
 fun PrimaryModal(
     title: String? = null,
     text: String,
-    content: @Composable () -> Unit,
     onDisMissRequest: () -> Unit,
     show: Boolean,
-    state: SheetState
+    state: SheetState,
+    content: @Composable () -> Unit,
 ) {
     if (show) {
         ModalBottomSheet(
@@ -73,17 +74,32 @@ fun PrimaryModal(
 }
 
 
-
-
-
 object DesignSystemBottomSheet {
     object Modal {
         object Single {
+            @OptIn(ExperimentalMaterial3Api::class)
             @Composable
             fun SingleArrangement(
                 title: String? = null,
+                text: String,
+                onDisMissRequest: () -> Unit,
+                show: Boolean,
+                state: SheetState,
+                buttonText: String,
+                onClick: () -> Unit,
             ) {
-
+                PrimaryModal(
+                    title = title,
+                    text = text,
+                    onDisMissRequest = onDisMissRequest,
+                    show = show,
+                    state = state
+                ) {
+                    DesignSystemButton.CTA.Medium(
+                        text = buttonText,
+                        onClick = onClick,
+                    )
+                }
             }
         }
 
