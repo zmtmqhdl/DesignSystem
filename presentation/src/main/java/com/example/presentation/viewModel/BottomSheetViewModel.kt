@@ -1,21 +1,18 @@
 package com.example.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import javax.inject.Inject
 
-@HiltViewModel
-class BottomSheetViewModel @Inject constructor() : ViewModel() {
-    private val _sheetState = MutableStateFlow(false)
-    val sheetState: StateFlow<Boolean> = _sheetState
+class BottomSheetViewModel : ViewModel() {
+    private val _show = MutableStateFlow(false)
+    val show: StateFlow<Boolean> = _show
 
     fun showSheet() {
-        _sheetState.value = true
+        _show.value = true
     }
 
     fun hideSheet() {
-        _sheetState.value = false
+        _show.value = false
     }
 }

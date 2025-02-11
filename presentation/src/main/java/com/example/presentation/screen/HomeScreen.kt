@@ -8,8 +8,6 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -58,7 +56,7 @@ fun HomeScreen(
     PrimaryModal(
         title = "타이틀",
         text = userText,
-        onDisMissRequest = { homeViewModel.hideSheet() },
+        onDismissRequest = { homeViewModel.hideSheet() },
         content = {
             DesignSystemButton.CTA.Large(
                 text = "축소",
@@ -74,6 +72,5 @@ fun HomeScreen(
             )
         },
         show = showModalBottomSheet,
-        state = state
     )
 }

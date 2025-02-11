@@ -4,13 +4,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.SheetState
+import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemShape
@@ -22,15 +24,28 @@ import com.example.presentation.theme.DesignSystemSpace
 fun PrimaryModal(
     title: String? = null,
     text: String,
-    onDisMissRequest: () -> Unit,
+    onDismissRequest: () -> Unit,
     show: Boolean,
-    state: SheetState,
     content: @Composable () -> Unit,
 ) {
-    if (show) {
+    val sheetState = rememberModalBottomSheetState(
+        skipPartiallyExpanded = true,
+    )
+
+    LaunchedEffect(show, sheetState.currentValue) {
+        if (show) {
+            sheetState.show()
+        } else if (sheetState.currentValue == SheetValue.Hidden) {
+            onDismissRequest()
+        } else {
+            sheetState.hide()
+        }
+    }
+
+    if (show || sheetState.currentValue != SheetValue.Hidden) {
         ModalBottomSheet(
-            onDismissRequest = onDisMissRequest,
-            sheetState = state,
+            onDismissRequest = onDismissRequest,
+            sheetState = sheetState,
             modifier = Modifier.padding(
                 start = DesignSystemSpace.Space2,
                 end = DesignSystemSpace.Space2,
@@ -77,23 +92,20 @@ fun PrimaryModal(
 object DesignSystemBottomSheet {
     object Modal {
         object Single {
-            @OptIn(ExperimentalMaterial3Api::class)
             @Composable
             fun SingleArrangement(
                 title: String? = null,
                 text: String,
-                onDisMissRequest: () -> Unit,
+                onDismissRequest: () -> Unit,
                 show: Boolean,
-                state: SheetState,
                 buttonText: String,
                 onClick: () -> Unit,
             ) {
                 PrimaryModal(
                     title = title,
                     text = text,
-                    onDisMissRequest = onDisMissRequest,
+                    onDismissRequest = onDismissRequest,
                     show = show,
-                    state = state
                 ) {
                     DesignSystemButton.CTA.Medium(
                         text = buttonText,
