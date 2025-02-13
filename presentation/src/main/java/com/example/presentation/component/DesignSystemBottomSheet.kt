@@ -33,7 +33,6 @@ fun PrimaryModal(
     val sheetState = rememberModalBottomSheetState()
     val scope = rememberCoroutineScope()
 
-    // Todo 바텀시트 축소버튼 누르고 드래그하면 다시 축소버튼 작동X
     LaunchedEffect(show) {
         if (show) {
             scope.launch { sheetState.expand() }
@@ -42,7 +41,7 @@ fun PrimaryModal(
         }
     }
 
-    if (show || sheetState.currentValue == SheetValue.Expanded) {
+    if (show || sheetState.currentValue != SheetValue.Hidden) {
         ModalBottomSheet(
             onDismissRequest = onDismissRequest,
             sheetState = sheetState,
