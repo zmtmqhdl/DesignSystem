@@ -1,5 +1,6 @@
 package com.example.presentation.component
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -18,6 +19,7 @@ import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemShape
 import com.example.presentation.theme.DesignSystemSingleColor
 import com.example.presentation.theme.DesignSystemSpace
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -28,21 +30,19 @@ fun PrimaryModal(
     show: Boolean,
     content: @Composable () -> Unit,
 ) {
-    val sheetState = rememberModalBottomSheetState(
-        skipPartiallyExpanded = true,
-    )
+    val sheetState = rememberModalBottomSheetState()
+    val scope = rememberCoroutineScope()
 
-    LaunchedEffect(show, sheetState.currentValue) {
+    // Todo 바텀시트 축소버튼 누르고 드래그하면 다시 축소버튼 작동X
+    LaunchedEffect(show) {
         if (show) {
-            sheetState.show()
-        } else if (sheetState.currentValue == SheetValue.Hidden) {
-            onDismissRequest()
+            scope.launch { sheetState.expand() }
         } else {
-            sheetState.hide()
+            scope.launch { sheetState.hide() }
         }
     }
 
-    if (show || sheetState.currentValue != SheetValue.Hidden) {
+    if (show || sheetState.currentValue == SheetValue.Expanded) {
         ModalBottomSheet(
             onDismissRequest = onDismissRequest,
             sheetState = sheetState,

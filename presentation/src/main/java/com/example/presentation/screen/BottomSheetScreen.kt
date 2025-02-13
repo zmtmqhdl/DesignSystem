@@ -34,7 +34,6 @@ fun BottomSheetScreen(
         title = "타이틀",
         text = "test",
         onDismissRequest = {
-            Log.e("BottomSheetScreen", "onDisMissRequest 호출됨")
             bottomSheetViewModel.hideSheet()
         },
         show = show,
@@ -42,8 +41,8 @@ fun BottomSheetScreen(
             DesignSystemButton.CTA.Large(
                 text = "축소",
                 onClick = {
-                    Log.e("BottomSheetScreen", "축소 버튼 클릭됨")
                     bottomSheetViewModel.hideSheet()
+                    Log.e("test", "${show}")
                 },
                 icon = "icon_forward",
                 iconPosition = "right",
