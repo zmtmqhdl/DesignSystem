@@ -33,6 +33,12 @@ fun PrimaryModal(
     val sheetState = rememberModalBottomSheetState()
     val scope = rememberCoroutineScope()
 
+    LaunchedEffect(sheetState.currentValue) {
+        if (sheetState.currentValue == SheetValue.Expanded && !show) {
+            onDismissRequest()
+        }
+    }
+
     LaunchedEffect(show) {
         if (show) {
             scope.launch { sheetState.expand() }
