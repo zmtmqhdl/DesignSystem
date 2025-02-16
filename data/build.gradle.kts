@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
 
     // ksp
-    id("com.google.devtools.ksp")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -37,19 +37,24 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.androidx.room.runtime)
-    ksp(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx)
-    implementation(libs.hilt)
+
+    // module
     implementation(project(":domain"))
+
+    // coroutines
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
+
+    // hilt
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
+
+    // retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // room
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 }
