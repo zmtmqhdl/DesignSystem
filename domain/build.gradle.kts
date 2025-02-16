@@ -1,9 +1,10 @@
 plugins {
-    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.compose)
 
+    // ksp
     id("com.google.devtools.ksp")
-    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -50,8 +51,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.runtime)
+
+    // coroutines
+    implementation(libs.kotlinx.coroutines.android)
+
+    // hilt
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
 }

@@ -1,5 +1,8 @@
 package com.example.presentation.component
 
-class DesignSystemBottomNavigation {
+import androidx.compose.runtime.Composable
+
+@Composable
+fun PrimaryBottomNavigation() {
 
 }
