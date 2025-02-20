@@ -17,7 +17,6 @@ private val DarkTheme = lightColorScheme(
 @Composable
 fun DesignSystemTheme(
     isDarkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
     val theme = if (isDarkTheme) DarkTheme else LightTheme
@@ -28,3 +27,5 @@ fun DesignSystemTheme(
         content = content
     )
 }
+
+// object에 맞춰서 스키마도 다시 정의하고, theme도 정의한다면?
