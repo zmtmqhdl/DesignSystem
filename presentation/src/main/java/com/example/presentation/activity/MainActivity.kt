@@ -8,10 +8,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.presentation.screen.BottomSheetScreen
+import com.example.presentation.screen.example.BottomSheetScreen
 import com.example.presentation.screen.HomeScreen
 import com.example.presentation.theme.DesignSystemTheme
-import com.example.presentation.viewModel.BottomSheetViewModel
+import com.example.presentation.viewModel.example.BottomSheetViewModel
 import com.example.presentation.viewModel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,9 +27,12 @@ class MainActivity : AppCompatActivity() {
                 val homeViewModel: HomeViewModel = hiltViewModel()
                 val bottomViewModel: BottomSheetViewModel = hiltViewModel()
 
-                NavHost(navController = navController, startDestination = "bottomSheet") {
+                NavHost(
+                    navController = navController,
+                    startDestination = "bottomSheet"
+                ) {
                     composable("home") { HomeScreen(homeViewModel = homeViewModel, onNext = { navController.navigate("detail") }) }
-                    composable("bottomSheet") { BottomSheetScreen(bottomSheetViewModel = bottomViewModel)}
+                    composable("bottomSheet") { BottomSheetScreen(bottomSheetViewModel = bottomViewModel) }
                 }
             }
         }

@@ -1,4 +1,4 @@
-package com.example.presentation.screen
+package com.example.presentation.screen.example
 
 import android.util.Log
 import androidx.compose.foundation.layout.Spacer
@@ -10,7 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.presentation.component.DesignSystemButton
 import com.example.presentation.component.PrimaryModal
-import com.example.presentation.viewModel.BottomSheetViewModel
+import com.example.presentation.screen.PrimaryScreen
+import com.example.presentation.viewModel.example.BottomSheetViewModel
 
 @Composable
 fun BottomSheetScreen(
@@ -18,7 +19,7 @@ fun BottomSheetScreen(
 ) {
     val show by bottomSheetViewModel.show.collectAsState()
 
-    PrimaryColumn {
+    PrimaryScreen {
         Spacer(modifier = Modifier.height(50.dp))
         DesignSystemButton.CTA.Large(
             text = "확대",

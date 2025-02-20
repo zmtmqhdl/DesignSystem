@@ -31,7 +31,7 @@ fun HomeScreen(
     val scope = rememberCoroutineScope()
     val state = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
-    PrimaryColumn {
+    PrimaryScreen {
         Spacer(modifier = Modifier.height(50.dp))
         DesignSystemButton.CTA.Large(
             text = "확대",

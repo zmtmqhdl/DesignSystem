@@ -1,5 +1,6 @@
 package com.example.presentation.component
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -10,6 +11,7 @@ import androidx.compose.ui.res.painterResource
 import com.example.presentation.theme.DesignSystemSingleColor
 import com.example.presentation.theme.DesignSystemSpace
 
+@SuppressLint("DiscouragedApi")
 @Composable
 fun String.toDrawableRes(): Int {
     val context = LocalContext.current
@@ -24,7 +26,7 @@ fun DesignSystemIcon(
     iconPosition: String? = null,
 ) {
     Icon(
-        painter = painterResource(id = name.toDrawableRes()),
+        painter = painterResource(name.toDrawableRes()),
         contentDescription = text,
         tint = color,
         modifier = when (iconPosition) {

@@ -71,7 +71,6 @@ dependencies {
     // coroutines
     implementation(libs.kotlinx.coroutines.android)
 
-
     // hilt
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
