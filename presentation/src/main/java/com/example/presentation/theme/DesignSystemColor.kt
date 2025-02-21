@@ -25,7 +25,9 @@ data class DesignSystemColorSet(
     val success: DesignSystemColorSetValues,
     val caution: DesignSystemColorSetValues,
     val disable: DesignSystemColorSetValues,
-    val single: DesignSystemSingleColor
+    val white: Color,
+    val black: Color,
+    val gray600: Color,
 )
 
 object DesignSystemColor {
@@ -77,6 +79,10 @@ object DesignSystemColor {
             background = Color(0xFFFBF6C9),
             outline = Color(0xFFFDFAE3)
         )
+
+        val White = Color(0xFFFFFFFF)
+        val Black = Color(0xFF000000)
+        val Gray600 = Color(0xFF757575)
     }
 
     object Dark {
@@ -127,13 +133,11 @@ object DesignSystemColor {
             background = Color(0xFFAB8A2A),
             outline = Color(0xFFB69F59)
         )
-    }
-}
 
-object DesignSystemSingleColor {
-    val White = Color(0xFFFFFFFF)
-    val Black = Color(0xFF000000)
-    val Gray600 = Color(0xFF757575)
+        val White = Color(0xFFFFFFFF)
+        val Black = Color(0xFF000000)
+        val Gray600 = Color(0xFF757575)
+    }
 }
 
 fun getDesignSystemColorSet(themeMode: ThemeMode): DesignSystemColorSet {
@@ -148,7 +152,9 @@ fun getDesignSystemColorSet(themeMode: ThemeMode): DesignSystemColorSet {
             success = DesignSystemColor.Light.Success,
             caution = DesignSystemColor.Light.Caution,
             disable = DesignSystemColor.Light.Disable,
-            single = DesignSystemSingleColor
+            white = DesignSystemColor.Light.White,
+            black = DesignSystemColor.Light.Black,
+            gray600 = DesignSystemColor.Light.Gray600
         )
 
         ThemeMode.Dark -> DesignSystemColorSet(
@@ -161,7 +167,9 @@ fun getDesignSystemColorSet(themeMode: ThemeMode): DesignSystemColorSet {
             success = DesignSystemColor.Dark.Success,
             caution = DesignSystemColor.Dark.Caution,
             disable = DesignSystemColor.Dark.Disable,
-            single = DesignSystemSingleColor
+            white = DesignSystemColor.Dark.White,
+            black = DesignSystemColor.Dark.Black,
+            gray600 = DesignSystemColor.Dark.Gray600
         )
     }
 }
