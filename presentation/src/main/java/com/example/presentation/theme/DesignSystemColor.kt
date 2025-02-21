@@ -173,7 +173,5 @@ fun getDesignSystemColorSet(themeMode: ThemeMode): DesignSystemColorSet {
         )
     }
 }
-
-//
 //internal val LocalColorSet = androidx.compose.runtime.compositionLocalOf { lightColorSet }
 
