@@ -3,210 +3,169 @@ package com.example.presentation.theme
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 
+sealed class ThemeMode {
+    data object Light : ThemeMode()
+    data object Dark : ThemeMode()
+}
+
+data class DesignSystemColorSetValues(
+    val fontColor: Color,
+    val background: Color,
+    val outline: Color
+)
+
+@Immutable
+data class DesignSystemColorSet(
+    val themeMode: ThemeMode,
+    val primary: DesignSystemColorSetValues,
+    val secondary: DesignSystemColorSetValues,
+    val tertiary: DesignSystemColorSetValues,
+    val warning: DesignSystemColorSetValues,
+    val alarm: DesignSystemColorSetValues,
+    val success: DesignSystemColorSetValues,
+    val caution: DesignSystemColorSetValues,
+    val disable: DesignSystemColorSetValues,
+    val single: DesignSystemSingleColor
+)
+
+object DesignSystemColor {
+    object Light {
+        val Primary = DesignSystemColorSetValues(
+            fontColor = Color(0xFF067CFB),
+            background = Color(0xFFC9E6FD),
+            outline = Color(0xFFECF5FD)
+        )
+
+        val Secondary = DesignSystemColorSetValues(
+            fontColor = Color(0xFF00C200),
+            background = Color(0xFFA4F29F),
+            outline = Color(0xFFE3FAE1)
+        )
+
+        val Tertiary = DesignSystemColorSetValues(
+            fontColor = Color(0xFF6A1B9A),
+            background = Color(0xFFF1C6FF),
+            outline = Color(0xFFEEA9D3)
+        )
+
+        val Warning = DesignSystemColorSetValues(
+            fontColor = Color(0xFFED2B2A),
+            background = Color(0xFFFDD8D9),
+            outline = Color(0xFFFDF3F3)
+        )
+
+        val Alarm = DesignSystemColorSetValues(
+            fontColor = Color(0xFF067CFB),
+            background = Color(0xFFC9E6FD),
+            outline = Color(0xFFECF5FD)
+        )
+
+        val Success = DesignSystemColorSetValues(
+            fontColor = Color(0xFF00C200),
+            background = Color(0xFFA4F29F),
+            outline = Color(0xFFE3FAE1)
+        )
+
+        val Caution = DesignSystemColorSetValues(
+            fontColor = Color(0xFFFDD000),
+            background = Color(0xFFFBF6C9),
+            outline = Color(0xFFFDFAE3)
+        )
+
+        val Disable = DesignSystemColorSetValues(
+            fontColor = Color(0xFFFDD000),
+            background = Color(0xFFFBF6C9),
+            outline = Color(0xFFFDFAE3)
+        )
+    }
+
+    object Dark {
+        val Primary = DesignSystemColorSetValues(
+            fontColor = Color(0xFF067CFB),
+            background = Color(0xFF2B3E9B),
+            outline = Color(0xFF3A5E9F)
+        )
+
+        val Secondary = DesignSystemColorSetValues(
+            fontColor = Color(0xFF00C200),
+            background = Color(0xFF307D32),
+            outline = Color(0xFF4E9F4E)
+        )
+
+        val Tertiary = DesignSystemColorSetValues(
+            fontColor = Color(0xFF6A1B9A),
+            background = Color(0xFF9C4F9A),
+            outline = Color(0xFF6F3072)
+        )
+
+        val Warning = DesignSystemColorSetValues(
+            fontColor = Color(0xFFED2B2A),
+            background = Color(0xFF9B5D5D),
+            outline = Color(0xFF9F4C4C)
+        )
+
+        val Alarm = DesignSystemColorSetValues(
+            fontColor = Color(0xFF067CFB),
+            background = Color(0xFF2B3E9B),
+            outline = Color(0xFF3A5E9F)
+        )
+
+        val Success = DesignSystemColorSetValues(
+            fontColor = Color(0xFF00C200),
+            background = Color(0xFF307D32),
+            outline = Color(0xFF4E9F4E)
+        )
+
+        val Caution = DesignSystemColorSetValues(
+            fontColor = Color(0xFFFDD000),
+            background = Color(0xFFAB8A2A),
+            outline = Color(0xFFB69F59)
+        )
+
+        val Disable = DesignSystemColorSetValues(
+            fontColor = Color(0xFFFDD000),
+            background = Color(0xFFAB8A2A),
+            outline = Color(0xFFB69F59)
+        )
+    }
+}
+
 object DesignSystemSingleColor {
     val White = Color(0xFFFFFFFF)
     val Black = Color(0xFF000000)
     val Gray600 = Color(0xFF757575)
 }
 
-object DesignSystemColor {
-    object Light {
-        object Primary {
-            val fontColor = Color(0xFF067CFB)
-            val background = Color(0xFFC9E6FD)
-            val outline = Color(0xFFECF5FD)
-        }
-        object Secondary {
-            val fontColor = Color(0xFF00C200)
-            val background = Color(0xFFA4F29F)
-            val outline = Color(0xFFE3FAE1)
-        }
-        object Tertiary {
-            val fontColor = Color(0xFF6A1B9A)
-            val background = Color(0xFFF1C6FF)
-            val outline = Color(0xFFEEA9D3)
-        }
-        object Warning {
-            val fontColor = Color(0xFFED2B2A)
-            val background = Color(0xFFFDD8D9)
-            val outline = Color(0xFFFDF3F3)
-        }
-        object Alarm {
-            val fontColor = Color(0xFF067CFB)
-            val background = Color(0xFFC9E6FD)
-            val outline = Color(0xFFECF5FD)
-        }
-        object Success {
-            val fontColor = Color(0xFF00C200)
-            val background = Color(0xFFA4F29F)
-            val outline = Color(0xFFE3FAE1)
-        }
-        object Caution {
-            val fontColor = Color(0xFFFDD000)
-            val background = Color(0xFFFBF6C9)
-            val outline = Color(0xFFFDFAE3)
-        }
-        object Disable {
-            val fontColor = Color(0xFFFDD000)
-            val background = Color(0xFFFBF6C9)
-            val outline = Color(0xFFFDFAE3)
-        }
-    }
-    object Dark {
-        object Primary {
-            val fontColor = Color(0xFF067CFB)
-            val background = Color(0xFF2B3E9B)
-            val outline = Color(0xFF3A5E9F)
-        }
-        object Secondary {
-            val fontColor = Color(0xFF00C200)
-            val background = Color(0xFF307D32)
-            val outline = Color(0xFF4E9F4E)
-        }
-        object Tertiary {
-            val fontColor = Color(0xFF6A1B9A)
-            val background = Color(0xFF9C4F9A)
-            val outline = Color(0xFF6F3072)
-        }
-        object Warning {
-            val fontColor = Color(0xFFED2B2A)
-            val background = Color(0xFF9B5D5D)
-            val outline = Color(0xFF9F4C4C)
-        }
-        object Alarm {
-            val fontColor = Color(0xFF067CFB)
-            val background = Color(0xFF2B3E9B)
-            val outline = Color(0xFF3A5E9F)
-        }
-        object Success {
-            val fontColor = Color(0xFF00C200)
-            val background = Color(0xFF307D32)
-            val outline = Color(0xFF4E9F4E)
-        }
-        object Caution {
-            val fontColor = Color(0xFFFDD000)
-            val background = Color(0xFFAB8A2A)
-            val outline = Color(0xFFB69F59)
-        }
-        object Disable {
-            val fontColor = Color(0xFFFDD000)
-            val background = Color(0xFFAB8A2A)
-            val outline = Color(0xFFB69F59)
-        }
+fun getDesignSystemColorSet(themeMode: ThemeMode): DesignSystemColorSet {
+    return when (themeMode) {
+        ThemeMode.Light -> DesignSystemColorSet(
+            themeMode = ThemeMode.Light,
+            primary = DesignSystemColor.Light.Primary,
+            secondary = DesignSystemColor.Light.Secondary,
+            tertiary = DesignSystemColor.Light.Tertiary,
+            warning = DesignSystemColor.Light.Warning,
+            alarm = DesignSystemColor.Light.Alarm,
+            success = DesignSystemColor.Light.Success,
+            caution = DesignSystemColor.Light.Caution,
+            disable = DesignSystemColor.Light.Disable,
+            single = DesignSystemSingleColor
+        )
+
+        ThemeMode.Dark -> DesignSystemColorSet(
+            themeMode = ThemeMode.Dark,
+            primary = DesignSystemColor.Dark.Primary,
+            secondary = DesignSystemColor.Dark.Secondary,
+            tertiary = DesignSystemColor.Dark.Tertiary,
+            warning = DesignSystemColor.Dark.Warning,
+            alarm = DesignSystemColor.Dark.Alarm,
+            success = DesignSystemColor.Dark.Success,
+            caution = DesignSystemColor.Dark.Caution,
+            disable = DesignSystemColor.Dark.Disable,
+            single = DesignSystemSingleColor
+        )
     }
 }
 
-//@Immutable
-//data class ColorSet(
-//
-//
-//    val material: ColorScheme,
-//    val background: Color,
-//    val white: Color = White,
-//    val primary100: Color,
-//    val primary30: Color,
-//    val primary10: Color,
-//    val primary5: Color,
-//    val accent100: Color,
-//    val accent10: Color,
-//    val orange50: Color,
-//    val yellow50: Color,
-//    val gray90: Color,
-//    val gray80: Color,
-//    val gray70: Color,
-//    val gray60: Color,
-//    val gray50: Color,
-//    val gray40: Color,
-//    val gray30: Color,
-//    val gray20: Color,
-//    val gray10: Color,
-//    val profile: Color,
-//    val bgElevated: Color,
-//    val dividerLine: Color,
-//    val textPrimary: Color,
-//    val textSecondary: Color,
-//    val textInfo: Color,
-//    val textDisabled: Color,
-//    val iconDefault: Color,
-//    val iconSecondary: Color,
-//    val iconDisabled: Color,
-//    val textFieldDefault: Color,
-//    val textFieldDisabled: Color,
-//    val textFieldBtnBase: Color,
-//    val textFieldBtnText: Color,
-//)
-//
-//internal val lightColorSet = ColorSet(
-//    material = lightColorScheme(),
-//    background = Background,
-//    primary100 = Primary100,
-//    primary30 = Primary30,
-//    primary10 = Primary10,
-//    primary5 = Primary05,
-//    accent100 = Accent,
-//    accent10 = AccentToast,
-//    orange50 = Noti,
-//    yellow50 = Favorite,
-//    gray90 = Gray90,
-//    gray80 = Gray80,
-//    gray70 = Gray70,
-//    gray60 = Gray60,
-//    gray50 = Gray50,
-//    gray40 = Gray40,
-//    gray30 = Gray30,
-//    gray20 = Gray20,
-//    gray10 = Gray10,
-//    profile = Profile,
-//    bgElevated = White,
-//    dividerLine = Gray10,
-//    textPrimary = Gray90,
-//    textSecondary = Gray60,
-//    textInfo = Gray50,
-//    textDisabled = Gray40,
-//    iconDefault = Gray60,
-//    iconSecondary = Gray50,
-//    iconDisabled = Gray40,
-//    textFieldDefault = White,
-//    textFieldDisabled = Gray10,
-//    textFieldBtnBase = Gray20,
-//    textFieldBtnText = White
-//)
-//
-//internal val darkColorSet = ColorSet(
-//    material = darkColorScheme(),
-//    background = BackgroundDark,
-//    primary100 = Primary100Dark,
-//    primary30 = PrimaryLightDark,
-//    primary10 = PrimaryBaseDark,
-//    primary5 = PrimaryToastDark,
-//    accent100 = AccentDark,
-//    accent10 = AccentToastDark,
-//    orange50 = NotiDark,
-//    yellow50 = FavoriteDark,
-//    gray90 = Gray90Dark,
-//    gray80 = Gray80Dark,
-//    gray70 = Gray70Dark,
-//    gray60 = Gray60Dark,
-//    gray50 = Gray50Dark,
-//    gray40 = Gray40Dark,
-//    gray30 = Gray30Dark,
-//    gray20 = Gray20Dark,
-//    gray10 = Gray10Dark,
-//    profile = ProfileDark,
-//    bgElevated = Gray10Dark,
-//    dividerLine = Gray20Dark,
-//    textPrimary = Gray80Dark,
-//    textSecondary = Gray60Dark,
-//    textInfo = Gray50Dark,
-//    textDisabled = Gray40Dark,
-//    iconDefault = Gray60Dark,
-//    iconSecondary = Gray50Dark,
-//    iconDisabled = Gray40Dark,
-//    textFieldDefault = Gray30Dark,
-//    textFieldDisabled = Gray20Dark,
-//    textFieldBtnBase = Gray40Dark,
-//    textFieldBtnText = Gray50Dark
-//)
 //
 //internal val LocalColorSet = androidx.compose.runtime.compositionLocalOf { lightColorSet }
 
