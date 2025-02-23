@@ -1,6 +1,6 @@
 package com.example.presentation.theme
 
-import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
 
 sealed class ThemeMode {
@@ -14,9 +14,7 @@ data class DesignSystemColorSetValues(
     val outline: Color
 )
 
-@Immutable
 data class DesignSystemColorSet(
-    val themeMode: ThemeMode,
     val primary: DesignSystemColorSetValues,
     val secondary: DesignSystemColorSetValues,
     val tertiary: DesignSystemColorSetValues,
@@ -143,7 +141,6 @@ object DesignSystemColor {
 fun getDesignSystemColorSet(themeMode: ThemeMode): DesignSystemColorSet {
     return when (themeMode) {
         ThemeMode.Light -> DesignSystemColorSet(
-            themeMode = ThemeMode.Light,
             primary = DesignSystemColor.Light.Primary,
             secondary = DesignSystemColor.Light.Secondary,
             tertiary = DesignSystemColor.Light.Tertiary,
@@ -158,7 +155,6 @@ fun getDesignSystemColorSet(themeMode: ThemeMode): DesignSystemColorSet {
         )
 
         ThemeMode.Dark -> DesignSystemColorSet(
-            themeMode = ThemeMode.Dark,
             primary = DesignSystemColor.Dark.Primary,
             secondary = DesignSystemColor.Dark.Secondary,
             tertiary = DesignSystemColor.Dark.Tertiary,
@@ -173,5 +169,6 @@ fun getDesignSystemColorSet(themeMode: ThemeMode): DesignSystemColorSet {
         )
     }
 }
-//internal val LocalColorSet = androidx.compose.runtime.compositionLocalOf { lightColorSet }
 
+//internal val LocalDesignSystemColorSet  = compositionLocalOf { getDesignSystemColorSet(ThemeMode.Light) }
+//

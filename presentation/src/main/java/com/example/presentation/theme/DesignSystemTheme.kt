@@ -2,14 +2,17 @@ package com.example.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+
+fun customLightColorScheme
 
 private val LightTheme = lightColorScheme(
 
 )
 
-private val DarkTheme = lightColorScheme(
+private val DarkTheme = darkColorScheme(
 
 )
 
@@ -27,5 +30,3 @@ fun DesignSystemTheme(
         content = content
     )
 }
-
-// object에 맞춰서 스키마도 다시 정의하고, theme도 정의한다면?
