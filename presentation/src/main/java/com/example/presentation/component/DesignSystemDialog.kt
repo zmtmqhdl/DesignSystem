@@ -16,7 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.presentation.theme.DesignSystemColor
+import com.example.presentation.theme.DesignSystemScheme
 import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemShape
 import com.example.presentation.theme.DesignSystemSingleColor
@@ -64,7 +64,7 @@ fun PrimaryDialog(
                         Text(
                             text = it,
                             modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
-                            color = DesignSystemColor.Primary.fontColor,
+                            color = DesignSystemScheme.Primary.fontColor,
                             style = DesignSystemFontStyle.XXL.Regular
                         )
                     }

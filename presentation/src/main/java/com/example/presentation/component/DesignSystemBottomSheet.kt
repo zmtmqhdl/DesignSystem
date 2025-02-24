@@ -15,8 +15,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import com.example.presentation.theme.DesignSystemFontStyle
+import com.example.presentation.theme.DesignSystemScheme
 import com.example.presentation.theme.DesignSystemShape
-import com.example.presentation.theme.DesignSystemSingleColor
 import com.example.presentation.theme.DesignSystemSpace
 import kotlinx.coroutines.launch
 
@@ -56,11 +56,11 @@ fun PrimaryModal(
                 bottom = DesignSystemSpace.Space2
             ),
             shape = DesignSystemShape.PrimaryBottomSheepShape,
-            containerColor = DesignSystemSingleColor.White,
+            containerColor = DesignSystemScheme.LightScheme.white,
             dragHandle = null
         ) {
             Surface(
-                color = DesignSystemSingleColor.White,
+                color = DesignSystemScheme.LightScheme.white,
                 modifier = Modifier.padding(
                     start = DesignSystemSpace.Space4,
                     end = DesignSystemSpace.Space4,
@@ -73,7 +73,7 @@ fun PrimaryModal(
                         Text(
                             text = it,
                             modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
-                            color = DesignSystemSingleColor.Black,
+                            color = DesignSystemScheme.LightScheme.black,
                             style = DesignSystemFontStyle.XL.Bold
                         )
                     }
@@ -81,7 +81,7 @@ fun PrimaryModal(
                     Text(
                         text = text,
                         modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),
-                        color = DesignSystemSingleColor.Black,
+                        color = DesignSystemScheme.LightScheme.black,
                         style = DesignSystemFontStyle.M.Regular
                     )
                     Spacer(modifier = Modifier.height(DesignSystemSpace.Space6))
