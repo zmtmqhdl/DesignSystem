@@ -11,17 +11,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
-import com.example.presentation.theme.DesignSystemScheme
+import com.example.presentation.theme.DesignSystemColorSet
 import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemShape
 import com.example.presentation.theme.DesignSystemSpace
+import com.example.presentation.theme.DesignSystemTheme
 
 @Composable
 fun PrimaryButton(
     text: String,
     onClick: () -> Unit,
     state: Boolean,
-    color: DesignSystemScheme,
+    color: DesignSystemColorSet,
     width: Dp? = null,
     height: Dp,
     space: Dp,
@@ -43,7 +44,7 @@ fun PrimaryButton(
         enabled = state,
         shape = DesignSystemShape.PrimaryButtonShape,
         colors = if (state) ButtonDefaults.buttonColors(color.background) else ButtonDefaults.buttonColors(
-            DesignSystemScheme.Disable.background
+            DesignSystemTheme.color.disable.background
         ),
         contentPadding = PaddingValues(
             start = space,
@@ -55,7 +56,7 @@ fun PrimaryButton(
         }
         Text(
             text = text,
-            color = if (state) color.fontColor else DesignSystemScheme.Disable.fontColor,
+            color = if (state) color.fontColor else DesignSystemTheme.color.disable.fontColor,
             style = style
         )
         if (icon != null && iconPosition == "right") {
@@ -80,7 +81,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Primary,
+                color = DesignSystemTheme.color.primary,
                 width = width,
                 height = DesignSystemSpace.Space12,
                 space = DesignSystemSpace.Space4,
@@ -103,7 +104,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Primary,
+                color = DesignSystemTheme.color.primary,
                 width = width,
                 height = DesignSystemSpace.Space11,
                 space = DesignSystemSpace.Space4,
@@ -126,7 +127,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Primary,
+                color = DesignSystemTheme.color.primary,
                 width = width,
                 height = DesignSystemSpace.Space9,
                 space = DesignSystemSpace.Space4,
@@ -149,7 +150,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Primary,
+                color = DesignSystemTheme.color.primary,
                 width = width,
                 height = DesignSystemSpace.Space8,
                 space = DesignSystemSpace.Space3,
@@ -172,7 +173,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Primary,
+                color = DesignSystemTheme.color.primary,
                 width = width,
                 height = DesignSystemSpace.Space7,
                 space = DesignSystemSpace.Space3,
@@ -197,7 +198,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Primary,
+                color = DesignSystemTheme.color.primary,
                 width = width,
                 height = DesignSystemSpace.Space12,
                 space = DesignSystemSpace.Space4,
@@ -220,7 +221,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Primary,
+                color = DesignSystemTheme.color.primary,
                 width = width,
                 height = DesignSystemSpace.Space11,
                 space = DesignSystemSpace.Space4,
@@ -243,7 +244,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Primary,
+                color = DesignSystemTheme.color.primary,
                 width = width,
                 height = DesignSystemSpace.Space9,
                 space = DesignSystemSpace.Space4,
@@ -266,7 +267,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Primary,
+                color = DesignSystemTheme.color.primary,
                 width = width,
                 height = DesignSystemSpace.Space8,
                 space = DesignSystemSpace.Space3,
@@ -289,7 +290,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Primary,
+                color = DesignSystemTheme.color.primary,
                 width = width,
                 height = DesignSystemSpace.Space7,
                 space = DesignSystemSpace.Space3,
@@ -314,7 +315,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Secondary,
+                color = DesignSystemTheme.color.secondary,
                 width = width,
                 height = DesignSystemSpace.Space12,
                 space = DesignSystemSpace.Space4,
@@ -337,7 +338,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Secondary,
+                color = DesignSystemTheme.color.secondary,
                 width = width,
                 height = DesignSystemSpace.Space11,
                 space = DesignSystemSpace.Space4,
@@ -360,7 +361,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Secondary,
+                color = DesignSystemTheme.color.secondary,
                 width = width,
                 height = DesignSystemSpace.Space9,
                 space = DesignSystemSpace.Space4,
@@ -383,7 +384,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Secondary,
+                color = DesignSystemTheme.color.secondary,
                 width = width,
                 height = DesignSystemSpace.Space8,
                 space = DesignSystemSpace.Space3,
@@ -406,7 +407,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Secondary,
+                color = DesignSystemTheme.color.secondary,
                 width = width,
                 height = DesignSystemSpace.Space7,
                 space = DesignSystemSpace.Space3,
@@ -431,7 +432,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Warning,
+                color = DesignSystemTheme.color.warning,
                 width = width,
                 height = DesignSystemSpace.Space12,
                 space = DesignSystemSpace.Space4,
@@ -454,7 +455,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Warning,
+                color = DesignSystemTheme.color.warning,
                 width = width,
                 height = DesignSystemSpace.Space11,
                 space = DesignSystemSpace.Space4,
@@ -477,7 +478,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Warning,
+                color = DesignSystemTheme.color.warning,
                 width = width,
                 height = DesignSystemSpace.Space9,
                 space = DesignSystemSpace.Space4,
@@ -500,7 +501,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Warning,
+                color = DesignSystemTheme.color.warning,
                 width = width,
                 height = DesignSystemSpace.Space8,
                 space = DesignSystemSpace.Space3,
@@ -523,7 +524,7 @@ object DesignSystemButton {
                 text = text,
                 onClick = onClick,
                 state = state,
-                color = DesignSystemScheme.Warning,
+                color = DesignSystemTheme.color.warning,
                 width = width,
                 height = DesignSystemSpace.Space7,
                 space = DesignSystemSpace.Space3,
@@ -533,15 +534,5 @@ object DesignSystemButton {
             )
         }
     }
-
-//    object Icon {
-//        @Composable
-//        fun Cancel() {
-//            PrimaryIconButton(
-//                onClick = {},
-//                icon = "icon_close"
-//            )
-//        }
-//    }
 }
 

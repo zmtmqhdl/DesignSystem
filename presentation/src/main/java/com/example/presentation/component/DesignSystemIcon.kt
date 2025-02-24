@@ -8,8 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import com.example.presentation.theme.DesignSystemSingleColor
 import com.example.presentation.theme.DesignSystemSpace
+import com.example.presentation.theme.DesignSystemTheme
 
 @SuppressLint("DiscouragedApi")
 @Composable
@@ -22,7 +22,7 @@ fun String.toDrawableRes(): Int {
 fun DesignSystemIcon(
     name: String,
     text: String? = null,
-    color: Color = DesignSystemSingleColor.Black,
+    color: Color = DesignSystemTheme.color.black,
     iconPosition: String? = null,
 ) {
     Icon(

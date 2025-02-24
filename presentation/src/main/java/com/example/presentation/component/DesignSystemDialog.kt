@@ -19,8 +19,8 @@ import androidx.compose.ui.unit.dp
 import com.example.presentation.theme.DesignSystemScheme
 import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemShape
-import com.example.presentation.theme.DesignSystemSingleColor
 import com.example.presentation.theme.DesignSystemSpace
+import com.example.presentation.theme.DesignSystemTheme
 
 @Composable
 fun PrimaryDialog(
@@ -33,7 +33,7 @@ fun PrimaryDialog(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = DesignSystemSingleColor.Gray600),
+            .background(color = DesignSystemTheme.color.gray600),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -43,7 +43,7 @@ fun PrimaryDialog(
         ) {
             Surface(
                 shape = DesignSystemShape.PrimaryDialogShape,
-                color = DesignSystemSingleColor.White
+                color = DesignSystemTheme.color.white
             ) {
                 Column(
                     modifier = Modifier
@@ -56,7 +56,7 @@ fun PrimaryDialog(
                         Text(
                             text = it,
                             modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
-                            color = DesignSystemSingleColor.Black,
+                            color = DesignSystemTheme.color.black,
                             style = DesignSystemFontStyle.XL.Bold
                         )
                     }
@@ -64,7 +64,7 @@ fun PrimaryDialog(
                         Text(
                             text = it,
                             modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
-                            color = DesignSystemScheme.Primary.fontColor,
+                            color = DesignSystemTheme.color.primary.fontColor,
                             style = DesignSystemFontStyle.XXL.Regular
                         )
                     }
@@ -72,14 +72,14 @@ fun PrimaryDialog(
                         Text(
                             text = it,
                             modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
-                            color = DesignSystemSingleColor.Gray600,
+                            color = DesignSystemTheme.color.gray600,
                             style = DesignSystemFontStyle.S.Regular
                         )
                     }
                     Text(
                         text = text,
                         modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),
-                        color = DesignSystemSingleColor.Black,
+                        color = DesignSystemTheme.color.black,
                         style = DesignSystemFontStyle.M.Regular
                     )
                     content()
