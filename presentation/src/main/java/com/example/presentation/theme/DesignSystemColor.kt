@@ -20,7 +20,7 @@ data class DesignSystemColorSet(
     }
 }
 
-object DesignSystemColor{
+object DesignSystemColors{
     object Light {
         val Primary = DesignSystemColorSet(
             fontColor = Color(0xFF067CFB),
@@ -114,7 +114,7 @@ object DesignSystemColor{
 }
 
 @Stable
-class DesignSystemScheme(
+class DesignSystemColor(
     val primary: DesignSystemColorSet,
     val secondary: DesignSystemColorSet,
     val tertiary: DesignSystemColorSet,
@@ -128,8 +128,8 @@ class DesignSystemScheme(
     val gray600: Color
 )
 
-val LocalDesignSystemScheme = staticCompositionLocalOf {
-    DesignSystemScheme(
+val LocalDesignSystemColor = staticCompositionLocalOf {
+    DesignSystemColor(
         primary = DesignSystemColorSet.Unspecified,
         secondary = DesignSystemColorSet.Unspecified,
         tertiary = DesignSystemColorSet.Unspecified,

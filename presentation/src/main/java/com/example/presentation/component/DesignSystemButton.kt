@@ -12,9 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.example.presentation.theme.DesignSystemColorSet
-import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemShape
-import com.example.presentation.theme.DesignSystemSpace
+import com.example.presentation.theme.DesignSystemDp
 import com.example.presentation.theme.DesignSystemTheme
 
 @Composable
@@ -83,8 +82,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.primary,
                 width = width,
-                height = DesignSystemSpace.Space12,
-                space = DesignSystemSpace.Space4,
+                height = DesignSystemDp.Space12,
+                space = DesignSystemDp.Space4,
                 style = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -106,8 +105,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.primary,
                 width = width,
-                height = DesignSystemSpace.Space11,
-                space = DesignSystemSpace.Space4,
+                height = DesignSystemDp.Space11,
+                space = DesignSystemDp.Space4,
                 style = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -129,8 +128,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.primary,
                 width = width,
-                height = DesignSystemSpace.Space9,
-                space = DesignSystemSpace.Space4,
+                height = DesignSystemDp.Space9,
+                space = DesignSystemDp.Space4,
                 style = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -152,8 +151,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.primary,
                 width = width,
-                height = DesignSystemSpace.Space8,
-                space = DesignSystemSpace.Space3,
+                height = DesignSystemDp.Space8,
+                space = DesignSystemDp.Space3,
                 style = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -175,8 +174,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.primary,
                 width = width,
-                height = DesignSystemSpace.Space7,
-                space = DesignSystemSpace.Space3,
+                height = DesignSystemDp.Space7,
+                space = DesignSystemDp.Space3,
                 style = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -200,8 +199,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.primary,
                 width = width,
-                height = DesignSystemSpace.Space12,
-                space = DesignSystemSpace.Space4,
+                height = DesignSystemDp.Space12,
+                space = DesignSystemDp.Space4,
                 style = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -223,8 +222,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.primary,
                 width = width,
-                height = DesignSystemSpace.Space11,
-                space = DesignSystemSpace.Space4,
+                height = DesignSystemDp.Space11,
+                space = DesignSystemDp.Space4,
                 style = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -246,8 +245,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.primary,
                 width = width,
-                height = DesignSystemSpace.Space9,
-                space = DesignSystemSpace.Space4,
+                height = DesignSystemDp.Space9,
+                space = DesignSystemDp.Space4,
                 style = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -269,8 +268,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.primary,
                 width = width,
-                height = DesignSystemSpace.Space8,
-                space = DesignSystemSpace.Space3,
+                height = DesignSystemDp.Space8,
+                space = DesignSystemDp.Space3,
                 style = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -292,8 +291,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.primary,
                 width = width,
-                height = DesignSystemSpace.Space7,
-                space = DesignSystemSpace.Space3,
+                height = DesignSystemDp.Space7,
+                space = DesignSystemDp.Space3,
                 style = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -317,8 +316,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.secondary,
                 width = width,
-                height = DesignSystemSpace.Space12,
-                space = DesignSystemSpace.Space4,
+                height = DesignSystemDp.Space12,
+                space = DesignSystemDp.Space4,
                 style = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -340,8 +339,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.secondary,
                 width = width,
-                height = DesignSystemSpace.Space11,
-                space = DesignSystemSpace.Space4,
+                height = DesignSystemDp.Space11,
+                space = DesignSystemDp.Space4,
                 style = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -363,8 +362,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.secondary,
                 width = width,
-                height = DesignSystemSpace.Space9,
-                space = DesignSystemSpace.Space4,
+                height = DesignSystemDp.Space9,
+                space = DesignSystemDp.Space4,
                 style = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -386,8 +385,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.secondary,
                 width = width,
-                height = DesignSystemSpace.Space8,
-                space = DesignSystemSpace.Space3,
+                height = DesignSystemDp.Space8,
+                space = DesignSystemDp.Space3,
                 style = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -409,8 +408,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.secondary,
                 width = width,
-                height = DesignSystemSpace.Space7,
-                space = DesignSystemSpace.Space3,
+                height = DesignSystemDp.Space7,
+                space = DesignSystemDp.Space3,
                 style = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -434,8 +433,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.warning,
                 width = width,
-                height = DesignSystemSpace.Space12,
-                space = DesignSystemSpace.Space4,
+                height = DesignSystemDp.Space12,
+                space = DesignSystemDp.Space4,
                 style = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -457,8 +456,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.warning,
                 width = width,
-                height = DesignSystemSpace.Space11,
-                space = DesignSystemSpace.Space4,
+                height = DesignSystemDp.Space11,
+                space = DesignSystemDp.Space4,
                 style = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -480,8 +479,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.warning,
                 width = width,
-                height = DesignSystemSpace.Space9,
-                space = DesignSystemSpace.Space4,
+                height = DesignSystemDp.Space9,
+                space = DesignSystemDp.Space4,
                 style = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -503,8 +502,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.warning,
                 width = width,
-                height = DesignSystemSpace.Space8,
-                space = DesignSystemSpace.Space3,
+                height = DesignSystemDp.Space8,
+                space = DesignSystemDp.Space3,
                 style = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -526,8 +525,8 @@ object DesignSystemButton {
                 state = state,
                 color = DesignSystemTheme.color.warning,
                 width = width,
-                height = DesignSystemSpace.Space7,
-                space = DesignSystemSpace.Space3,
+                height = DesignSystemDp.Space7,
+                space = DesignSystemDp.Space3,
                 style = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition

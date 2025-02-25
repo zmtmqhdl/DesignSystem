@@ -14,9 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import com.example.presentation.theme.DesignSystemFontStyle
 import com.example.presentation.theme.DesignSystemShape
-import com.example.presentation.theme.DesignSystemSpace
+import com.example.presentation.theme.DesignSystemDp
 import com.example.presentation.theme.DesignSystemTheme
 import kotlinx.coroutines.launch
 
@@ -51,28 +50,28 @@ fun PrimaryModal(
             onDismissRequest = onDismissRequest,
             sheetState = sheetState,
             modifier = Modifier.padding(
-                start = DesignSystemSpace.Space2,
-                end = DesignSystemSpace.Space2,
-                bottom = DesignSystemSpace.Space2
+                start = DesignSystemDp.Space2,
+                end = DesignSystemDp.Space2,
+                bottom = DesignSystemDp.Space2
             ),
-            shape = DesignSystemShape.PrimaryBottomSheepShape,
+            shape = DesignSystemShape.PrimaryBottomSheetShape,
             containerColor = DesignSystemTheme.color.white,
             dragHandle = null
         ) {
             Surface(
                 color = DesignSystemTheme.color.white,
                 modifier = Modifier.padding(
-                    start = DesignSystemSpace.Space4,
-                    end = DesignSystemSpace.Space4,
-                    bottom = DesignSystemSpace.Space4
+                    start = DesignSystemDp.Space4,
+                    end = DesignSystemDp.Space4,
+                    bottom = DesignSystemDp.Space4
                 )
             ) {
                 Column {
-                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space10))
+                    Spacer(modifier = Modifier.height(DesignSystemDp.Space10))
                     title?.let {
                         Text(
                             text = it,
-                            modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                            modifier = Modifier.padding(bottom = DesignSystemDp.Space2),
                             color = DesignSystemTheme.color.black,
                             style = DesignSystemTheme.typography.xl.bold
                         )
@@ -80,11 +79,11 @@ fun PrimaryModal(
 
                     Text(
                         text = text,
-                        modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),
+                        modifier = Modifier.padding(bottom = DesignSystemDp.Space4),
                         color = DesignSystemTheme.color.black,
                         style = DesignSystemTheme.typography.m.regular
                     )
-                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space6))
+                    Spacer(modifier = Modifier.height(DesignSystemDp.Space6))
                     content()
                 }
             }

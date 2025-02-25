@@ -42,7 +42,7 @@ object DesignSystemFontWeight {
     val Regular = FontWeight(400)
 }
 
-object DesignSystemFontStyle {
+object DesignSystemTextStyles {
     val XXXL = DesignSystemTypographySet(
         bold = TextStyle(
             fontFamily = FontFamily(Font(R.font.bold)),
