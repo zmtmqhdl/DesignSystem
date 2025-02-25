@@ -85,7 +85,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space12,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.XL.Regular,
+                style = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -108,7 +108,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space11,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.L.Regular,
+                style = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -131,7 +131,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space9,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.M.Regular,
+                style = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -154,7 +154,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space8,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.S.Regular,
+                style = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -177,7 +177,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space7,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.XS.Regular,
+                style = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -202,7 +202,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space12,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.XL.Regular,
+                style = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -225,7 +225,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space11,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.L.Regular,
+                style = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -248,7 +248,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space9,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.M.Regular,
+                style = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -271,7 +271,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space8,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.S.Regular,
+                style = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -294,7 +294,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space7,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.XS.Regular,
+                style = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -319,7 +319,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space12,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.XL.Regular,
+                style = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -342,7 +342,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space11,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.L.Regular,
+                style = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -365,7 +365,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space9,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.M.Regular,
+                style = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -388,7 +388,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space8,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.S.Regular,
+                style = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -411,7 +411,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space7,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.XS.Regular,
+                style = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -436,7 +436,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space12,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.XL.Regular,
+                style = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -459,7 +459,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space11,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.L.Regular,
+                style = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -482,7 +482,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space9,
                 space = DesignSystemSpace.Space4,
-                style = DesignSystemFontStyle.M.Regular,
+                style = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -505,7 +505,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space8,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.S.Regular,
+                style = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -528,7 +528,7 @@ object DesignSystemButton {
                 width = width,
                 height = DesignSystemSpace.Space7,
                 space = DesignSystemSpace.Space3,
-                style = DesignSystemFontStyle.XS.Regular,
+                style = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )

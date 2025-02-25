@@ -1,9 +1,11 @@
 package com.example.presentation.theme
 
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
+@Immutable
 data class DesignSystemColorSet(
     val fontColor: Color,
     val background: Color,

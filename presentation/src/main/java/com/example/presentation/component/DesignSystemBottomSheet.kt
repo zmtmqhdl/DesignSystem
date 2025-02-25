@@ -14,9 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import com.example.presentation.theme.DesignSystemColor
 import com.example.presentation.theme.DesignSystemFontStyle
-import com.example.presentation.theme.DesignSystemScheme
 import com.example.presentation.theme.DesignSystemShape
 import com.example.presentation.theme.DesignSystemSpace
 import com.example.presentation.theme.DesignSystemTheme
@@ -76,7 +74,7 @@ fun PrimaryModal(
                             text = it,
                             modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
                             color = DesignSystemTheme.color.black,
-                            style = DesignSystemFontStyle.XL.Bold
+                            style = DesignSystemTheme.typography.xl.bold
                         )
                     }
 
@@ -84,7 +82,7 @@ fun PrimaryModal(
                         text = text,
                         modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),
                         color = DesignSystemTheme.color.black,
-                        style = DesignSystemFontStyle.M.Regular
+                        style = DesignSystemTheme.typography.m.regular
                     )
                     Spacer(modifier = Modifier.height(DesignSystemSpace.Space6))
                     content()

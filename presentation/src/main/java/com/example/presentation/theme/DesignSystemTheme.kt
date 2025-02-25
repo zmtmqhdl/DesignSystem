@@ -1,13 +1,9 @@
 package com.example.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.graphics.Color
 
 private val lightScheme = DesignSystemScheme(
     primary = DesignSystemColor.Light.Primary,
@@ -37,6 +33,17 @@ private val darkScheme = DesignSystemScheme(
     gray600 = DesignSystemColor.Dark.gray600,
 )
 
+private val typograpy = DesignSystemTypography(
+    xxxl = DesignSystemFontStyle.XXXL,
+    xxl = DesignSystemFontStyle.XXL,
+    xl = DesignSystemFontStyle.XL,
+    l = DesignSystemFontStyle.L,
+    m = DesignSystemFontStyle.M,
+    s = DesignSystemFontStyle.S,
+    xs = DesignSystemFontStyle.XS,
+    xxs = DesignSystemFontStyle.XXS,
+)
+
 
 @Composable
 fun DesignSystemTheme(
@@ -47,6 +54,7 @@ fun DesignSystemTheme(
 
     CompositionLocalProvider(
         LocalDesignSystemScheme provides scheme,
+        LocalDesignSystemTypography provides typograpy,
         content = content
     )
 }
@@ -56,4 +64,9 @@ object DesignSystemTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalDesignSystemScheme.current
+
+    val typography: DesignSystemTypography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalDesignSystemTypography.current
 }

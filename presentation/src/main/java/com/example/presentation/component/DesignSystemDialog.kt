@@ -57,7 +57,7 @@ fun PrimaryDialog(
                             text = it,
                             modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
                             color = DesignSystemTheme.color.black,
-                            style = DesignSystemFontStyle.XL.Bold
+                            style = DesignSystemTheme.typography.xl.bold
                         )
                     }
                     certification?.let {
@@ -65,7 +65,7 @@ fun PrimaryDialog(
                             text = it,
                             modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
                             color = DesignSystemTheme.color.primary.fontColor,
-                            style = DesignSystemFontStyle.XXL.Regular
+                            style = DesignSystemTheme.typography.xxl.regular
                         )
                     }
                     subText?.let {
@@ -73,14 +73,14 @@ fun PrimaryDialog(
                             text = it,
                             modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
                             color = DesignSystemTheme.color.gray600,
-                            style = DesignSystemFontStyle.S.Regular
+                            style = DesignSystemTheme.typography.s.regular
                         )
                     }
                     Text(
                         text = text,
                         modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),
                         color = DesignSystemTheme.color.black,
-                        style = DesignSystemFontStyle.M.Regular
+                        style = DesignSystemTheme.typography.m.regular
                     )
                     content()
                     Spacer(modifier = Modifier.height(DesignSystemSpace.Space4))
