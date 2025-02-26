@@ -11,8 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
+import com.example.presentation.common.IconPosition
 import com.example.presentation.theme.DesignSystemColorSet
-import com.example.presentation.theme.DesignSystemSpace
 import com.example.presentation.theme.DesignSystemTheme
 
 @Composable
@@ -26,7 +26,7 @@ fun PrimaryButton(
     space: Dp,
     style: TextStyle,
     icon: String? = null,
-    iconPosition: String? = "left",
+    iconPosition: IconPosition = IconPosition.DEFAULT,
 ) {
     Button(
         onClick = onClick,

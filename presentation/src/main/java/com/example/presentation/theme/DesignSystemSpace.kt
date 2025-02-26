@@ -1,5 +1,3 @@
-@file:JvmName("DesignSystemShapeKt")
-
 package com.example.presentation.theme
 
 import androidx.compose.runtime.Stable

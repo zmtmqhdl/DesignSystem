@@ -14,7 +14,7 @@ import com.example.presentation.component.PrimaryNavigationBar
 import com.example.presentation.screen.PrimaryScreen
 
 @Composable
-fun NavigationBarScreenu(navController: NavController) {
+fun NavigationBarScreen(navController: NavController) {
     val items = listOf("1번", "2번")
     val icons = listOf("icon_back", "icon_close")
     var selectedIndex by remember { mutableIntStateOf(0) }

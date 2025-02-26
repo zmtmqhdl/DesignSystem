@@ -1,19 +1,20 @@
 package com.example.presentation.component
 
-import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import com.example.presentation.theme.DesignSystemSpace
+import com.example.presentation.common.IconPosition
 import com.example.presentation.theme.DesignSystemTheme
 
-@SuppressLint("DiscouragedApi")
 @Composable
-fun String.toDrawableRes(): Int {
+fun String.toDrawableResource(): Int {
     val context = LocalContext.current
     return context.resources.getIdentifier(this, "drawable", context.packageName)
 }
@@ -23,23 +24,38 @@ fun DesignSystemIcon(
     name: String,
     text: String? = null,
     color: Color = DesignSystemTheme.color.black,
-    iconPosition: String? = null,
+    iconPosition: IconPosition = iconPosition.DEFAULT,
 ) {
-    Icon(
-        painter = painterResource(name.toDrawableRes()),
-        contentDescription = text,
-        tint = color,
-        modifier = when (iconPosition) {
-            "left" -> {
-                Modifier.padding(end = DesignSystemTheme.space.space1)
-            }
-            "right" -> {
-                Modifier.padding(start = DesignSystemTheme.space.space1)
-            }
-            else -> {
-                Modifier
-            }
-        }
+    when (iconPosition) {
+        iconPosition.DEFAULT ->
+            Icon(
+                painter = painterResource(name.toDrawableResource()),
+                contentDescription = text,
+                tint = color
+            )
 
-    )
+        iconPosition.LEFT ->
+            Row(
+                modifier = Modifier.wrapContentSize()
+            ) {
+                Icon(
+                    painter = painterResource(name.toDrawableResource()),
+                    contentDescription = text,
+                    tint = color
+                )
+                Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
+            }
+
+        iconPosition.RIGHT ->
+            Row(
+                modifier = Modifier.wrapContentSize()
+            ) {
+                Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
+                Icon(
+                    painter = painterResource(name.toDrawableResource()),
+                    contentDescription = text,
+                    tint = color
+                )
+            }
+    }
 }
