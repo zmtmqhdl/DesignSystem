@@ -31,10 +31,10 @@ fun DesignSystemIcon(
         tint = color,
         modifier = when (iconPosition) {
             "left" -> {
-                Modifier.padding(end = DesignSystemSpace.Space1)
+                Modifier.padding(end = DesignSystemTheme.space.space1)
             }
             "right" -> {
-                Modifier.padding(start = DesignSystemSpace.Space1)
+                Modifier.padding(start = DesignSystemTheme.space.space1)
             }
             else -> {
                 Modifier

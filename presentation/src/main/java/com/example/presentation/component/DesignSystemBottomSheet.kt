@@ -49,28 +49,28 @@ fun PrimaryModal(
             onDismissRequest = onDismissRequest,
             sheetState = sheetState,
             modifier = Modifier.padding(
-                start = DesignSystemSpace.Space2,
-                end = DesignSystemSpace.Space2,
-                bottom = DesignSystemSpace.Space2
+                start = DesignSystemTheme.space.space2,
+                end = DesignSystemTheme.space.space2,
+                bottom = DesignSystemTheme.space.space2
             ),
-            shape = DesignSystemSpace.PrimaryBottomSheetShape,
+            shape = DesignSystemTheme.shape.bottomSheet,
             containerColor = DesignSystemTheme.color.white,
             dragHandle = null
         ) {
             Surface(
                 color = DesignSystemTheme.color.white,
                 modifier = Modifier.padding(
-                    start = DesignSystemSpace.Space4,
-                    end = DesignSystemSpace.Space4,
-                    bottom = DesignSystemSpace.Space4
+                    start = DesignSystemTheme.space.space4,
+                    end = DesignSystemTheme.space.space4,
+                    bottom = DesignSystemTheme.space.space4
                 )
             ) {
                 Column {
-                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space10))
+                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space10))
                     title?.let {
                         Text(
                             text = it,
-                            modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                            modifier = Modifier.padding(bottom = DesignSystemTheme.space.space2),
                             color = DesignSystemTheme.color.black,
                             style = DesignSystemTheme.typography.xl.bold
                         )
@@ -78,11 +78,11 @@ fun PrimaryModal(
 
                     Text(
                         text = text,
-                        modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),
+                        modifier = Modifier.padding(bottom = DesignSystemTheme.space.space4),
                         color = DesignSystemTheme.color.black,
                         style = DesignSystemTheme.typography.m.regular
                     )
-                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space6))
+                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space6))
                     content()
                 }
             }

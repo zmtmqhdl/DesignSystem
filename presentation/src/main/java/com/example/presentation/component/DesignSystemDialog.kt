@@ -39,20 +39,20 @@ fun PrimaryDialog(
                 .wrapContentHeight()
         ) {
             Surface(
-                shape = DesignSystemSpace.PrimaryDialogShape,
+                shape = DesignSystemTheme.shape.dialogShape,
                 color = DesignSystemTheme.color.white
             ) {
                 Column(
                     modifier = Modifier
                         .width(280.dp)
-                        .padding(start = DesignSystemSpace.Space4, end = DesignSystemSpace.Space4),
+                        .padding(start = DesignSystemTheme.space.space4, end = DesignSystemTheme.space.space4),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space4))
+                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
                     title?.let {
                         Text(
                             text = it,
-                            modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                            modifier = Modifier.padding(bottom = DesignSystemTheme.space.space2),
                             color = DesignSystemTheme.color.black,
                             style = DesignSystemTheme.typography.xl.bold
                         )
@@ -60,7 +60,7 @@ fun PrimaryDialog(
                     certification?.let {
                         Text(
                             text = it,
-                            modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                            modifier = Modifier.padding(bottom = DesignSystemTheme.space.space2),
                             color = DesignSystemTheme.color.primary.fontColor,
                             style = DesignSystemTheme.typography.xxl.regular
                         )
@@ -68,19 +68,19 @@ fun PrimaryDialog(
                     subText?.let {
                         Text(
                             text = it,
-                            modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
+                            modifier = Modifier.padding(bottom = DesignSystemTheme.space.space2),
                             color = DesignSystemTheme.color.gray600,
                             style = DesignSystemTheme.typography.s.regular
                         )
                     }
                     Text(
                         text = text,
-                        modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),
+                        modifier = Modifier.padding(bottom = DesignSystemTheme.space.space4),
                         color = DesignSystemTheme.color.black,
                         style = DesignSystemTheme.typography.m.regular
                     )
                     content()
-                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space4))
+                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
                 }
             }
         }
@@ -135,7 +135,7 @@ object DesignSystemDialog {
                         text = buttonText2,
                         onClick = onClick2,
                     )
-                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space3))
+                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space3))
                     DesignSystemButton.Primary.Medium(
                         text = buttonText1,
                         onClick = onClick1,
@@ -167,7 +167,7 @@ object DesignSystemDialog {
                         onClick = onClick2,
                         width = 120.dp
                     )
-                    Spacer(modifier = Modifier.width(DesignSystemSpace.Space2))
+                    Spacer(modifier = Modifier.width(DesignSystemTheme.space.space2))
                     DesignSystemButton.Primary.Medium(
                         text = buttonText1,
                         onClick = onClick1,
