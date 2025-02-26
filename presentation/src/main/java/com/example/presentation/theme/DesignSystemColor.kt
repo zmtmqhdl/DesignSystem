@@ -128,7 +128,7 @@ class DesignSystemColor(
     val gray600: Color
 )
 
-val LocalDesignSystemColor = staticCompositionLocalOf {
+val LocalColor = staticCompositionLocalOf {
     DesignSystemColor(
         primary = DesignSystemColorSet.Unspecified,
         secondary = DesignSystemColorSet.Unspecified,

@@ -44,20 +44,20 @@ private val typograpy = DesignSystemTypography(
     xxs = DesignSystemTextStyles.XXS,
 )
 
-private val space = DesignSystemDp(
-    dp0 = DesignSystemDps.Dp0,
-    dp1 = DesignSystemDps.Dp1,
-    dp2 = DesignSystemDps.Dp2,
-    dp3 = DesignSystemDps.Dp3,
-    dp4 = DesignSystemDps.Dp4,
-    dp5 = DesignSystemDps.Dp5,
-    dp6 = DesignSystemDps.Dp6,
-    dp7 = DesignSystemDps.Dp7,
-    dp8 = DesignSystemDps.Dp8,
-    dp9 = DesignSystemDps.Dp9,
-    dp10 = DesignSystemDps.Dp10,
-    dp11 = DesignSystemDps.Dp11,
-    dp12 = DesignSystemDps.Dp12,
+private val space = DesignSystemSpace(
+    space0 = DesignSystemSpaces.Space0,
+    space1 = DesignSystemSpaces.Space1,
+    space2 = DesignSystemSpaces.Space2,
+    space3 = DesignSystemSpaces.Space3,
+    space4 = DesignSystemSpaces.Space4,
+    space5 = DesignSystemSpaces.Space5,
+    space6 = DesignSystemSpaces.Space6,
+    space7 = DesignSystemSpaces.Space7,
+    space8 = DesignSystemSpaces.Space8,
+    space9 = DesignSystemSpaces.Space9,
+    space10 = DesignSystemSpaces.Space10,
+    space11 = DesignSystemSpaces.Space11,
+    space12 = DesignSystemSpaces.Space12,
 )
 
 private val shape = DesignSystemShape(
@@ -75,9 +75,10 @@ fun DesignSystemTheme(
     val color = if (isDarkTheme) darkColor else lightColor
 
     CompositionLocalProvider(
-        LocalDesignSystemColor provides color,
-        LocalDesignSystemTypography provides typograpy,
-        LocalDesignSystemDp provides space,
+        LocalColor provides color,
+        LocalTypography provides typograpy,
+        LocalSpace provides space,
+        LocalShape provides shape,
         content = content
     )
 }
@@ -86,15 +87,20 @@ object DesignSystemTheme {
     val color: DesignSystemColor
         @Composable
         @ReadOnlyComposable
-        get() = LocalDesignSystemColor.current
+        get() = LocalColor.current
 
     val typography: DesignSystemTypography
         @Composable
         @ReadOnlyComposable
-        get() = LocalDesignSystemTypography.current
+        get() = LocalTypography.current
 
-    val dp: DesignSystemDp
+    val space: DesignSystemSpace
         @Composable
         @ReadOnlyComposable
-        get() = LocalDesignSystemDp.current
+        get() = LocalSpace.current
+
+    val shape: DesignSystemShape
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalShape.current
 }

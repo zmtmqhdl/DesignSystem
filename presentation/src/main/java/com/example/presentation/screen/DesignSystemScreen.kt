@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.presentation.theme.DesignSystemDp
+import com.example.presentation.theme.DesignSystemSpace
 
 @Composable
 fun PrimaryScreen(
@@ -15,9 +15,9 @@ fun PrimaryScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(
-                start = DesignSystemDp.Space4,
-                top = DesignSystemDp.Space4,
-                end = DesignSystemDp.Space4
+                start = DesignSystemSpace.Space4,
+                top = DesignSystemSpace.Space4,
+                end = DesignSystemSpace.Space4
             ),
     ) {
         content()

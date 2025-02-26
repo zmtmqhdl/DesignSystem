@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import com.example.presentation.theme.DesignSystemDp
+import com.example.presentation.theme.DesignSystemSpace
 import com.example.presentation.theme.DesignSystemTheme
 
 @SuppressLint("DiscouragedApi")
@@ -31,10 +31,10 @@ fun DesignSystemIcon(
         tint = color,
         modifier = when (iconPosition) {
             "left" -> {
-                Modifier.padding(end = DesignSystemDp.Space1)
+                Modifier.padding(end = DesignSystemSpace.Space1)
             }
             "right" -> {
-                Modifier.padding(start = DesignSystemDp.Space1)
+                Modifier.padding(start = DesignSystemSpace.Space1)
             }
             else -> {
                 Modifier

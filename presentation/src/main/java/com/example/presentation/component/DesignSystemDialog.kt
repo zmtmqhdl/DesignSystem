@@ -16,8 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.presentation.theme.DesignSystemShape
-import com.example.presentation.theme.DesignSystemDp
+import com.example.presentation.theme.DesignSystemSpace
 import com.example.presentation.theme.DesignSystemTheme
 
 @Composable
@@ -40,20 +39,20 @@ fun PrimaryDialog(
                 .wrapContentHeight()
         ) {
             Surface(
-                shape = DesignSystemShape.PrimaryDialogShape,
+                shape = DesignSystemSpace.PrimaryDialogShape,
                 color = DesignSystemTheme.color.white
             ) {
                 Column(
                     modifier = Modifier
                         .width(280.dp)
-                        .padding(start = DesignSystemDp.Space4, end = DesignSystemDp.Space4),
+                        .padding(start = DesignSystemSpace.Space4, end = DesignSystemSpace.Space4),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Spacer(modifier = Modifier.height(DesignSystemDp.Space4))
+                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space4))
                     title?.let {
                         Text(
                             text = it,
-                            modifier = Modifier.padding(bottom = DesignSystemDp.Space2),
+                            modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
                             color = DesignSystemTheme.color.black,
                             style = DesignSystemTheme.typography.xl.bold
                         )
@@ -61,7 +60,7 @@ fun PrimaryDialog(
                     certification?.let {
                         Text(
                             text = it,
-                            modifier = Modifier.padding(bottom = DesignSystemDp.Space2),
+                            modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
                             color = DesignSystemTheme.color.primary.fontColor,
                             style = DesignSystemTheme.typography.xxl.regular
                         )
@@ -69,19 +68,19 @@ fun PrimaryDialog(
                     subText?.let {
                         Text(
                             text = it,
-                            modifier = Modifier.padding(bottom = DesignSystemDp.Space2),
+                            modifier = Modifier.padding(bottom = DesignSystemSpace.Space2),
                             color = DesignSystemTheme.color.gray600,
                             style = DesignSystemTheme.typography.s.regular
                         )
                     }
                     Text(
                         text = text,
-                        modifier = Modifier.padding(bottom = DesignSystemDp.Space4),
+                        modifier = Modifier.padding(bottom = DesignSystemSpace.Space4),
                         color = DesignSystemTheme.color.black,
                         style = DesignSystemTheme.typography.m.regular
                     )
                     content()
-                    Spacer(modifier = Modifier.height(DesignSystemDp.Space4))
+                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space4))
                 }
             }
         }
@@ -136,7 +135,7 @@ object DesignSystemDialog {
                         text = buttonText2,
                         onClick = onClick2,
                     )
-                    Spacer(modifier = Modifier.height(DesignSystemDp.Space3))
+                    Spacer(modifier = Modifier.height(DesignSystemSpace.Space3))
                     DesignSystemButton.Primary.Medium(
                         text = buttonText1,
                         onClick = onClick1,
@@ -168,7 +167,7 @@ object DesignSystemDialog {
                         onClick = onClick2,
                         width = 120.dp
                     )
-                    Spacer(modifier = Modifier.width(DesignSystemDp.Space2))
+                    Spacer(modifier = Modifier.width(DesignSystemSpace.Space2))
                     DesignSystemButton.Primary.Medium(
                         text = buttonText1,
                         onClick = onClick1,

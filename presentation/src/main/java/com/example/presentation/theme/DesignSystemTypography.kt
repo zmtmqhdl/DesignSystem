@@ -200,7 +200,7 @@ class DesignSystemTypography(
     val xxs: DesignSystemTypographySet,
 )
 
-val LocalDesignSystemTypography = staticCompositionLocalOf {
+val LocalTypography = staticCompositionLocalOf {
     DesignSystemTypography(
         xxxl = DesignSystemTypographySet.Default,
         xxl = DesignSystemTypographySet.Default,
