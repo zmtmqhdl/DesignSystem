@@ -11,6 +11,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.presentation.common.IconPosition
 import com.example.presentation.component.DesignSystemButton
 import com.example.presentation.component.PrimaryModal
 import com.example.presentation.viewModel.HomeViewModel
@@ -45,7 +46,7 @@ fun HomeScreen(
                 homeViewModel.fetchPost((1))
             },
             icon = "icon_forward",
-            iconPosition = "right"
+            iconPosition = IconPosition.RIGHT
         )
         Spacer(modifier = Modifier.height(16.dp))
         post?.let {
@@ -68,7 +69,7 @@ fun HomeScreen(
                     }
                 },
                 icon = "icon_forward",
-                iconPosition = "right"
+                iconPosition = IconPosition.RIGHT
             )
         },
         show = showModalBottomSheet,

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -49,7 +50,7 @@ fun PrimaryButton(
             end = space
         )
     ) {
-        if (icon != null && iconPosition == "left") {
+        if (icon != null && iconPosition == IconPosition.LEFT) {
             DesignSystemIcon(name = icon, iconPosition = iconPosition)
         }
         Text(
@@ -57,7 +58,7 @@ fun PrimaryButton(
             color = if (state) color.fontColor else DesignSystemTheme.color.disable.fontColor,
             style = style
         )
-        if (icon != null && iconPosition == "right") {
+        if (icon != null && iconPosition == IconPosition.RIGHT) {
             DesignSystemIcon(name = icon, iconPosition = iconPosition)
         }
     }
@@ -73,7 +74,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -96,7 +97,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -119,7 +120,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -142,7 +143,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -165,7 +166,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -190,7 +191,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -213,7 +214,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -236,7 +237,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -259,7 +260,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -282,7 +283,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -307,7 +308,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -330,7 +331,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -353,7 +354,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -376,7 +377,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -399,7 +400,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -424,7 +425,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -447,7 +448,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -470,7 +471,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -493,7 +494,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
@@ -516,7 +517,7 @@ object DesignSystemButton {
             width: Dp? = null,
             state: Boolean = true,
             icon: String? = null,
-            iconPosition: String = "left",
+            iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,

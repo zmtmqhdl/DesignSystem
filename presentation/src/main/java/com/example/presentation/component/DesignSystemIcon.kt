@@ -24,17 +24,17 @@ fun DesignSystemIcon(
     name: String,
     text: String? = null,
     color: Color = DesignSystemTheme.color.black,
-    iconPosition: IconPosition = iconPosition.DEFAULT,
+    iconPosition: IconPosition = IconPosition.DEFAULT,
 ) {
     when (iconPosition) {
-        iconPosition.DEFAULT ->
+        IconPosition.DEFAULT ->
             Icon(
                 painter = painterResource(name.toDrawableResource()),
                 contentDescription = text,
                 tint = color
             )
 
-        iconPosition.LEFT ->
+        IconPosition.LEFT ->
             Row(
                 modifier = Modifier.wrapContentSize()
             ) {
@@ -46,7 +46,7 @@ fun DesignSystemIcon(
                 Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
             }
 
-        iconPosition.RIGHT ->
+        IconPosition.RIGHT ->
             Row(
                 modifier = Modifier.wrapContentSize()
             ) {

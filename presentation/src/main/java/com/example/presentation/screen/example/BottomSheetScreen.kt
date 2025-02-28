@@ -8,6 +8,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.presentation.common.IconPosition
 import com.example.presentation.component.DesignSystemButton
 import com.example.presentation.component.PrimaryModal
 import com.example.presentation.screen.PrimaryScreen
@@ -27,7 +28,7 @@ fun BottomSheetScreen(
                 bottomSheetViewModel.showSheet()
             },
             icon = "icon_forward",
-            iconPosition = "right",
+            iconPosition = IconPosition.RIGHT,
         )
     }
 
@@ -46,7 +47,7 @@ fun BottomSheetScreen(
                     Log.e("test", "${show}")
                 },
                 icon = "icon_forward",
-                iconPosition = "right",
+                iconPosition = IconPosition.RIGHT,
             )
         },
     )
