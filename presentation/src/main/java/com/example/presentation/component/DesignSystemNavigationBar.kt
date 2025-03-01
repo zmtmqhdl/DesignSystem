@@ -6,24 +6,30 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 
-object DesignSystemNavigationBar {
-    @Composable
-    fun PrimaryNavigationBar (
-        navController: NavController,
-        items: List<String>,
-        icons: List<String>,
-        selectedIndex: Int,
-        onItemSelected: (Int) -> Unit
-    ){
-        NavigationBar {
-            items.forEachIndexed { index, title ->
-                NavigationBarItem(
-                    selected = selectedIndex == index,
-                    onClick = { onItemSelected(index) },
-                    icon = @Composable { DesignSystemIcon(name = icons[index]) },
-                    label = { Text(title) }
-                )
-            }
+@Composable
+fun PrimaryNavigationBar(
+    navController: NavController,
+    items: List<String>,
+    selectedIcons: List<String>,
+    unSelectedIcons: List<String>,
+    selectedIndex: Int,
+    onItemSelected: (Int) -> Unit
+) {
+    NavigationBar {
+        items.forEachIndexed { index, title ->
+            NavigationBarItem(
+                selected = selectedIndex == index,
+                onClick = {
+                    onItemSelected(index)
+                    if (index == 1) {
+                        navController.navigate("second")
+                    } else {
+                        navController.navigate("main")
+                    }
+                },
+                icon = @Composable { DesignSystemIcon(name = if (selectedIndex == index) selectedIcons[index] else unSelectedIcons[index]) },
+                label = { Text(title) },
+            )
         }
     }
 }

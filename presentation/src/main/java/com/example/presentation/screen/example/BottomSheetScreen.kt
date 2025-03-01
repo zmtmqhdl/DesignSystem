@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 import com.example.presentation.common.IconPosition
 import com.example.presentation.component.DesignSystemButton
 import com.example.presentation.component.PrimaryModal
-import com.example.presentation.screen.PrimaryScreen
+import com.example.presentation.screen.DesignSystemScreen.PrimaryScreen
 import com.example.presentation.viewModel.example.BottomSheetViewModel
 
 @Composable
@@ -44,7 +44,6 @@ fun BottomSheetScreen(
                 text = "축소",
                 onClick = {
                     bottomSheetViewModel.hideSheet()
-                    Log.e("test", "${show}")
                 },
                 icon = "icon_forward",
                 iconPosition = IconPosition.RIGHT,
