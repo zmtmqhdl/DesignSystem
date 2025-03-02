@@ -3,13 +3,16 @@ package com.example.presentation.component
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.example.presentation.common.IconPosition
@@ -26,7 +29,7 @@ fun PrimaryButton(
     height: Dp,
     space: Dp,
     style: TextStyle,
-    icon: String? = null,
+    icon: ImageVector? = null,
     iconPosition: IconPosition = IconPosition.DEFAULT,
 ) {
     Button(
@@ -58,12 +61,11 @@ fun PrimaryButton(
             color = if (state) color.fontColor else DesignSystemTheme.color.disable.fontColor,
             style = style
         )
-        if (icon != null && iconPosition == IconPosition.RIGHT) {
-            DesignSystemIcon(name = icon, iconPosition = iconPosition)
-        }
+    }
+    if (icon != null && iconPosition == IconPosition.RIGHT) {
+        DesignSystemIcon(name = icon, iconPosition = iconPosition)
     }
 }
-
 
 object DesignSystemButton {
     object CTA {
@@ -73,7 +75,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -96,7 +98,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -119,7 +121,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -142,7 +144,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -165,7 +167,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -190,7 +192,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -213,7 +215,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -236,7 +238,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -259,7 +261,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -282,7 +284,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -307,7 +309,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -330,7 +332,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -353,7 +355,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -376,7 +378,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -399,7 +401,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -424,7 +426,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -447,7 +449,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -470,7 +472,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -493,7 +495,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -516,7 +518,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             state: Boolean = true,
-            icon: String? = null,
+            icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -534,4 +536,3 @@ object DesignSystemButton {
         }
     }
 }
-

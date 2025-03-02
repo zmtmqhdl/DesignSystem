@@ -14,7 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import com.example.presentation.theme.DesignSystemSpace
 import com.example.presentation.theme.DesignSystemTheme
 import kotlinx.coroutines.launch
 

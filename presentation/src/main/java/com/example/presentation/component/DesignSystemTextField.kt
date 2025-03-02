@@ -3,6 +3,7 @@ package com.example.presentation.component
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.vector.ImageVector
 
 object DesignSystemTextField {
     object Outlined {
@@ -11,8 +12,8 @@ object DesignSystemTextField {
             text: String,
             onValueChange: (String) -> Unit,
             label: String,
-            leadingIconName: String? = null,
-            trailIconName: String? = null,
+            leadingIconName: ImageVector? = null,
+            trailIconName: ImageVector? = null,
         ) {
             OutlinedTextField(
                 value = text,

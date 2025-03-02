@@ -8,6 +8,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.presentation.Icon.invisibility
 import com.example.presentation.common.IconPosition
 import com.example.presentation.component.DesignSystemButton
 import com.example.presentation.component.PrimaryModal
@@ -27,7 +28,7 @@ fun BottomSheetScreen(
             onClick = {
                 bottomSheetViewModel.showSheet()
             },
-            icon = "icon_forward",
+            icon = invisibility,
             iconPosition = IconPosition.RIGHT,
         )
     }
@@ -45,7 +46,7 @@ fun BottomSheetScreen(
                 onClick = {
                     bottomSheetViewModel.hideSheet()
                 },
-                icon = "icon_forward",
+                icon = invisibility,
                 iconPosition = IconPosition.RIGHT,
             )
         },
