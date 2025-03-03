@@ -28,13 +28,13 @@ object DesignSystemScreen {
     fun PrimaryScaffold(
         topBar: @Composable () -> Unit,
         bottomBar: @Composable () -> Unit,
-        snackBarHost: SnackbarHostState,
+        snackBarHost: SnackbarHostState? = null,
         content: @Composable () -> Unit
     ) {
         Scaffold(
             topBar = topBar,
             bottomBar = bottomBar,
-            snackbarHost = { SnackbarHost(hostState = snackBarHost) },
+            snackbarHost = { snackBarHost?.let { SnackbarHost(hostState = it) } },
         ) { innerPadding ->
             Column(
                 modifier = Modifier

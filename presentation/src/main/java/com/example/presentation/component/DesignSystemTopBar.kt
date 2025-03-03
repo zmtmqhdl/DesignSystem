@@ -7,25 +7,33 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import com.example.presentation.Icon.close
 import com.example.presentation.Icon.person
+import com.example.presentation.theme.DesignSystemTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PrimaryTopBar(
     title: @Composable () -> Unit,
+    size: Dp = DesignSystemTheme.space.space4,
     leftIcons: List<ImageVector>,
     rightIcons: List<ImageVector>,
-    onLeftIconClick: (String) -> Unit,
-    onRightIconClick: (String) -> Unit,
+    onLeftIconClick: () -> Unit,
+    onRightIconClick: List<() -> Unit>
 ) {
     TopAppBar(
         title = { title() },
         navigationIcon = @Composable {
-            leftIcons.forEach { DesignSystemIcon(name = it) }
+            leftIcons.forEach { DesignSystemIcon(name = it, onClick = onLeftIconClick, size = size) }
         },
         actions = @Composable {
-            rightIcons.forEach { DesignSystemIcon(name = it) }
+            rightIcons.forEachIndexed { index, value ->
+                DesignSystemIcon(
+                    name = value,
+                    onClick = onRightIconClick[index]
+                )
+            }
         }
     )
 }
@@ -37,7 +45,10 @@ fun PreviewPrimaryTopBar() {
         title = { Text("test") },
         leftIcons = listOf(close),
         rightIcons = listOf(close, person),
-        onRightIconClick = { icon -> Log.d("test", icon) },
-        onLeftIconClick = { icon -> Log.d("test", icon) }
+        onLeftIconClick = { },
+        onRightIconClick = listOf(
+            {  },
+            {  }
+        ),
     )
 }

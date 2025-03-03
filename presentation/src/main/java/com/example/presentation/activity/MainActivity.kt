@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.presentation.screen.NavScreen
+import androidx.navigation.compose.rememberNavController
+import com.example.presentation.navigation.DesignSystemNavGraph
 import com.example.presentation.theme.DesignSystemTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,7 +16,8 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContent {
             DesignSystemTheme {
-                NavScreen()
+                val navController = rememberNavController()
+                DesignSystemNavGraph(navController = navController)
             }
         }
     }

@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 
 @Composable
 fun SecondScreen(
+    navController: NavController
 ) {
     DesignSystemScreen.PrimaryScreen() {
         Text("Second")
