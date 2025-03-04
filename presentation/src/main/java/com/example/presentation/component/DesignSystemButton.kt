@@ -41,7 +41,7 @@ fun PrimaryButton(
                 .height(height)
         },
         enabled = state,
-        shape = DesignSystemTheme.shape.buttonShape,
+        shape = DesignSystemTheme.shape.button,
         colors = if (state) ButtonDefaults.buttonColors(color.background) else ButtonDefaults.buttonColors(
             DesignSystemTheme.color.disable.background
         ),

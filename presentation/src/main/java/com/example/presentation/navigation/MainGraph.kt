@@ -15,13 +15,6 @@ sealed class Screen(
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector
 ) {
-    data object Nav : Screen(
-        route = "nav",
-        label = "nav",
-        selectedIcon = close,
-        unselectedIcon = close
-    )
-
     data object Main : Screen(
         route = "main",
         label = "main",
@@ -38,7 +31,7 @@ sealed class Screen(
 }
 
 @Composable
-fun DesignSystemNavGraph(
+fun MainGraph(
     navController: NavHostController
 ) {
     NavHost(

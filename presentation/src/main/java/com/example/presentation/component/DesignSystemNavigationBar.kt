@@ -5,28 +5,24 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
-import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.presentation.navigation.Screen
 
 @Composable
 fun PrimaryNavigationBar(
-    navController: NavController,
     route: List<Screen>,
+    currentTab: Int,
+    onSelectedTab: (Int) -> Unit
 ) {
-    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
-
     NavigationBar {
-        route.forEach { value ->
+        route.forEachIndexed { index, value ->
             NavigationBarItem(
-                selected = currentRoute == value.route,
+                selected = currentTab == index,
                 onClick = {
-                    if (currentRoute != value.route) {
-                        navController.navigate(value.route)
-                    }
+                    onSelectedTab(index)
                 },
                 icon = {
                     DesignSystemIcon(
-                        name = if (currentRoute == value.route) value.selectedIcon else value.unselectedIcon
+                        name = if (currentTab == index) value.selectedIcon else value.unselectedIcon
                     )
                 },
                 label = { value.label?.let { Text(it) } },

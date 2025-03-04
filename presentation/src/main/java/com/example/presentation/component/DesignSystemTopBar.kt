@@ -38,11 +38,11 @@ fun PrimaryTopBar(
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun PreviewPrimaryTopBar() {
     PrimaryTopBar(
-        title = { Text("test") },
+        title = { Text("title") },
         leftIcons = listOf(close),
         rightIcons = listOf(close, person),
         onLeftIconClick = { },

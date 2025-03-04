@@ -38,7 +38,7 @@ fun PrimaryDialog(
                 .wrapContentHeight()
         ) {
             Surface(
-                shape = DesignSystemTheme.shape.dialogShape,
+                shape = DesignSystemTheme.shape.dialog,
                 color = DesignSystemTheme.color.white
             ) {
                 Column(

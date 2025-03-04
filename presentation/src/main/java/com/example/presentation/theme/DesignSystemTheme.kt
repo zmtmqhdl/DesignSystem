@@ -61,9 +61,10 @@ private val space = DesignSystemSpace(
 )
 
 private val shape = DesignSystemShape(
-    buttonShape = DesignSystemShapes.ButtonShape,
-    dialogShape = DesignSystemShapes.DialogShape,
-    bottomSheet = DesignSystemShapes.BottomSheetShape
+    button = DesignSystemShapes.Button,
+    dialog = DesignSystemShapes.Dialog,
+    bottomSheet = DesignSystemShapes.BottomSheet,
+    textField =  DesignSystemShapes.TextField
 )
 
 
