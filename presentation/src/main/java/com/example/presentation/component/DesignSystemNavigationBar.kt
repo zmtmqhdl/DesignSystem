@@ -4,6 +4,7 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.example.presentation.navigation.Screen
 
@@ -30,3 +31,13 @@ fun PrimaryNavigationBar(
         }
     }
 }
+
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewPrimaryNavigationBar() {
+//    PrimaryNavigationBar(
+//        route = listOf(Screen.Main, Screen.Second),
+//        currentTab = 0
+//        onSelected
+//    ) { }
+//}
