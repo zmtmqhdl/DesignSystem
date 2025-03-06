@@ -28,8 +28,7 @@ android {
         minSdk = 35
         targetSdk = 35
         versionCode = projectProperties["versionCode"].toString().toInt()
-        versionName =
-            "${projectProperties["major"]}.${projectProperties["minor"]}.${projectProperties["patch"]}"
+        versionName = "${projectProperties["major"]}.${projectProperties["minor"]}.${projectProperties["patch"]}"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -40,27 +39,25 @@ android {
             isMinifyEnabled = false
             if (test) {
                 resValue("string", "app_name", "DesignSystem (Dev)")
-                buildConfigField("boolean", "isTest", "true")
+//                buildConfigField("boolean", "test", "true")
             } else {
                 resValue("string", "app_name", "DesignSystem")
-                buildConfigField("boolean", "isTest", "false")
+//                buildConfigField("boolean", "test", "false")
             }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-
-            //archivesName.set("mailringx-${projectProperties["major"]}.${projectProperties["minor"]}.${projectProperties["patch"]}-debug")
         }
         release {
             isShrinkResources = true
             isMinifyEnabled = true
             if (test) {
                 resValue("string", "app_name", "DesignSystem (Dev)")
-                buildConfigField("boolean", "isTest", "true")
+//                buildConfigField("boolean", "test", "true")
             } else {
                 resValue("string", "app_name", "DesignSystem")
-                buildConfigField("boolean", "isTest", "false")
+//                buildConfigField("boolean", "test", "false")
             }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -108,64 +105,3 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 }
-
-//val keystoreProperties = Properties().apply {
-//    load(FileInputStream(rootProject.file("keystore.properties")))
-//}
-
-//android {
-//    namespace = "com.emailphone.android"
-//    compileSdk = projectProperties["compileSdk"].toString().toInt()
-//
-//    defaultConfig {
-//        applicationId = if (isTest) "com.emailphone.android" else "com.emailphone.android"
-//        minSdk = projectProperties["minSdk"].toString().toInt()
-//        targetSdk = projectProperties["targetSdk"].toString().toInt()
-//        versionCode = projectProperties["versionCode"].toString().toInt()
-//        versionName =
-//            "${projectProperties["major"]}.${projectProperties["minor"]}.${projectProperties["patch"]}"
-//
-//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-//        buildConfigField("Boolean", "isTest", isTest.toString())
-//        vectorDrawables {
-//            useSupportLibrary = true
-//        }
-//    }
-//    signingConfigs {
-//        create("config") {
-//            storeFile = file(keystoreProperties["storeFile"].toString())
-//            storePassword = keystoreProperties["storePassword"].toString()
-//            keyAlias = keystoreProperties["keyAlias"].toString()
-//            keyPassword = keystoreProperties["keyPassword"].toString()
-//        }
-//    }
-
-//    composeOptions {
-//        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
-//    }
-//    compileOptions {
-//        // Flag to enable support for the new language APIs
-//        isCoreLibraryDesugaringEnabled = true
-//        sourceCompatibility = JavaVersion.VERSION_1_8
-//        targetCompatibility = JavaVersion.VERSION_1_8
-//    }
-//    kotlinOptions {
-//        jvmTarget = "1.8"
-//    }
-//    packaging {
-//        resources {
-//            excludes += "META-INF/INDEX.LIST"
-//            excludes += "META-INF/DEPENDENCIES"
-//            excludes += "META-INF/LICENSE"
-//            excludes += "META-INF/LICENSE.txt"
-//            excludes += "META-INF/license.txt"
-//            excludes += "META-INF/NOTICE"
-//            excludes += "META-INF/NOTICE.txt"
-//            excludes += "META-INF/notice.txt"
-//            excludes += "META-INF/ASL2.0"
-//            excludes += "META-INF/*.kotlin_module"
-//            excludes += "META-INF/io.netty.versions.properties"
-//        }
-//    }
-//}
-//

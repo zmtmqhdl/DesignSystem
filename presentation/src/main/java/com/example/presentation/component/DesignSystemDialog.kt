@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.presentation.theme.DesignSystemTheme
 
@@ -178,3 +179,51 @@ object DesignSystemDialog {
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemDialog_Single_SingleArrangement() {
+    DesignSystemTheme {
+        DesignSystemDialog.Single.SingleArrangement(
+            title = "title",
+            certification = "certification",
+            subText = "subText",
+            text = "text",
+            buttonText = "button",
+            onClick = { }
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemDialog_Double_ColumnArrangement() {
+    DesignSystemTheme {
+        DesignSystemDialog.Double.ColumnArrangement(
+            title = "title",
+            certification = "certification",
+            subText = "subText",
+            text = "text",
+            buttonText1 = "button1",
+            buttonText2 = "button2",
+            onClick1 = { },
+            onClick2 = { }
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemDialog_Double_RowArrangement() {
+    DesignSystemTheme {
+        DesignSystemDialog.Double.RowArrangement(
+            title = "title",
+            certification = "certification",
+            subText = "subText",
+            text = "text",
+            buttonText1 = "button1",
+            buttonText2 = "button2",
+            onClick1 = { },
+            onClick2 = { }
+        )
+    }
+}

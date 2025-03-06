@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.example.presentation.common.IconPosition
 import com.example.presentation.theme.DesignSystemColorSet
@@ -531,5 +532,60 @@ object DesignSystemButton {
                 iconPosition = iconPosition
             )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_CTA_Xlarge() {
+    DesignSystemTheme {
+        DesignSystemButton.CTA.Xlarge(
+            text = "Xlarge",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_CTA_Large() {
+    DesignSystemTheme {
+        DesignSystemButton.CTA.Large(
+            text = "Large",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_CTA_Medium() {
+    DesignSystemTheme {
+        DesignSystemButton.CTA.Medium(
+            text = "Medium",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_CTA_Small() {
+    DesignSystemTheme {
+        DesignSystemButton.CTA.Small(
+            text = "Small",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_CTA_Tiny() {
+    DesignSystemTheme {
+        DesignSystemButton.CTA.Tiny(
+            text = "Tiny",
+            onClick = { },
+        )
     }
 }

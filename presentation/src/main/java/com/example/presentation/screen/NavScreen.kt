@@ -18,7 +18,6 @@ fun NavScreen() {
     var selectedTab by remember { mutableIntStateOf(0) }
 
     val navController = rememberNavController()
-    // val secondNavController = rememberNavController()
 
     DesignSystemScreen.PrimaryScaffold(
         topBar = {
