@@ -589,3 +589,168 @@ fun Preview_DesignSystemButton_CTA_Tiny() {
         )
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Primary_Xlarge() {
+    DesignSystemTheme {
+        DesignSystemButton.Primary.Xlarge(
+            text = "Xlarge",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Primary_Large() {
+    DesignSystemTheme {
+        DesignSystemButton.Primary.Large(
+            text = "Large",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Primary_Medium() {
+    DesignSystemTheme {
+        DesignSystemButton.Primary.Medium(
+            text = "Medium",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Primary_Small() {
+    DesignSystemTheme {
+        DesignSystemButton.Primary.Small(
+            text = "Small",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Primary_Tiny() {
+    DesignSystemTheme {
+        DesignSystemButton.Primary.Tiny(
+            text = "Tiny",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Secondary_Xlarge() {
+    DesignSystemTheme {
+        DesignSystemButton.Secondary.Xlarge(
+            text = "Xlarge",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Secondary_Large() {
+    DesignSystemTheme {
+        DesignSystemButton.Secondary.Large(
+            text = "Large",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Secondary_Medium() {
+    DesignSystemTheme {
+        DesignSystemButton.Secondary.Medium(
+            text = "Medium",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Secondary_Small() {
+    DesignSystemTheme {
+        DesignSystemButton.Secondary.Small(
+            text = "Small",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Secondary_Tiny() {
+    DesignSystemTheme {
+        DesignSystemButton.Secondary.Tiny(
+            text = "Tiny",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Warning_Xlarge() {
+    DesignSystemTheme {
+        DesignSystemButton.Warning.Xlarge(
+            text = "Xlarge",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Warning_Large() {
+    DesignSystemTheme {
+        DesignSystemButton.Warning.Large(
+            text = "Large",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Warning_Medium() {
+    DesignSystemTheme {
+        DesignSystemButton.Warning.Medium(
+            text = "Medium",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Warning_Small() {
+    DesignSystemTheme {
+        DesignSystemButton.Warning.Small(
+            text = "Small",
+            onClick = { },
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemButton_Warning_Tiny() {
+    DesignSystemTheme {
+        DesignSystemButton.Warning.Tiny(
+            text = "Tiny",
+            onClick = { },
+        )
+    }
+}

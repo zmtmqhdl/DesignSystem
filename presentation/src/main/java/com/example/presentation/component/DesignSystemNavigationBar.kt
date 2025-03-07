@@ -32,12 +32,12 @@ fun PrimaryNavigationBar(
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun PreviewPrimaryNavigationBar() {
-//    PrimaryNavigationBar(
-//        route = listOf(Screen.Main, Screen.Second),
-//        currentTab = 0
-//        onSelected
-//    ) { }
-//}
+@Preview(showBackground = true)
+@Composable
+fun PreviewPrimaryNavigationBar() {
+    PrimaryNavigationBar(
+        route = listOf(Screen.Main, Screen.Second),
+        currentTab = 0,
+        onSelectedTab = { index -> index }
+    )
+}

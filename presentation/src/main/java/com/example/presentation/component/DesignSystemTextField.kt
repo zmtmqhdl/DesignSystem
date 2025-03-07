@@ -50,6 +50,7 @@ fun Preview_DesignSystemTextField_Outlined_Primary() {
         value = " ",
         onValueChange = { newValue = it },
         label = "label",
+        placeholder = "placeholder",
         leadingIcon = close,
         trailIcon = close,
     )
