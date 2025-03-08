@@ -47,7 +47,7 @@ fun Preview_DesignSystemTextField_Outlined_Primary() {
     var newValue by remember { mutableStateOf("")}
 
     DesignSystemTextField.Outlined.Primary(
-        value = " ",
+        value = "",
         onValueChange = { newValue = it },
         label = "label",
         placeholder = "placeholder",

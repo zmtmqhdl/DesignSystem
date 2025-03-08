@@ -8,7 +8,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.example.presentation.Icon.close
-import com.example.presentation.Icon.person
 import com.example.presentation.theme.DesignSystemTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,7 +42,7 @@ fun PreviewPrimaryTopBar() {
     PrimaryTopBar(
         title = { Text("title") },
         leftIcons = listOf(close),
-        rightIcons = listOf(close, person),
+        rightIcons = listOf(close, close),
         onLeftIconClick = { },
         onRightIconClick = listOf(
             {  },

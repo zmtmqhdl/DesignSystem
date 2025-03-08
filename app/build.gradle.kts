@@ -39,10 +39,8 @@ android {
             isMinifyEnabled = false
             if (test) {
                 resValue("string", "app_name", "DesignSystem (Dev)")
-//                buildConfigField("boolean", "test", "true")
             } else {
                 resValue("string", "app_name", "DesignSystem")
-//                buildConfigField("boolean", "test", "false")
             }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -54,10 +52,8 @@ android {
             isMinifyEnabled = true
             if (test) {
                 resValue("string", "app_name", "DesignSystem (Dev)")
-//                buildConfigField("boolean", "test", "true")
             } else {
                 resValue("string", "app_name", "DesignSystem")
-//                buildConfigField("boolean", "test", "false")
             }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

@@ -14,10 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.presentation.theme.DesignSystemTheme
 import kotlinx.coroutines.launch
 
+// 개선 필요
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PrimaryModal(
@@ -128,14 +128,3 @@ object DesignSystemBottomSheet {
         }
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun DesignSystemBottomSheet_Modal_Single_SingleArrangement() {
-    DesignSystemBottomSheet.Modal.Single.SingleArrangement(
-
-    )
-}
-
-
-
