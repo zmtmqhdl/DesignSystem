@@ -4,13 +4,15 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-val forwardIcon: ImageVector = ImageVector.Builder(
-    name = "forward",
+val forward: ImageVector = ImageVector.Builder(
+    name = "back",
     defaultWidth = 16.dp,
     defaultHeight = 16.dp,
     viewportWidth = 960f,
@@ -18,26 +20,34 @@ val forwardIcon: ImageVector = ImageVector.Builder(
 ).apply {
     path(
         fill = SolidColor(Color.Black),
+        fillAlpha = 1.0f,
+        stroke = null,
+        strokeAlpha = 1.0f,
+        strokeLineWidth = 1.0f,
+        strokeLineCap = StrokeCap.Butt,
+        strokeLineJoin = StrokeJoin.Miter,
+        strokeLineMiter = 1.0f,
     ) {
-        moveTo(330f, 516f)
-        lineTo(531f, 717f)
-        lineTo(480f, 768f)
-        lineTo(192f, 480f)
+        moveTo(630f, 516f)
+        lineTo(192f, 516f)
+        lineTo(192f, 444f)
+        lineTo(630f, 444f)
+        lineTo(429f, 243f)
         lineTo(480f, 192f)
-        lineTo(531f, 243f)
-        lineTo(330f, 444f)
-        lineTo(768f, 444f)
-        lineTo(768f, 516f)
-        lineTo(330f, 516f)
+        lineTo(768f, 480f)
+        lineTo(480f, 768f)
+        lineTo(429f, 717f)
+        lineTo(630f, 516f)
         close()
     }
 }.build()
 
+
 @Preview(showBackground = true)
 @Composable
-fun ForwardIconPreview() {
+fun BackIconPreview() {
     Icon(
-        imageVector = forwardIcon,
+        imageVector = forward,
         contentDescription = null,
     )
 }

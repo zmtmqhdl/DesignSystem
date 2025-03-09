@@ -9,36 +9,35 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-val backIcon: ImageVector = ImageVector.Builder(
-    name = "back",
+val back: ImageVector = ImageVector.Builder(
+    name = "forward",
     defaultWidth = 16.dp,
     defaultHeight = 16.dp,
     viewportWidth = 960f,
     viewportHeight = 960f
 ).apply {
     path(
-        fill = SolidColor(Color.White),
+        fill = SolidColor(Color.Black),
     ) {
-        moveTo(630f, 516f)
-        lineTo(192f, 516f)
-        lineTo(192f, 444f)
-        lineTo(630f, 444f)
-        lineTo(429f, 243f)
-        lineTo(480f, 192f)
-        lineTo(768f, 480f)
+        moveTo(330f, 516f)
+        lineTo(531f, 717f)
         lineTo(480f, 768f)
-        lineTo(429f, 717f)
-        lineTo(630f, 516f)
+        lineTo(192f, 480f)
+        lineTo(480f, 192f)
+        lineTo(531f, 243f)
+        lineTo(330f, 444f)
+        lineTo(768f, 444f)
+        lineTo(768f, 516f)
+        lineTo(330f, 516f)
         close()
     }
 }.build()
 
-
 @Preview(showBackground = true)
 @Composable
-fun BackIconPreview() {
+fun ForwardIconPreview() {
     Icon(
-        imageVector = backIcon,
+        imageVector = back,
         contentDescription = null,
     )
 }

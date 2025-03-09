@@ -7,7 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import com.example.presentation.Icon.back
 import com.example.presentation.Icon.close
+import com.example.presentation.Icon.forward
 import com.example.presentation.theme.DesignSystemTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -18,7 +20,7 @@ fun PrimaryTopBar(
     leftIcons: List<ImageVector>,
     rightIcons: List<ImageVector>,
     onLeftIconClick: () -> Unit,
-    onRightIconClick: List<() -> Unit>
+    onRightIconClick: List<() -> Unit>,
 ) {
     TopAppBar(
         title = { title() },
@@ -41,8 +43,8 @@ fun PrimaryTopBar(
 fun PreviewPrimaryTopBar() {
     PrimaryTopBar(
         title = { Text("title") },
-        leftIcons = listOf(close),
-        rightIcons = listOf(close, close),
+        leftIcons = listOf(back),
+        rightIcons = listOf(close, forward),
         onLeftIconClick = { },
         onRightIconClick = listOf(
             {  },
