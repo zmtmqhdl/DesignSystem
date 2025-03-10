@@ -32,7 +32,9 @@ fun PrimaryModal(
 
     LaunchedEffect(sheetState.currentValue) {
         if (sheetState.currentValue == SheetValue.Expanded && !show) {
-            onDismissRequest()
+            onDismissRequest(
+
+            )
         }
     }
 
