@@ -1,9 +1,11 @@
 package com.example.presentation.component
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetValue
@@ -14,10 +16,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.presentation.theme.DesignSystemTheme
 import kotlinx.coroutines.launch
 
-// 개선 필요
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PrimaryModal(
@@ -32,9 +35,7 @@ fun PrimaryModal(
 
     LaunchedEffect(sheetState.currentValue) {
         if (sheetState.currentValue == SheetValue.Expanded && !show) {
-            onDismissRequest(
-
-            )
+            onDismissRequest()
         }
     }
 
@@ -77,7 +78,6 @@ fun PrimaryModal(
                             style = DesignSystemTheme.typography.xl.bold
                         )
                     }
-
                     Text(
                         text = text,
                         modifier = Modifier.padding(bottom = DesignSystemTheme.space.space4),
@@ -121,12 +121,117 @@ object DesignSystemBottomSheet {
 
         object Double {
             @Composable
-            fun ColumnArrangement() {
+            fun ColumnArrangement(
+                title: String? = null,
+                text: String,
+                onDismissRequest: () -> Unit,
+                show: Boolean,
+                buttonText1: String,
+                buttonText2: String,
+                onClick1: () -> Unit,
+                onClick2: () -> Unit,
+            ) {
+                PrimaryModal(
+                    title = title,
+                    text = text,
+                    onDismissRequest = onDismissRequest,
+                    show = show,
+                ) {
+                    Column {
+                        DesignSystemButton.CTA.Medium(
+                            text = buttonText1,
+                            onClick = onClick1,
+                        )
+                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space3))
+                        DesignSystemButton.CTA.Medium(
+                            text = buttonText2,
+                            onClick = onClick2,
+                        )
+                    }
+                }
             }
 
             @Composable
-            fun RowArrangement() {
+            fun RowArrangement(
+                title: String? = null,
+                text: String,
+                onDismissRequest: () -> Unit,
+                show: Boolean,
+                buttonText1: String,
+                buttonText2: String,
+                onClick1: () -> Unit,
+                onClick2: () -> Unit,
+            ) {
+                PrimaryModal(
+                    title = title,
+                    text = text,
+                    onDismissRequest = onDismissRequest,
+                    show = show,
+                ) {
+                    Row {
+                        DesignSystemButton.CTA.Medium(
+                            text = buttonText1,
+                            onClick = onClick1,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Spacer(modifier = Modifier.width(DesignSystemTheme.space.space2))
+                        DesignSystemButton.CTA.Medium(
+                            text = buttonText2,
+                            onClick = onClick2,
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                }
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemBottomSheet_Modal_Single_SingleArrangement() {
+    DesignSystemTheme {
+        DesignSystemBottomSheet.Modal.Single.SingleArrangement(
+            title = "title",
+            text = "text",
+            onDismissRequest = {},
+            show = true,
+            buttonText = "button",
+            onClick = {}
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemBottomSheet_Modal_Double_ColumnArrangement() {
+    DesignSystemTheme {
+        DesignSystemBottomSheet.Modal.Double.ColumnArrangement(
+            title = "title",
+            text = "text",
+            onDismissRequest = {},
+            show = true,
+            buttonText1 = "button1",
+            buttonText2 = "button2",
+            onClick1 = {},
+            onClick2 = {}
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Preview_DesignSystemBottomSheet_Modal_Double_RowArrangement() {
+    DesignSystemTheme {
+        DesignSystemBottomSheet.Modal.Double.RowArrangement(
+            title = "title",
+            text = "text",
+            onDismissRequest = {},
+            show = true,
+            buttonText1 = "button1",
+            buttonText2 = "button2",
+            onClick1 = {},
+            onClick2 = {}
+        )
     }
 }

@@ -21,6 +21,7 @@ import com.example.presentation.theme.DesignSystemTheme
 fun PrimaryButton(
     text: String,
     onClick: () -> Unit,
+    modifier: Modifier? = null,
     state: Boolean,
     color: DesignSystemColorSet,
     width: Dp? = null,
@@ -32,15 +33,16 @@ fun PrimaryButton(
 ) {
     Button(
         onClick = onClick,
-        modifier = if (width != null) {
-            Modifier
-                .width(width)
-                .height(height)
-        } else {
-            Modifier
-                .fillMaxWidth()
-                .height(height)
-        },
+        modifier = modifier
+            ?: if (width != null) {
+                Modifier
+                    .width(width)
+                    .height(height)
+            } else {
+                Modifier
+                    .fillMaxWidth()
+                    .height(height)
+            },
         enabled = state,
         shape = DesignSystemTheme.shape.button,
         colors = if (state) ButtonDefaults.buttonColors(color.background) else ButtonDefaults.buttonColors(
@@ -71,6 +73,7 @@ object DesignSystemButton {
         fun Xlarge(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -81,6 +84,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.primary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space12,
                 space = DesignSystemTheme.space.space4,
@@ -94,6 +98,7 @@ object DesignSystemButton {
         fun Large(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -104,6 +109,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.primary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space11,
                 space = DesignSystemTheme.space.space4,
@@ -117,6 +123,7 @@ object DesignSystemButton {
         fun Medium(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -127,6 +134,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.primary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space9,
                 space = DesignSystemTheme.space.space4,
@@ -140,6 +148,7 @@ object DesignSystemButton {
         fun Small(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -150,6 +159,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.primary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space8,
                 space = DesignSystemTheme.space.space3,
@@ -163,6 +173,7 @@ object DesignSystemButton {
         fun Tiny(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -173,6 +184,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.primary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space7,
                 space = DesignSystemTheme.space.space3,
@@ -188,6 +200,7 @@ object DesignSystemButton {
         fun Xlarge(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -198,6 +211,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.primary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space12,
                 space = DesignSystemTheme.space.space4,
@@ -211,6 +225,7 @@ object DesignSystemButton {
         fun Large(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -221,6 +236,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.primary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space11,
                 space = DesignSystemTheme.space.space4,
@@ -234,6 +250,7 @@ object DesignSystemButton {
         fun Medium(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -244,6 +261,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.primary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space9,
                 space = DesignSystemTheme.space.space4,
@@ -257,6 +275,7 @@ object DesignSystemButton {
         fun Small(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -267,6 +286,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.primary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space8,
                 space = DesignSystemTheme.space.space3,
@@ -280,6 +300,7 @@ object DesignSystemButton {
         fun Tiny(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -290,6 +311,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.primary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space7,
                 space = DesignSystemTheme.space.space3,
@@ -305,6 +327,7 @@ object DesignSystemButton {
         fun Xlarge(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -315,6 +338,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.secondary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space12,
                 space = DesignSystemTheme.space.space4,
@@ -328,6 +352,7 @@ object DesignSystemButton {
         fun Large(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -338,6 +363,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.secondary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space11,
                 space = DesignSystemTheme.space.space4,
@@ -351,6 +377,7 @@ object DesignSystemButton {
         fun Medium(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -361,6 +388,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.secondary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space9,
                 space = DesignSystemTheme.space.space4,
@@ -374,6 +402,7 @@ object DesignSystemButton {
         fun Small(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -384,6 +413,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.secondary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space8,
                 space = DesignSystemTheme.space.space3,
@@ -397,6 +427,7 @@ object DesignSystemButton {
         fun Tiny(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -407,6 +438,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.secondary,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space7,
                 space = DesignSystemTheme.space.space3,
@@ -422,6 +454,7 @@ object DesignSystemButton {
         fun Xlarge(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -432,6 +465,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.warning,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space12,
                 space = DesignSystemTheme.space.space4,
@@ -445,6 +479,7 @@ object DesignSystemButton {
         fun Large(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -455,6 +490,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.warning,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space11,
                 space = DesignSystemTheme.space.space4,
@@ -468,6 +504,7 @@ object DesignSystemButton {
         fun Medium(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -478,6 +515,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.warning,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space9,
                 space = DesignSystemTheme.space.space4,
@@ -491,6 +529,7 @@ object DesignSystemButton {
         fun Small(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -501,6 +540,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.warning,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space8,
                 space = DesignSystemTheme.space.space3,
@@ -514,6 +554,7 @@ object DesignSystemButton {
         fun Tiny(
             text: String,
             onClick: () -> Unit,
+            modifier: Modifier? = null,
             width: Dp? = null,
             state: Boolean = true,
             icon: ImageVector? = null,
@@ -524,6 +565,7 @@ object DesignSystemButton {
                 onClick = onClick,
                 state = state,
                 color = DesignSystemTheme.color.warning,
+                modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space7,
                 space = DesignSystemTheme.space.space3,

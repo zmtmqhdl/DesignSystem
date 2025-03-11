@@ -165,13 +165,13 @@ object DesignSystemDialog {
                     DesignSystemButton.CTA.Medium(
                         text = buttonText2,
                         onClick = onClick2,
-                        width = 120.dp
+                        modifier = Modifier.weight(1f)
                     )
                     Spacer(modifier = Modifier.width(DesignSystemTheme.space.space2))
                     DesignSystemButton.Primary.Medium(
                         text = buttonText1,
                         onClick = onClick1,
-                        width = 120.dp
+                        modifier = Modifier.weight(1f)
                     )
                 }
             }
