@@ -1,33 +1,24 @@
 package com.example.presentation.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.presentation.Icon.close
 import com.example.presentation.screen.MainScreen
 import com.example.presentation.screen.SecondScreen
+import com.example.presentation.screen.SplashScreen
 
-sealed class Screen(
-    val route: String,
-    val label: String? = null,
-    val selectedIcon: ImageVector,
-    val unselectedIcon: ImageVector
+@Composable
+fun SplashGraph(
+    navController: NavHostController
 ) {
-    data object Main : Screen(
-        route = "main",
-        label = "main",
-        selectedIcon = close,
-        unselectedIcon = close
-    )
-
-    data object Second : Screen(
-        route = "second",
-        label = "second",
-        selectedIcon = close,
-        unselectedIcon = close
-    )
+    NavHost(
+        navController = navController,
+        startDestination = Screen.Splash.route
+    ) {
+        splashGraph(navController)
+    }
 }
 
 @Composable
@@ -36,9 +27,32 @@ fun MainGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Main.route
+        startDestination = Screen.Splash.route
     ) {
-        composable(Screen.Main.route) { MainScreen() }
-        composable(Screen.Second.route) { SecondScreen() }
+        mainGraph(navController)
+    }
+}
+
+@Composable
+fun FirstGraph(
+    navController: NavHostController
+) {
+    NavHost(
+        navController = navController,
+        startDestination = Screen.First.route
+    ) {
+        firstGraph(navController)
+    }
+}
+
+@Composable
+fun SecondGraph(
+    navController: NavHostController
+) {
+    NavHost(
+        navController = navController,
+        startDestination = Screen.Second.route
+    ) {
+        secondGraph(navController)
     }
 }

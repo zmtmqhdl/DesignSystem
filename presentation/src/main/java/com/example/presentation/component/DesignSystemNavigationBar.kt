@@ -5,12 +5,11 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
-import com.example.presentation.navigation.Screen
+import com.example.presentation.navigation.SealedScreen
 
 @Composable
 fun PrimaryNavigationBar(
-    route: List<Screen>,
+    route: List<SealedScreen>,
     currentTab: Int,
     onSelectedTab: (Int) -> Unit
 ) {
@@ -36,7 +35,7 @@ fun PrimaryNavigationBar(
 @Composable
 fun PreviewPrimaryNavigationBar() {
     PrimaryNavigationBar(
-        route = listOf(Screen.Main, Screen.Second),
+        route = listOf(SealedScreen.Main, SealedScreen.Second),
         currentTab = 0,
         onSelectedTab = { index -> index }
     )
