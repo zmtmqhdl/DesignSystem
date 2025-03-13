@@ -7,8 +7,6 @@ import androidx.navigation.compose.rememberNavController
 @Composable
 fun SplashScreen() {
     DesignSystemScreen.PrimaryScreen() {
-
-        val navController = rememberNavController()
         Text("Splash")
     }
 }

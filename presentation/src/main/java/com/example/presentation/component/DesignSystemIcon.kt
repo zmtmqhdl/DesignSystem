@@ -11,11 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.example.presentation.Icon.close
 import com.example.presentation.common.IconPosition
 import com.example.presentation.theme.DesignSystemTheme
+import com.example.presentation.util.DesignSystemPreview
 
 @Composable
 fun DesignSystemIcon(
@@ -87,7 +87,7 @@ fun DesignSystemIcon(
     }
 }
 
-@Preview(showBackground =  true)
+@DesignSystemPreview
 @Composable
 fun PreviewDesignSystemIcon() {
     DesignSystemIcon(

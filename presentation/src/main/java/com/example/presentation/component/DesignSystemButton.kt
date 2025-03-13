@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.Dp
 import com.example.presentation.common.IconPosition
 import com.example.presentation.theme.DesignSystemColorSet
 import com.example.presentation.theme.DesignSystemTheme
+import com.example.presentation.util.DesignSystemPreview
 
 @Composable
 fun PrimaryButton(
@@ -577,7 +578,7 @@ object DesignSystemButton {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_CTA_Xlarge() {
     DesignSystemTheme {
@@ -588,7 +589,7 @@ fun Preview_DesignSystemButton_CTA_Xlarge() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_CTA_Large() {
     DesignSystemTheme {
@@ -599,7 +600,7 @@ fun Preview_DesignSystemButton_CTA_Large() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_CTA_Medium() {
     DesignSystemTheme {
@@ -610,7 +611,7 @@ fun Preview_DesignSystemButton_CTA_Medium() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_CTA_Small() {
     DesignSystemTheme {
@@ -621,7 +622,7 @@ fun Preview_DesignSystemButton_CTA_Small() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_CTA_Tiny() {
     DesignSystemTheme {
@@ -632,7 +633,7 @@ fun Preview_DesignSystemButton_CTA_Tiny() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Primary_Xlarge() {
     DesignSystemTheme {
@@ -643,7 +644,7 @@ fun Preview_DesignSystemButton_Primary_Xlarge() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Primary_Large() {
     DesignSystemTheme {
@@ -654,7 +655,7 @@ fun Preview_DesignSystemButton_Primary_Large() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Primary_Medium() {
     DesignSystemTheme {
@@ -676,7 +677,7 @@ fun Preview_DesignSystemButton_Primary_Small() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Primary_Tiny() {
     DesignSystemTheme {
@@ -687,7 +688,7 @@ fun Preview_DesignSystemButton_Primary_Tiny() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Secondary_Xlarge() {
     DesignSystemTheme {
@@ -698,7 +699,7 @@ fun Preview_DesignSystemButton_Secondary_Xlarge() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Secondary_Large() {
     DesignSystemTheme {
@@ -709,7 +710,7 @@ fun Preview_DesignSystemButton_Secondary_Large() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Secondary_Medium() {
     DesignSystemTheme {
@@ -720,7 +721,7 @@ fun Preview_DesignSystemButton_Secondary_Medium() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Secondary_Small() {
     DesignSystemTheme {
@@ -731,7 +732,7 @@ fun Preview_DesignSystemButton_Secondary_Small() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Secondary_Tiny() {
     DesignSystemTheme {
@@ -742,7 +743,7 @@ fun Preview_DesignSystemButton_Secondary_Tiny() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Warning_Xlarge() {
     DesignSystemTheme {
@@ -753,7 +754,7 @@ fun Preview_DesignSystemButton_Warning_Xlarge() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Warning_Large() {
     DesignSystemTheme {
@@ -764,7 +765,7 @@ fun Preview_DesignSystemButton_Warning_Large() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Warning_Medium() {
     DesignSystemTheme {
@@ -775,7 +776,7 @@ fun Preview_DesignSystemButton_Warning_Medium() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Warning_Small() {
     DesignSystemTheme {
@@ -786,7 +787,7 @@ fun Preview_DesignSystemButton_Warning_Small() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemButton_Warning_Tiny() {
     DesignSystemTheme {

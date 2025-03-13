@@ -15,9 +15,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.presentation.theme.DesignSystemTheme
+import com.example.presentation.util.DesignSystemPreview
 
 @Composable
 fun PrimaryDialog(
@@ -179,7 +179,7 @@ object DesignSystemDialog {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemDialog_Single_SingleArrangement() {
     DesignSystemTheme {
@@ -194,7 +194,7 @@ fun Preview_DesignSystemDialog_Single_SingleArrangement() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemDialog_Double_ColumnArrangement() {
     DesignSystemTheme {
@@ -211,7 +211,7 @@ fun Preview_DesignSystemDialog_Double_ColumnArrangement() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemDialog_Double_RowArrangement() {
     DesignSystemTheme {

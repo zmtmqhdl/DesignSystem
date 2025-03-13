@@ -11,8 +11,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.presentation.Icon.close
 import com.example.presentation.component.PrimaryNavigationBar
 import com.example.presentation.component.PrimaryTopBar
-import com.example.presentation.navigation.MainGraph
+import com.example.presentation.navigation.FirstGraph
 import com.example.presentation.navigation.Screen
+import com.example.presentation.navigation.SecondGraph
 
 @Composable
 fun MainScreen(navController: NavController) {
@@ -27,7 +28,7 @@ fun MainScreen(navController: NavController) {
                 leftIcons = listOf(close),
                 rightIcons = listOf(close),
                 onLeftIconClick = { },
-                onRightIconClick = listOf({}),
+                onRightIconClick = listOf(),
             )
         },
         bottomBar = {
@@ -44,11 +45,11 @@ fun MainScreen(navController: NavController) {
                         navController = navController
                     )
                 }
-//                1 -> {
-//                    DesignSystemSecondNavGraph(
-//                        navController = secondNavController
-//                    )
-//                }
+                1 -> {
+                    SecondGraph(
+                        navController = navController
+                    )
+                }
             }
         }
     )

@@ -5,12 +5,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.example.presentation.Icon.back
 import com.example.presentation.Icon.close
 import com.example.presentation.Icon.forward
 import com.example.presentation.theme.DesignSystemTheme
+import com.example.presentation.util.DesignSystemPreview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,7 +38,7 @@ fun PrimaryTopBar(
     )
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun PreviewPrimaryTopBar() {
     PrimaryTopBar(

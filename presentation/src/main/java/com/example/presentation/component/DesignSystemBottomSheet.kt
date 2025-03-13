@@ -16,9 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.presentation.theme.DesignSystemTheme
+import com.example.presentation.util.DesignSystemPreview
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -187,7 +186,7 @@ object DesignSystemBottomSheet {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemBottomSheet_Modal_Single_SingleArrangement() {
     DesignSystemTheme {
@@ -202,7 +201,7 @@ fun Preview_DesignSystemBottomSheet_Modal_Single_SingleArrangement() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemBottomSheet_Modal_Double_ColumnArrangement() {
     DesignSystemTheme {
@@ -219,7 +218,7 @@ fun Preview_DesignSystemBottomSheet_Modal_Double_ColumnArrangement() {
     }
 }
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 fun Preview_DesignSystemBottomSheet_Modal_Double_RowArrangement() {
     DesignSystemTheme {
