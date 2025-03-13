@@ -6,8 +6,8 @@ import com.example.presentation.Icon.close
 sealed class Screen(
     val route: String,
     val label: String? = null,
-    val selectedIcon: ImageVector? = null,
-    val unselectedIcon: ImageVector? = null
+    val selectedIcon: ImageVector = close,
+    val unselectedIcon: ImageVector = close
 ) {
     data object Splash : Screen(
         route = "splash"
