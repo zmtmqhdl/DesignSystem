@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContent {
             DesignSystemTheme {
-                NavScreen()
+
             }
         }
     }
