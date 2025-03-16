@@ -6,8 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavHostController
 import com.example.presentation.Icon.close
 import com.example.presentation.component.PrimaryNavigationBar
 import com.example.presentation.component.PrimaryTopBar
@@ -16,10 +15,9 @@ import com.example.presentation.navigation.Screen
 import com.example.presentation.navigation.SecondGraph
 
 @Composable
-fun MainScreen(navController: NavController) {
-    var selectedTab by remember { mutableIntStateOf(0) }
+fun MainScreen(navController: NavHostController) {
 
-    val navController = rememberNavController()
+    var selectedTab by remember { mutableIntStateOf(0) }
 
     DesignSystemScreen.PrimaryScaffold(
         topBar = {

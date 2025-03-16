@@ -17,21 +17,23 @@ import com.example.presentation.util.DesignSystemPreview
 fun PrimaryTopBar(
     title: @Composable () -> Unit,
     size: Dp = DesignSystemTheme.space.space4,
-    leftIcons: List<ImageVector>,
-    rightIcons: List<ImageVector>,
-    onLeftIconClick: () -> Unit,
-    onRightIconClick: List<() -> Unit>,
+    leftIcons: List<ImageVector>? = null,
+    rightIcons: List<ImageVector>? = null,
+    onLeftIconClick: (() -> Unit)? = null,
+    onRightIconClick: List<(() -> Unit)>? = null,
 ) {
     TopAppBar(
         title = { title() },
         navigationIcon = @Composable {
-            leftIcons.forEach { DesignSystemIcon(name = it, onClick = onLeftIconClick, size = size) }
+            leftIcons?.forEach {
+                DesignSystemIcon(name = it, onClick = { onLeftIconClick?.invoke() }, size = size)
+            }
         },
         actions = @Composable {
-            rightIcons.forEachIndexed { index, value ->
+            rightIcons?.forEachIndexed { index, value ->
                 DesignSystemIcon(
                     name = value,
-                    onClick = onRightIconClick[index]
+                    onClick = { onRightIconClick?.getOrNull(index)?.invoke() }
                 )
             }
         }
