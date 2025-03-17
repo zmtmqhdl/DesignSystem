@@ -11,8 +11,7 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-val refresh: ImageVector = ImageVector.Builder(
-    name = "refresh",
+val Close: ImageVector = ImageVector.Builder(
     defaultWidth = 16.dp,
     defaultHeight = 16.dp,
     viewportWidth = 960f,
@@ -28,39 +27,28 @@ val refresh: ImageVector = ImageVector.Builder(
         strokeLineJoin = StrokeJoin.Miter,
         strokeLineMiter = 1.0f
     ) {
-        moveTo(480f, 800f)
-        quadTo(346f, 800f, 253f, 707f)
-        quadTo(160f, 614f, 160f, 480f)
-        quadTo(160f, 346f, 253f, 253f)
-        quadTo(346f, 160f, 480f, 160f)
-        quadTo(549f, 160f, 612f, 188.5f)
-        quadTo(675f, 217f, 720f, 270f)
-        lineTo(720f, 160f)
-        lineTo(800f, 160f)
-        lineTo(800f, 440f)
-        lineTo(520f, 440f)
-        lineTo(520f, 360f)
-        lineTo(688f, 360f)
-        quadTo(656f, 304f, 600.5f, 272f)
-        quadTo(545f, 240f, 480f, 240f)
-        quadTo(380f, 240f, 310f, 310f)
-        quadTo(240f, 380f, 240f, 480f)
-        quadTo(240f, 580f, 310f, 650f)
-        quadTo(380f, 720f, 480f, 720f)
-        quadTo(557f, 720f, 619f, 676f)
-        quadTo(681f, 632f, 706f, 560f)
-        lineTo(790f, 560f)
-        quadTo(762f, 666f, 676f, 733f)
-        quadTo(590f, 800f, 480f, 800f)
+        moveTo(256f, 760f)
+        lineTo(200f, 704f)
+        lineTo(424f, 480f)
+        lineTo(200f, 256f)
+        lineTo(256f, 200f)
+        lineTo(480f, 424f)
+        lineTo(704f, 200f)
+        lineTo(760f, 256f)
+        lineTo(536f, 480f)
+        lineTo(760f, 704f)
+        lineTo(704f, 760f)
+        lineTo(480f, 536f)
+        lineTo(256f, 760f)
         close()
     }
 }.build()
 
 @Preview(showBackground = true)
 @Composable
-fun RefreshIconPreview() {
+private fun ClosePreview() {
     Icon(
-        imageVector = refresh,
+        imageVector = Close,
         contentDescription = null,
     )
 }

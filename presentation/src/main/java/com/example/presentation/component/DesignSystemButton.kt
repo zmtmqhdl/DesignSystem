@@ -580,7 +580,7 @@ object DesignSystemButton {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_CTA_Xlarge() {
+private fun DesignSystemButton_CTA_Xlarge_Preview() {
     DesignSystemTheme {
         DesignSystemButton.CTA.Xlarge(
             text = "Xlarge",
@@ -591,7 +591,7 @@ fun Preview_DesignSystemButton_CTA_Xlarge() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_CTA_Large() {
+private fun DesignSystemButton_CTA_Large_Preview() {
     DesignSystemTheme {
         DesignSystemButton.CTA.Large(
             text = "Large",
@@ -602,7 +602,7 @@ fun Preview_DesignSystemButton_CTA_Large() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_CTA_Medium() {
+private fun DesignSystemButton_CTA_Medium_Preview() {
     DesignSystemTheme {
         DesignSystemButton.CTA.Medium(
             text = "Medium",
@@ -613,7 +613,7 @@ fun Preview_DesignSystemButton_CTA_Medium() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_CTA_Small() {
+private fun DesignSystemButton_CTA_Small_Preview() {
     DesignSystemTheme {
         DesignSystemButton.CTA.Small(
             text = "Small",
@@ -624,7 +624,7 @@ fun Preview_DesignSystemButton_CTA_Small() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_CTA_Tiny() {
+private fun DesignSystemButton_CTA_Tiny_Preview() {
     DesignSystemTheme {
         DesignSystemButton.CTA.Tiny(
             text = "Tiny",
@@ -635,7 +635,7 @@ fun Preview_DesignSystemButton_CTA_Tiny() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Primary_Xlarge() {
+private fun DesignSystemButton_Primary_Xlarge_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Primary.Xlarge(
             text = "Xlarge",
@@ -646,7 +646,7 @@ fun Preview_DesignSystemButton_Primary_Xlarge() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Primary_Large() {
+private fun DesignSystemButton_Primary_Large_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Primary.Large(
             text = "Large",
@@ -657,7 +657,7 @@ fun Preview_DesignSystemButton_Primary_Large() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Primary_Medium() {
+private fun DesignSystemButton_Primary_Medium_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Primary.Medium(
             text = "Medium",
@@ -668,7 +668,7 @@ fun Preview_DesignSystemButton_Primary_Medium() {
 
 @Preview(showBackground = true)
 @Composable
-fun Preview_DesignSystemButton_Primary_Small() {
+private fun DesignSystemButton_Primary_Small_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Primary.Small(
             text = "Small",
@@ -679,7 +679,7 @@ fun Preview_DesignSystemButton_Primary_Small() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Primary_Tiny() {
+private fun DesignSystemButton_Primary_Tiny_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Primary.Tiny(
             text = "Tiny",
@@ -690,7 +690,7 @@ fun Preview_DesignSystemButton_Primary_Tiny() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Secondary_Xlarge() {
+private fun DesignSystemButton_Secondary_Xlarge_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Secondary.Xlarge(
             text = "Xlarge",
@@ -701,7 +701,7 @@ fun Preview_DesignSystemButton_Secondary_Xlarge() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Secondary_Large() {
+private fun DesignSystemButton_Secondary_Large_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Secondary.Large(
             text = "Large",
@@ -712,7 +712,7 @@ fun Preview_DesignSystemButton_Secondary_Large() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Secondary_Medium() {
+private fun DesignSystemButton_Secondary_Medium_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Secondary.Medium(
             text = "Medium",
@@ -723,7 +723,7 @@ fun Preview_DesignSystemButton_Secondary_Medium() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Secondary_Small() {
+private fun DesignSystemButton_Secondary_Small_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Secondary.Small(
             text = "Small",
@@ -734,7 +734,7 @@ fun Preview_DesignSystemButton_Secondary_Small() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Secondary_Tiny() {
+private fun DesignSystemButton_Secondary_Tiny_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Secondary.Tiny(
             text = "Tiny",
@@ -745,7 +745,7 @@ fun Preview_DesignSystemButton_Secondary_Tiny() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Warning_Xlarge() {
+private fun DesignSystemButton_Warning_Xlarge_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Warning.Xlarge(
             text = "Xlarge",
@@ -756,7 +756,7 @@ fun Preview_DesignSystemButton_Warning_Xlarge() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Warning_Large() {
+private fun DesignSystemButton_Warning_Large_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Warning.Large(
             text = "Large",
@@ -767,7 +767,7 @@ fun Preview_DesignSystemButton_Warning_Large() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Warning_Medium() {
+private fun DesignSystemButton_Warning_Medium_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Warning.Medium(
             text = "Medium",
@@ -778,7 +778,7 @@ fun Preview_DesignSystemButton_Warning_Medium() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Warning_Small() {
+private fun DesignSystemButton_Warning_Small_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Warning.Small(
             text = "Small",
@@ -789,7 +789,7 @@ fun Preview_DesignSystemButton_Warning_Small() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemButton_Warning_Tiny() {
+private fun DesignSystemButton_Warning_Tiny_Preview() {
     DesignSystemTheme {
         DesignSystemButton.Warning.Tiny(
             text = "Tiny",

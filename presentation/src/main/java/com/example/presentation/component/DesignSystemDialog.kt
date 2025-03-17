@@ -181,7 +181,7 @@ object DesignSystemDialog {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemDialog_Single_SingleArrangement() {
+private fun DesignSystemDialog_Single_SingleArrangement_Preview() {
     DesignSystemTheme {
         DesignSystemDialog.Single.SingleArrangement(
             title = "title",
@@ -196,7 +196,7 @@ fun Preview_DesignSystemDialog_Single_SingleArrangement() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemDialog_Double_ColumnArrangement() {
+private fun DesignSystemDialog_Double_ColumnArrangement_Preview() {
     DesignSystemTheme {
         DesignSystemDialog.Double.ColumnArrangement(
             title = "title",
@@ -213,7 +213,7 @@ fun Preview_DesignSystemDialog_Double_ColumnArrangement() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemDialog_Double_RowArrangement() {
+private fun DesignSystemDialog_Double_RowArrangement_Preview() {
     DesignSystemTheme {
         DesignSystemDialog.Double.RowArrangement(
             title = "title",

@@ -6,9 +6,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
-import com.example.presentation.Icon.back
-import com.example.presentation.Icon.close
-import com.example.presentation.Icon.forward
+import com.example.presentation.Icon.Back
+import com.example.presentation.Icon.Close
+import com.example.presentation.Icon.Forward
 import com.example.presentation.theme.DesignSystemTheme
 import com.example.presentation.util.DesignSystemPreview
 
@@ -42,11 +42,11 @@ fun PrimaryTopBar(
 
 @DesignSystemPreview
 @Composable
-fun PreviewPrimaryTopBar() {
+private fun PrimaryTopBarPreview() {
     PrimaryTopBar(
         title = { Text("title") },
-        leftIcons = listOf(back),
-        rightIcons = listOf(close, forward),
+        leftIcons = listOf(Back),
+        rightIcons = listOf(Close, Forward),
         onLeftIconClick = { },
         onRightIconClick = listOf(
             {  },

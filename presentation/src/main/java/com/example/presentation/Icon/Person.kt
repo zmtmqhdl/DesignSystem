@@ -11,8 +11,7 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-val person: ImageVector = ImageVector.Builder(
-    name = "person",
+val Person: ImageVector = ImageVector.Builder(
     defaultWidth = 16.dp,
     defaultHeight = 16.dp,
     viewportWidth = 960f,
@@ -82,9 +81,9 @@ val person: ImageVector = ImageVector.Builder(
 
 @Preview(showBackground = true)
 @Composable
-fun PersonIconPreview() {
+private fun PersonPreview() {
     Icon(
-        imageVector = person,
+        imageVector = Person,
         contentDescription = null,
     )
 }

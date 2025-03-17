@@ -33,7 +33,7 @@ fun PrimaryNavigationBar(
 
 @DesignSystemPreview
 @Composable
-fun PreviewPrimaryNavigationBar() {
+private fun PrimaryNavigationBarPreview() {
     PrimaryNavigationBar(
         route = listOf(Screen.First, Screen.Second),
         currentTab = 0,

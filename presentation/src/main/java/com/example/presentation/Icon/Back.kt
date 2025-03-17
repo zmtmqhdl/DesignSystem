@@ -9,8 +9,7 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-val back: ImageVector = ImageVector.Builder(
-    name = "forward",
+val Back: ImageVector = ImageVector.Builder(
     defaultWidth = 16.dp,
     defaultHeight = 16.dp,
     viewportWidth = 960f,
@@ -35,9 +34,9 @@ val back: ImageVector = ImageVector.Builder(
 
 @Preview(showBackground = true)
 @Composable
-fun ForwardIconPreview() {
+private fun BackPreview() {
     Icon(
-        imageVector = back,
+        imageVector = Back,
         contentDescription = null,
     )
 }

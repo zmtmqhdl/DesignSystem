@@ -9,6 +9,7 @@ import com.example.presentation.screen.MainScreen
 import com.example.presentation.theme.DesignSystemTheme
 import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

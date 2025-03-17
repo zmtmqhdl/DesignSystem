@@ -188,7 +188,7 @@ object DesignSystemBottomSheet {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemBottomSheet_Modal_Single_SingleArrangement() {
+private fun DesignSystemBottomSheet_Modal_Single_SingleArrangement_Preview() {
     DesignSystemTheme {
         DesignSystemBottomSheet.Modal.Single.SingleArrangement(
             title = "title",
@@ -203,7 +203,7 @@ fun Preview_DesignSystemBottomSheet_Modal_Single_SingleArrangement() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemBottomSheet_Modal_Double_ColumnArrangement() {
+private fun DesignSystemBottomSheet_Modal_Double_ColumnArrangement_Preview() {
     DesignSystemTheme {
         DesignSystemBottomSheet.Modal.Double.ColumnArrangement(
             title = "title",
@@ -220,7 +220,7 @@ fun Preview_DesignSystemBottomSheet_Modal_Double_ColumnArrangement() {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemBottomSheet_Modal_Double_RowArrangement() {
+private fun DesignSystemBottomSheet_Modal_Double_RowArrangement_Preview() {
     DesignSystemTheme {
         DesignSystemBottomSheet.Modal.Double.RowArrangement(
             title = "title",

@@ -12,8 +12,7 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-val invisibility: ImageVector = ImageVector.Builder(
-    name = "visibilityOff",
+val Invisibility: ImageVector = ImageVector.Builder(
     defaultWidth = 16.dp,
     defaultHeight = 16.dp,
     viewportWidth = 960f,
@@ -94,9 +93,9 @@ val invisibility: ImageVector = ImageVector.Builder(
 
 @Preview(showBackground = true)
 @Composable
-fun VisibilityOffIconPreview() {
+private fun InVisibilityPreview() {
     Icon(
-        imageVector = invisibility,
+        imageVector = Invisibility,
         contentDescription = null,
     )
 }

@@ -11,8 +11,7 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-val visibility: ImageVector = ImageVector.Builder(
-    name = "visibility",
+val Visibility: ImageVector = ImageVector.Builder(
     defaultWidth = 16.dp,
     defaultHeight = 16.dp,
     viewportWidth = 960f,
@@ -79,9 +78,9 @@ val visibility: ImageVector = ImageVector.Builder(
 
 @Preview(showBackground = true)
 @Composable
-fun VisibilityIconPreview() {
+private fun VisibilityPreview() {
     Icon(
-        imageVector = visibility,
+        imageVector = Visibility,
         contentDescription = null,
     )
 }

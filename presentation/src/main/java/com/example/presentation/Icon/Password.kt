@@ -11,8 +11,7 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-val password: ImageVector = ImageVector.Builder(
-    name = "password",
+val Password: ImageVector = ImageVector.Builder(
     defaultWidth = 16.dp,
     defaultHeight = 16.dp,
     viewportWidth = 960f,
@@ -79,9 +78,9 @@ val password: ImageVector = ImageVector.Builder(
 
 @Preview(showBackground = true)
 @Composable
-fun PasswordIconPreview() {
+private fun PasswordPreview() {
     Icon(
-        imageVector = password,
+        imageVector = Password,
         contentDescription = null,
     )
 }

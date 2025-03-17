@@ -7,7 +7,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavHostController
-import com.example.presentation.Icon.close
+import com.example.presentation.Icon.Close
 import com.example.presentation.component.PrimaryNavigationBar
 import com.example.presentation.component.PrimaryTopBar
 import com.example.presentation.navigation.FirstGraph
@@ -23,8 +23,8 @@ fun MainScreen(navController: NavHostController) {
         topBar = {
             PrimaryTopBar(
                 title = { Text("test") },
-                leftIcons = listOf(close),
-                rightIcons = listOf(close),
+                leftIcons = listOf(Close),
+                rightIcons = listOf(Close),
                 onLeftIconClick = { },
                 onRightIconClick = listOf(),
             )

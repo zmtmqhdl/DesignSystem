@@ -5,18 +5,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 
 @Composable
-fun SplashGraph(
-    navController: NavHostController
-) {
-    NavHost(
-        navController = navController,
-        startDestination = Screen.Splash.route
-    ) {
-        splashGraph(navController)
-    }
-}
-
-@Composable
 fun MainGraph(
     navController: NavHostController
 ) {

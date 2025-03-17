@@ -9,7 +9,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.VisualTransformation
-import com.example.presentation.Icon.close
+import com.example.presentation.Icon.Close
 import com.example.presentation.theme.DesignSystemTheme
 import com.example.presentation.util.DesignSystemPreview
 
@@ -42,7 +42,7 @@ object DesignSystemTextField {
 
 @DesignSystemPreview
 @Composable
-fun Preview_DesignSystemTextField_Outlined_Primary() {
+private fun DesignSystemTextField_Outlined_Primary_Preview() {
 
     var newValue by remember { mutableStateOf("")}
 
@@ -51,7 +51,7 @@ fun Preview_DesignSystemTextField_Outlined_Primary() {
         onValueChange = { newValue = it },
         label = "label",
         placeholder = "placeholder",
-        leadingIcon = close,
-        trailIcon = close,
+        leadingIcon = Close,
+        trailIcon = Close,
     )
 }
