@@ -59,33 +59,30 @@ fun PrimaryModal(
             containerColor = DesignSystemTheme.color.white,
             dragHandle = null
         ) {
-            Surface(
-                color = DesignSystemTheme.color.white,
+            Column(
                 modifier = Modifier.padding(
                     start = DesignSystemTheme.space.space4,
                     end = DesignSystemTheme.space.space4,
                     bottom = DesignSystemTheme.space.space4
                 )
             ) {
-                Column {
-                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space10))
-                    title?.let {
-                        Text(
-                            text = it,
-                            modifier = Modifier.padding(bottom = DesignSystemTheme.space.space2),
-                            color = DesignSystemTheme.color.black,
-                            style = DesignSystemTheme.typography.xl.bold
-                        )
-                    }
+                Spacer(modifier = Modifier.height(DesignSystemTheme.space.space10))
+                title?.let {
                     Text(
-                        text = text,
-                        modifier = Modifier.padding(bottom = DesignSystemTheme.space.space4),
+                        text = it,
+                        modifier = Modifier.padding(bottom = DesignSystemTheme.space.space2),
                         color = DesignSystemTheme.color.black,
-                        style = DesignSystemTheme.typography.m.regular
+                        style = DesignSystemTheme.typography.xl.bold
                     )
-                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space6))
-                    content()
                 }
+                Text(
+                    text = text,
+                    modifier = Modifier.padding(bottom = DesignSystemTheme.space.space4),
+                    color = DesignSystemTheme.color.black,
+                    style = DesignSystemTheme.typography.m.regular
+                )
+                Spacer(modifier = Modifier.height(DesignSystemTheme.space.space6))
+                content()
             }
         }
     }
