@@ -21,7 +21,7 @@ import com.example.presentation.util.DesignSystemPreview
 fun DesignSystemIcon(
     name: ImageVector,
     text: String? = null,
-    onClick: (() -> Unit)? = null,
+    onClick: () -> Unit = {},
     size: Dp = DesignSystemTheme.space.space4,
     color: Color = DesignSystemTheme.color.black,
     iconPosition: IconPosition = IconPosition.DEFAULT,
@@ -31,15 +31,11 @@ fun DesignSystemIcon(
             Icon(
                 imageVector = name,
                 contentDescription = text,
-                modifier = if (onClick != null) {
-                    Modifier
-                        .size(size)
-                        .clickable {
-                            onClick()
-                        }
-                } else {
-                    Modifier.size(size)
-                },
+                modifier = Modifier
+                    .size(size)
+                    .clickable {
+                        onClick()
+                    },
                 tint = color
             )
 
@@ -50,15 +46,11 @@ fun DesignSystemIcon(
                 Icon(
                     imageVector = name,
                     contentDescription = text,
-                    modifier = if (onClick != null) {
-                        Modifier
-                            .size(size)
-                            .clickable {
-                                onClick()
-                            }
-                    } else {
-                        Modifier.size(size)
-                    },
+                    modifier = Modifier
+                        .size(size)
+                        .clickable {
+                            onClick()
+                        },
                     tint = color
                 )
                 Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
@@ -72,15 +64,11 @@ fun DesignSystemIcon(
                 Icon(
                     imageVector = name,
                     contentDescription = text,
-                    modifier = if (onClick != null) {
-                        Modifier
-                            .size(size)
-                            .clickable {
-                                onClick()
-                            }
-                    } else {
-                        Modifier.size(size)
-                    },
+                    modifier = Modifier
+                        .size(size)
+                        .clickable {
+                            onClick()
+                        },
                     tint = color
                 )
             }
