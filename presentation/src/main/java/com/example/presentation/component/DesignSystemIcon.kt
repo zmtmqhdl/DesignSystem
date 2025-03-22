@@ -20,7 +20,6 @@ import com.example.presentation.util.DesignSystemPreview
 @Composable
 fun DesignSystemIcon(
     name: ImageVector,
-    text: String? = null,
     onClick: () -> Unit = {},
     size: Dp = DesignSystemTheme.space.space4,
     color: Color = DesignSystemTheme.color.black,
@@ -30,7 +29,7 @@ fun DesignSystemIcon(
         IconPosition.DEFAULT ->
             Icon(
                 imageVector = name,
-                contentDescription = text,
+                contentDescription = null,
                 modifier = Modifier
                     .size(size)
                     .clickable {
@@ -45,7 +44,7 @@ fun DesignSystemIcon(
             ) {
                 Icon(
                     imageVector = name,
-                    contentDescription = text,
+                    contentDescription = null,
                     modifier = Modifier
                         .size(size)
                         .clickable {
@@ -63,7 +62,7 @@ fun DesignSystemIcon(
                 Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
                 Icon(
                     imageVector = name,
-                    contentDescription = text,
+                    contentDescription = null,
                     modifier = Modifier
                         .size(size)
                         .clickable {
@@ -80,7 +79,6 @@ fun DesignSystemIcon(
 private fun DesignSystemIconPreview() {
     DesignSystemIcon(
         name = Close,
-        text = "Icon",
         onClick = { },
     )
 }
