@@ -1,5 +1,7 @@
 package com.example.presentation.component
 
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -8,6 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import com.example.presentation.Icon.Close
 import com.example.presentation.theme.DesignSystemTheme
@@ -33,6 +36,10 @@ object DesignSystemTextField {
                 leadingIcon = leadingIcon?.let { { DesignSystemIcon(name = it) } },
                 trailingIcon = trailIcon?.let { { DesignSystemIcon(name = it) } },
                 visualTransformation = visualTransformation,
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Email
+                ),
+                keyboardActions = KeyboardActions.Default,
                 singleLine = true,
                 shape = DesignSystemTheme.shape.textField
             )
@@ -53,5 +60,6 @@ private fun DesignSystemTextField_Outlined_Primary_Preview() {
         placeholder = "placeholder",
         leadingIcon = Close,
         trailIcon = Close,
+
     )
 }
