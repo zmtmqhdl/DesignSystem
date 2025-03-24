@@ -1,5 +1,6 @@
 package com.example.presentation.component
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -40,11 +41,13 @@ fun PrimaryButton(
                 Modifier
                     .width(width)
                     .height(height)
+                    .border(width = DesignSystemTheme.space.space0, color = color.outline, shape = DesignSystemTheme.shape.button)
                     .clip(DesignSystemTheme.shape.button)
             } else {
                 Modifier
                     .fillMaxWidth()
                     .height(height)
+                    .border(width = DesignSystemTheme.space.space0, color = color.outline)
                     .clip(DesignSystemTheme.shape.button)
             },
         enabled = state,
@@ -58,7 +61,7 @@ fun PrimaryButton(
         )
     ) {
         if (icon != null && iconPosition == IconPosition.LEFT) {
-            DesignSystemIcon(name = icon, iconPosition = iconPosition)
+            DesignSystemIcon(icon = icon, iconPosition = iconPosition)
         }
         Text(
             text = text,
@@ -67,7 +70,7 @@ fun PrimaryButton(
         )
     }
     if (icon != null && iconPosition == IconPosition.RIGHT) {
-        DesignSystemIcon(name = icon, iconPosition = iconPosition)
+        DesignSystemIcon(icon = icon, iconPosition = iconPosition)
     }
 }
 

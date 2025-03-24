@@ -61,9 +61,10 @@ private val space = DesignSystemSpace(
 )
 
 private val shape = DesignSystemShape(
+    bottomSheet = DesignSystemShapes.BottomSheet,
     button = DesignSystemShapes.Button,
     dialog = DesignSystemShapes.Dialog,
-    bottomSheet = DesignSystemShapes.BottomSheet,
+    snackBar = DesignSystemShapes.SnackBar,
     textField =  DesignSystemShapes.TextField
 )
 
@@ -90,18 +91,18 @@ object DesignSystemTheme {
         @ReadOnlyComposable
         get() = LocalColor.current
 
-    val typography: DesignSystemTypography
+    val shape: DesignSystemShape
         @Composable
         @ReadOnlyComposable
-        get() = LocalTypography.current
+        get() = LocalShape.current
 
     val space: DesignSystemSpace
         @Composable
         @ReadOnlyComposable
         get() = LocalSpace.current
 
-    val shape: DesignSystemShape
+    val typography: DesignSystemTypography
         @Composable
         @ReadOnlyComposable
-        get() = LocalShape.current
+        get() = LocalTypography.current
 }

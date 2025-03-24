@@ -26,13 +26,13 @@ fun PrimaryTopBar(
         title = { title() },
         navigationIcon = @Composable {
             leftIcons?.forEach {
-                DesignSystemIcon(name = it, onClick = { onLeftIconClick?.invoke() }, size = size)
+                DesignSystemIcon(icon = it, onClick = { onLeftIconClick?.invoke() }, size = size)
             }
         },
         actions = @Composable {
             rightIcons?.forEachIndexed { index, value ->
                 DesignSystemIcon(
-                    name = value,
+                    icon = value,
                     onClick = { onRightIconClick?.getOrNull(index)?.invoke() }
                 )
             }

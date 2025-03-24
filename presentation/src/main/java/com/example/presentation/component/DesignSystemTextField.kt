@@ -33,8 +33,8 @@ object DesignSystemTextField {
                 onValueChange = onValueChange,
                 label = { label?.let { Text(it) } },
                 placeholder = { placeholder?.let { Text(it) } },
-                leadingIcon = leadingIcon?.let { { DesignSystemIcon(name = it) } },
-                trailingIcon = trailIcon?.let { { DesignSystemIcon(name = it) } },
+                leadingIcon = leadingIcon?.let { { DesignSystemIcon(icon = it) } },
+                trailingIcon = trailIcon?.let { { DesignSystemIcon(icon = it) } },
                 visualTransformation = visualTransformation,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Email

@@ -1,11 +1,83 @@
 package com.example.presentation.component
 
-import androidx.compose.material3.Snackbar
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.TextAlign
+import com.example.presentation.Icon.Person
+import com.example.presentation.common.IconPosition
+import com.example.presentation.theme.DesignSystemColorSet
+import com.example.presentation.theme.DesignSystemTheme
+import com.example.presentation.util.DesignSystemPreview
 
 @Composable
-fun DesignSystemSnackBar() {
-    Snackbar(
-            
+fun DesignSystemSnackBar(
+    snackBarHostState: SnackbarHostState,
+    icon: ImageVector? = null,
+    iconColor: Color,
+    containerColor: Color = DesignSystemTheme.color.white,
+    color: DesignSystemColorSet = DesignSystemTheme.color.primary
+) {
+    SnackbarHost(
+        hostState = snackBarHostState,
+        snackbar = { snackBarData ->
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .border(width = DesignSystemTheme.space.space0, color = color.outline, shape = DesignSystemTheme.shape.snackBar)
+                    .background(color = containerColor, shape = DesignSystemTheme.shape.snackBar)
+            ) {
+                Row(
+                    modifier = Modifier.padding(DesignSystemTheme.space.space4),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    icon?.let {
+                        DesignSystemIcon(
+                            icon = icon,
+                            color = iconColor,
+                            iconPosition = IconPosition.LEFT
+                        )
+                    }
+                    Text(
+                        text = snackBarData.visuals.message,
+                        color = color.fontColor,
+                        textAlign = TextAlign.Center,
+                        style = DesignSystemTheme.typography.s.medium
+                    )
+                }
+            }
+        }
     )
+}
+
+@DesignSystemPreview
+@Composable
+fun DesignSystemSnackBarPreview() {
+
+    val snackBarHostState = remember { SnackbarHostState() }
+
+    LaunchedEffect(Unit) {
+        snackBarHostState.showSnackbar("message")
+    }
+
+    DesignSystemTheme {
+        DesignSystemSnackBar(
+            snackBarHostState = snackBarHostState,
+            icon = Person,
+            iconColor = DesignSystemTheme.color.primary.fontColor
+        )
+    }
 }

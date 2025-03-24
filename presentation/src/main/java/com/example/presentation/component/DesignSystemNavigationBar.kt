@@ -22,7 +22,7 @@ fun PrimaryNavigationBar(
                 },
                 icon = {
                     DesignSystemIcon(
-                        name = if (currentTab == index) value.selectedIcon else value.unselectedIcon
+                        icon = if (currentTab == index) value.selectedIcon else value.unselectedIcon
                     )
                 },
                 label = { value.label?.let { Text(it) } },
