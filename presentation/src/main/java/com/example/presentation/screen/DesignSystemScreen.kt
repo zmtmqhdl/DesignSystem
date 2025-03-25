@@ -1,6 +1,9 @@
 package com.example.presentation.screen
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -32,6 +35,7 @@ object DesignSystemScreen {
         content: @Composable () -> Unit
     ) {
         Scaffold(
+            modifier = Modifier.padding(WindowInsets.navigationBars.asPaddingValues()),
             topBar = topBar,
             bottomBar = bottomBar,
             snackbarHost = { snackBarHost?.let { SnackbarHost(hostState = it) } },
