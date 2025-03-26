@@ -6,8 +6,6 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.presentation.theme.DesignSystemTheme
@@ -31,14 +29,14 @@ object DesignSystemScreen {
     fun PrimaryScaffold(
         topBar: @Composable () -> Unit,
         bottomBar: @Composable () -> Unit,
-        snackBarHost: SnackbarHostState? = null,
+        snackBarHost: @Composable () -> Unit,
         content: @Composable () -> Unit
     ) {
         Scaffold(
             modifier = Modifier.padding(WindowInsets.navigationBars.asPaddingValues()),
             topBar = topBar,
             bottomBar = bottomBar,
-            snackbarHost = { snackBarHost?.let { SnackbarHost(hostState = it) } },
+            snackbarHost = snackBarHost
         ) { innerPadding ->
             Column(
                 modifier = Modifier

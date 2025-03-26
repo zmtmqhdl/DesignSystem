@@ -39,13 +39,11 @@ fun MainScreen(navController: NavHostController) {
                 onSelectedTab = { index -> selectedTab = index }
             )
         },
-        snackBarHost = DesignSystemSnackBar(
-            snackBarHostState = snackBarHostState,
-            icon = ,
-            iconColor = ,
-            containerColor = ,
-            color =
-        ),
+        snackBarHost = {
+            DesignSystemSnackBar(
+                snackBarHostState = snackBarHostState
+            )
+        },
         content = {
             when (selectedTab) {
                 0 -> {
@@ -53,6 +51,7 @@ fun MainScreen(navController: NavHostController) {
                         navController = navController
                     )
                 }
+
                 1 -> {
                     SecondGraph(
                         navController = navController
