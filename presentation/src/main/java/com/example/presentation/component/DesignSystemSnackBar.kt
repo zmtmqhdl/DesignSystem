@@ -39,7 +39,6 @@ fun SnackBar(
         snackBarHostState.showSnackbar(
             message = text,
             duration = duration
-
         )
     }
 }
