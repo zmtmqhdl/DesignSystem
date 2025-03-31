@@ -43,6 +43,13 @@ fun SnackBar(
     }
 }
 
+data class DesignSystemSnackBarVisuals(
+    override val message: String,
+    override val duration: SnackbarDuration = SnackbarDuration.Short,
+    val icon: ImageVector? = null,
+
+) : SnackbarVisuals
+
 @Composable
 fun DesignSystemSnackBar(
     snackBarHostState: SnackbarHostState,
