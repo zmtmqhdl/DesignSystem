@@ -35,7 +35,7 @@ fun PrimaryButton(
     iconPosition: IconPosition = IconPosition.DEFAULT,
 ) {
     Button(
-        onClick = onClick,
+        onClick = onClick,dd
         modifier = modifier
             ?: if (width != null) {
                 Modifier
