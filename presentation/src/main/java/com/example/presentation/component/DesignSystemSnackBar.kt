@@ -29,25 +29,39 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 fun SnackBar(
+    backgroundColor: Color?,
+    duration: SnackbarDuration = SnackbarDuration.Short,
+    icon: ImageVector?,
+    iconColor: Color?,
+    outlineColor: Color?,
     snackBarHostState: SnackbarHostState,
     text: String,
-    duration: SnackbarDuration = SnackbarDuration.Short
 ) {
     snackBarHostState.currentSnackbarData?.dismiss()
 
     CoroutineScope(Dispatchers.Main).launch {
         snackBarHostState.showSnackbar(
-            message = text,
-            duration = duration
+            DesignSystemSnackBarVisuals(
+                backgroundColor = backgroundColor,
+                duration = duration,
+                icon = icon,
+                iconColor = iconColor,
+                message = text,
+                outlineColor = outlineColor
+            )
         )
     }
 }
 
 data class DesignSystemSnackBarVisuals(
-    override val message: String,
+    override val actionLabel: String? = null,
+    val backgroundColor: Color? = null,
     override val duration: SnackbarDuration = SnackbarDuration.Short,
     val icon: ImageVector? = null,
-
+    val iconColor: Color? = null,
+    override val message: String,
+    val outlineColor: Color? = null,
+    override val withDismissAction: Boolean = false,
 ) : SnackbarVisuals
 
 @Composable
@@ -64,7 +78,11 @@ fun DesignSystemSnackBar(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .border(width = DesignSystemTheme.space.space0, color = color.outline, shape = DesignSystemTheme.shape.snackBar)
+                    .border(
+                        width = DesignSystemTheme.space.space0,
+                        color = color.outline,
+                        shape = DesignSystemTheme.shape.snackBar
+                    )
                     .background(color = containerColor, shape = DesignSystemTheme.shape.snackBar)
             ) {
                 Row(
