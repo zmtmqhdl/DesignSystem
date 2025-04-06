@@ -1,7 +1,4 @@
-package com.example.data.repository
-
-import com.example.data.model.RetrofitData
-import retrofit2.Response
+package com.example.domain.repository
 
 interface RetrofitRepository {
     suspend fun get(postId: Int): RetrofitData
@@ -9,5 +6,5 @@ interface RetrofitRepository {
     suspend fun post(newExample: RetrofitData): RetrofitData
     suspend fun put(postId: Int, updatedExample: RetrofitData): RetrofitData
     suspend fun patch(postId: Int, partialUpdate: Map<String, Any>): RetrofitData
-    suspend fun delete(postId: Int): Response<Unit>
+    suspend fun delete(postId: Int): Boolean
 }

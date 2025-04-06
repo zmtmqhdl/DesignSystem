@@ -1,4 +1,4 @@
-package com.example.data.model
+package com.example.domain.repository
 
 data class RetrofitData(
     val userId: Int = 0,
