@@ -2,15 +2,16 @@ package com.example.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.data.model.RetrofitDataDto
+import com.example.data.model.RetrofitDto
 import com.example.data.retrofit.RetrofitClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.example.data.repository.RoomRepository
-import com.example.data.room.RoomEntity
+import com.example.domain.repository.RoomRepository
+import com.example.data.model.RoomEntity
+import com.example.domain.model.RoomData
 import com.example.domain.repository.RetrofitRepository
 import kotlinx.coroutines.flow.asStateFlow
 
@@ -35,19 +36,19 @@ class HomeViewModel @Inject constructor(
 
     fun loadUserById(id: Int) {
         viewModelScope.launch {
-            val user = roomRepository.getUserById(id)
+            val user = roomRepository.getUserById(id = id)
             _userText.value = user?.let { "${it.name} ${it.age}살" } ?: "User not found"
         }
     }
 
     fun insertUser(name: String, age: Int) {
         viewModelScope.launch {
-            val user = RoomEntity(name = name, age = age)
+            val user = RoomData(name = name, age = age)
             roomRepository.insertUser(user)
         }
     }
 
-    private val _post = MutableStateFlow<RetrofitDataDto?>(null)
+    private val _post = MutableStateFlow<RetrofitDto?>(null)
     val post = _post.asStateFlow()
 
     fun fetchPost(postId: Int) {

@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.example.data.room.RoomDatabase
 import com.example.data.room.RoomDao
-import com.example.data.repository.RoomRepository
-import com.example.data.repository.RoomRepositoryImpl
+import com.example.domain.repository.RoomRepository
+import com.example.data.repositoryImpl.RoomRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

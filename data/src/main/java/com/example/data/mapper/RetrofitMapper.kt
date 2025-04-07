@@ -1,9 +1,9 @@
 package com.example.data.mapper
 
-import com.example.data.model.RetrofitDataDto
+import com.example.data.model.RetrofitDto
 import com.example.domain.repository.RetrofitData
 
-fun RetrofitDataDto.toDomain(): RetrofitData {
+fun RetrofitDto.toDomain(): RetrofitData {
     return RetrofitData(
         userId = this.userId,
         id = this.id,
@@ -12,8 +12,8 @@ fun RetrofitDataDto.toDomain(): RetrofitData {
     )
 }
 
-fun RetrofitData.toDto(): RetrofitDataDto {
-    return RetrofitDataDto(
+fun RetrofitData.toDto(): RetrofitDto {
+    return RetrofitDto(
         userId = this.userId,
         id = this.id,
         title = this.title,

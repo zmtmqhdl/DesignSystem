@@ -41,6 +41,9 @@ dependencies {
     implementation(libs.material)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // data store
+    implementation(libs.androidx.datastore.preferences)
+
     // module
     implementation(project(":domain"))
 

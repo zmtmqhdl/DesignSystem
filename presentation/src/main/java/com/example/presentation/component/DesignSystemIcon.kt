@@ -20,21 +20,25 @@ import com.example.presentation.util.DesignSystemPreview
 @Composable
 fun DesignSystemIcon(
     icon: ImageVector,
-    onClick: () -> Unit = {},
+    onClick: (() -> Unit)? = null,
     size: Dp = DesignSystemTheme.space.space4,
     color: Color = DesignSystemTheme.color.black,
     iconPosition: IconPosition = IconPosition.DEFAULT,
 ) {
+    val modifier = if (onClick != null) {
+        Modifier
+            .size(size)
+            .clickable { onClick() }
+    } else {
+        Modifier.size(size)
+    }
+
     when (iconPosition) {
         IconPosition.DEFAULT ->
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                modifier = Modifier
-                    .size(size)
-                    .clickable {
-                        onClick()
-                    },
+                modifier = modifier,
                 tint = color
             )
 
@@ -45,11 +49,7 @@ fun DesignSystemIcon(
                 Icon(
                     imageVector = icon,
                     contentDescription = null,
-                    modifier = Modifier
-                        .size(size)
-                        .clickable {
-                            onClick()
-                        },
+                    modifier = modifier,
                     tint = color
                 )
                 Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
@@ -63,11 +63,7 @@ fun DesignSystemIcon(
                 Icon(
                     imageVector = icon,
                     contentDescription = null,
-                    modifier = Modifier
-                        .size(size)
-                        .clickable {
-                            onClick()
-                        },
+                    modifier = modifier,
                     tint = color
                 )
             }

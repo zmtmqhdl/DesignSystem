@@ -93,6 +93,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
 
+    // data store
+    implementation(libs.androidx.datastore.preferences)
+
     // module
     implementation(project(":data"))
     implementation(project(":domain"))

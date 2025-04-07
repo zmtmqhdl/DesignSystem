@@ -1,6 +1,6 @@
 package com.example.designsystem.di
 
-import com.example.data.repository.RetrofitRepositoryImpl
+import com.example.data.repositoryImpl.RetrofitRepositoryImpl
 import com.example.data.retrofit.RetrofitClient
 import com.example.data.retrofit.RetrofitService
 import com.example.domain.repository.RetrofitRepository

@@ -1,6 +1,6 @@
 package com.example.data.retrofit
 
-import com.example.data.model.RetrofitDataDto
+import com.example.data.model.RetrofitDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -13,22 +13,22 @@ import retrofit2.http.Query
 
 interface RetrofitService {
     @GET("todos/{id}")
-    suspend fun get(@Path("id") postId: Int): RetrofitDataDto
+    suspend fun get(@Path("id") postId: Int): RetrofitDto
 
     @GET("todos")
     suspend fun getQuery(
         @Query("userId") userId: Int,
         @Query("completed") completed: Boolean
-    ): List<RetrofitDataDto>
+    ): List<RetrofitDto>
 
     @POST("todos")
-    suspend fun post(@Body newExample: RetrofitDataDto): RetrofitDataDto
+    suspend fun post(@Body newExample: RetrofitDto): RetrofitDto
 
     @PUT("todos/{id}")
-    suspend fun put(@Path("id") postId: Int, @Body updatedExample: RetrofitDataDto): RetrofitDataDto
+    suspend fun put(@Path("id") postId: Int, @Body updatedExample: RetrofitDto): RetrofitDto
 
     @PATCH("todos/{id}")
-    suspend fun patch(@Path("id") postId: Int, @Body partialUpdate: Map<String, Any>): RetrofitDataDto
+    suspend fun patch(@Path("id") postId: Int, @Body partialUpdate: Map<String, Any>): RetrofitDto
 
     @DELETE("todos/{id}")
     suspend fun delete(@Path("id") postId: Int): Response<Unit>
