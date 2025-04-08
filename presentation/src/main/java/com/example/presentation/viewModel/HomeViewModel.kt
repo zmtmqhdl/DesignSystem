@@ -4,16 +4,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.model.RetrofitDto
 import com.example.data.retrofit.RetrofitClient
+import com.example.domain.model.RoomData
+import com.example.domain.repository.RetrofitRepository
+import com.example.domain.repository.RoomRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.example.domain.repository.RoomRepository
-import com.example.data.model.RoomEntity
-import com.example.domain.model.RoomData
-import com.example.domain.repository.RetrofitRepository
-import kotlinx.coroutines.flow.asStateFlow
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
