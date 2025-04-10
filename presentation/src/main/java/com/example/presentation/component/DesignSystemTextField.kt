@@ -26,6 +26,7 @@ object DesignSystemTextField {
             placeholder: String? = null,
             leadingIcon: ImageVector? = null,
             trailIcon: ImageVector? = null,
+            onTrailIconClick: (() -> Unit)? = null,
             visualTransformation: VisualTransformation = VisualTransformation.None,
         ) {
             OutlinedTextField(
@@ -34,7 +35,14 @@ object DesignSystemTextField {
                 label = { label?.let { Text(it) } },
                 placeholder = { placeholder?.let { Text(it) } },
                 leadingIcon = leadingIcon?.let { { DesignSystemIcon(icon = it) } },
-                trailingIcon = trailIcon?.let { { DesignSystemIcon(icon = it) } },
+                trailingIcon = trailIcon?.let {
+                    {
+                        DesignSystemIcon(
+                            icon = it,
+                            onClick = onTrailIconClick
+                        )
+                    }
+                },
                 visualTransformation = visualTransformation,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Email
@@ -51,7 +59,7 @@ object DesignSystemTextField {
 @Composable
 private fun DesignSystemTextField_Outlined_Primary_Preview() {
 
-    var newValue by remember { mutableStateOf("")}
+    var newValue by remember { mutableStateOf("") }
 
     DesignSystemTextField.Outlined.Primary(
         value = "",
@@ -61,5 +69,5 @@ private fun DesignSystemTextField_Outlined_Primary_Preview() {
         leadingIcon = Close,
         trailIcon = Close,
 
-    )
+        )
 }
