@@ -61,4 +61,7 @@ dependencies {
     // room
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+
+    // okhttp3
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 }
