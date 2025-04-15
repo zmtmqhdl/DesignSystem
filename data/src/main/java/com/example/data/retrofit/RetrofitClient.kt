@@ -20,7 +20,7 @@ object RetrofitClient {
         .addInterceptor(loggingInterceptor)
         .build()
 
-    val retrofitService: RetrofitService by lazy {
+    val retrofitService: RetrofitService by lazy {d
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(client)
