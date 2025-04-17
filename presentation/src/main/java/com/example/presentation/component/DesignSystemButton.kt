@@ -1,6 +1,10 @@
 package com.example.presentation.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -9,6 +13,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -34,31 +40,48 @@ fun PrimaryButton(
     icon: ImageVector? = null,
     iconPosition: IconPosition = IconPosition.DEFAULT,
 ) {
-    Button(
-        onClick = onClick,
+    Box(
         modifier = modifier
             ?: if (width != null) {
                 Modifier
                     .width(width)
                     .height(height)
-                    .border(width = DesignSystemTheme.space.space0, color = color.outline, shape = DesignSystemTheme.shape.button)
+                    .background(
+                        color = if (state) color.background else DesignSystemTheme.color.disable.background,
+                        shape = DesignSystemTheme.shape.button
+                    )
+                    .border(
+                        width = DesignSystemTheme.space.space0,
+                        color = color.outline,
+                        shape = DesignSystemTheme.shape.button
+                    )
                     .clip(DesignSystemTheme.shape.button)
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null,
+                        onClick = onClick,
+                    )
             } else {
                 Modifier
                     .fillMaxWidth()
                     .height(height)
-                    .border(width = DesignSystemTheme.space.space0, color = color.outline)
+                    .background(
+                        color = if (state) color.background else DesignSystemTheme.color.disable.background,
+                        shape = DesignSystemTheme.shape.button
+                    )
+                    .border(
+                        width = DesignSystemTheme.space.space0,
+                        color = color.outline,
+                        shape = DesignSystemTheme.shape.button
+                    )
                     .clip(DesignSystemTheme.shape.button)
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null,
+                        onClick = onClick,
+                    )
             },
-        enabled = state,
-        shape = DesignSystemTheme.shape.button,
-        colors = if (state) ButtonDefaults.buttonColors(color.background) else ButtonDefaults.buttonColors(
-            DesignSystemTheme.color.disable.background
-        ),
-        contentPadding = PaddingValues(
-            start = space,
-            end = space
-        )
+        contentAlignment = Alignment.Center
     ) {
         if (icon != null && iconPosition == IconPosition.LEFT) {
             DesignSystemIcon(icon = icon, iconPosition = iconPosition)

@@ -1,6 +1,8 @@
 package com.example.presentation.screen
 
+import android.annotation.SuppressLint
 import android.webkit.WebView
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -9,8 +11,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.presentation.theme.DesignSystemTheme
 
@@ -34,13 +39,15 @@ object DesignSystemScreen {
         topBar: @Composable () -> Unit,
         bottomBar: @Composable () -> Unit,
         snackBarHost: @Composable () -> Unit,
+        color: Color,
         content: @Composable () -> Unit
     ) {
         Scaffold(
             modifier = Modifier.padding(WindowInsets.navigationBars.asPaddingValues()),
             topBar = topBar,
             bottomBar = bottomBar,
-            snackbarHost = snackBarHost
+            snackbarHost = snackBarHost,
+            containerColor = color
         ) { innerPadding ->
             Column(
                 modifier = Modifier
@@ -55,6 +62,7 @@ object DesignSystemScreen {
         }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Composable
     fun WebViewScreen(url: String) {
         if (url.isEmpty()) {
@@ -64,8 +72,6 @@ object DesignSystemScreen {
             ) {
                 Text(
                     text = "Invalid URL",
-                    style = XPhoneTheme.typography.detailSmall,
-                    color = XPhoneTheme.colors.accent100
                 )
             }
         } else {
