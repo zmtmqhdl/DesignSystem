@@ -35,7 +35,7 @@ fun PrimaryButton(
     color: DesignSystemColorSet,
     width: Dp? = null,
     height: Dp,
-    space: Dp,
+    // space: Dp,
     style: TextStyle,
     icon: ImageVector? = null,
     iconPosition: IconPosition = IconPosition.DEFAULT,
