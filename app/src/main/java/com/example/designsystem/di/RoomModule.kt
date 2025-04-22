@@ -28,11 +28,13 @@ object RoomModule {
     }
 
     @Provides
+    @Singleton
     fun provideExampleDao(database: RoomDatabase): RoomDao {
         return database.userDao()
     }
 
     @Provides
+    @Singleton
     fun provideExampleRepository(dao: RoomDao): RoomRepository {
         return RoomRepositoryImpl(dao)
     }
