@@ -14,7 +14,7 @@ class DataStoreRepositoryImpl @Inject constructor(
     @ApplicationContext private val context: Context
 ) : DataStoreRepository {
 
-    private val Context.dataStore by preferencesDataStore(name = "settings")
+    private val Context.dataStore by preferencesDataStore(name = "setting")
 
     companion object {
         private val TEST_FLAG_KEY = booleanPreferencesKey("test_flag")
