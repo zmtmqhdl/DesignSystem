@@ -15,6 +15,7 @@ import com.example.presentation.component.PrimaryTopBar
 import com.example.presentation.navigation.FirstGraph
 import com.example.presentation.navigation.Screen
 import com.example.presentation.navigation.SecondGraph
+import com.example.presentation.theme.DesignSystemTheme
 
 @Composable
 fun MainScreen(navController: NavHostController) {
@@ -44,6 +45,7 @@ fun MainScreen(navController: NavHostController) {
                 snackBarHostState = snackBarHostState
             )
         },
+        color = DesignSystemTheme.color.white,
         content = {
             when (selectedTab) {
                 0 -> {
