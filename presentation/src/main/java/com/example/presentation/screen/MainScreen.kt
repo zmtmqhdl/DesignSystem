@@ -45,7 +45,7 @@ fun MainScreen(navController: NavHostController) {
                 snackBarHostState = snackBarHostState
             )
         },
-        color = DesignSystemTheme.color.white,
+        containerColor = DesignSystemTheme.color.white,
         content = {
             when (selectedTab) {
                 0 -> {
