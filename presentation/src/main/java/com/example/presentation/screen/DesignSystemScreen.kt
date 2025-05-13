@@ -2,6 +2,7 @@ package com.example.presentation.screen
 
 import android.annotation.SuppressLint
 import android.webkit.WebView
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -22,6 +23,7 @@ import com.example.presentation.theme.DesignSystemTheme
 object DesignSystemScreen {
     @Composable
     fun PrimaryScreen(
+        color: Color,
         content: @Composable () -> Unit
     ) {
         Column(
@@ -31,6 +33,7 @@ object DesignSystemScreen {
                     end = DesignSystemTheme.space.space4
                 )
                 .padding(WindowInsets.systemBars.asPaddingValues())
+                .background(color = color)
         ) {
             content()
         }
