@@ -12,6 +12,7 @@ object DesignSystemShapes{
     val Dialog = RoundedCornerShape(DesignSystemSpaces.Space2)
     val SnackBar = RoundedCornerShape(DesignSystemSpaces.Space2)
     val TextField = RoundedCornerShape(DesignSystemSpaces.Space4)
+    val Box = RoundedCornerShape(DesignSystemSpaces.Space2)
 }
 
 @Stable
@@ -21,6 +22,7 @@ class DesignSystemShape(
     val dialog: Shape,
     val snackBar: Shape,
     val textField: Shape,
+    val box: Shape
 )
 
 val LocalShape = staticCompositionLocalOf {
@@ -29,6 +31,7 @@ val LocalShape = staticCompositionLocalOf {
         button = RectangleShape,
         dialog = RectangleShape,
         snackBar = RectangleShape,
-        textField = RectangleShape
+        textField = RectangleShape,
+        box = RectangleShape
     )
 }

@@ -65,7 +65,8 @@ private val shape = DesignSystemShape(
     button = DesignSystemShapes.Button,
     dialog = DesignSystemShapes.Dialog,
     snackBar = DesignSystemShapes.SnackBar,
-    textField =  DesignSystemShapes.TextField
+    textField =  DesignSystemShapes.TextField,
+    box = DesignSystemShapes.Box
 )
 
 
