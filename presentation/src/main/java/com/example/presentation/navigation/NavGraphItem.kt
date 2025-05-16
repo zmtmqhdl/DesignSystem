@@ -3,31 +3,31 @@ package com.example.presentation.navigation
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.presentation.Icon.Close
 
-sealed class Screen(
+sealed class NavGraphItem(
     val route: String,
     val label: String? = null,
     val selectedIcon: ImageVector = Close,
     val unselectedIcon: ImageVector = Close
 ) {
-    data object Splash : Screen(
+    data object Splash : NavGraphItem(
         route = "splash"
     )
 
-    data object Main : Screen(
+    data object Main : NavGraphItem(
         route = "main",
         label = "main",
         selectedIcon = Close,
         unselectedIcon = Close
     )
 
-    data object First : Screen(
+    data object First : NavGraphItem(
         route = "first",
         label = "first",
         selectedIcon = Close,
         unselectedIcon = Close
     )
 
-    data object Second : Screen(
+    data object Second : NavGraphItem(
         route = "second",
         label = "second",
         selectedIcon = Close,

@@ -7,13 +7,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.presentation.Icon.Back
 import com.example.presentation.Icon.Close
+import com.example.presentation.Icon.Forward
 import com.example.presentation.component.DesignSystemSnackBar
 import com.example.presentation.component.PrimaryNavigationBar
 import com.example.presentation.component.PrimaryTopBar
+import com.example.presentation.component.PrimaryTopBarIcon
 import com.example.presentation.navigation.FirstGraph
-import com.example.presentation.navigation.Screen
+import com.example.presentation.navigation.NavGraphItem
 import com.example.presentation.navigation.SecondGraph
 import com.example.presentation.theme.DesignSystemTheme
 
@@ -26,16 +30,31 @@ fun MainScreen(navController: NavHostController) {
     DesignSystemScreen.PrimaryScaffold(
         topBar = {
             PrimaryTopBar(
-                title = { Text("test") },
-                leftIcons = listOf(Close),
-                rightIcons = listOf(Close),
-                onLeftIconClick = { },
-                onRightIconClick = listOf(),
+                title = { Text("title") },
+                leftIcons = listOf(
+                    PrimaryTopBarIcon(
+                        icon = Back,
+                        size = 16.dp,
+                        onClick = {}
+                    )
+                ),
+                rightIcons = listOf(
+                    PrimaryTopBarIcon(
+                        icon = Close,
+                        size = 16.dp,
+                        onClick = {}
+                    ),
+                    PrimaryTopBarIcon(
+                        icon = Forward,
+                        size = 16.dp,
+                        onClick = {}
+                    )
+                ),
             )
         },
         bottomBar = {
             PrimaryNavigationBar(
-                route = listOf(Screen.Main, Screen.Second),
+                route = listOf(NavGraphItem.Main, NavGraphItem.Second),
                 currentTab = selectedTab,
                 onSelectedTab = { index -> selectedTab = index }
             )

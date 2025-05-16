@@ -28,10 +28,7 @@ object DesignSystemScreen {
     ) {
         Column(
             modifier = Modifier
-                .padding(
-                    start = DesignSystemTheme.space.space4,
-                    end = DesignSystemTheme.space.space4
-                )
+                .padding(horizontal = DesignSystemTheme.space.space4)
                 .padding(WindowInsets.systemBars.asPaddingValues())
                 .background(color = color)
         ) {
@@ -57,10 +54,7 @@ object DesignSystemScreen {
             Column(
                 modifier = Modifier
                     .padding(innerPadding)
-                    .padding(
-                        start = DesignSystemTheme.space.space4,
-                        end = DesignSystemTheme.space.space4
-                    )
+                    .padding(horizontal = DesignSystemTheme.space.space4)
             ) {
                 content()
             }
@@ -81,7 +75,10 @@ object DesignSystemScreen {
             }
         } else {
             AndroidView(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = DesignSystemTheme.space.space4)
+                    .padding(WindowInsets.navigationBars.asPaddingValues()),
                 factory = { context ->
                     WebView(context).apply {
                         settings.javaScriptEnabled = true

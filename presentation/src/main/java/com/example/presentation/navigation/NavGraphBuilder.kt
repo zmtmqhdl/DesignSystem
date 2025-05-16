@@ -9,13 +9,13 @@ import com.example.presentation.screen.MainScreen
 import com.example.presentation.screen.SecondScreen
 
 fun NavGraphBuilder.mainGraph(navController: NavHostController) {
-    composable(Screen.Main.route) { MainScreen(navController = navController) }
+    composable(NavGraphItem.Main.route) { MainScreen(navController = navController) }
 }
 
 fun NavGraphBuilder.firstGraph(navController: NavController) {
-    composable(Screen.First.route) { FirstScreen() }
+    composable(NavGraphItem.First.route) { FirstScreen() }
 }
 
 fun NavGraphBuilder.secondGraph(navController: NavController) {
-    composable(Screen.Second.route) { SecondScreen() }
+    composable(NavGraphItem.Second.route) { SecondScreen() }
 }
