@@ -1,12 +1,3 @@
-import java.io.FileInputStream
-import java.util.Properties
-
-val projectProperties = Properties().apply {
-    load(FileInputStream(rootProject.file("project.properties")))
-}
-
-val test = projectProperties["isTest"].toString().toBoolean()
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
