@@ -2,8 +2,8 @@ package com.example.presentation.splash
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import com.example.presentation.screen.DesignSystemScreen
-import com.example.presentation.screen.DesignSystemScreen.PrimaryScreen
+import com.example.presentation.component.DesignSystemScreen
+import com.example.presentation.component.DesignSystemScreen.PrimaryScreen
 
 @Composable
 fun SplashScreen() {

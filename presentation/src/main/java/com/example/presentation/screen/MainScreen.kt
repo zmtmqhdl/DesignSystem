@@ -9,9 +9,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.presentation.Icon.Back
-import com.example.presentation.Icon.Close
-import com.example.presentation.Icon.Forward
+import com.example.presentation.component.DesignSystemScreen
+import com.example.presentation.component.Icon.Back
+import com.example.presentation.component.Icon.Close
+import com.example.presentation.component.Icon.Forward
 import com.example.presentation.component.DesignSystemSnackBar
 import com.example.presentation.component.PrimaryNavigationBar
 import com.example.presentation.component.PrimaryTopBar

@@ -1,7 +1,7 @@
 package com.example.presentation.navigation
 
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.example.presentation.Icon.Close
+import com.example.presentation.component.Icon.Close
 
 sealed class NavGraphItem(
     val route: String,

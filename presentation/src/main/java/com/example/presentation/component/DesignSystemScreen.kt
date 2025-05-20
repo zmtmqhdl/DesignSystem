@@ -1,4 +1,4 @@
-package com.example.presentation.screen
+package com.example.presentation.component
 
 import android.annotation.SuppressLint
 import android.webkit.WebView
@@ -27,9 +27,9 @@ object DesignSystemScreen {
         content: @Composable () -> Unit
     ) {
         Column(
-            modifier = Modifier
+            modifier = Modifier.Companion
                 .padding(horizontal = DesignSystemTheme.space.space4)
-                .padding(WindowInsets.systemBars.asPaddingValues())
+                .padding(WindowInsets.Companion.systemBars.asPaddingValues())
                 .background(color = color)
         ) {
             content()
@@ -45,14 +45,14 @@ object DesignSystemScreen {
         content: @Composable () -> Unit
     ) {
         Scaffold(
-            modifier = Modifier.padding(WindowInsets.navigationBars.asPaddingValues()),
+            modifier = Modifier.Companion.padding(WindowInsets.Companion.navigationBars.asPaddingValues()),
             topBar = topBar,
             bottomBar = bottomBar,
             snackbarHost = snackBarHost,
             containerColor = containerColor
         ) { innerPadding ->
             Column(
-                modifier = Modifier
+                modifier = Modifier.Companion
                     .padding(innerPadding)
                     .padding(horizontal = DesignSystemTheme.space.space4)
             ) {
@@ -66,8 +66,8 @@ object DesignSystemScreen {
     fun WebViewScreen(url: String) {
         if (url.isEmpty()) {
             Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
+                modifier = Modifier.Companion.fillMaxSize(),
+                contentAlignment = Alignment.Companion.Center
             ) {
                 Text(
                     text = "Invalid URL",
@@ -75,10 +75,10 @@ object DesignSystemScreen {
             }
         } else {
             AndroidView(
-                modifier = Modifier
+                modifier = Modifier.Companion
                     .fillMaxSize()
                     .padding(horizontal = DesignSystemTheme.space.space4)
-                    .padding(WindowInsets.navigationBars.asPaddingValues()),
+                    .padding(WindowInsets.Companion.navigationBars.asPaddingValues()),
                 factory = { context ->
                     WebView(context).apply {
                         settings.javaScriptEnabled = true
