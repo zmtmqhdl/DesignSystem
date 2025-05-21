@@ -1,4 +1,4 @@
-package com.example.presentation.component
+package com.example.presentation.screen
 
 import android.annotation.SuppressLint
 import android.webkit.WebView
@@ -23,13 +23,16 @@ import com.example.presentation.theme.DesignSystemTheme
 object DesignSystemScreen {
     @Composable
     fun PrimaryScreen(
-        color: Color = DesignSystemTheme.color.white,
+        color: Color,
         content: @Composable () -> Unit
     ) {
         Column(
-            modifier = Modifier.Companion
-                .padding(horizontal = DesignSystemTheme.space.space4)
-                .padding(WindowInsets.Companion.systemBars.asPaddingValues())
+            modifier = Modifier
+                .padding(
+                    start = DesignSystemTheme.space.space4,
+                    end = DesignSystemTheme.space.space4
+                )
+                .padding(WindowInsets.systemBars.asPaddingValues())
                 .background(color = color)
         ) {
             content()
@@ -41,20 +44,23 @@ object DesignSystemScreen {
         topBar: @Composable () -> Unit,
         bottomBar: @Composable () -> Unit,
         snackBarHost: @Composable () -> Unit,
-        containerColor: Color = DesignSystemTheme.color.white,
+        color: Color,
         content: @Composable () -> Unit
     ) {
         Scaffold(
-            modifier = Modifier.Companion.padding(WindowInsets.Companion.navigationBars.asPaddingValues()),
+            modifier = Modifier.padding(WindowInsets.navigationBars.asPaddingValues()),
             topBar = topBar,
             bottomBar = bottomBar,
             snackbarHost = snackBarHost,
-            containerColor = containerColor
+            containerColor = color
         ) { innerPadding ->
             Column(
-                modifier = Modifier.Companion
+                modifier = Modifier
                     .padding(innerPadding)
-                    .padding(horizontal = DesignSystemTheme.space.space4)
+                    .padding(
+                        start = DesignSystemTheme.space.space4,
+                        end = DesignSystemTheme.space.space4
+                    )
             ) {
                 content()
             }
@@ -66,8 +72,8 @@ object DesignSystemScreen {
     fun WebViewScreen(url: String) {
         if (url.isEmpty()) {
             Box(
-                modifier = Modifier.Companion.fillMaxSize(),
-                contentAlignment = Alignment.Companion.Center
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = "Invalid URL",
@@ -75,10 +81,7 @@ object DesignSystemScreen {
             }
         } else {
             AndroidView(
-                modifier = Modifier.Companion
-                    .fillMaxSize()
-                    .padding(horizontal = DesignSystemTheme.space.space4)
-                    .padding(WindowInsets.Companion.navigationBars.asPaddingValues()),
+                modifier = Modifier.fillMaxSize(),
                 factory = { context ->
                     WebView(context).apply {
                         settings.javaScriptEnabled = true
