@@ -18,7 +18,7 @@ import com.example.presentation.component.PrimaryNavigationBar
 import com.example.presentation.component.PrimaryTopBar
 import com.example.presentation.component.PrimaryTopBarIcon
 import com.example.presentation.navigation.FirstGraph
-import com.example.presentation.navigation.NavGraphItem
+import com.example.presentation.navigation.Route
 import com.example.presentation.navigation.SecondGraph
 import com.example.presentation.theme.DesignSystemTheme
 
@@ -55,7 +55,7 @@ fun MainScreen(navController: NavHostController) {
         },
         bottomBar = {
             PrimaryNavigationBar(
-                route = listOf(NavGraphItem.Main, NavGraphItem.Second),
+                route = listOf(Route.Main, Route.Second),
                 currentTab = selectedTab,
                 onSelectedTab = { index -> selectedTab = index }
             )

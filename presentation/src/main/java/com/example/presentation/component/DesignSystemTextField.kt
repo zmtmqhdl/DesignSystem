@@ -26,6 +26,7 @@ object DesignSystemTextField {
             placeholder: String? = null,
             leadingIcon: ImageVector? = null,
             trailIcon: ImageVector? = null,
+            alwaysVisibleTrailIcon: Boolean = false,
             onTrailIconClick: (() -> Unit)? = null,
             visualTransformation: VisualTransformation = VisualTransformation.None,
         ) {
@@ -37,10 +38,20 @@ object DesignSystemTextField {
                 leadingIcon = leadingIcon?.let { { DesignSystemIcon(icon = it) } },
                 trailingIcon = trailIcon?.let {
                     {
-                        DesignSystemIcon(
-                            icon = it,
-                            onClick = onTrailIconClick
-                        )
+                        if (alwaysVisibleTrailIcon) {
+                            DesignSystemIcon(
+                                icon = it,
+                                onClick = onTrailIconClick
+                            )
+                        } else{
+                            if (value.isNotBlank()) {
+                                DesignSystemIcon(
+                                    icon = it,
+                                    onClick = onTrailIconClick
+                                )
+                            }
+                        }
+
                     }
                 },
                 visualTransformation = visualTransformation,
