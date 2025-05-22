@@ -1,4 +1,4 @@
-package com.example.presentation.screen
+package com.example.presentation.component
 
 import android.annotation.SuppressLint
 import android.webkit.WebView
@@ -23,7 +23,7 @@ import com.example.presentation.theme.DesignSystemTheme
 object DesignSystemScreen {
     @Composable
     fun PrimaryScreen(
-        color: Color,
+        color: Color = DesignSystemTheme.color.white,
         content: @Composable () -> Unit
     ) {
         Column(
