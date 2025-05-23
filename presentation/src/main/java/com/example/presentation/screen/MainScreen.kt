@@ -10,7 +10,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.presentation.component.DesignSystemScreen
-
 import com.example.presentation.component.Icon.Back
 import com.example.presentation.component.Icon.Close
 import com.example.presentation.component.Icon.Forward
