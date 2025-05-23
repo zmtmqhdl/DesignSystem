@@ -44,7 +44,7 @@ object DesignSystemScreen {
         topBar: @Composable () -> Unit,
         bottomBar: @Composable () -> Unit,
         snackBarHost: @Composable () -> Unit,
-        color: Color,
+        containerColor: Color,
         content: @Composable () -> Unit
     ) {
         Scaffold(
@@ -52,7 +52,7 @@ object DesignSystemScreen {
             topBar = topBar,
             bottomBar = bottomBar,
             snackbarHost = snackBarHost,
-            containerColor = color
+            containerColor = containerColor
         ) { innerPadding ->
             Column(
                 modifier = Modifier
