@@ -5,12 +5,9 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -31,7 +28,7 @@ fun PrimaryButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier? = null,
-    state: Boolean,
+    disable: Boolean = true,
     color: DesignSystemColorSet,
     width: Dp? = null,
     height: Dp,
@@ -41,46 +38,28 @@ fun PrimaryButton(
     iconPosition: IconPosition = IconPosition.DEFAULT,
 ) {
     Box(
-        modifier = modifier
-            ?: if (width != null) {
-                Modifier
-                    .width(width)
-                    .height(height)
-                    .background(
-                        color = if (state) color.background else DesignSystemTheme.color.disable.background,
-                        shape = DesignSystemTheme.shape.button
+        modifier = modifier ?: (
+                (if (width != null) Modifier.width(width) else Modifier.fillMaxWidth())
+                    .then(
+                        Modifier
+                            .height(height)
+                            .background(
+                                color = if (disable) color.background else DesignSystemTheme.color.disable.background,
+                                shape = DesignSystemTheme.shape.button
+                            )
+                            .border(
+                                width = DesignSystemTheme.space.space0,
+                                color = color.outline,
+                                shape = DesignSystemTheme.shape.button
+                            )
+                            .clip(DesignSystemTheme.shape.button)
+                            .clickable(
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = null,
+                                onClick = if (!disable) onClick else {{}}
+                            )
                     )
-                    .border(
-                        width = DesignSystemTheme.space.space0,
-                        color = color.outline,
-                        shape = DesignSystemTheme.shape.button
-                    )
-                    .clip(DesignSystemTheme.shape.button)
-                    .clickable(
-                        interactionSource = remember { MutableInteractionSource() },
-                        indication = null,
-                        onClick = onClick,
-                    )
-            } else {
-                Modifier
-                    .fillMaxWidth()
-                    .height(height)
-                    .background(
-                        color = if (state) color.background else DesignSystemTheme.color.disable.background,
-                        shape = DesignSystemTheme.shape.button
-                    )
-                    .border(
-                        width = DesignSystemTheme.space.space0,
-                        color = color.outline,
-                        shape = DesignSystemTheme.shape.button
-                    )
-                    .clip(DesignSystemTheme.shape.button)
-                    .clickable(
-                        interactionSource = remember { MutableInteractionSource() },
-                        indication = null,
-                        onClick = onClick,
-                    )
-            },
+                ),
         contentAlignment = Alignment.Center
     ) {
         if (icon != null && iconPosition == IconPosition.LEFT) {
@@ -88,12 +67,12 @@ fun PrimaryButton(
         }
         Text(
             text = text,
-            color = if (state) color.fontColor else DesignSystemTheme.color.disable.fontColor,
+            color = if (disable) color.fontColor else DesignSystemTheme.color.disable.fontColor,
             style = style
         )
-    }
-    if (icon != null && iconPosition == IconPosition.RIGHT) {
-        DesignSystemIcon(icon = icon, iconPosition = iconPosition)
+        if (icon != null && iconPosition == IconPosition.RIGHT) {
+            DesignSystemIcon(icon = icon, iconPosition = iconPosition)
+        }
     }
 }
 
@@ -112,7 +91,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -137,7 +116,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -162,7 +141,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -187,7 +166,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -212,7 +191,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -239,7 +218,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -264,7 +243,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -289,7 +268,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -314,7 +293,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -339,7 +318,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -366,7 +345,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -391,7 +370,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -416,7 +395,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -441,7 +420,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -466,7 +445,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -493,7 +472,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
@@ -518,7 +497,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
@@ -543,7 +522,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
@@ -568,7 +547,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
@@ -593,7 +572,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                state = state,
+                disable = state,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
