@@ -14,7 +14,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogWindowProvider
 import com.example.presentation.theme.DesignSystemTheme
 import com.example.presentation.util.DesignSystemPreview
 
@@ -27,6 +29,8 @@ fun PrimaryDialog(
     onDismissRequest: () -> Unit,
     content: @Composable () -> Unit,
 ) {
+    (LocalView.current.parent as DialogWindowProvider).window.setDimAmount(0.4f)
+
     Dialog(
         onDismissRequest = onDismissRequest,
         content = {
