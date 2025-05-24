@@ -106,7 +106,7 @@ object DesignSystemBottomSheet {
                     onDismissRequest = onDismissRequest,
                     show = show,
                 ) {
-                    DesignSystemButton.CTA.Medium(
+                    DesignSystemButton.Primary.Medium(
                         text = buttonText,
                         onClick = onClick,
                     )
@@ -133,12 +133,12 @@ object DesignSystemBottomSheet {
                     show = show,
                 ) {
                     Column {
-                        DesignSystemButton.CTA.Medium(
+                        DesignSystemButton.Primary.Medium(
                             text = buttonText1,
                             onClick = onClick1,
                         )
                         Spacer(modifier = Modifier.height(DesignSystemTheme.space.space3))
-                        DesignSystemButton.CTA.Medium(
+                        DesignSystemButton.Primary.Medium(
                             text = buttonText2,
                             onClick = onClick2,
                         )
@@ -164,13 +164,13 @@ object DesignSystemBottomSheet {
                     show = show,
                 ) {
                     Row {
-                        DesignSystemButton.CTA.Medium(
+                        DesignSystemButton.Primary.Medium(
                             text = buttonText1,
                             onClick = onClick1,
                             modifier = Modifier.weight(1f)
                         )
                         Spacer(modifier = Modifier.width(DesignSystemTheme.space.space2))
-                        DesignSystemButton.CTA.Medium(
+                        DesignSystemButton.Primary.Medium(
                             text = buttonText2,
                             onClick = onClick2,
                             modifier = Modifier.weight(1f)

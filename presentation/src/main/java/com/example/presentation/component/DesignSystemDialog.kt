@@ -5,18 +5,16 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import com.example.presentation.theme.DesignSystemTheme
 import com.example.presentation.util.DesignSystemPreview
 
@@ -26,69 +24,68 @@ fun PrimaryDialog(
     certification: String? = null,
     subText: String? = null,
     text: String,
+    onDismissRequest: () -> Unit,
     content: @Composable () -> Unit,
 ) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = DesignSystemTheme.color.gray600),
-        contentAlignment = Alignment.Center
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-                .padding(horizontal = DesignSystemTheme.space.space8)
-                .background(
-                    color = DesignSystemTheme.color.white,
-                    shape = DesignSystemTheme.shape.dialog
-                ),
-            contentAlignment = Alignment.Center
-        ) {
-            Column(
+    Dialog(
+        onDismissRequest = onDismissRequest,
+        content = {
+            Box(
                 modifier = Modifier
-                    .padding(
-                        start = DesignSystemTheme.space.space4,
-                        end = DesignSystemTheme.space.space4
+                    .fillMaxWidth()
+                    .wrapContentHeight()
+                    .padding(horizontal = DesignSystemTheme.space.space8)
+                    .background(
+                        color = DesignSystemTheme.color.white,
+                        shape = DesignSystemTheme.shape.dialog
                     ),
-                horizontalAlignment = Alignment.CenterHorizontally
+                contentAlignment = Alignment.Center
             ) {
-                Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
-                title?.let {
+                Column(
+                    modifier = Modifier
+                        .padding(
+                            start = DesignSystemTheme.space.space4,
+                            end = DesignSystemTheme.space.space4
+                        ),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
+                    title?.let {
+                        Text(
+                            text = it,
+                            color = DesignSystemTheme.color.black,
+                            style = DesignSystemTheme.typography.xl.bold
+                        )
+                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
+                    }
+                    certification?.let {
+                        Text(
+                            text = it,
+                            color = DesignSystemTheme.color.primary.fontColor,
+                            style = DesignSystemTheme.typography.xxl.regular
+                        )
+                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
+                    }
+                    subText?.let {
+                        Text(
+                            text = it,
+                            color = DesignSystemTheme.color.gray600,
+                            style = DesignSystemTheme.typography.s.regular
+                        )
+                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
+                    }
                     Text(
-                        text = it,
+                        text = text,
                         color = DesignSystemTheme.color.black,
-                        style = DesignSystemTheme.typography.xl.bold
+                        style = DesignSystemTheme.typography.m.regular
                     )
-                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
+                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
+                    content()
+                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
                 }
-                certification?.let {
-                    Text(
-                        text = it,
-                        color = DesignSystemTheme.color.primary.fontColor,
-                        style = DesignSystemTheme.typography.xxl.regular
-                    )
-                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
-                }
-                subText?.let {
-                    Text(
-                        text = it,
-                        color = DesignSystemTheme.color.gray600,
-                        style = DesignSystemTheme.typography.s.regular
-                    )
-                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
-                }
-                Text(
-                    text = text,
-                    color = DesignSystemTheme.color.black,
-                    style = DesignSystemTheme.typography.m.regular
-                )
-                Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
-                content()
-                Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
             }
         }
-    }
+    )
 }
 
 object DesignSystemDialog {
@@ -100,15 +97,17 @@ object DesignSystemDialog {
             subText: String? = null,
             text: String,
             buttonText: String,
-            onClick: () -> Unit
+            onClick: () -> Unit,
+            onDismissRequest: () -> Unit
         ) {
             PrimaryDialog(
                 title = title,
                 certification = certification,
                 subText = subText,
                 text = text,
+                onDismissRequest = onDismissRequest
             ) {
-                DesignSystemButton.CTA.Medium(
+                DesignSystemButton.Primary.Medium(
                     text = buttonText,
                     onClick = onClick,
                 )
@@ -126,16 +125,18 @@ object DesignSystemDialog {
             buttonText1: String,
             buttonText2: String,
             onClick1: () -> Unit,
-            onClick2: () -> Unit
+            onClick2: () -> Unit,
+            onDismissRequest: () -> Unit
         ) {
             PrimaryDialog(
                 title = title,
                 certification = certification,
                 subText = subText,
                 text = text,
+                onDismissRequest = onDismissRequest
             ) {
                 Column {
-                    DesignSystemButton.CTA.Medium(
+                    DesignSystemButton.Primary.Medium(
                         text = buttonText2,
                         onClick = onClick2,
                     )
@@ -158,15 +159,17 @@ object DesignSystemDialog {
             buttonText2: String,
             onClick1: () -> Unit,
             onClick2: () -> Unit,
+            onDismissRequest: () -> Unit
         ) {
             PrimaryDialog(
                 title = title,
                 certification = certification,
                 subText = subText,
                 text = text,
+                onDismissRequest = onDismissRequest
             ) {
                 Row {
-                    DesignSystemButton.CTA.Medium(
+                    DesignSystemButton.Primary.Medium(
                         text = buttonText2,
                         onClick = onClick2,
                         modifier = Modifier.weight(1f)
@@ -193,7 +196,8 @@ private fun DesignSystemDialog_Single_SingleArrangement_Preview() {
             subText = "subText",
             text = "text",
             buttonText = "button",
-            onClick = { }
+            onClick = { },
+            onDismissRequest = {}
         )
     }
 }
@@ -210,7 +214,8 @@ private fun DesignSystemDialog_Double_ColumnArrangement_Preview() {
             buttonText1 = "button1",
             buttonText2 = "button2",
             onClick1 = { },
-            onClick2 = { }
+            onClick2 = { },
+            onDismissRequest = {}
         )
     }
 }
@@ -227,7 +232,8 @@ private fun DesignSystemDialog_Double_RowArrangement_Preview() {
             buttonText1 = "button1",
             buttonText2 = "button2",
             onClick1 = { },
-            onClick2 = { }
+            onClick2 = { },
+            onDismissRequest = {}
         )
     }
 }
