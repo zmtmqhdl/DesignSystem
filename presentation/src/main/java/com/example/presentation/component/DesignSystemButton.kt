@@ -28,7 +28,7 @@ fun PrimaryButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier? = null,
-    disable: Boolean = true,
+    enabled: Boolean = true,
     color: DesignSystemColorSet,
     width: Dp? = null,
     height: Dp,
@@ -40,24 +40,23 @@ fun PrimaryButton(
     Box(
         modifier = modifier ?: (
                 (if (width != null) Modifier.width(width) else Modifier.fillMaxWidth())
+                    .height(height)
+                    .background(
+                        color = if (enabled) color.background else DesignSystemTheme.color.disable.background,
+                        shape = DesignSystemTheme.shape.button
+                    )
+                    .border(
+                        width = DesignSystemTheme.space.space0,
+                        color = color.outline,
+                        shape = DesignSystemTheme.shape.button
+                    )
+                    .clip(DesignSystemTheme.shape.button)
                     .then(
-                        Modifier
-                            .height(height)
-                            .background(
-                                color = if (disable) color.background else DesignSystemTheme.color.disable.background,
-                                shape = DesignSystemTheme.shape.button
-                            )
-                            .border(
-                                width = DesignSystemTheme.space.space0,
-                                color = color.outline,
-                                shape = DesignSystemTheme.shape.button
-                            )
-                            .clip(DesignSystemTheme.shape.button)
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = null,
-                                onClick = if (!disable) onClick else {{}}
-                            )
+                        if (enabled) Modifier.clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null,
+                            onClick = onClick
+                        ) else Modifier
                     )
                 ),
         contentAlignment = Alignment.Center
@@ -67,7 +66,7 @@ fun PrimaryButton(
         }
         Text(
             text = text,
-            color = if (disable) color.fontColor else DesignSystemTheme.color.disable.fontColor,
+            color = if (enabled) color.fontColor else DesignSystemTheme.color.disable.fontColor,
             style = style
         )
         if (icon != null && iconPosition == IconPosition.RIGHT) {
@@ -91,7 +90,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -116,7 +115,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -141,7 +140,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -166,7 +165,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -191,7 +190,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -218,7 +217,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -243,7 +242,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -268,7 +267,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -293,7 +292,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -318,7 +317,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -345,7 +344,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
@@ -370,7 +369,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
@@ -395,7 +394,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
@@ -420,7 +419,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
@@ -445,7 +444,7 @@ object DesignSystemButton {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                disable = state,
+                enabled = state,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
