@@ -16,7 +16,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import com.example.presentation.theme.DesignSystemTheme
-import com.example.presentation.util.DesignSystemPreview
+import com.example.presentation.core.DesignSystemPreview
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)

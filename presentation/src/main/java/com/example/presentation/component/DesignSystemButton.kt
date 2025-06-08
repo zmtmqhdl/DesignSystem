@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.Dp
 import com.example.presentation.common.IconPosition
 import com.example.presentation.theme.DesignSystemColorSet
 import com.example.presentation.theme.DesignSystemTheme
-import com.example.presentation.util.DesignSystemPreview
+import com.example.presentation.core.DesignSystemPreview
 
 @Composable
 fun PrimaryButton(
@@ -83,14 +83,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -108,14 +108,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -133,14 +133,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -158,14 +158,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -183,14 +183,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.primary,
                 modifier = modifier,
                 width = width,
@@ -210,14 +210,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -235,14 +235,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -260,14 +260,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -285,14 +285,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -310,14 +310,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.secondary,
                 modifier = modifier,
                 width = width,
@@ -337,14 +337,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
@@ -362,14 +362,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
@@ -387,14 +387,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
@@ -412,14 +412,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,
@@ -437,14 +437,14 @@ object DesignSystemButton {
             onClick: () -> Unit,
             modifier: Modifier? = null,
             width: Dp? = null,
-            state: Boolean = true,
+            enabled: Boolean = true,
             icon: ImageVector? = null,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
-                enabled = state,
+                enabled = enabled,
                 color = DesignSystemTheme.color.warning,
                 modifier = modifier,
                 width = width,

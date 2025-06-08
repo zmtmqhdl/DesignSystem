@@ -1,6 +1,8 @@
 package com.example.presentation.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,13 +14,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogWindowProvider
+import com.example.presentation.common.ButtonType
 import com.example.presentation.theme.DesignSystemTheme
-import com.example.presentation.util.DesignSystemPreview
+import com.example.presentation.core.DesignSystemPreview
 
 @Composable
 fun PrimaryDialog(
@@ -130,6 +134,7 @@ object DesignSystemDialog {
             buttonText2: String,
             onClick1: () -> Unit,
             onClick2: () -> Unit,
+            button2Type: ButtonType = ButtonType.BUTTON,
             onDismissRequest: () -> Unit
         ) {
             PrimaryDialog(
@@ -141,14 +146,32 @@ object DesignSystemDialog {
             ) {
                 Column {
                     DesignSystemButton.Primary.Medium(
-                        text = buttonText2,
-                        onClick = onClick2,
-                    )
-                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space3))
-                    DesignSystemButton.Primary.Medium(
                         text = buttonText1,
                         onClick = onClick1,
                     )
+                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space3))
+
+                    if (button2Type == ButtonType.BUTTON) {
+                        DesignSystemButton.Primary.Medium(
+                            text = buttonText2,
+                            onClick = onClick2,
+                        )
+                    } else {
+                        Box(
+                            modifier = Modifier.height(DesignSystemTheme.space.space9),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = buttonText2,
+                                modifier = Modifier.clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = null,
+                                    onClick = onClick2
+                                ),
+                                style = DesignSystemTheme.typography.m.regular,
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -163,6 +186,7 @@ object DesignSystemDialog {
             buttonText2: String,
             onClick1: () -> Unit,
             onClick2: () -> Unit,
+            button1Type: ButtonType = ButtonType.BUTTON,
             onDismissRequest: () -> Unit
         ) {
             PrimaryDialog(
@@ -173,15 +197,32 @@ object DesignSystemDialog {
                 onDismissRequest = onDismissRequest
             ) {
                 Row {
+                    if (button1Type == ButtonType.BUTTON) {
+                        DesignSystemButton.Primary.Medium(
+                            text = buttonText1,
+                            onClick = onClick1,
+                            modifier = Modifier.weight(1f)
+                        )
+                    } else {
+                        Box(
+                            modifier = Modifier.height(DesignSystemTheme.space.space9),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = buttonText1,
+                                modifier = Modifier.clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = null,
+                                    onClick = onClick1
+                                ),
+                                style = DesignSystemTheme.typography.m.regular,
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(DesignSystemTheme.space.space2))
                     DesignSystemButton.Primary.Medium(
                         text = buttonText2,
                         onClick = onClick2,
-                        modifier = Modifier.weight(1f)
-                    )
-                    Spacer(modifier = Modifier.width(DesignSystemTheme.space.space2))
-                    DesignSystemButton.Primary.Medium(
-                        text = buttonText1,
-                        onClick = onClick1,
                         modifier = Modifier.weight(1f)
                     )
                 }
@@ -237,6 +278,7 @@ private fun DesignSystemDialog_Double_RowArrangement_Preview() {
             buttonText2 = "button2",
             onClick1 = { },
             onClick2 = { },
+            button1Type = ButtonType.TEXT,
             onDismissRequest = {}
         )
     }

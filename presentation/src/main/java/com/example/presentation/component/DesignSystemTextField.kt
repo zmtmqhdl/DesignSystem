@@ -14,7 +14,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import com.example.presentation.component.Icon.Close
 import com.example.presentation.theme.DesignSystemTheme
-import com.example.presentation.util.DesignSystemPreview
+import com.example.presentation.core.DesignSystemPreview
 
 object DesignSystemTextField {
     object Outlined {

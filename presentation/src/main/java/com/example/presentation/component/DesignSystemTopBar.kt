@@ -20,7 +20,7 @@ import com.example.presentation.component.Icon.Back
 import com.example.presentation.component.Icon.Close
 import com.example.presentation.component.Icon.Forward
 import com.example.presentation.theme.DesignSystemTheme
-import com.example.presentation.util.DesignSystemPreview
+import com.example.presentation.core.DesignSystemPreview
 
 @Composable
 fun PrimaryTopBar(

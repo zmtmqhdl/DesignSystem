@@ -7,3 +7,7 @@ enum class IconPosition {
 enum class InputType {
     EMAIL, TEXT, PHONE
 }
+
+enum class ButtonType {
+    TEXT, BUTTON
+}

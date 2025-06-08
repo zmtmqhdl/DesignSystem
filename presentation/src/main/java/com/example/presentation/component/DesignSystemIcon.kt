@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.Dp
 import com.example.presentation.component.Icon.Close
 import com.example.presentation.common.IconPosition
 import com.example.presentation.theme.DesignSystemTheme
-import com.example.presentation.util.DesignSystemPreview
+import com.example.presentation.core.DesignSystemPreview
 
 @Composable
 fun DesignSystemIcon(
