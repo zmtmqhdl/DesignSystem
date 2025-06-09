@@ -32,7 +32,8 @@ fun PrimaryButton(
     color: DesignSystemColorSet,
     width: Dp? = null,
     height: Dp,
-    space: Dp,
+    iconWidth: Dp,
+    iconHeight: Dp,
     style: TextStyle,
     icon: ImageVector? = null,
     iconPosition: IconPosition = IconPosition.DEFAULT,
@@ -62,7 +63,7 @@ fun PrimaryButton(
         contentAlignment = Alignment.Center
     ) {
         if (icon != null && iconPosition == IconPosition.LEFT) {
-            DesignSystemIcon(icon = icon, iconPosition = iconPosition)
+            DesignSystemIcon(icon = icon, iconPosition = iconPosition, width = iconWidth, height = iconHeight)
         }
         Text(
             text = text,
@@ -70,7 +71,7 @@ fun PrimaryButton(
             style = style
         )
         if (icon != null && iconPosition == IconPosition.RIGHT) {
-            DesignSystemIcon(icon = icon, iconPosition = iconPosition)
+            DesignSystemIcon(icon = icon, iconPosition = iconPosition, width = iconWidth, height = iconHeight)
         }
     }
 }
@@ -85,6 +86,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space4,
+            iconHeight: Dp = DesignSystemTheme.space.space4,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -95,7 +98,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space12,
-                space = DesignSystemTheme.space.space4,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -110,6 +114,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space4,
+            iconHeight: Dp = DesignSystemTheme.space.space4,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -120,7 +126,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space11,
-                space = DesignSystemTheme.space.space4,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -135,6 +142,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space4,
+            iconHeight: Dp = DesignSystemTheme.space.space4,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -145,7 +154,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space9,
-                space = DesignSystemTheme.space.space4,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -160,6 +170,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space3,
+            iconHeight: Dp = DesignSystemTheme.space.space3,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -170,7 +182,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space8,
-                space = DesignSystemTheme.space.space3,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -185,6 +198,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space3,
+            iconHeight: Dp = DesignSystemTheme.space.space3,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -195,7 +210,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space7,
-                space = DesignSystemTheme.space.space3,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -212,6 +228,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space4,
+            iconHeight: Dp = DesignSystemTheme.space.space4,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -222,7 +240,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space12,
-                space = DesignSystemTheme.space.space4,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -237,6 +256,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space4,
+            iconHeight: Dp = DesignSystemTheme.space.space4,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -247,7 +268,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space11,
-                space = DesignSystemTheme.space.space4,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -262,6 +284,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space4,
+            iconHeight: Dp = DesignSystemTheme.space.space4,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -272,7 +296,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space9,
-                space = DesignSystemTheme.space.space4,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -287,6 +312,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space3,
+            iconHeight: Dp = DesignSystemTheme.space.space3,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -297,7 +324,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space8,
-                space = DesignSystemTheme.space.space3,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -312,6 +340,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space3,
+            iconHeight: Dp = DesignSystemTheme.space.space3,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -322,7 +352,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space7,
-                space = DesignSystemTheme.space.space3,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -339,6 +370,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space4,
+            iconHeight: Dp = DesignSystemTheme.space.space4,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -349,7 +382,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space12,
-                space = DesignSystemTheme.space.space4,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -364,6 +398,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space4,
+            iconHeight: Dp = DesignSystemTheme.space.space4,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -374,7 +410,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space11,
-                space = DesignSystemTheme.space.space4,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -389,6 +426,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space4,
+            iconHeight: Dp = DesignSystemTheme.space.space4,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -399,7 +438,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space9,
-                space = DesignSystemTheme.space.space4,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -414,6 +454,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space3,
+            iconHeight: Dp = DesignSystemTheme.space.space3,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -424,7 +466,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space8,
-                space = DesignSystemTheme.space.space3,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
@@ -439,6 +482,8 @@ object DesignSystemButton {
             width: Dp? = null,
             enabled: Boolean = true,
             icon: ImageVector? = null,
+            iconWidth: Dp = DesignSystemTheme.space.space3,
+            iconHeight: Dp = DesignSystemTheme.space.space3,
             iconPosition: IconPosition = IconPosition.LEFT
         ) {
             PrimaryButton(
@@ -449,7 +494,8 @@ object DesignSystemButton {
                 modifier = modifier,
                 width = width,
                 height = DesignSystemTheme.space.space7,
-                space = DesignSystemTheme.space.space3,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight,
                 style = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition

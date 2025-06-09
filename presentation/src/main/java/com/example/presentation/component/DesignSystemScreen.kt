@@ -23,7 +23,7 @@ import com.example.presentation.theme.DesignSystemTheme
 object DesignSystemScreen {
     @Composable
     fun PrimaryScreen(
-        color: Color = DesignSystemTheme.color.white,
+        color: Color = DesignSystemTheme.color.background,
         content: @Composable () -> Unit
     ) {
         Column(
@@ -44,7 +44,7 @@ object DesignSystemScreen {
         topBar: @Composable () -> Unit,
         bottomBar: @Composable () -> Unit,
         snackBarHost: @Composable () -> Unit,
-        containerColor: Color,
+        containerColor: Color = DesignSystemTheme.color.background,
         content: @Composable () -> Unit
     ) {
         Scaffold(

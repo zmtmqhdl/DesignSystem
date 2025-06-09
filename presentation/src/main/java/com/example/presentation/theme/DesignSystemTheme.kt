@@ -17,6 +17,12 @@ private val lightColor = DesignSystemColor(
     white = DesignSystemColors.Light.white,
     black = DesignSystemColors.Light.black,
     gray600 = DesignSystemColors.Light.gray600,
+    background = DesignSystemColors.Light.background,
+    backgroundElevated = DesignSystemColors.Light.backgroundElevated,
+    activeIcon = DesignSystemColors.Light.activeIcon,
+    inactiveIcon = DesignSystemColors.Light.inactiveIcon,
+    text = DesignSystemColors.Light.text
+
 )
 
 private val darkColor = DesignSystemColor(
@@ -31,6 +37,11 @@ private val darkColor = DesignSystemColor(
     white = DesignSystemColors.Dark.white,
     black = DesignSystemColors.Dark.black,
     gray600 = DesignSystemColors.Dark.gray600,
+    background = DesignSystemColors.Dark.background,
+    backgroundElevated = DesignSystemColors.Dark.backgroundElevated,
+    activeIcon = DesignSystemColors.Dark.activeIcon,
+    inactiveIcon = DesignSystemColors.Dark.inactiveIcon,
+    text = DesignSystemColors.Dark.text
 )
 
 private val typograpy = DesignSystemTypography(
@@ -68,7 +79,6 @@ private val shape = DesignSystemShape(
     textField =  DesignSystemShapes.TextField,
     box = DesignSystemShapes.Box
 )
-
 
 @Composable
 fun DesignSystemTheme(

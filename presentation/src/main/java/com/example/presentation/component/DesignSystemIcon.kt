@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
@@ -23,20 +24,24 @@ import com.example.presentation.core.DesignSystemPreview
 fun DesignSystemIcon(
     icon: ImageVector,
     onClick: (() -> Unit)? = null,
-    size: Dp = DesignSystemTheme.space.space4,
+    width: Dp = DesignSystemTheme.space.space4,
+    height: Dp = DesignSystemTheme.space.space4,
     color: Color = DesignSystemTheme.color.black,
     iconPosition: IconPosition = IconPosition.DEFAULT,
 ) {
     val modifier = if (onClick != null) {
         Modifier
-            .size(size)
+            .width(width)
+            .height(height)
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = null,
                 onClick = onClick
             )
     } else {
-        Modifier.size(size)
+        Modifier
+            .width(width)
+            .height(height)
     }
 
     when (iconPosition) {
