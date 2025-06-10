@@ -1,5 +1,8 @@
 package com.example.presentation.component
 
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
@@ -10,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
@@ -19,6 +23,7 @@ import androidx.compose.ui.unit.Dp
 import com.example.presentation.component.Icon.Close
 import com.example.presentation.theme.DesignSystemTheme
 import com.example.presentation.core.DesignSystemPreview
+import org.w3c.dom.Text
 
 object DesignSystemTextField {
     object Outlined {
@@ -26,11 +31,17 @@ object DesignSystemTextField {
         fun Primary(
             value: String,
             onValueChange: (String) -> Unit,
+            modifier: Modifier = Modifier,
+            width: Dp? = null,
+            height: Dp = DesignSystemTheme.space.space9,
+            enabled: Boolean = true,
+            textStyle: TextStyle = DesignSystemTheme.typography.s.regular,
             label: String? = null,
-
-            labelTextStyle: TextStyle,
+            labelColor: Color = DesignSystemTheme.color.text,
+            labelTextStyle: TextStyle = DesignSystemTheme.typography.s.regular,
             placeholder: String? = null,
-            placeholderTextStyle: TextStyle,
+            placeholderColor: Color = DesignSystemTheme.color.text,
+            placeholderTextStyle: TextStyle = DesignSystemTheme.typography.s.regular,
             leadingIcon: ImageVector? = null,
             leadingIconColor: Color = DesignSystemTheme.color.inactiveIcon,
             leadingIconWidth: Dp = DesignSystemTheme.space.space4,
@@ -46,8 +57,35 @@ object DesignSystemTextField {
             OutlinedTextField(
                 value = value,
                 onValueChange = onValueChange,
-                label = { label?.let { Text(it) } },
-                placeholder = { placeholder?.let { Text(it) } },
+                modifier = modifier
+                    .height(height)
+                    .then(
+                        if (width == null) {
+                            Modifier.fillMaxWidth()
+                        } else {
+                            Modifier.width(width)
+                        }
+                    ),
+                enabled = enabled,
+                textStyle = textStyle,
+                label = {
+                    label?.let {
+                        Text(
+                            text = it,
+                            color = labelColor,
+                            style = labelTextStyle
+                        )
+                    }
+                },
+                placeholder = {
+                    placeholder?.let {
+                        Text(
+                            text = it,
+                            color = placeholderColor,
+                            style = placeholderTextStyle
+                        )
+                    }
+                },
                 leadingIcon = leadingIcon?.let {
                     {
                         DesignSystemIcon(
@@ -90,8 +128,8 @@ object DesignSystemTextField {
                 singleLine = true,
                 shape = DesignSystemTheme.shape.textField,
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = DesignSystemTheme.color.backgroundElevated,
-                    unfocusedTextColor = DesignSystemTheme.color.backgroundElevated,
+                    focusedTextColor = DesignSystemTheme.color.text,
+                    unfocusedTextColor = DesignSystemTheme.color.text,
                     focusedContainerColor = DesignSystemTheme.color.backgroundElevated,
                     unfocusedContainerColor = DesignSystemTheme.color.backgroundElevated,
                     focusedBorderColor = DesignSystemTheme.color.primary.outline,
@@ -115,6 +153,5 @@ private fun DesignSystemTextField_Outlined_Primary_Preview() {
         placeholder = "placeholder",
         leadingIcon = Close,
         trailIcon = Close,
-
-        )
+    )
 }
