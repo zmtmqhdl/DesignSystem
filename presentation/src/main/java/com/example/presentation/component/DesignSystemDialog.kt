@@ -30,7 +30,7 @@ fun PrimaryDialog(
     certification: String? = null,
     subText: String? = null,
     text: String,
-    onDismissRequest: () -> Unit,
+    onDismissRequest: (() -> Unit) = {},
     content: @Composable () -> Unit,
 ) {
     (LocalView.current.parent as DialogWindowProvider).window.setDimAmount(0.4f)
@@ -99,14 +99,14 @@ fun PrimaryDialog(
 object DesignSystemDialog {
     object Single {
         @Composable
-        fun SingleArrangement(
+        fun Dialog(
             title: String? = null,
             certification: String? = null,
             subText: String? = null,
             text: String,
             buttonText: String,
             onClick: () -> Unit,
-            onDismissRequest: () -> Unit
+            onDismissRequest: (() -> Unit) = {}
         ) {
             PrimaryDialog(
                 title = title,
@@ -125,7 +125,7 @@ object DesignSystemDialog {
 
     object Double {
         @Composable
-        fun ColumnArrangement(
+        fun ColumnDialog(
             title: String? = null,
             certification: String? = null,
             subText: String? = null,
@@ -135,7 +135,7 @@ object DesignSystemDialog {
             onClick1: () -> Unit,
             onClick2: () -> Unit,
             button2Type: ButtonType = ButtonType.BUTTON,
-            onDismissRequest: () -> Unit
+            onDismissRequest: (() -> Unit) = {}
         ) {
             PrimaryDialog(
                 title = title,
@@ -177,7 +177,7 @@ object DesignSystemDialog {
         }
 
         @Composable
-        fun RowArrangement(
+        fun RowDialog(
             title: String? = null,
             certification: String? = null,
             subText: String? = null,
@@ -187,7 +187,7 @@ object DesignSystemDialog {
             onClick1: () -> Unit,
             onClick2: () -> Unit,
             button1Type: ButtonType = ButtonType.BUTTON,
-            onDismissRequest: () -> Unit
+            onDismissRequest: (() -> Unit) = {}
         ) {
             PrimaryDialog(
                 title = title,
@@ -233,9 +233,9 @@ object DesignSystemDialog {
 
 @DesignSystemPreview
 @Composable
-private fun DesignSystemDialog_Single_SingleArrangement_Preview() {
+private fun DesignSystemDialog_Single_Dialog_Preview() {
     DesignSystemTheme {
-        DesignSystemDialog.Single.SingleArrangement(
+        DesignSystemDialog.Single.Dialog(
             title = "title",
             certification = "certification",
             subText = "subText",
@@ -249,9 +249,9 @@ private fun DesignSystemDialog_Single_SingleArrangement_Preview() {
 
 @DesignSystemPreview
 @Composable
-private fun DesignSystemDialog_Double_ColumnArrangement_Preview() {
+private fun DesignSystemDialog_Double_ColumnDialog_Preview() {
     DesignSystemTheme {
-        DesignSystemDialog.Double.ColumnArrangement(
+        DesignSystemDialog.Double.ColumnDialog(
             title = "title",
             certification = "certification",
             subText = "subText",
@@ -267,9 +267,9 @@ private fun DesignSystemDialog_Double_ColumnArrangement_Preview() {
 
 @DesignSystemPreview
 @Composable
-private fun DesignSystemDialog_Double_RowArrangement_Preview() {
+private fun DesignSystemDialog_Double_RowDialog_Preview() {
     DesignSystemTheme {
-        DesignSystemDialog.Double.RowArrangement(
+        DesignSystemDialog.Double.RowDialog(
             title = "title",
             certification = "certification",
             subText = "subText",

@@ -16,10 +16,6 @@ abstract class DesignSystemViewModel<STATE : Any, EVENT : Any>(
     initialState: STATE,
     private val viewModelTag: String = "NewBaseViewModel"
 ) : ViewModel() {
-    protected fun logD(message: String, tag: String = viewModelTag) {
-        Log.d(tag, message)
-    }
-
     private val _state = MutableStateFlow(initialState)
     val state: StateFlow<STATE> = _state.asStateFlow()
 
@@ -35,15 +31,8 @@ abstract class DesignSystemViewModel<STATE : Any, EVENT : Any>(
             _event.send(event)
         }
     }
-}
 
-//LaunchedEffect(Unit) {
-//    businessCardViewModel.event.collectLatest { event ->
-//        when (event) {
-//            UiEvent.Idle -> {}
-//            UiEvent.SaveBusinessCardImageSuccess -> {
-//
-//            }
-//        }
-//    }
-//}
+    protected fun logD(message: String, tag: String = viewModelTag) {
+        Log.d(tag, message)
+    }
+}
