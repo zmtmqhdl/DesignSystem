@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.Dp
 import com.example.presentation.component.Icon.Close
 import com.example.presentation.theme.DesignSystemTheme
 import com.example.presentation.core.DesignSystemPreview
-import org.w3c.dom.Text
 
 object DesignSystemTextField {
     object Outlined {
@@ -51,7 +50,7 @@ object DesignSystemTextField {
             trailIconWidth: Dp = DesignSystemTheme.space.space4,
             trailIconHeight: Dp = DesignSystemTheme.space.space4,
             alwaysVisibleTrailIcon: Boolean = false,
-            onTrailIconClick: (() -> Unit)? = null,
+            onTrailIconClick: (() -> Unit) = { },
             visualTransformation: VisualTransformation = VisualTransformation.None,
         ) {
             OutlinedTextField(
@@ -91,8 +90,8 @@ object DesignSystemTextField {
                         DesignSystemIcon(
                             icon = it,
                             color = leadingIconColor,
-                            width = leadingIconWidth,
-                            height = leadingIconHeight,
+                            iconWidth = leadingIconWidth,
+                            iconHeight = leadingIconHeight,
                         )
                     }
                 },
@@ -102,8 +101,8 @@ object DesignSystemTextField {
                             DesignSystemIcon(
                                 icon = it,
                                 color = trailIconColor,
-                                width = trailIconWidth,
-                                height = trailIconHeight,
+                                iconWidth = trailIconWidth,
+                                iconHeight = trailIconHeight,
                                 onClick = onTrailIconClick
                             )
                         } else {
@@ -111,8 +110,8 @@ object DesignSystemTextField {
                                 DesignSystemIcon(
                                     icon = it,
                                     color = trailIconColor,
-                                    width = trailIconWidth,
-                                    height = trailIconHeight,
+                                    iconWidth = trailIconWidth,
+                                    iconHeight = trailIconHeight,
                                     onClick = onTrailIconClick
                                 )
                             }

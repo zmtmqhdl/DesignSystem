@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogWindowProvider
-import com.example.presentation.common.ButtonType
+import com.example.presentation.common.DialogButtonType
 import com.example.presentation.theme.DesignSystemTheme
 import com.example.presentation.core.DesignSystemPreview
 
@@ -134,7 +134,7 @@ object DesignSystemDialog {
             buttonText2: String,
             onClick1: () -> Unit,
             onClick2: () -> Unit,
-            button2Type: ButtonType = ButtonType.BUTTON,
+            button2Type: DialogButtonType = DialogButtonType.Button,
             onDismissRequest: (() -> Unit) = {}
         ) {
             PrimaryDialog(
@@ -151,7 +151,7 @@ object DesignSystemDialog {
                     )
                     Spacer(modifier = Modifier.height(DesignSystemTheme.space.space3))
 
-                    if (button2Type == ButtonType.BUTTON) {
+                    if (button2Type == DialogButtonType.Button) {
                         DesignSystemButton.Primary.Medium(
                             text = buttonText2,
                             onClick = onClick2,
@@ -186,7 +186,7 @@ object DesignSystemDialog {
             buttonText2: String,
             onClick1: () -> Unit,
             onClick2: () -> Unit,
-            button1Type: ButtonType = ButtonType.BUTTON,
+            button1Type: DialogButtonType = DialogButtonType.Button,
             onDismissRequest: (() -> Unit) = {}
         ) {
             PrimaryDialog(
@@ -197,11 +197,11 @@ object DesignSystemDialog {
                 onDismissRequest = onDismissRequest
             ) {
                 Row {
-                    if (button1Type == ButtonType.BUTTON) {
+                    if (button1Type == DialogButtonType.Button) {
                         DesignSystemButton.Primary.Medium(
                             text = buttonText1,
                             onClick = onClick1,
-                            modifier = Modifier.weight(1f)
+                            fraction = 0.5f
                         )
                     } else {
                         Box(
@@ -223,7 +223,7 @@ object DesignSystemDialog {
                     DesignSystemButton.Primary.Medium(
                         text = buttonText2,
                         onClick = onClick2,
-                        modifier = Modifier.weight(1f)
+                        fraction = 0.5f
                     )
                 }
             }
@@ -278,7 +278,7 @@ private fun DesignSystemDialog_Double_RowDialog_Preview() {
             buttonText2 = "button2",
             onClick1 = { },
             onClick2 = { },
-            button1Type = ButtonType.TEXT,
+            button1Type = DialogButtonType.Text,
             onDismissRequest = {}
         )
     }

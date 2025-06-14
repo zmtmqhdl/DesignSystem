@@ -93,7 +93,6 @@ fun DesignSystemSnackBar(
                         DesignSystemIcon(
                             icon = icon,
                             color = iconColor,
-                            iconPosition = IconPosition.LEFT
                         )
                     }
                     Text(

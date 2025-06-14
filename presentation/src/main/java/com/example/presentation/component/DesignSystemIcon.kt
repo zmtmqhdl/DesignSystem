@@ -2,15 +2,16 @@ package com.example.presentation.component
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -23,61 +24,32 @@ import com.example.presentation.core.DesignSystemPreview
 @Composable
 fun DesignSystemIcon(
     icon: ImageVector,
-    onClick: (() -> Unit)? = null,
-    width: Dp = DesignSystemTheme.space.space4,
-    height: Dp = DesignSystemTheme.space.space4,
+    onClick: (() -> Unit) = {},
+    boxWidth: Dp = DesignSystemTheme.space.space8,
+    boxHeight: Dp = DesignSystemTheme.space.space8,
+    iconWidth: Dp = DesignSystemTheme.space.space4,
+    iconHeight: Dp = DesignSystemTheme.space.space4,
     color: Color = DesignSystemTheme.color.black,
-    iconPosition: IconPosition = IconPosition.DEFAULT,
 ) {
-    val modifier = if (onClick != null) {
-        Modifier
-            .width(width)
-            .height(height)
-            .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = null,
-                onClick = onClick
-            )
-    } else {
-        Modifier
-            .width(width)
-            .height(height)
-    }
-
-    when (iconPosition) {
-        IconPosition.DEFAULT ->
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                modifier = modifier,
-                tint = color
-            )
-
-        IconPosition.LEFT ->
-            Row(
-                modifier = Modifier.wrapContentSize()
-            ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = null,
-                    modifier = modifier,
-                    tint = color
-                )
-                Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
-            }
-
-        IconPosition.RIGHT ->
-            Row(
-                modifier = Modifier.wrapContentSize()
-            ) {
-                Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
-                Icon(
-                    imageVector = icon,
-                    contentDescription = null,
-                    modifier = modifier,
-                    tint = color
-                )
-            }
+    Box(
+        modifier = Modifier
+            .width(boxWidth)
+            .height(boxHeight),
+        contentAlignment = Alignment.Center
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            modifier = Modifier
+                .width(iconWidth)
+                .height(iconHeight)
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null,
+                    onClick = onClick
+                ),
+            tint = color
+        )
     }
 }
 

@@ -167,13 +167,11 @@ object DesignSystemBottomSheet {
                         DesignSystemButton.Primary.Medium(
                             text = buttonText1,
                             onClick = onClick1,
-                            modifier = Modifier.weight(1f)
                         )
                         Spacer(modifier = Modifier.width(DesignSystemTheme.space.space2))
                         DesignSystemButton.Primary.Medium(
                             text = buttonText2,
                             onClick = onClick2,
-                            modifier = Modifier.weight(1f)
                         )
                     }
                 }

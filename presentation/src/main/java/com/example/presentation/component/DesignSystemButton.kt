@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -27,51 +28,68 @@ import com.example.presentation.core.DesignSystemPreview
 fun PrimaryButton(
     text: String,
     onClick: () -> Unit,
-    modifier: Modifier? = null,
     enabled: Boolean = true,
     color: DesignSystemColorSet,
     width: Dp? = null,
+    fraction: Float = 1f,
     height: Dp,
-    iconWidth: Dp,
-    iconHeight: Dp,
-    style: TextStyle,
+    iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+    iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+    iconWidth: Dp = DesignSystemTheme.space.space4,
+    iconHeight: Dp = DesignSystemTheme.space.space4,
+    textStyle: TextStyle,
     icon: ImageVector? = null,
-    iconPosition: IconPosition = IconPosition.DEFAULT,
+    iconPosition: IconPosition = IconPosition.Default,
 ) {
     Box(
-        modifier = modifier ?: (
-                (if (width != null) Modifier.width(width) else Modifier.fillMaxWidth())
-                    .height(height)
-                    .background(
-                        color = if (enabled) color.background else DesignSystemTheme.color.disable.background,
-                        shape = DesignSystemTheme.shape.button
-                    )
-                    .border(
-                        width = DesignSystemTheme.space.space0,
-                        color = color.outline,
-                        shape = DesignSystemTheme.shape.button
-                    )
-                    .clip(DesignSystemTheme.shape.button)
-                    .then(
-                        if (enabled) Modifier.clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = null,
-                            onClick = onClick
-                        ) else Modifier
-                    )
-                ),
+        modifier = Modifier
+            .then(
+                if (width != null) Modifier.width(width) else Modifier.fillMaxWidth(fraction)
+            )
+            .height(height)
+            .background(
+                color = if (enabled) color.background else DesignSystemTheme.color.disable.background,
+                shape = DesignSystemTheme.shape.button
+            )
+            .border(
+                width = DesignSystemTheme.space.space0,
+                color = color.outline,
+                shape = DesignSystemTheme.shape.button
+            )
+            .clip(DesignSystemTheme.shape.button)
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null,
+                onClick = { if (enabled) onClick() }
+            ),
         contentAlignment = Alignment.Center
     ) {
-        if (icon != null && iconPosition == IconPosition.LEFT) {
-            DesignSystemIcon(icon = icon, iconPosition = iconPosition, width = iconWidth, height = iconHeight)
+        if (icon != null && iconPosition == IconPosition.Left) {
+            DesignSystemIcon(
+                icon = icon,
+                color = color.fontColor,
+                boxWidth = iconBoxWidth,
+                boxHeight = iconBoxHeight,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight
+            )
+            Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
         }
         Text(
             text = text,
             color = if (enabled) color.fontColor else DesignSystemTheme.color.disable.fontColor,
-            style = style
+            style = textStyle
         )
-        if (icon != null && iconPosition == IconPosition.RIGHT) {
-            DesignSystemIcon(icon = icon, iconPosition = iconPosition, width = iconWidth, height = iconHeight)
+        if (icon != null && iconPosition == IconPosition.Right) {
+            Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
+            DesignSystemIcon(
+                icon = icon,
+                color = color.fontColor,
+                boxWidth = iconBoxWidth,
+                boxHeight = iconBoxHeight,
+                iconWidth = iconWidth,
+                iconHeight = iconHeight
+            )
         }
     }
 }
@@ -82,25 +100,29 @@ object DesignSystemButton {
         fun Xlarge(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space4,
             iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.primary,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space12,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.xl.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -110,25 +132,29 @@ object DesignSystemButton {
         fun Large(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space4,
             iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.primary,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space11,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.l.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -138,25 +164,29 @@ object DesignSystemButton {
         fun Medium(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space4,
             iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.primary,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space9,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.m.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -166,25 +196,29 @@ object DesignSystemButton {
         fun Small(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space3,
             iconHeight: Dp = DesignSystemTheme.space.space3,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.primary,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space8,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.s.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -194,25 +228,29 @@ object DesignSystemButton {
         fun Tiny(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space3,
             iconHeight: Dp = DesignSystemTheme.space.space3,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.primary,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space7,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.xs.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -224,25 +262,29 @@ object DesignSystemButton {
         fun Xlarge(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space4,
             iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.secondary,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space12,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.xl.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -252,25 +294,29 @@ object DesignSystemButton {
         fun Large(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space4,
             iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.secondary,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space11,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.l.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -280,25 +326,29 @@ object DesignSystemButton {
         fun Medium(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space4,
             iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.secondary,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space9,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.m.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -308,25 +358,29 @@ object DesignSystemButton {
         fun Small(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space3,
             iconHeight: Dp = DesignSystemTheme.space.space3,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.secondary,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space8,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.s.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -336,25 +390,29 @@ object DesignSystemButton {
         fun Tiny(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space3,
             iconHeight: Dp = DesignSystemTheme.space.space3,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.secondary,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space7,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.xs.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -366,25 +424,29 @@ object DesignSystemButton {
         fun Xlarge(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space4,
             iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.warning,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space12,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.xl.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.xl.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -394,25 +456,29 @@ object DesignSystemButton {
         fun Large(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space4,
             iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.warning,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space11,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.l.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.l.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -422,25 +488,29 @@ object DesignSystemButton {
         fun Medium(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space4,
             iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.warning,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space9,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.m.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.m.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -450,25 +520,29 @@ object DesignSystemButton {
         fun Small(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space3,
             iconHeight: Dp = DesignSystemTheme.space.space3,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.warning,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space8,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.s.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.s.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
@@ -478,25 +552,29 @@ object DesignSystemButton {
         fun Tiny(
             text: String,
             onClick: () -> Unit,
-            modifier: Modifier? = null,
             width: Dp? = null,
+            fraction: Float = 1f,
             enabled: Boolean = true,
             icon: ImageVector? = null,
             iconWidth: Dp = DesignSystemTheme.space.space3,
             iconHeight: Dp = DesignSystemTheme.space.space3,
-            iconPosition: IconPosition = IconPosition.LEFT
+            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
+            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
+            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
                 onClick = onClick,
                 enabled = enabled,
                 color = DesignSystemTheme.color.warning,
-                modifier = modifier,
                 width = width,
+                fraction = fraction,
                 height = DesignSystemTheme.space.space7,
                 iconWidth = iconWidth,
                 iconHeight = iconHeight,
-                style = DesignSystemTheme.typography.xs.regular,
+                iconBoxWidth = iconBoxWidth,
+                iconBoxHeight = iconBoxHeight,
+                textStyle = DesignSystemTheme.typography.xs.regular,
                 icon = icon,
                 iconPosition = iconPosition
             )
