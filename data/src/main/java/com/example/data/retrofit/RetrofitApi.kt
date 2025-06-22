@@ -11,7 +11,7 @@ import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface RetrofitService {
+interface RetrofitApi {
     @GET("todos/{id}")
     suspend fun get(@Path("id") postId: Int): RetrofitDto
 

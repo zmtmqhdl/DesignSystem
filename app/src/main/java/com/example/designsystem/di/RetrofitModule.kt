@@ -2,7 +2,7 @@ package com.example.designsystem.di
 
 import com.example.data.repositoryImpl.RetrofitRepositoryImpl
 import com.example.data.retrofit.RetrofitClient
-import com.example.data.retrofit.RetrofitService
+import com.example.data.retrofit.RetrofitApi
 import com.example.domain.repository.RetrofitRepository
 import dagger.Module
 import dagger.Provides
@@ -16,13 +16,13 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitService(): RetrofitService {
-        return RetrofitClient.retrofitService
+    fun provideRetrofitService(): RetrofitApi {
+        return RetrofitClient.retrofitApi
     }
 
     @Provides
     @Singleton
-    fun provideRetrofitRepository(retrofitService: RetrofitService): RetrofitRepository {
-        return RetrofitRepositoryImpl(retrofitService)
+    fun provideRetrofitRepository(retrofitApi: RetrofitApi): RetrofitRepository {
+        return RetrofitRepositoryImpl(retrofitApi)
     }
 }
