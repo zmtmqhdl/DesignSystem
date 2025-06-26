@@ -27,40 +27,19 @@ object DesignSystemScreen {
     @Composable
     fun PrimaryScreen(
         containerColor: Color = DesignSystemTheme.color.background,
-        loading: Boolean = false,
-        loadingColor: Color = DesignSystemTheme.color.primary.background,
         content: @Composable () -> Unit
     ) {
-        Box(
-            modifier = Modifier.fillMaxSize()
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(
+                    start = DesignSystemTheme.space.space4,
+                    end = DesignSystemTheme.space.space4
+                )
+                .padding(WindowInsets.systemBars.asPaddingValues())
+                .background(color = containerColor)
         ) {
-            Column(
-                modifier = Modifier
-                    .padding(
-                        start = DesignSystemTheme.space.space4,
-                        end = DesignSystemTheme.space.space4
-                    )
-                    .padding(WindowInsets.systemBars.asPaddingValues())
-                    .background(color = containerColor)
-            ) {
-                content()
-            }
-
-            if (loading) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(DesignSystemTheme.color.black.copy(alpha = 0.3f))
-                        .clickable(enabled = false) {},
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(DesignSystemTheme.space.space12),
-                        color = loadingColor,
-                        strokeWidth = DesignSystemTheme.space.space1
-                    )
-                }
-            }
+            content()
         }
     }
 
@@ -70,45 +49,24 @@ object DesignSystemScreen {
         bottomBar: @Composable () -> Unit,
         snackBarHost: @Composable () -> Unit,
         containerColor: Color = DesignSystemTheme.color.background,
-        loading: Boolean = false,
-        loadingColor: Color = DesignSystemTheme.color.primary.background,
         content: @Composable () -> Unit
     ) {
-        Box(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            Scaffold(
-                topBar = topBar,
-                bottomBar = bottomBar,
-                snackbarHost = snackBarHost,
-                containerColor = containerColor
-            ) { innerPadding ->
-                Column(
-                    modifier = Modifier
-                        .padding(innerPadding)
-                        .padding(
-                            start = DesignSystemTheme.space.space4,
-                            end = DesignSystemTheme.space.space4
-                        )
-                ) {
-                    content()
-                }
-            }
-
-            if (loading) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(DesignSystemTheme.color.black.copy(alpha = 0.3f))
-                        .clickable(enabled = false) {},
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(DesignSystemTheme.space.space12),
-                        color = loadingColor,
-                        strokeWidth = DesignSystemTheme.space.space1
+        Scaffold(
+            modifier = Modifier.fillMaxSize(),
+            topBar = topBar,
+            bottomBar = bottomBar,
+            snackbarHost = snackBarHost,
+            containerColor = containerColor
+        ) { innerPadding ->
+            Column(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .padding(
+                        start = DesignSystemTheme.space.space4,
+                        end = DesignSystemTheme.space.space4
                     )
-                }
+            ) {
+                content()
             }
         }
     }
@@ -117,8 +75,6 @@ object DesignSystemScreen {
     @Composable
     fun WebViewScreen(
         url: String,
-        loading: Boolean = false,
-        loadingColor: Color = DesignSystemTheme.color.primary.background,
     ) {
         Box(
             modifier = Modifier.fillMaxSize()
@@ -133,23 +89,6 @@ object DesignSystemScreen {
                     }
                 }
             )
-
-            if (url.isEmpty() || loading) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(DesignSystemTheme.color.black.copy(alpha = 0.3f))
-                        .clickable(enabled = false) {},
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(DesignSystemTheme.space.space12),
-                        color = loadingColor,
-                        strokeWidth = DesignSystemTheme.space.space1
-                    )
-
-                }
-            }
         }
     }
 }

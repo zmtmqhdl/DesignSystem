@@ -29,6 +29,8 @@ class MainActivity : AppCompatActivity() {
             // isLoading
 //            splashScreen.setKeepOnScreenCondition { !isLoading }
 
+
+
             DesignSystemTheme {
                 val navController = rememberNavController()
                 MainScreen(navController = navController)

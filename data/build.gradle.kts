@@ -46,6 +46,8 @@ dependencies {
 
     // module
     implementation(project(":domain"))
+    implementation(project(":core"))
+
 
     // coroutines
     implementation(libs.kotlinx.coroutines.android)
