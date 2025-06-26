@@ -1,4 +1,4 @@
-package com.example.presentation.theme
+package com.example.core.designSystem.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable

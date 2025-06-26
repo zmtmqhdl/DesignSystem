@@ -10,7 +10,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.presentation.screen.MainScreen
 import com.example.presentation.splash.SplashViewModel
-import com.example.presentation.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DesignSystemTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

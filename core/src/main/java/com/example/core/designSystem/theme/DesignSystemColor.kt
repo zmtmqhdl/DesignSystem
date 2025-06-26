@@ -1,4 +1,4 @@
-package com.example.presentation.theme
+package com.example.core.designSystem.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable

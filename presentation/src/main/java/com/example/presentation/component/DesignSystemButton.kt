@@ -20,8 +20,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.example.presentation.common.IconPosition
-import com.example.presentation.theme.DesignSystemColorSet
-import com.example.presentation.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DesignSystemColorSet
+import com.example.core.designSystem.theme.DesignSystemTheme
 import com.example.presentation.core.DesignSystemPreview
 
 @Composable

@@ -3,11 +3,8 @@ package com.example.presentation.component
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -17,8 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
 import com.example.presentation.component.Icon.Close
-import com.example.presentation.common.IconPosition
-import com.example.presentation.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DesignSystemTheme
 import com.example.presentation.core.DesignSystemPreview
 
 @Composable

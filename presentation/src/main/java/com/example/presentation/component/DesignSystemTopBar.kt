@@ -17,13 +17,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.dp
 import com.example.presentation.common.TopBarIconType
 import com.example.presentation.component.Icon.Back
 import com.example.presentation.component.Icon.Close
-import com.example.presentation.component.Icon.Forward
-import com.example.presentation.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DesignSystemTheme
 import com.example.presentation.core.DesignSystemPreview
 
 @Composable

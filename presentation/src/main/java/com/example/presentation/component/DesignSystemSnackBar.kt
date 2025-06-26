@@ -20,9 +20,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import com.example.presentation.component.Icon.Person
-import com.example.presentation.common.IconPosition
-import com.example.presentation.theme.DesignSystemColorSet
-import com.example.presentation.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DesignSystemColorSet
+import com.example.core.designSystem.theme.DesignSystemTheme
 import com.example.presentation.core.DesignSystemPreview
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

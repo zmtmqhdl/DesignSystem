@@ -1,4 +1,4 @@
-package com.example.presentation.theme
+package com.example.core.designSystem.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
@@ -8,7 +8,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.example.presentation.R
+import com.example.core.R
 
 @Immutable
 data class DesignSystemTypographySet(
