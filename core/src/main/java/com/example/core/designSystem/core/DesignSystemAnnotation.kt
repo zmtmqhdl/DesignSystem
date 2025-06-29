@@ -1,4 +1,4 @@
-package com.example.presentation.core
+package com.example.core.designSystem.core
 
 import android.content.res.Configuration
 import androidx.compose.ui.tooling.preview.Preview

@@ -1,4 +1,4 @@
-package com.example.presentation.component
+package com.example.core.designSystem.component
 
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.LocalTextStyle

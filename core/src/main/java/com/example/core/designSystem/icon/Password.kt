@@ -1,4 +1,4 @@
-package com.example.presentation.component.Icon
+package com.example.core.designSystem.icon
 
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable

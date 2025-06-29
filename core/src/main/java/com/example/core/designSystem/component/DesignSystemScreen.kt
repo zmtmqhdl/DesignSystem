@@ -1,4 +1,4 @@
-package com.example.presentation.component
+package com.example.core.designSystem.component
 
 import android.annotation.SuppressLint
 import android.webkit.WebView

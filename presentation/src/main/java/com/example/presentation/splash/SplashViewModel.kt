@@ -1,7 +1,7 @@
 package com.example.presentation.splash
 
 import androidx.lifecycle.viewModelScope
-import com.example.presentation.core.DesignSystemViewModel
+import com.example.core.designSystem.core.DesignSystemViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

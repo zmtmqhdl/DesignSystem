@@ -1,4 +1,4 @@
-package com.example.presentation.component
+package com.example.core.designSystem.component
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -13,9 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
-import com.example.presentation.component.Icon.Close
+import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.theme.DesignSystemTheme
-import com.example.presentation.core.DesignSystemPreview
+import com.example.core.designSystem.core.DesignSystemPreview
 
 @Composable
 fun DesignSystemIcon(

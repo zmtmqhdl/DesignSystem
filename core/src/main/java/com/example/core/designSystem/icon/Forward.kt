@@ -1,4 +1,4 @@
-package com.example.presentation.component.Icon
+package com.example.core.designSystem.icon
 
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -11,7 +11,7 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-val Close: ImageVector = ImageVector.Builder(
+val Forward: ImageVector = ImageVector.Builder(
     defaultWidth = 16.dp,
     defaultHeight = 16.dp,
     viewportWidth = 960f,
@@ -25,30 +25,28 @@ val Close: ImageVector = ImageVector.Builder(
         strokeLineWidth = 1.0f,
         strokeLineCap = StrokeCap.Butt,
         strokeLineJoin = StrokeJoin.Miter,
-        strokeLineMiter = 1.0f
+        strokeLineMiter = 1.0f,
     ) {
-        moveTo(256f, 760f)
-        lineTo(200f, 704f)
-        lineTo(424f, 480f)
-        lineTo(200f, 256f)
-        lineTo(256f, 200f)
-        lineTo(480f, 424f)
-        lineTo(704f, 200f)
-        lineTo(760f, 256f)
-        lineTo(536f, 480f)
-        lineTo(760f, 704f)
-        lineTo(704f, 760f)
-        lineTo(480f, 536f)
-        lineTo(256f, 760f)
+        moveTo(630f, 516f)
+        lineTo(192f, 516f)
+        lineTo(192f, 444f)
+        lineTo(630f, 444f)
+        lineTo(429f, 243f)
+        lineTo(480f, 192f)
+        lineTo(768f, 480f)
+        lineTo(480f, 768f)
+        lineTo(429f, 717f)
+        lineTo(630f, 516f)
         close()
     }
 }.build()
 
+
 @Preview(showBackground = true)
 @Composable
-private fun ClosePreview() {
+private fun ForwardPreview() {
     Icon(
-        imageVector = Close,
+        imageVector = Forward,
         contentDescription = null,
     )
 }

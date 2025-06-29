@@ -1,4 +1,4 @@
-package com.example.presentation.component
+package com.example.core.designSystem.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,10 +19,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
-import com.example.presentation.component.Icon.Person
+import com.example.core.designSystem.icon.Person
 import com.example.core.designSystem.theme.DesignSystemColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
-import com.example.presentation.core.DesignSystemPreview
+import com.example.core.designSystem.core.DesignSystemPreview
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

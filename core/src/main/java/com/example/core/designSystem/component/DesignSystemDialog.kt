@@ -1,4 +1,4 @@
-package com.example.presentation.component
+package com.example.core.designSystem.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -20,9 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogWindowProvider
-import com.example.presentation.common.DialogButtonType
+import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.theme.DesignSystemTheme
-import com.example.presentation.core.DesignSystemPreview
+import com.example.core.designSystem.type.DialogButtonType
 
 @Composable
 fun PrimaryDialog(

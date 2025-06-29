@@ -1,4 +1,4 @@
-package com.example.presentation.component
+package com.example.core.designSystem.component
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,9 +20,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.Dp
-import com.example.presentation.component.Icon.Close
+import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.theme.DesignSystemTheme
-import com.example.presentation.core.DesignSystemPreview
+import com.example.core.designSystem.core.DesignSystemPreview
 
 object DesignSystemTextField {
     object Outlined {

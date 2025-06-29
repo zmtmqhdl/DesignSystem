@@ -1,4 +1,4 @@
-package com.example.presentation.common
+package com.example.core.designSystem.type
 
 enum class IconPosition {
     Default, Left, Right

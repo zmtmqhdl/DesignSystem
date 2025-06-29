@@ -1,4 +1,4 @@
-package com.example.presentation.component
+package com.example.core.designSystem.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,10 +18,11 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.example.presentation.common.TopBarIconType
-import com.example.presentation.component.Icon.Back
-import com.example.presentation.component.Icon.Close
+import com.example.core.designSystem.icon.Back
+import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.theme.DesignSystemTheme
-import com.example.presentation.core.DesignSystemPreview
+import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.type.TopBarIconType
 
 @Composable
 fun PrimaryTopBar(
@@ -114,7 +115,7 @@ data class NewPrimaryTopBarIcon(
     val iconColor: Color = Color.Unspecified,
     val iconBoxWidth: Dp = Dp.Unspecified,
     val iconBoxHeight: Dp = Dp.Unspecified,
-    val iconWidth: Dp = Dp.Unspecified ,
+    val iconWidth: Dp = Dp.Unspecified,
     val iconHeight: Dp = Dp.Unspecified,
     val text: String = "",
     val textColor: Color = Color.Unspecified,

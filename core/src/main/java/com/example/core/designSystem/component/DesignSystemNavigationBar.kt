@@ -1,11 +1,11 @@
-package com.example.presentation.component
+package com.example.core.designSystem.component
 
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import com.example.presentation.navigation.Route
-import com.example.presentation.core.DesignSystemPreview
+import com.example.core.designSystem.core.DesignSystemPreview
 
 @Composable
 fun PrimaryNavigationBar(

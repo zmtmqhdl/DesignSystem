@@ -1,4 +1,4 @@
-package com.example.presentation.component
+package com.example.core.designSystem.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,10 +19,10 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import com.example.presentation.common.IconPosition
+import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.theme.DesignSystemColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
-import com.example.presentation.core.DesignSystemPreview
+import com.example.core.designSystem.type.IconPosition
 
 @Composable
 fun PrimaryButton(
