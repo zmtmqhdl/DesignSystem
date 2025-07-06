@@ -7,7 +7,7 @@ import com.example.core.designSystem.component.DesignSystemScreen
 
 @Composable
 fun MainScreen(navController: NavHostController) {
-    DesignSystemScreen.PrimaryScreen() {
+    DesignSystemScreen.Screen() {
         Text("Main")
     }
 }
