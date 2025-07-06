@@ -32,6 +32,19 @@ fun PrimaryNavigationBar(
     }
 }
 
+@DesignSystemPreview
+@Composable
+private fun PrimaryNavigationBarPreview() {
+    PrimaryNavigationBar(
+        route = listOf(
+            NavigationItemPreview(route = "first"),
+            NavigationItemPreview(route = "second"),
+        ),
+        currentTab = 0,
+        onSelectedTab = { index -> index }
+    )
+}
+
 interface NavigationItem {
     val route: String
     val label: String?
@@ -39,19 +52,9 @@ interface NavigationItem {
     val unselectedIcon: ImageVector
 }
 
-@DesignSystemPreview
-@Composable
-private fun PrimaryNavigationBarPreview() {
-    PrimaryNavigationBar(
-        route = listOf(
-            NavigationItem(
-                route = "first"
-            ),
-            NavigationItem(
-                route = "second"
-            )
-        ),
-        currentTab = 0,
-        onSelectedTab = { index -> index }
-    )
-}
+private data class NavigationItemPreview(
+    override val route: String,
+    override val label: String? = null,
+    override val selectedIcon: ImageVector = Close,
+    override val unselectedIcon: ImageVector = Close
+) : NavigationItem

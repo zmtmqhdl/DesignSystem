@@ -17,11 +17,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
-import com.example.presentation.common.TopBarIconType
+import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.icon.Back
 import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.theme.DesignSystemTheme
-import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.type.TopBarIconType
 
 @Composable

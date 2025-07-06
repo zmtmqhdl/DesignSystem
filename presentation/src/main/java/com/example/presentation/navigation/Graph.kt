@@ -10,7 +10,7 @@ fun MainGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Route.Splash.route
+        startDestination = NavigationItem.Splash.route
     ) {
         mainGraph(navController)
     }
@@ -22,7 +22,7 @@ fun FirstGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Route.First.route
+        startDestination = NavigationItem.First.route
     ) {
         firstGraph(navController)
     }
@@ -34,7 +34,7 @@ fun SecondGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Route.Second.route
+        startDestination = NavigationItem.Second.route
     ) {
         secondGraph(navController)
     }
