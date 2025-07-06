@@ -4,12 +4,13 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import com.example.presentation.navigation.Route
+import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.icon.Close
 
 @Composable
 fun PrimaryNavigationBar(
-    route: List<Route>,
+    route: List<NavigationItem>,
     currentTab: Int,
     onSelectedTab: (Int) -> Unit
 ) {
@@ -31,11 +32,25 @@ fun PrimaryNavigationBar(
     }
 }
 
+interface NavigationItem {
+    val route: String
+    val label: String?
+    val selectedIcon: ImageVector
+    val unselectedIcon: ImageVector
+}
+
 @DesignSystemPreview
 @Composable
 private fun PrimaryNavigationBarPreview() {
     PrimaryNavigationBar(
-        route = listOf(Route.First, Route.Second),
+        route = listOf(
+            NavigationItem(
+                route = "first"
+            ),
+            NavigationItem(
+                route = "second"
+            )
+        ),
         currentTab = 0,
         onSelectedTab = { index -> index }
     )
