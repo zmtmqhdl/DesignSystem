@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 
 abstract class DesignSystemViewModel<STATE : Any, EVENT : Any>(
     initialState: STATE,
-    private val viewModelTag: String = "NewBaseViewModel"
+    private val viewModelTag: String = "NewBaseViewModel",
 ) : ViewModel() {
     private val _state = MutableStateFlow(initialState)
     val state: StateFlow<STATE> = _state.asStateFlow()

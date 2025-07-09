@@ -13,14 +13,16 @@ import com.example.core.designSystem.component.DesignSystemScreen
 import com.example.presentation.screen.MainScreen
 import com.example.presentation.splash.SplashViewModel
 import com.example.core.designSystem.theme.DesignSystemTheme
-import com.example.core.manager.LoadingManager
+import com.example.domain.repository.LoadingRepository
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var loadingRepository: LoadingRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         val splashScreen = installSplashScreen()
@@ -35,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             // isLoading
 //            splashScreen.setKeepOnScreenCondition { !isLoading }
 
-            val loading by LoadingManager.loading.collectAsState()
+            val loading by loadingRepository.loading.collectAsState()
             val navController = rememberNavController()
 
             DesignSystemTheme {
