@@ -21,7 +21,7 @@
 <br>
 
 ## 📁 프로젝트 상세 설명
-작성 예정
+Clean Architecture에 맞춰 Multi Module를 기반으로 data, domain, presentation, core 총 4개의 Module로 이루어져 있으며, 각 Module에는 App을 개발하는데 있어 기초적인 코드들이 들어있습니다.
 <br>
 
 
