@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/6196bd0d-c528-4158-8859-cc1516ac9c78" width="60%">
+  <img src="https://github.com/user-attachments/assets/6196bd0d-c528-4158-8859-cc1516ac9c78" width="50%">
 </p>
 
 ## 🖥️ DesignSystem
