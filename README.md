@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/bb57927b-d536-48fb-95e4-58fd2da3f988" width="60%">
+  <img src="https://github.com/user-attachments/assets/6196bd0d-c528-4158-8859-cc1516ac9c78" width="50%">
 </p>
 
 ## 🖥️ DesignSystem
-모임에서 발생한 비용을 정확하게 정산을 하기 희망하는 분들을 위한 Android App
+추후 Android App을 개발할 시 초기 초기 구축 소요 시간을 단축하고, 유지 보수성을 강화시키기 위한 Android DesignSystem
 
 <br>
 
@@ -21,7 +21,7 @@
 <br>
 
 ## 📁 프로젝트 상세 설명
-작성 예정
+Clean Architecture에 맞춰 Multi Module를 기반으로 data, domain, presentation, core 총 4개의 Module로 이루어져 있으며, 각 Module에는 App을 개발하는데 있어 기초적인 코드들이 들어있습니다.
 <br>
 
 
