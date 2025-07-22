@@ -16,4 +16,8 @@ abstract class Module {
     @Singleton
     abstract fun bindLoadingRepository(impl: LoadingRepositoryImpl): LoadingRepository
 
+    @Binds
+    @Singleton
+    abstract fun bindWebSocketRepository(impl: WebSocketRepositoryImpl): WebSocketRepository
+
 }
