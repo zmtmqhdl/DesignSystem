@@ -1,8 +1,8 @@
 package com.example.designsystem.di
 
 import com.example.data.repositoryImpl.RetrofitRepositoryImpl
-import com.example.data.retrofit.RetrofitClient
-import com.example.data.retrofit.RetrofitApi
+import com.example.data.client.RetrofitClient
+import com.example.data.api.RetrofitApi
 import com.example.domain.repository.RetrofitRepository
 import dagger.Module
 import dagger.Provides

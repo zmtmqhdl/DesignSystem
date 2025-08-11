@@ -1,7 +1,9 @@
 package com.example.designsystem.di
 
 import com.example.data.repositoryImpl.LoadingRepositoryImpl
+import com.example.data.repositoryImpl.WebSocketRepositoryImpl
 import com.example.domain.repository.LoadingRepository
+import com.example.domain.repository.WebSocketRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

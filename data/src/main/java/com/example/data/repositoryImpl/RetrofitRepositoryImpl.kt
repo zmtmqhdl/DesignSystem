@@ -2,7 +2,7 @@ package com.example.data.repositoryImpl
 
 import com.example.data.mapper.toDomain
 import com.example.data.mapper.toDto
-import com.example.data.retrofit.RetrofitApi
+import com.example.data.api.RetrofitApi
 import com.example.domain.repository.RetrofitData
 import com.example.domain.repository.RetrofitRepository
 
