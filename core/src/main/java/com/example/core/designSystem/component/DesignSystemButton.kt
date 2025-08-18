@@ -52,7 +52,7 @@ fun PrimaryButton(
                 shape = DesignSystemTheme.shape.button
             )
             .border(
-                width = DesignSystemTheme.space.space0,
+                width = DesignSystemTheme.space.space1,
                 color = color.outline,
                 shape = DesignSystemTheme.shape.button
             )

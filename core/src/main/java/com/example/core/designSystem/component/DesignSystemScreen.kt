@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
@@ -25,11 +26,13 @@ object DesignSystemScreen {
     @Composable
     fun Screen(
         containerColor: Color = DesignSystemTheme.color.background,
+        imePadding: Boolean = false,
         content: @Composable () -> Unit
     ) {
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
+                .then(if (imePadding) Modifier.imePadding() else Modifier)
                 .padding(
                     start = DesignSystemTheme.space.space4,
                     end = DesignSystemTheme.space.space4
@@ -47,6 +50,7 @@ object DesignSystemScreen {
         bottomBar: @Composable () -> Unit,
         snackBarHost: @Composable () -> Unit,
         containerColor: Color = DesignSystemTheme.color.background,
+        imePadding: Boolean = false,
         content: @Composable () -> Unit
     ) {
         Scaffold(
@@ -56,8 +60,9 @@ object DesignSystemScreen {
             snackbarHost = snackBarHost,
             containerColor = containerColor
         ) { innerPadding ->
-            Column(
+            Box(
                 modifier = Modifier
+                    .then(if (imePadding) Modifier.imePadding() else Modifier)
                     .padding(innerPadding)
                     .padding(
                         start = DesignSystemTheme.space.space4,
