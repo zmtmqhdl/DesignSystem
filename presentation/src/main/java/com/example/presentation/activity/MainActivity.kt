@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         setContent {
 
             val splashViewModel: SplashViewModel = hiltViewModel()
-            val isLoading = splashViewModel.isLoading.collectAsState().value
 
             // isLoading
 //            splashScreen.setKeepOnScreenCondition { !isLoading }

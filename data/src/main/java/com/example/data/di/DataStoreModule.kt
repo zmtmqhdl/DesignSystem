@@ -1,4 +1,4 @@
-package com.example.designsystem.di
+package com.example.data.di
 
 import android.content.Context
 import com.example.data.repositoryImpl.DataStoreRepositoryImpl

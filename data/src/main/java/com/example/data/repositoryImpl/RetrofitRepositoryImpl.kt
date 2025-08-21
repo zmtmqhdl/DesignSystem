@@ -5,8 +5,11 @@ import com.example.data.mapper.toDto
 import com.example.data.api.RetrofitApi
 import com.example.domain.repository.RetrofitData
 import com.example.domain.repository.RetrofitRepository
+import javax.inject.Inject
 
-class RetrofitRepositoryImpl(private val retrofitApi: RetrofitApi) : RetrofitRepository {
+class RetrofitRepositoryImpl @Inject constructor(
+    private val retrofitApi: RetrofitApi
+) : RetrofitRepository {
     override suspend fun get(postId: Int): RetrofitData {
         return retrofitApi.get(postId).toDomain()
     }

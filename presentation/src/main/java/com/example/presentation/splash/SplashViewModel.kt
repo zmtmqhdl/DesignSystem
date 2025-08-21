@@ -11,21 +11,9 @@ import kotlinx.coroutines.flow.stateIn
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-) : DesignSystemViewModel<State, Event>(
-    initialState = State(),
+) : DesignSystemViewModel(
     viewModelTag = "SplashViewModel"
 ) {
-
-//    private val _isLoading = MutableStateFlow<Boolean>(false)
-//    val isLoading: StateFlow<Boolean> = _isLoading
-
-    val isLoading: StateFlow<Boolean> = state
-        .map { it.loading }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.Eagerly,
-            initialValue = false
-        )
 }
 
 data class State(

@@ -119,6 +119,7 @@ object DesignSystemScreen {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
+                        .windowInsetsPadding(WindowInsets.systemBars)
                         .background(DesignSystemTheme.color.black.copy(alpha = 0.3f))
                         .clickable(enabled = false) {},
                     contentAlignment = Alignment.Center

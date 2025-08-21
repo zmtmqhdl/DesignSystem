@@ -1,8 +1,10 @@
-package com.example.designsystem.di
+package com.example.data.di
 
 import com.example.data.repositoryImpl.LoadingRepositoryImpl
+import com.example.data.repositoryImpl.RetrofitRepositoryImpl
 import com.example.data.repositoryImpl.WebSocketRepositoryImpl
 import com.example.domain.repository.LoadingRepository
+import com.example.domain.repository.RetrofitRepository
 import com.example.domain.repository.WebSocketRepository
 import dagger.Binds
 import dagger.Module
@@ -12,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class Module {
+abstract class RepositoryModule {
 
     @Binds
     @Singleton
@@ -21,5 +23,9 @@ abstract class Module {
     @Binds
     @Singleton
     abstract fun bindWebSocketRepository(impl: WebSocketRepositoryImpl): WebSocketRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindRetrofitRepository(impl: RetrofitRepositoryImpl): RetrofitRepository
 
 }
