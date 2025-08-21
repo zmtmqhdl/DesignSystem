@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -32,6 +33,7 @@ object DesignSystemScreen {
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .windowInsetsPadding(WindowInsets.systemBars)
                 .then(if (imePadding) Modifier.imePadding() else Modifier)
                 .padding(
                     start = DesignSystemTheme.space.space4,
@@ -54,7 +56,9 @@ object DesignSystemScreen {
         content: @Composable () -> Unit
     ) {
         Scaffold(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .windowInsetsPadding(WindowInsets.systemBars),
             topBar = topBar,
             bottomBar = bottomBar,
             snackbarHost = snackBarHost,
@@ -80,7 +84,9 @@ object DesignSystemScreen {
         url: String,
     ) {
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .windowInsetsPadding(WindowInsets.systemBars)
         ) {
             AndroidView(
                 modifier = Modifier.fillMaxSize(),
@@ -103,7 +109,9 @@ object DesignSystemScreen {
         content: @Composable () -> Unit
     ) {
         Box(
-            modifier = Modifier.fillMaxSize().background(color = containerColor)
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = containerColor)
         ) {
             content()
 
