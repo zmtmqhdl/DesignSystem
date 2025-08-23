@@ -188,8 +188,8 @@ object DesignSystemTextStyles {
     )
 }
 
-@Stable
-class DesignSystemTypography(
+@Immutable
+data class DesignSystemTypography(
     val xxxl: DesignSystemTypographySet,
     val xxl: DesignSystemTypographySet,
     val xl: DesignSystemTypographySet,

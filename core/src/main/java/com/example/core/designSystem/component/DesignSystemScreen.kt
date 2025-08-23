@@ -39,7 +39,6 @@ object DesignSystemScreen {
                     start = DesignSystemTheme.space.space4,
                     end = DesignSystemTheme.space.space4
                 )
-                .padding(WindowInsets.systemBars.asPaddingValues())
                 .background(color = containerColor)
         ) {
             content()

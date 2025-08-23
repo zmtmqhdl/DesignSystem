@@ -208,8 +208,8 @@ object DesignSystemColors{
     }
 }
 
-@Stable
-class DesignSystemColor(
+@Immutable
+data class DesignSystemColor(
     val primary: DesignSystemColorSet,
     val secondary: DesignSystemColorSet,
     val tertiary: DesignSystemColorSet,
