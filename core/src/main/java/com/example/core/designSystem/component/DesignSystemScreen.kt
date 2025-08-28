@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.viewinterop.AndroidView
+import com.example.core.designSystem.theme.DesignSystemSpaces
 import com.example.core.designSystem.theme.DesignSystemTheme
 
 object DesignSystemScreen {
@@ -35,10 +36,7 @@ object DesignSystemScreen {
                 .fillMaxSize()
                 .windowInsetsPadding(WindowInsets.systemBars)
                 .then(if (imePadding) Modifier.imePadding() else Modifier)
-                .padding(
-                    start = DesignSystemTheme.space.space4,
-                    end = DesignSystemTheme.space.space4
-                )
+                .padding(horizontal = DesignSystemSpaces.Space4)
                 .background(color = containerColor)
         ) {
             content()
@@ -57,7 +55,10 @@ object DesignSystemScreen {
         Scaffold(
             modifier = Modifier
                 .fillMaxSize()
-                .windowInsetsPadding(WindowInsets.systemBars),
+                .windowInsetsPadding(WindowInsets.systemBars)
+                .then(if (imePadding) Modifier.imePadding() else Modifier)
+                .padding(horizontal = DesignSystemSpaces.Space4)
+            ,
             topBar = topBar,
             bottomBar = bottomBar,
             snackbarHost = snackBarHost,
@@ -65,12 +66,8 @@ object DesignSystemScreen {
         ) { innerPadding ->
             Box(
                 modifier = Modifier
-                    .then(if (imePadding) Modifier.imePadding() else Modifier)
                     .padding(innerPadding)
-                    .padding(
-                        start = DesignSystemTheme.space.space4,
-                        end = DesignSystemTheme.space.space4
-                    )
+
             ) {
                 content()
             }
@@ -110,6 +107,7 @@ object DesignSystemScreen {
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .windowInsetsPadding(WindowInsets.systemBars)
                 .background(color = containerColor)
         ) {
             content()
@@ -118,7 +116,6 @@ object DesignSystemScreen {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .windowInsetsPadding(WindowInsets.systemBars)
                         .background(DesignSystemTheme.color.black.copy(alpha = 0.3f))
                         .clickable(enabled = false) {},
                     contentAlignment = Alignment.Center

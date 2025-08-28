@@ -77,6 +77,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
@@ -98,6 +99,13 @@ dependencies {
     // hilt
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    // navigation
+    implementation(libs.androidx.navigation.compose)
+
+    // splash
+    implementation(libs.androidx.core.splashscreen)
 
     // room
     implementation(libs.androidx.room.ktx)
