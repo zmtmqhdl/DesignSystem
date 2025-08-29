@@ -4,6 +4,8 @@ plugins {
 
     // ksp
     alias(libs.plugins.ksp)
+
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
