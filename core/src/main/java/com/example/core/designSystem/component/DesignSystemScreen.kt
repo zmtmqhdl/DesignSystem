@@ -34,7 +34,6 @@ object DesignSystemScreen {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .windowInsetsPadding(WindowInsets.systemBars)
                 .then(if (imePadding) Modifier.imePadding() else Modifier)
                 .padding(horizontal = DesignSystemSpaces.Space4)
                 .background(color = containerColor)
@@ -55,7 +54,6 @@ object DesignSystemScreen {
         Scaffold(
             modifier = Modifier
                 .fillMaxSize()
-                .windowInsetsPadding(WindowInsets.systemBars)
                 .then(if (imePadding) Modifier.imePadding() else Modifier)
                 .padding(horizontal = DesignSystemSpaces.Space4)
             ,
@@ -82,7 +80,6 @@ object DesignSystemScreen {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .windowInsetsPadding(WindowInsets.systemBars)
         ) {
             AndroidView(
                 modifier = Modifier.fillMaxSize(),
@@ -107,7 +104,6 @@ object DesignSystemScreen {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .windowInsetsPadding(WindowInsets.systemBars)
                 .background(color = containerColor)
         ) {
             content()

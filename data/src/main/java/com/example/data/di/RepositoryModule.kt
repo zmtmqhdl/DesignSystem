@@ -1,9 +1,11 @@
 package com.example.data.di
 
-import com.example.data.repositoryImpl.LoadingRepositoryImpl
+import com.example.data.repositoryImpl.DataStoreRepositoryImpl
+import com.example.data.repositoryImpl.UiFlowRepositoryImpl
 import com.example.data.repositoryImpl.RetrofitRepositoryImpl
 import com.example.data.repositoryImpl.WebSocketRepositoryImpl
-import com.example.domain.repository.LoadingRepository
+import com.example.domain.repository.DataStoreRepository
+import com.example.domain.repository.UiFlowRepository
 import com.example.domain.repository.RetrofitRepository
 import com.example.domain.repository.WebSocketRepository
 import dagger.Binds
@@ -18,7 +20,7 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindLoadingRepository(impl: LoadingRepositoryImpl): LoadingRepository
+    abstract fun bindLoadingRepository(impl: UiFlowRepositoryImpl): UiFlowRepository
 
     @Binds
     @Singleton
@@ -28,4 +30,7 @@ abstract class RepositoryModule {
     @Singleton
     abstract fun bindRetrofitRepository(impl: RetrofitRepositoryImpl): RetrofitRepository
 
+    @Binds
+    @Singleton
+    abstract fun bindDataStoreRepository(impl: DataStoreRepositoryImpl): DataStoreRepository
 }
