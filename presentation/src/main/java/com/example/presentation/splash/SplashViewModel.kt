@@ -15,12 +15,3 @@ class SplashViewModel @Inject constructor(
     viewModelTag = "SplashViewModel"
 ) {
 }
-
-data class State(
-    val loading: Boolean = false,
-)
-
-sealed class Event {
-    object Idle : Event()
-    class ShowError(val message: String) : Event()
-}

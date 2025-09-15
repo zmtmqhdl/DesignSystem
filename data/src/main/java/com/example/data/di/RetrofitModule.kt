@@ -1,8 +1,5 @@
 package com.example.data.di
 
-import com.example.data.api.RetrofitApi
-import com.example.data.repositoryImpl.RetrofitRepositoryImpl
-import com.example.domain.repository.RetrofitRepository
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -20,15 +17,18 @@ import javax.inject.Singleton
 @Retention(AnnotationRetention.RUNTIME)
 annotation class BasicRetrofit
 
+
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
+
+    const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+
 
     @BasicRetrofit
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit {
-        val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY

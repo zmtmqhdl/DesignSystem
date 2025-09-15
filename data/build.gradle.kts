@@ -5,7 +5,11 @@ plugins {
     // ksp
     alias(libs.plugins.ksp)
 
+    // kotlinx
     alias(libs.plugins.kotlin.serialization)
+
+    // proto
+    alias(libs.plugins.protobuf)
 }
 
 android {
@@ -46,6 +50,8 @@ dependencies {
 
     // data store
     implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.datastore)
+    implementation(libs.protobuf.javalite)
 
     // module
     implementation(project(":domain"))
@@ -72,4 +78,19 @@ dependencies {
     // serialization
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.21.12"
+    }
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                create("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }
