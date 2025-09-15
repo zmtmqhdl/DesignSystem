@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.StateFlow
 
 interface AccountDatabaseRepository {
     val accountList: StateFlow<AccountListState>
-    val activeAccount: StateFlow<AccountState>
+    val currentAccount: StateFlow<AccountState>
 }

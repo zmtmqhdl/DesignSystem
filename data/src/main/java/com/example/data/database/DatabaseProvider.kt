@@ -10,15 +10,15 @@ import javax.inject.Inject
 class DatabaseProvider @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
-    fun getDatabase(accountDomain: AccountDomain): AppDatabase {
+    fun getDatabase(accountId: Long): AppDatabase {
         return Room.databaseBuilder(
             context = context,
             klass = AppDatabase::class.java,
-            name = "${accountDomain.id}_database"
+            name = "${accountId}_database"
         ).build()
     }
 
-    fun getAccountDao(accountDomain: AccountDomain): AccountDao {
-        return getDatabase(accountDomain).accountDao()
+    fun getAccountDao(accountId: Long): AccountDao {
+        return getDatabase(accountId = accountId).accountDao()
     }
 }

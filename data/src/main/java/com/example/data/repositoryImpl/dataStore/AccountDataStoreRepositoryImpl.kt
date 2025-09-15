@@ -31,7 +31,7 @@ class AccountDataStoreRepositoryImpl @Inject constructor(
                     throw exception
                 }
             }
-            .map { proto -> proto.currentAccountId}
+            .map { it.currentAccountId }
             .stateIn(
                 scope = appScope,
                 started = SharingStarted.Eagerly,
