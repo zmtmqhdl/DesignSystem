@@ -12,7 +12,6 @@ import java.io.OutputStream
 object CurrentAccountSerializer : Serializer<CurrentAccountProto> {
     override val defaultValue: CurrentAccountProto = CurrentAccountProto.getDefaultInstance()
 
-
     override suspend fun readFrom(input: InputStream): CurrentAccountProto =
         CurrentAccountProto.parseFrom(input)
 

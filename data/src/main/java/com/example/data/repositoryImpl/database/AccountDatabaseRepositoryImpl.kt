@@ -24,7 +24,7 @@ class AccountDatabaseRepositoryImpl @AssistedInject constructor(
     accountDataStoreRepository: AccountDataStoreRepository
 ) : AccountDatabaseRepository {
 
-    private val currentAccountId = accountId ?: accountDataStoreRepository.currentAccountId.value
+    private val currentAccountId = accountId ?: accountDataStoreRepository.currentAccountId.value ?: 0
 
     private val userDao by lazy {
         databaseProvider.getAccountDao(accountId = currentAccountId)

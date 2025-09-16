@@ -3,7 +3,6 @@ package com.example.data.database
 import android.content.Context
 import androidx.room.Room
 import com.example.data.database.dao.AccountDao
-import com.example.domain.model.AccountDomain
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 

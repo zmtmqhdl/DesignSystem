@@ -22,7 +22,7 @@ class AccountDataStoreRepositoryImpl @Inject constructor(
 ): AccountDataStoreRepository{
     private val dataStore: DataStore<CurrentAccountProto> = context.currentAccountDataStore
 
-    override val currentAccountId: StateFlow<Long> =
+    override val currentAccountId: StateFlow<Long?> =
         dataStore.data
             .catch { exception ->
                 if (exception is IOException) {
@@ -31,12 +31,16 @@ class AccountDataStoreRepositoryImpl @Inject constructor(
                     throw exception
                 }
             }
-            .map { it.currentAccountId }
+            .map { proto ->
+                if (proto.hasCurrentAccountId()) {
+                    proto.currentAccountId.value
+                } else {
+                    null
+                }
+            }
             .stateIn(
                 scope = appScope,
                 started = SharingStarted.Eagerly,
-                initialValue = CurrentAccountProto.getDefaultInstance().currentAccountId
+                initialValue = null
             )
-
-
 }
