@@ -24,10 +24,10 @@ class AccountDatabaseRepositoryImpl @AssistedInject constructor(
     accountDataStoreRepository: AccountDataStoreRepository
 ) : AccountDatabaseRepository {
 
-    private val currentAccountId = accountId ?: accountDataStoreRepository.currentAccountId.value ?: 0
+    private val id = accountId ?: accountDataStoreRepository.currentAccountId.value
 
     private val userDao by lazy {
-        databaseProvider.getAccountDao(accountId = currentAccountId)
+        databaseProvider.getAccountDao(accountId = id)
     }
 
     override val accountList: StateFlow<AccountListState> =
