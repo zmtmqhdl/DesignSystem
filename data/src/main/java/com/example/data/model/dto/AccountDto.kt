@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class AccountDto (
-    val id: Int,
+    val id: Long,
     val name: String,
 ) {
 }
