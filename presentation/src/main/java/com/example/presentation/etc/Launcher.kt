@@ -26,8 +26,8 @@ object Launcher {
         val context = LocalContext.current
         val activity = context as Activity
 
-        val onSuccessState = remember { mutableStateOf<() -> Unit>({}) }
-        val onDeniedState = remember { mutableStateOf<() -> Unit>({}) }
+        val onSuccessState = remember { mutableStateOf({}) }
+        val onDeniedState = remember { mutableStateOf({}) }
         val onPermanentlyDeniedState = remember { mutableStateOf<(List<String>) -> Unit>({}) }
 
         val launcher = rememberLauncherForActivityResult(
@@ -49,7 +49,6 @@ object Launcher {
             onSuccessState.value = onSuccess
             onDeniedState.value = onDenied
             onPermanentlyDeniedState.value = onPermanentlyDenied
-
             launcher.launch(permissionList.toTypedArray())
         }
     }

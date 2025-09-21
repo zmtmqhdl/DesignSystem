@@ -11,7 +11,6 @@ class DatabaseProvider @Inject constructor(
 ) {
     private val accountDaoMap = mutableMapOf<Long, AccountDao>()
 
-
     fun getDatabase(accountId: Long): AppDatabase {
         return accountId.let { id ->
             Room.databaseBuilder(
