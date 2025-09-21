@@ -3,6 +3,7 @@ package com.example.presentation.navigation
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavBackStackEntry
@@ -27,37 +28,50 @@ fun NavGraphBuilder.secondGraph(navController: NavController) {
 }
 
 @OptIn(ExperimentalAnimationApi::class)
-fun NavGraphBuilder.composableWithSlide(
+fun NavGraphBuilder.slideComposable(
     route: String,
-    duration: Int = 500,
+    duration: Int = 3000,
     content: @Composable (AnimatedContentScope.(NavBackStackEntry) -> Unit)
 ) {
     composable(
         route = route,
         enterTransition = {
             slideIntoContainer(
-                AnimatedContentTransitionScope.SlideDirection.Left,
-                animationSpec = tween(duration)
+                towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                animationSpec = tween(
+                    durationMillis = duration,
+                    easing = FastOutSlowInEasing
+                )
             )
         },
         exitTransition = {
             slideOutOfContainer(
-                AnimatedContentTransitionScope.SlideDirection.Left,
-                animationSpec = tween(duration)
+                towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                animationSpec = tween(
+                    durationMillis = duration,
+                    easing = FastOutSlowInEasing
+                )
             )
         },
         popEnterTransition = {
             slideIntoContainer(
-                AnimatedContentTransitionScope.SlideDirection.Right,
-                animationSpec = tween(duration)
+                towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                animationSpec = tween(
+                    durationMillis = duration,
+                    easing = FastOutSlowInEasing
+                )
             )
         },
         popExitTransition = {
             slideOutOfContainer(
-                AnimatedContentTransitionScope.SlideDirection.Right,
-                animationSpec = tween(duration)
+                towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                animationSpec = tween(
+                    durationMillis = duration,
+                    easing = FastOutSlowInEasing
+                )
             )
         },
         content = content
     )
 }
+
