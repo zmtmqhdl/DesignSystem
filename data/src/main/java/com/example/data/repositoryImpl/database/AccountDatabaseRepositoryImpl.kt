@@ -1,7 +1,6 @@
 package com.example.data.repositoryImpl.database
 
 import com.example.data.database.DatabaseProvider
-import com.example.data.database.dao.AccountDao
 import com.example.data.di.ApplicationScope
 import com.example.data.model.mapper.toDomain
 import com.example.domain.model.state.AccountListState
@@ -19,6 +18,7 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -36,13 +36,15 @@ class AccountDatabaseRepositoryImpl @AssistedInject constructor(
 
     override val accountList: StateFlow<AccountListState> =
         databaseKeyId.flatMapLatest { id ->
-            databaseProvider.accountDao(id).getAccountList()
+            databaseProvider.accountDao(accountId = id).getAccountList()
         }.map { entityList ->
             val domainList = entityList.map { it.toDomain() }
             when {
                 domainList.isEmpty() -> AccountListState.Empty
                 else -> AccountListState.Loaded(domainList)
             }
+        }.onStart {
+            emit(value = AccountListState.Loading)
         }.stateIn(
             scope = appScope,
             started = SharingStarted.Eagerly,
@@ -56,7 +58,7 @@ class AccountDatabaseRepositoryImpl @AssistedInject constructor(
                     when (state) {
                         is AccountListState.Loaded -> {
                             val account = state.accounts.firstOrNull { it.id == currentId }
-                            if (account != null) AccountState.Loaded(account) else AccountState.Empty
+                            if (account != null) AccountState.Loaded(account = account) else AccountState.Empty
                         }
                         AccountListState.Empty -> AccountState.Empty
                         AccountListState.Loading -> AccountState.Loading

@@ -17,8 +17,8 @@ import java.io.IOException
 import javax.inject.Inject
 
 class AccountDataStoreRepositoryImpl @Inject constructor(
-    @ApplicationContext private val context: Context,
-    @ApplicationScope private val appScope: CoroutineScope
+    @param:ApplicationContext private val context: Context,
+    @param:ApplicationScope private val appScope: CoroutineScope
 ): AccountDataStoreRepository{
     private val dataStore: DataStore<CurrentAccountProto> = context.currentAccountDataStore
 
