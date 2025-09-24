@@ -9,7 +9,7 @@ import javax.inject.Inject
 class ContentViewModel @Inject constructor(
     uiFlowRepository: UiFlowRepository
 ): DesignSystemViewModel(
-    viewModelTag = "ContentViewModel"
+    tag = "ContentViewModel"
 ){
     val loading = uiFlowRepository.loading
 }

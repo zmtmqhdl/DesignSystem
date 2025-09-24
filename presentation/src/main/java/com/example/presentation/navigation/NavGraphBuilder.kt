@@ -74,4 +74,3 @@ fun NavGraphBuilder.slideComposable(
         content = content
     )
 }
-
