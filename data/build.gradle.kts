@@ -25,6 +25,18 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
+    flavorDimensions += "env"
+    productFlavors {
+        create("dev") {
+            dimension = "env"
+            buildConfigField("Boolean", "IS_DEV", "true")
+        }
+        create("prod") {
+            dimension = "env"
+            buildConfigField("Boolean", "IS_DEV", "false")
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -43,6 +55,10 @@ android {
             jvmTarget = JvmTarget.JVM_21
         }
     }
+    buildFeatures {
+        buildConfig = true
+    }
+
 }
 
 dependencies {
