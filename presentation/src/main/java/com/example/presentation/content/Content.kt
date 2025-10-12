@@ -1,14 +1,8 @@
 package com.example.presentation.content
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.core.designSystem.component.DesignSystemScreen
@@ -25,17 +19,11 @@ fun Content() {
     // local state
     val navController = rememberNavController()
 
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .windowInsetsPadding(WindowInsets.systemBars)
-    ) {
-        DesignSystemScreen.LoadingScreen(
-            loading = loading,
-            content = {
-                MainScreen(navController = navController)
-            }
-        )
-    }
+    // screen
+    DesignSystemScreen.ContentScreen(
+        loading = loading,
+        content = {
+            MainScreen(navController = navController)
+        }
+    )
 }
