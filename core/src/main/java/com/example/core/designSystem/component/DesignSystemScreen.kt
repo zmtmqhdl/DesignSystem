@@ -16,6 +16,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import com.example.core.designSystem.theme.DesignSystemSpaces
 import com.example.core.designSystem.theme.DesignSystemTheme
 
@@ -52,8 +54,7 @@ object DesignSystemScreen {
             modifier = Modifier
                 .fillMaxSize()
                 .then(if (imePadding) Modifier.imePadding() else Modifier)
-                .then(if (padding) Modifier.padding(horizontal = DesignSystemSpaces.Space4) else Modifier)
-            ,
+                .then(if (padding) Modifier.padding(horizontal = DesignSystemSpaces.Space4) else Modifier),
             topBar = topBar,
             bottomBar = bottomBar,
             snackbarHost = snackBarHost,
@@ -106,18 +107,28 @@ object DesignSystemScreen {
             content()
 
             if (loading) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(DesignSystemTheme.color.black.copy(alpha = 0.3f))
-                        .clickable(enabled = false) {},
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(DesignSystemTheme.space.space12),
-                        color = loadingColor,
-                        strokeWidth = DesignSystemTheme.space.space1
+                Dialog(
+                    onDismissRequest = {},
+                    properties = DialogProperties(
+                        dismissOnClickOutside = false,
+                        dismissOnBackPress = false,
+                        usePlatformDefaultWidth = false
                     )
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(
+                                color = DesignSystemTheme.color.black.copy(alpha = 0.3f)
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator(
+                            modifier = Modifier.size(size = DesignSystemTheme.space.space12),
+                            color = loadingColor,
+                            strokeWidth = DesignSystemTheme.space.space1
+                        )
+                    }
                 }
             }
         }
