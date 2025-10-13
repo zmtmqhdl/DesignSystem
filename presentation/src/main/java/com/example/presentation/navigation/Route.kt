@@ -10,8 +10,11 @@ sealed class MainRoute(
     override val selectedIcon: ImageVector = Close,
     override val unselectedIcon: ImageVector = Close
 ) : NavigationItem {
-    data object Splash : MainRoute("splash")
-    data object Main : MainRoute("main", "main")
-    data object First : MainRoute("first", "first")
-    data object Second : MainRoute("second", "second")
+    data object Splash : MainRoute(
+        route = "splash"
+    )
+    data object Main : MainRoute(
+        route = "main",
+        label = "main"
+    )
 }
