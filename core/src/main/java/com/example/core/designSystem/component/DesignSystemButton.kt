@@ -3,26 +3,25 @@ package com.example.core.designSystem.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.theme.DesignSystemColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
-import com.example.core.designSystem.type.IconPosition
 
 @Composable
 fun PrimaryButton(
@@ -33,16 +32,11 @@ fun PrimaryButton(
     width: Dp? = null,
     fraction: Float = 1f,
     height: Dp,
-    iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-    iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-    iconWidth: Dp = DesignSystemTheme.space.space4,
-    iconHeight: Dp = DesignSystemTheme.space.space4,
-    textStyle: TextStyle,
-    icon: ImageVector? = null,
-    iconPosition: IconPosition = IconPosition.Default,
+    textStyle: TextStyle
 ) {
     Box(
         modifier = Modifier
+            .semantics { role = Role.Button }
             .then(
                 if (width != null) Modifier.width(width) else Modifier.fillMaxWidth(fraction)
             )
@@ -58,39 +52,16 @@ fun PrimaryButton(
             )
             .clip(DesignSystemTheme.shape.button)
             .clickable(
-                interactionSource = remember { MutableInteractionSource() },
-                indication = null,
-                onClick = { if (enabled) onClick() }
+                enabled = enabled,
+                onClick = onClick
             ),
         contentAlignment = Alignment.Center
     ) {
-        if (icon != null && iconPosition == IconPosition.Left) {
-            DesignSystemIcon(
-                icon = icon,
-                color = color.fontColor,
-                boxWidth = iconBoxWidth,
-                boxHeight = iconBoxHeight,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight
-            )
-            Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
-        }
         Text(
             text = text,
             color = if (enabled) color.fontColor else DesignSystemTheme.color.disable.fontColor,
             style = textStyle
         )
-        if (icon != null && iconPosition == IconPosition.Right) {
-            Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
-            DesignSystemIcon(
-                icon = icon,
-                color = color.fontColor,
-                boxWidth = iconBoxWidth,
-                boxHeight = iconBoxHeight,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight
-            )
-        }
     }
 }
 
@@ -103,12 +74,6 @@ object DesignSystemButton {
             width: Dp? = null,
             fraction: Float = 1f,
             enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space4,
-            iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
@@ -118,13 +83,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space12,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.xl.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.xl.regular
             )
         }
 
@@ -135,12 +94,6 @@ object DesignSystemButton {
             width: Dp? = null,
             fraction: Float = 1f,
             enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space4,
-            iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
@@ -150,13 +103,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space11,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.l.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.l.regular
             )
         }
 
@@ -167,12 +114,6 @@ object DesignSystemButton {
             width: Dp? = null,
             fraction: Float = 1f,
             enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space4,
-            iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
@@ -182,13 +123,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space9,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.m.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.m.regular
             )
         }
 
@@ -199,12 +134,6 @@ object DesignSystemButton {
             width: Dp? = null,
             fraction: Float = 1f,
             enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space3,
-            iconHeight: Dp = DesignSystemTheme.space.space3,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
@@ -214,13 +143,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space8,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.s.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.s.regular
             )
         }
 
@@ -231,12 +154,6 @@ object DesignSystemButton {
             width: Dp? = null,
             fraction: Float = 1f,
             enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space3,
-            iconHeight: Dp = DesignSystemTheme.space.space3,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
@@ -246,13 +163,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space7,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.xs.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.xs.regular
             )
         }
     }
@@ -264,13 +175,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             fraction: Float = 1f,
-            enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space4,
-            iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
+            enabled: Boolean = true
         ) {
             PrimaryButton(
                 text = text,
@@ -280,13 +185,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space12,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.xl.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.xl.regular
             )
         }
 
@@ -296,13 +195,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             fraction: Float = 1f,
-            enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space4,
-            iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
+            enabled: Boolean = true
         ) {
             PrimaryButton(
                 text = text,
@@ -312,13 +205,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space11,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.l.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.l.regular
             )
         }
 
@@ -328,13 +215,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             fraction: Float = 1f,
-            enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space4,
-            iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
+            enabled: Boolean = true
         ) {
             PrimaryButton(
                 text = text,
@@ -344,13 +225,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space9,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.m.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.m.regular
             )
         }
 
@@ -360,13 +235,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             fraction: Float = 1f,
-            enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space3,
-            iconHeight: Dp = DesignSystemTheme.space.space3,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
+            enabled: Boolean = true
         ) {
             PrimaryButton(
                 text = text,
@@ -376,13 +245,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space8,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.s.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.s.regular
             )
         }
 
@@ -393,12 +256,6 @@ object DesignSystemButton {
             width: Dp? = null,
             fraction: Float = 1f,
             enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space3,
-            iconHeight: Dp = DesignSystemTheme.space.space3,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
@@ -408,13 +265,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space7,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.xs.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.xs.regular
             )
         }
     }
@@ -426,13 +277,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             fraction: Float = 1f,
-            enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space4,
-            iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
+            enabled: Boolean = true
         ) {
             PrimaryButton(
                 text = text,
@@ -442,13 +287,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space12,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.xl.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.xl.regular
             )
         }
 
@@ -458,13 +297,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             fraction: Float = 1f,
-            enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space4,
-            iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
+            enabled: Boolean = true
         ) {
             PrimaryButton(
                 text = text,
@@ -474,13 +307,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space11,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.l.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.l.regular
             )
         }
 
@@ -490,13 +317,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             fraction: Float = 1f,
-            enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space4,
-            iconHeight: Dp = DesignSystemTheme.space.space4,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
+            enabled: Boolean = true
         ) {
             PrimaryButton(
                 text = text,
@@ -506,13 +327,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space9,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.m.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.m.regular
             )
         }
 
@@ -523,12 +338,6 @@ object DesignSystemButton {
             width: Dp? = null,
             fraction: Float = 1f,
             enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space3,
-            iconHeight: Dp = DesignSystemTheme.space.space3,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
         ) {
             PrimaryButton(
                 text = text,
@@ -538,13 +347,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space8,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.s.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.s.regular
             )
         }
 
@@ -554,13 +357,7 @@ object DesignSystemButton {
             onClick: () -> Unit,
             width: Dp? = null,
             fraction: Float = 1f,
-            enabled: Boolean = true,
-            icon: ImageVector? = null,
-            iconWidth: Dp = DesignSystemTheme.space.space3,
-            iconHeight: Dp = DesignSystemTheme.space.space3,
-            iconBoxWidth: Dp = DesignSystemTheme.space.space8,
-            iconBoxHeight: Dp = DesignSystemTheme.space.space8,
-            iconPosition: IconPosition = IconPosition.Default
+            enabled: Boolean = true
         ) {
             PrimaryButton(
                 text = text,
@@ -570,13 +367,7 @@ object DesignSystemButton {
                 width = width,
                 fraction = fraction,
                 height = DesignSystemTheme.space.space7,
-                iconWidth = iconWidth,
-                iconHeight = iconHeight,
-                iconBoxWidth = iconBoxWidth,
-                iconBoxHeight = iconBoxHeight,
-                textStyle = DesignSystemTheme.typography.xs.regular,
-                icon = icon,
-                iconPosition = iconPosition
+                textStyle = DesignSystemTheme.typography.xs.regular
             )
         }
     }

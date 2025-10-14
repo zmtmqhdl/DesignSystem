@@ -5,7 +5,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-object DesignSystemSpaces{
+object DesignSystemSpaces {
     val Space0 = 2.dp
     val Space1 = 4.dp
     val Space2 = 8.dp
@@ -19,6 +19,10 @@ object DesignSystemSpaces{
     val Space10 = 40.dp
     val Space11 = 44.dp
     val Space12 = 48.dp
+    val Space13 = 52.dp
+    val Space14 = 56.dp
+    val Space15 = 60.dp
+    val Space16 = 64.dp
 }
 
 @Stable
@@ -36,6 +40,10 @@ class DesignSystemSpace(
     val space10: Dp,
     val space11: Dp,
     val space12: Dp,
+    val space13: Dp,
+    val space14: Dp,
+    val space15: Dp,
+    val space16: Dp,
 )
 
 val LocalSpace = staticCompositionLocalOf {
@@ -53,5 +61,9 @@ val LocalSpace = staticCompositionLocalOf {
         space10 = Dp.Unspecified,
         space11 = Dp.Unspecified,
         space12 = Dp.Unspecified,
+        space13 = Dp.Unspecified,
+        space14 = Dp.Unspecified,
+        space15 = Dp.Unspecified,
+        space16 = Dp.Unspecified,
     )
 }

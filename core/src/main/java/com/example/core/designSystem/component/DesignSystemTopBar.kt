@@ -1,20 +1,37 @@
 package com.example.core.designSystem.component
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.FastOutLinearInEasing
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.example.core.designSystem.core.DesignSystemPreview
@@ -23,25 +40,116 @@ import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.theme.DesignSystemTheme
 import com.example.core.designSystem.type.TopBarIconType
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun Custom(
+    modifier: Modifier = Modifier,
+    title: @Composable () -> Unit,
+    titleTextStyle: TextStyle,
+    centeredTitle: Boolean,
+    navigationIcon: @Composable () -> Unit,
+    actions: @Composable RowScope.() -> Unit,
+    height: Dp = DesignSystemTheme.space.space12,
+    backgroundColor: Color = DesignSystemTheme.color.background,
+    scrollBehavior: TopAppBarScrollBehavior?
+) {
+    val expandedHeightPx = with(LocalDensity.current) { height.toPx().coerceAtLeast(0f) }
+    SideEffect {
+        if (scrollBehavior?.state?.heightOffsetLimit != -expandedHeightPx) {
+            scrollBehavior?.state?.heightOffsetLimit = -expandedHeightPx
+        }
+    }
+
+    val colorTransitionFraction by
+    remember(scrollBehavior) {
+        derivedStateOf {
+            val overlappingFraction = scrollBehavior?.state?.overlappedFraction ?: 0f
+            if (overlappingFraction > 0.01f) 1f else 0f
+        }
+    }
+    val appBarContainerColor by
+    animateColorAsState(
+        targetValue = lerp(
+                start = backgroundColor,
+                stop = backgroundColor,
+                fraction = FastOutLinearInEasing.transform(colorTransitionFraction)
+            )
+        ,
+        animationSpec = spring(stiffness = Spring.StiffnessMediumLow)
+    )
+
+    val actionsRow =
+        @Composable {
+            Row(
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically,
+                content = actions
+            )
+        }
+
+    val appBarDragModifier =
+        if (scrollBehavior != null && !scrollBehavior.isPinned) {
+            Modifier.draggable(
+                orientation = Orientation.Vertical,
+                state =
+                    rememberDraggableState { delta -> scrollBehavior.state.heightOffset += delta },
+                onDragStopped = { velocity ->
+                    settleAppBar(
+                        scrollBehavior.state,
+                        velocity,
+                        scrollBehavior.flingAnimationSpec,
+                        scrollBehavior.snapAnimationSpec
+                    )
+                }
+            )
+        } else {
+            Modifier
+        }
+
+    Surface(
+        modifier = modifier.then(appBarDragModifier),
+        color = appBarContainerColor
+    ) {
+        TopAppBarLayout(
+            modifier =
+                Modifier
+                    .clipToBounds()
+                    .heightIn(max = height),
+            scrolledOffset = { scrollBehavior?.state?.heightOffset ?: 0f },
+            navigationIconContentColor = backgroundColor.navigationIconContentColor,
+            titleContentColor = backgroundColor.titleContentColor,
+            actionIconContentColor = backgroundColor.actionIconContentColor,
+            title = title,
+            titleTextStyle = titleTextStyle,
+            titleAlpha = 1f,
+            titleVerticalArrangement = Arrangement.Center,
+            titleHorizontalArrangement =
+                if (centeredTitle) Arrangement.Center else Arrangement.Start,
+            titleBottomPadding = 0,
+            hideTitleSemantics = false,
+            navigationIcon = navigationIcon,
+            actions = actionsRow,
+        )
+    }
+}
+
+
 @Composable
 fun PrimaryTopBar(
     title: (@Composable () -> Unit)? = null,
-    leftIcons: List<NewPrimaryTopBarIcon>? = null,
-    rightIcons: List<NewPrimaryTopBarIcon>? = null,
+    height: Dp = DesignSystemTheme.space.space12,
+    navigationIcon: List<PrimaryTopBarIcon>? = null,
+    actions: List<PrimaryTopBarIcon>? = null,
 ) {
-    Column(
-        modifier = Modifier.padding(horizontal = DesignSystemTheme.space.space4)
-    ) {
-        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space5))
 
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(DesignSystemTheme.space.space8),
+                .height(height = height),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            leftIcons?.forEachIndexed { index, value ->
+            navigationIcon?.forEachIndexed { index, value ->
                 if (value.type == TopBarIconType.Icon) {
                     DesignSystemIcon(
                         icon = value.icon,
@@ -59,7 +167,7 @@ fun PrimaryTopBar(
                         style = value.textStyle
                     )
                 }
-                if (index != leftIcons.lastIndex) {
+                if (index != navigationIcon.lastIndex) {
                     Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
 
                 }
@@ -75,7 +183,7 @@ fun PrimaryTopBar(
 
             Spacer(modifier = Modifier.weight(1f))
 
-            rightIcons?.forEachIndexed { index, value ->
+            actions?.forEachIndexed { index, value ->
                 if (index != 0) {
                     Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
                 }
@@ -97,18 +205,10 @@ fun PrimaryTopBar(
                     )
                 }
             }
-        }
-        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space1))
     }
 }
 
 data class PrimaryTopBarIcon(
-    val icon: ImageVector,
-    val size: Dp,
-    val onClick: () -> Unit
-)
-
-data class NewPrimaryTopBarIcon(
     val type: TopBarIconType,
     val icon: ImageVector = Close,
     val iconColor: Color = Color.Unspecified,
@@ -128,18 +228,18 @@ data class NewPrimaryTopBarIcon(
 private fun PrimaryTopBarPreview() {
     PrimaryTopBar(
         title = { Text("title") },
-        leftIcons = listOf(
-            NewPrimaryTopBarIcon(
+        navigationIcon = listOf(
+            PrimaryTopBarIcon(
                 icon = Back,
                 type = TopBarIconType.Icon,
             )
         ),
-        rightIcons = listOf(
-            NewPrimaryTopBarIcon(
+        actions = listOf(
+            PrimaryTopBarIcon(
                 icon = Back,
                 type = TopBarIconType.Icon,
             ),
-            NewPrimaryTopBarIcon(
+            PrimaryTopBarIcon(
                 text = "example",
                 textColor = DesignSystemTheme.color.primary.fontColor,
                 textStyle = DesignSystemTheme.typography.m.medium,
