@@ -70,6 +70,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.material3)
     implementation(libs.androidx.ui.tooling.preview)
 }

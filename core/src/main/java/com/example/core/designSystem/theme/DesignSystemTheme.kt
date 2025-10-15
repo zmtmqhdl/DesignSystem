@@ -69,6 +69,10 @@ private val space = DesignSystemSpace(
     space10 = DesignSystemSpaces.Space10,
     space11 = DesignSystemSpaces.Space11,
     space12 = DesignSystemSpaces.Space12,
+    space13 = DesignSystemSpaces.Space13,
+    space14 = DesignSystemSpaces.Space14,
+    space15 = DesignSystemSpaces.Space15,
+    space16 = DesignSystemSpaces.Space16,
 )
 
 private val shape = DesignSystemShape(

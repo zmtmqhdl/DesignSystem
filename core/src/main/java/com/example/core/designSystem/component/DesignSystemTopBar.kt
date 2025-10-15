@@ -4,17 +4,15 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.draggable
-import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
@@ -27,31 +25,26 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.lerp
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.icon.Back
-import com.example.core.designSystem.icon.Close
+import com.example.core.designSystem.icon.Forward
+import com.example.core.designSystem.icon.Password
 import com.example.core.designSystem.theme.DesignSystemTheme
-import com.example.core.designSystem.type.TopBarIconType
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun Custom(
-    modifier: Modifier = Modifier,
+private fun PrimaryTopBar(
     title: @Composable () -> Unit,
-    titleTextStyle: TextStyle,
-    centeredTitle: Boolean,
+    centeredTitle: Boolean = false,
     navigationIcon: @Composable () -> Unit,
     actions: @Composable RowScope.() -> Unit,
     height: Dp = DesignSystemTheme.space.space12,
     backgroundColor: Color = DesignSystemTheme.color.background,
-    scrollBehavior: TopAppBarScrollBehavior?
+    scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
     val expandedHeightPx = with(LocalDensity.current) { height.toPx().coerceAtLeast(0f) }
     SideEffect {
@@ -70,181 +63,168 @@ private fun Custom(
     val appBarContainerColor by
     animateColorAsState(
         targetValue = lerp(
-                start = backgroundColor,
-                stop = backgroundColor,
-                fraction = FastOutLinearInEasing.transform(colorTransitionFraction)
-            )
-        ,
+            start = backgroundColor,
+            stop = backgroundColor,
+            fraction = FastOutLinearInEasing.transform(colorTransitionFraction)
+        ),
         animationSpec = spring(stiffness = Spring.StiffnessMediumLow)
     )
 
-    val actionsRow =
-        @Composable {
-            Row(
-                horizontalArrangement = Arrangement.End,
-                verticalAlignment = Alignment.CenterVertically,
-                content = actions
-            )
-        }
-
-    val appBarDragModifier =
-        if (scrollBehavior != null && !scrollBehavior.isPinned) {
-            Modifier.draggable(
-                orientation = Orientation.Vertical,
-                state =
-                    rememberDraggableState { delta -> scrollBehavior.state.heightOffset += delta },
-                onDragStopped = { velocity ->
-                    settleAppBar(
-                        scrollBehavior.state,
-                        velocity,
-                        scrollBehavior.flingAnimationSpec,
-                        scrollBehavior.snapAnimationSpec
-                    )
-                }
-            )
-        } else {
-            Modifier
-        }
-
     Surface(
-        modifier = modifier.then(appBarDragModifier),
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(height = height),
         color = appBarContainerColor
     ) {
-        TopAppBarLayout(
-            modifier =
-                Modifier
-                    .clipToBounds()
-                    .heightIn(max = height),
-            scrolledOffset = { scrollBehavior?.state?.heightOffset ?: 0f },
-            navigationIconContentColor = backgroundColor.navigationIconContentColor,
-            titleContentColor = backgroundColor.titleContentColor,
-            actionIconContentColor = backgroundColor.actionIconContentColor,
-            title = title,
-            titleTextStyle = titleTextStyle,
-            titleAlpha = 1f,
-            titleVerticalArrangement = Arrangement.Center,
-            titleHorizontalArrangement =
-                if (centeredTitle) Arrangement.Center else Arrangement.Start,
-            titleBottomPadding = 0,
-            hideTitleSemantics = false,
+        if (centeredTitle) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = DesignSystemTheme.space.space4),
+                contentAlignment = Alignment.Center
+            ) {
+                title()
+
+                Row(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    navigationIcon()
+                    Spacer(modifier = Modifier.weight(1f))
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(DesignSystemTheme.space.space2),
+                        verticalAlignment = Alignment.CenterVertically,
+                        content = actions
+                    )
+                }
+            }
+        } else {
+            Row(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(
+                        horizontal = DesignSystemTheme.space.space4
+                    ),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                navigationIcon()
+                Spacer(modifier = Modifier.width(width = DesignSystemTheme.space.space3))
+                title()
+                Spacer(modifier = Modifier.weight(1f))
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(
+                        space = DesignSystemTheme.space.space1
+                    ),
+                    verticalAlignment = Alignment.CenterVertically,
+                    content = actions
+                )
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+object DesignSystemTopBar {
+    @Composable
+    fun TextTopBar(
+        text: String,
+        centeredTitle: Boolean = false,
+        navigationIcon: @Composable () -> Unit,
+        actions: @Composable RowScope.() -> Unit,
+        height: Dp = DesignSystemTheme.space.space12,
+        backgroundColor: Color = DesignSystemTheme.color.background,
+        scrollBehavior: TopAppBarScrollBehavior? = null
+    ) {
+        PrimaryTopBar(
+            title = {
+                Text(
+                    text = text,
+                    color = DesignSystemTheme.color.black,
+                    style = DesignSystemTheme.typography.xl.bold
+                )
+            },
+            centeredTitle = centeredTitle,
             navigationIcon = navigationIcon,
-            actions = actionsRow,
+            actions = actions,
+            height = height,
+            backgroundColor = backgroundColor,
+            scrollBehavior = scrollBehavior
+        )
+    }
+
+    @Composable
+    fun ContentTopBar(
+        content: @Composable () -> Unit,
+        centeredTitle: Boolean = false,
+        navigationIcon: @Composable () -> Unit,
+        actions: @Composable RowScope.() -> Unit,
+        height: Dp = DesignSystemTheme.space.space12,
+        backgroundColor: Color = DesignSystemTheme.color.background,
+        scrollBehavior: TopAppBarScrollBehavior? = null
+    ) {
+        PrimaryTopBar(
+            title = content,
+            centeredTitle = centeredTitle,
+            navigationIcon = navigationIcon,
+            actions = actions,
+            height = height,
+            backgroundColor = backgroundColor,
+            scrollBehavior = scrollBehavior
         )
     }
 }
 
 
+@DesignSystemPreview
 @Composable
-fun PrimaryTopBar(
-    title: (@Composable () -> Unit)? = null,
-    height: Dp = DesignSystemTheme.space.space12,
-    navigationIcon: List<PrimaryTopBarIcon>? = null,
-    actions: List<PrimaryTopBarIcon>? = null,
-) {
+@OptIn(ExperimentalMaterial3Api::class)
+private fun DesignSystemTopBar_TextTopBar_Preview() {
+    DesignSystemTheme {
+        DesignSystemTopBar.TextTopBar(
+            text = "preview",
+            navigationIcon = {
+                DesignSystemIcon(
+                    icon = Back
+                )
+            },
+            actions = {
+                DesignSystemIcon(
+                    icon = Password
+                )
 
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(height = height),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            navigationIcon?.forEachIndexed { index, value ->
-                if (value.type == TopBarIconType.Icon) {
-                    DesignSystemIcon(
-                        icon = value.icon,
-                        color = value.iconColor,
-                        boxWidth = value.iconBoxWidth,
-                        boxHeight = value.iconBoxHeight,
-                        iconWidth = value.iconWidth,
-                        iconHeight = value.iconHeight,
-                        onClick = value.onClick
-                    )
-                } else {
-                    Text(
-                        text = value.text,
-                        color = value.textColor,
-                        style = value.textStyle
-                    )
-                }
-                if (index != navigationIcon.lastIndex) {
-                    Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
-
-                }
-            }
-
-            Spacer(modifier = Modifier.weight(1f))
-
-            title?.let {
-                Box(modifier = Modifier.align(Alignment.CenterVertically)) {
-                    it()
-                }
-            }
-
-            Spacer(modifier = Modifier.weight(1f))
-
-            actions?.forEachIndexed { index, value ->
-                if (index != 0) {
-                    Spacer(modifier = Modifier.width(DesignSystemTheme.space.space1))
-                }
-                if (value.type == TopBarIconType.Icon) {
-                    DesignSystemIcon(
-                        icon = value.icon,
-                        color = value.iconColor,
-                        boxWidth = value.iconBoxWidth,
-                        boxHeight = value.iconBoxHeight,
-                        iconWidth = value.iconWidth,
-                        iconHeight = value.iconHeight,
-                        onClick = value.onClick
-                    )
-                } else {
-                    Text(
-                        text = value.text,
-                        color = value.textColor,
-                        style = value.textStyle
-                    )
-                }
-            }
+                DesignSystemIcon(
+                    icon = Forward
+                )
+            },
+        )
     }
 }
 
-data class PrimaryTopBarIcon(
-    val type: TopBarIconType,
-    val icon: ImageVector = Close,
-    val iconColor: Color = Color.Unspecified,
-    val iconBoxWidth: Dp = Dp.Unspecified,
-    val iconBoxHeight: Dp = Dp.Unspecified,
-    val iconWidth: Dp = Dp.Unspecified,
-    val iconHeight: Dp = Dp.Unspecified,
-    val text: String = "",
-    val textColor: Color = Color.Unspecified,
-    val textStyle: TextStyle = TextStyle.Default,
-    val onClick: () -> Unit = {}
-)
-
-
 @DesignSystemPreview
 @Composable
-private fun PrimaryTopBarPreview() {
-    PrimaryTopBar(
-        title = { Text("title") },
-        navigationIcon = listOf(
-            PrimaryTopBarIcon(
-                icon = Back,
-                type = TopBarIconType.Icon,
-            )
-        ),
-        actions = listOf(
-            PrimaryTopBarIcon(
-                icon = Back,
-                type = TopBarIconType.Icon,
-            ),
-            PrimaryTopBarIcon(
-                text = "example",
-                textColor = DesignSystemTheme.color.primary.fontColor,
-                textStyle = DesignSystemTheme.typography.m.medium,
-                type = TopBarIconType.Text,
-            )
-        ),
-    )
+@OptIn(ExperimentalMaterial3Api::class)
+private fun DesignSystemTopBar_ContentTopBar_Preview() {
+    DesignSystemTheme {
+        DesignSystemTopBar.ContentTopBar(
+            content = {
+                Text(
+                    text = "preview"
+                )
+            },
+            navigationIcon = {
+                DesignSystemIcon(
+                    icon = Back
+                )
+            },
+            actions = {
+                DesignSystemIcon(
+                    icon = Password
+                )
+
+                DesignSystemIcon(
+                    icon = Forward
+                )
+            },
+        )
+    }
 }
