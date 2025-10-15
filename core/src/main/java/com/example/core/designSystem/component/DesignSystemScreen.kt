@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.webkit.WebView
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.imePadding
@@ -24,76 +25,6 @@ import com.example.core.designSystem.theme.DesignSystemSpaces
 import com.example.core.designSystem.theme.DesignSystemTheme
 
 object DesignSystemScreen {
-    @Composable
-    fun Screen(
-        imePadding: Boolean = false,
-        padding: Boolean = false,
-        containerColor: Color = DesignSystemTheme.color.background,
-        content: @Composable () -> Unit
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .then(if (imePadding) Modifier.imePadding() else Modifier)
-                .then(if (padding) Modifier.padding(horizontal = DesignSystemSpaces.Space4) else Modifier)
-                .background(color = containerColor)
-        ) {
-            content()
-        }
-    }
-
-    @Composable
-    fun Scaffold(
-        topBar: @Composable () -> Unit,
-        bottomBar: @Composable () -> Unit,
-        snackBarHost: @Composable () -> Unit,
-        imePadding: Boolean = false,
-        padding: Boolean = false,
-        containerColor: Color = DesignSystemTheme.color.background,
-        content: @Composable () -> Unit
-    ) {
-        Scaffold(
-            modifier = Modifier
-                .fillMaxSize()
-                .then(if (imePadding) Modifier.imePadding() else Modifier)
-                .then(if (padding) Modifier.padding(horizontal = DesignSystemSpaces.Space4) else Modifier),
-            topBar = topBar,
-            bottomBar = bottomBar,
-            snackbarHost = snackBarHost,
-            containerColor = containerColor
-        ) { innerPadding ->
-            Box(
-                modifier = Modifier
-                    .padding(innerPadding)
-
-            ) {
-                content()
-            }
-        }
-    }
-
-    @SuppressLint("SetJavaScriptEnabled")
-    @Composable
-    fun WebViewScreen(
-        url: String,
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-        ) {
-            AndroidView(
-                modifier = Modifier.fillMaxSize(),
-                factory = { context ->
-                    WebView(context).apply {
-                        settings.javaScriptEnabled = true
-                        settings.domStorageEnabled = true
-                        loadUrl(url)
-                    }
-                }
-            )
-        }
-    }
-
     @Composable
     fun ContentScreen(
         containerColor: Color = DesignSystemTheme.color.background,
@@ -136,4 +67,75 @@ object DesignSystemScreen {
             }
         }
     }
+
+    @Composable
+    fun Screen(
+        imePadding: Boolean = false,
+        padding: Boolean = false,
+        containerColor: Color = DesignSystemTheme.color.background,
+        content: @Composable () -> Unit
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .then(if (imePadding) Modifier.imePadding() else Modifier)
+                .then(if (padding) Modifier.padding(horizontal = DesignSystemSpaces.Space4) else Modifier)
+                .background(color = containerColor)
+        ) {
+            content()
+        }
+    }
+
+    @Composable
+    fun Scaffold(
+        topBar: @Composable () -> Unit,
+        bottomBar: @Composable () -> Unit,
+        snackBarHost: @Composable () -> Unit,
+        imePadding: Boolean = false,
+        padding: Boolean = false,
+        containerColor: Color = DesignSystemTheme.color.background,
+        content: @Composable () -> Unit
+    ) {
+        Scaffold(
+            modifier = Modifier.fillMaxSize(),
+            topBar = topBar,
+            bottomBar = bottomBar,
+            snackbarHost = snackBarHost,
+            containerColor = containerColor,
+        ) { innerPadding ->
+            Column (
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+                    .then(if (padding) Modifier.padding(horizontal = DesignSystemSpaces.Space4) else Modifier)
+
+            ) {
+                content()
+            }
+        }
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    @Composable
+    fun WebViewScreen(
+        url: String,
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            AndroidView(
+                modifier = Modifier.fillMaxSize(),
+                factory = { context ->
+                    WebView(context).apply {
+                        settings.javaScriptEnabled = true
+                        settings.domStorageEnabled = true
+                        loadUrl(url)
+                    }
+                }
+            )
+        }
+    }
+
+
 }
