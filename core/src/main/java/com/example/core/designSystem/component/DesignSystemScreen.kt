@@ -28,7 +28,7 @@ object DesignSystemScreen {
     @Composable
     fun ContentScreen(
         containerColor: Color = DesignSystemTheme.color.background,
-        loadingColor: Color = DesignSystemTheme.color.primary.background,
+        loadingColor: Color = DesignSystemTheme.color.blue50,
         loading: Boolean,
         content: @Composable () -> Unit
     ) {
@@ -53,7 +53,7 @@ object DesignSystemScreen {
                         modifier = Modifier
                             .fillMaxSize()
                             .background(
-                                color = DesignSystemTheme.color.black.copy(alpha = 0.3f)
+                                color = DesignSystemTheme.color.greyOpacity900.copy(alpha = 0.3f)
                             ),
                         contentAlignment = Alignment.Center
                     ) {

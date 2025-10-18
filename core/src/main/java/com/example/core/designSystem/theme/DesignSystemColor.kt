@@ -1,250 +1,475 @@
 package com.example.core.designSystem.theme
 
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.Stable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
 @Immutable
-data class DesignSystemColorSet(
-    val fontColor: Color,
-    val background: Color,
-    val outline: Color
-) {
-    companion object {
-        val Unspecified = DesignSystemColorSet(
-            fontColor = Color.Unspecified,
-            background = Color.Unspecified,
-            outline = Color.Unspecified
-        )
-    }
-}
-
-// light
-val LightPrimaryFontColor = Color(0xFF067CFB)
-val LightPrimaryBackground = Color(0xFFC9E6FD)
-val LightPrimaryOutline = Color(0xFFECF5FD)
-
-val LightSecondaryFontColor = Color(0xFF00C200)
-val LightSecondaryBackground = Color(0xFFA4F29F)
-val LightSecondaryOutline = Color(0xFFE3FAE1)
-
-val LightTertiaryFontColor = Color(0xFF6A1B9A)
-val LightTertiaryBackground = Color(0xFFF1C6FF)
-val LightTertiaryOutline = Color(0xFFEEA9D3)
-
-val LightWarningFontColor = Color(0xFFED2B2A)
-val LightWarningBackground = Color(0xFFFDD8D9)
-val LightWarningOutline = Color(0xFFFDF3F3)
-
-val LightAlarmFontColor = Color(0xFF067CFB)
-val LightAlarmBackground = Color(0xFFC9E6FD)
-val LightAlarmOutline = Color(0xFFECF5FD)
-
-val LightSuccessFontColor = Color(0xFF00C200)
-val LightSuccessBackground = Color(0xFFA4F29F)
-val LightSuccessOutline = Color(0xFFE3FAE1)
-
-val LightCautionFontColor = Color(0xFFFDD000)
-val LightCautionBackground = Color(0xFFFBF6C9)
-val LightCautionOutline = Color(0xFFFDFAE3)
-
-val LightDisableFontColor = Color(0xFFFDD000)
-val LightDisableBackground = Color(0xFFFBF6C9)
-val LightDisableOutline = Color(0xFFFDFAE3)
-
-val LightWhite = Color(0xFFFFFFFF)
-val LightBlack = Color(0xFF000000)
-val LightGray600 = Color(0xFF757575)
-val LightBackground = Color(0xFFF3F4F6)
-val LightBackgroundElevated = Color(0xFFFFFFFF)
-val LightActiveIcon = Color(0xFFB0B9C2)
-val LightInactiveIcon = Color(0xFF181F29)
-val LightText = Color(0xFF161D27)
-
-// dark
-val DarkPrimaryFontColor = Color(0xFF067CFB)
-val DarkPrimaryBackground = Color(0xFF2B3E9B)
-val DarkPrimaryOutline = Color(0xFF3A5E9F)
-
-val DarkSecondaryFontColor = Color(0xFF00C200)
-val DarkSecondaryBackground = Color(0xFF307D32)
-val DarkSecondaryOutline = Color(0xFF4E9F4E)
-
-val DarkTertiaryFontColor = Color(0xFF6A1B9A)
-val DarkTertiaryBackground = Color(0xFF9C4F9A)
-val DarkTertiaryOutline = Color(0xFF6F3072)
-
-val DarkWarningFontColor = Color(0xFFED2B2A)
-val DarkWarningBackground = Color(0xFF9B5D5D)
-val DarkWarningOutline = Color(0xFF9F4C4C)
-
-val DarkAlarmFontColor = Color(0xFF067CFB)
-val DarkAlarmBackground = Color(0xFF2B3E9B)
-val DarkAlarmOutline = Color(0xFF3A5E9F)
-
-val DarkSuccessFontColor = Color(0xFF00C200)
-val DarkSuccessBackground = Color(0xFF307D32)
-val DarkSuccessOutline = Color(0xFF4E9F4E)
-
-val DarkCautionFontColor = Color(0xFFFDD000)
-val DarkCautionBackground = Color(0xFFAB8A2A)
-val DarkCautionOutline = Color(0xFFB69F59)
-
-val DarkDisableFontColor = Color(0xFFFDD000)
-val DarkDisableBackground = Color(0xFFAB8A2A)
-val DarkDisableOutline = Color(0xFFB69F59)
-
-val DarkWhite = Color(0xFFFFFFFF)
-val DarkBlack = Color(0xFF000000)
-val DarkGray600 = Color(0xFF757575)
-val DarkBackground = Color(0xFF101012)
-val DarkBackgroundElevated = Color(0xFF18171C)
-val DarkActiveIcon = Color(0xFF63636D)
-val DarkInactiveIcon = Color(0xFFFFFFFF)
-val DarkText = Color(0xFFFFFFFF)
-
-
-object DesignSystemColors{
-    object Light {
-        val Primary = DesignSystemColorSet(
-            fontColor = LightPrimaryFontColor,
-            background = LightPrimaryBackground,
-            outline = LightPrimaryOutline
-        )
-        val Secondary = DesignSystemColorSet(
-            fontColor = LightSecondaryFontColor,
-            background = LightSecondaryBackground,
-            outline = LightSecondaryOutline
-        )
-        val Tertiary = DesignSystemColorSet(
-            fontColor = LightTertiaryFontColor,
-            background = LightTertiaryBackground,
-            outline = LightTertiaryOutline
-        )
-        val Warning = DesignSystemColorSet(
-            fontColor = LightWarningFontColor,
-            background = LightWarningBackground,
-            outline = LightWarningOutline
-        )
-        val Alarm = DesignSystemColorSet(
-            fontColor = LightAlarmFontColor,
-            background = LightAlarmBackground,
-            outline = LightAlarmOutline
-        )
-        val Success = DesignSystemColorSet(
-            fontColor = LightSuccessFontColor,
-            background = LightSuccessBackground,
-            outline = LightSuccessOutline
-        )
-        val Caution = DesignSystemColorSet(
-            fontColor = LightCautionFontColor,
-            background = LightCautionBackground,
-            outline = LightCautionOutline
-        )
-        val Disable = DesignSystemColorSet(
-            fontColor = LightDisableFontColor,
-            background = LightDisableBackground,
-            outline = LightDisableOutline
-        )
-        val white = LightWhite
-        val black = LightBlack
-        val gray600 = LightGray600
-        val background = LightBackground
-        val backgroundElevated = LightBackgroundElevated
-        val activeIcon = LightActiveIcon
-        val inactiveIcon = LightInactiveIcon
-        val text = LightText
-    }
-    object Dark {
-        val Primary = DesignSystemColorSet(
-            fontColor = DarkPrimaryFontColor,
-            background = DarkPrimaryBackground,
-            outline = DarkPrimaryOutline
-        )
-        val Secondary = DesignSystemColorSet(
-            fontColor = DarkSecondaryFontColor,
-            background = DarkSecondaryBackground,
-            outline = DarkSecondaryOutline
-        )
-        val Tertiary = DesignSystemColorSet(
-            fontColor = DarkTertiaryFontColor,
-            background = DarkTertiaryBackground,
-            outline = DarkTertiaryOutline
-        )
-        val Warning = DesignSystemColorSet(
-            fontColor = DarkWarningFontColor,
-            background = DarkWarningBackground,
-            outline = DarkWarningOutline
-        )
-        val Alarm = DesignSystemColorSet(
-            fontColor = DarkAlarmFontColor,
-            background = DarkAlarmBackground,
-            outline = DarkAlarmOutline
-        )
-        val Success = DesignSystemColorSet(
-            fontColor = DarkSuccessFontColor,
-            background = DarkSuccessBackground,
-            outline = DarkSuccessOutline
-        )
-        val Caution = DesignSystemColorSet(
-            fontColor = DarkCautionFontColor,
-            background = DarkCautionBackground,
-            outline = DarkCautionOutline
-        )
-        val Disable = DesignSystemColorSet(
-            fontColor = DarkDisableFontColor,
-            background = DarkDisableBackground,
-            outline = DarkDisableOutline
-        )
-        val white = DarkWhite
-        val black = DarkBlack
-        val gray600 = DarkGray600
-        val background = DarkBackground
-        val backgroundElevated = DarkBackgroundElevated
-        val activeIcon = DarkActiveIcon
-        val inactiveIcon = DarkInactiveIcon
-        val text = DarkText
-    }
-}
-
-@Immutable
 data class DesignSystemColor(
-    val primary: DesignSystemColorSet,
-    val secondary: DesignSystemColorSet,
-    val tertiary: DesignSystemColorSet,
-    val warning: DesignSystemColorSet,
-    val alarm: DesignSystemColorSet,
-    val success: DesignSystemColorSet,
-    val caution: DesignSystemColorSet,
-    val disable: DesignSystemColorSet,
-    val white: Color,
-    val black: Color,
-    val gray600: Color,
+    // Grey
+    val grey50: Color,
+    val grey100: Color,
+    val grey200: Color,
+    val grey300: Color,
+    val grey400: Color,
+    val grey500: Color,
+    val grey600: Color,
+    val grey700: Color,
+    val grey800: Color,
+    val grey900: Color,
+
+    // Blue
+    val blue50: Color,
+    val blue100: Color,
+    val blue200: Color,
+    val blue300: Color,
+    val blue400: Color,
+    val blue500: Color,
+    val blue600: Color,
+    val blue700: Color,
+    val blue800: Color,
+    val blue900: Color,
+
+    // Red
+    val red50: Color,
+    val red100: Color,
+    val red200: Color,
+    val red300: Color,
+    val red400: Color,
+    val red500: Color,
+    val red600: Color,
+    val red700: Color,
+    val red800: Color,
+    val red900: Color,
+
+    // GrayOpacity
+    val greyOpacity50: Color,
+    val greyOpacity100: Color,
+    val greyOpacity200: Color,
+    val greyOpacity300: Color,
+    val greyOpacity400: Color,
+    val greyOpacity500: Color,
+    val greyOpacity600: Color,
+    val greyOpacity700: Color,
+    val greyOpacity800: Color,
+    val greyOpacity900: Color,
+
+    // Orange
+    val orange50: Color,
+    val orange100: Color,
+    val orange200: Color,
+    val orange300: Color,
+    val orange400: Color,
+    val orange500: Color,
+    val orange600: Color,
+    val orange700: Color,
+    val orange800: Color,
+    val orange900: Color,
+
+    // Yellow
+    val yellow50: Color,
+    val yellow100: Color,
+    val yellow200: Color,
+    val yellow300: Color,
+    val yellow400: Color,
+    val yellow500: Color,
+    val yellow600: Color,
+    val yellow700: Color,
+    val yellow800: Color,
+    val yellow900: Color,
+
+    // Green
+    val green50: Color,
+    val green100: Color,
+    val green200: Color,
+    val green300: Color,
+    val green400: Color,
+    val green500: Color,
+    val green600: Color,
+    val green700: Color,
+    val green800: Color,
+    val green900: Color,
+
+    // Teal
+    val teal50: Color,
+    val teal100: Color,
+    val teal200: Color,
+    val teal300: Color,
+    val teal400: Color,
+    val teal500: Color,
+    val teal600: Color,
+    val teal700: Color,
+    val teal800: Color,
+    val teal900: Color,
+
+    // Purple
+    val purple50: Color,
+    val purple100: Color,
+    val purple200: Color,
+    val purple300: Color,
+    val purple400: Color,
+    val purple500: Color,
+    val purple600: Color,
+    val purple700: Color,
+    val purple800: Color,
+    val purple900: Color,
+
+    // Background
     val background: Color,
-    val backgroundElevated: Color,
-    val activeIcon: Color,
-    val inactiveIcon: Color,
-    val text: Color
+    val greyBackground: Color,
+    val layeredBackground: Color,
+    val floatedBackground: Color
 )
+
+object DesignSystemColorSet {
+    val LightColor = DesignSystemColor(
+        // Grey
+        grey50 = Color(0xFFF9FAFB),
+        grey100 = Color(0xFFF2F4F6),
+        grey200 = Color(0xFFE5E8EB),
+        grey300 = Color(0xFFD1D6DB),
+        grey400 = Color(0xFFB0B8C1),
+        grey500 = Color(0xFF8B95A1),
+        grey600 = Color(0xFF6B7684),
+        grey700 = Color(0xFF4E5968),
+        grey800 = Color(0xFF333D4B),
+        grey900 = Color(0xFF191F28),
+
+        // Blue
+        blue50 = Color(0xFFE8F3FF),
+        blue100 = Color(0xFFC9E2FF),
+        blue200 = Color(0xFF90C2FF),
+        blue300 = Color(0xFF64A8FF),
+        blue400 = Color(0xFF4593FC),
+        blue500 = Color(0xFF3182F6),
+        blue600 = Color(0xFF2272EB),
+        blue700 = Color(0xFF1B64DA),
+        blue800 = Color(0xFF1957C2),
+        blue900 = Color(0xFF194AA6),
+
+        // Red
+        red50 = Color(0xFFFFEEEE),
+        red100 = Color(0xFFFFD4D6),
+        red200 = Color(0xFFFEAFB4),
+        red300 = Color(0xFFFB8890),
+        red400 = Color(0xFFF66570),
+        red500 = Color(0xFFF04452),
+        red600 = Color(0xFFE42939),
+        red700 = Color(0xFFD22030),
+        red800 = Color(0xFFBC1B2A),
+        red900 = Color(0xFFA51926),
+
+        // Grey Opacity
+        greyOpacity50 = Color(0x05001733),
+        greyOpacity100 = Color(0x0C022047),
+        greyOpacity200 = Color(0x19001B37),
+        greyOpacity300 = Color(0x2E001D3A),
+        greyOpacity400 = Color(0x4F001936),
+        greyOpacity500 = Color(0x75031832),
+        greyOpacity600 = Color(0x9300132B),
+        greyOpacity700 = Color(0xB2031228),
+        greyOpacity800 = Color(0xCC000C1E),
+        greyOpacity900 = Color(0xE8020913),
+
+        // Orange
+        orange50 = Color(0xFFFFF3E0),
+        orange100 = Color(0xFFFFE0B0),
+        orange200 = Color(0xFFFFCD80),
+        orange300 = Color(0xFFFFBD51),
+        orange400 = Color(0xFFFFA927),
+        orange500 = Color(0xFFFE9800),
+        orange600 = Color(0xFFFB8800),
+        orange700 = Color(0xFFF57800),
+        orange800 = Color(0xFFED6700),
+        orange900 = Color(0xFFE45600),
+
+        // Yellow
+        yellow50 = Color(0xFFFFF9E7),
+        yellow100 = Color(0xFFFFEFBF),
+        yellow200 = Color(0xFFFFE69B),
+        yellow300 = Color(0xFFFFDD78),
+        yellow400 = Color(0xFFFFD158),
+        yellow500 = Color(0xFFFFC342),
+        yellow600 = Color(0xFFFFB331),
+        yellow700 = Color(0xFFFAA131),
+        yellow800 = Color(0xFFEE8F11),
+        yellow900 = Color(0xFFDD7D02),
+
+        // Green
+        green50 = Color(0xFFF0FAF6),
+        green100 = Color(0xFFAEEFD5),
+        green200 = Color(0xFF76E4B8),
+        green300 = Color(0xFF3FD599),
+        green400 = Color(0xFF15C47E),
+        green500 = Color(0xFF03B26C),
+        green600 = Color(0xFF02A262),
+        green700 = Color(0xFF029359),
+        green800 = Color(0xFF028450),
+        green900 = Color(0xFF027648),
+
+        // Teal
+        teal50 = Color(0xFFEDF8F8),
+        teal100 = Color(0xFFBCE9E9),
+        teal200 = Color(0xFF89D8D8),
+        teal300 = Color(0xFF58C7C7),
+        teal400 = Color(0xFF30B6B6),
+        teal500 = Color(0xFF18A5A5),
+        teal600 = Color(0xFF109595),
+        teal700 = Color(0xFF0C8585),
+        teal800 = Color(0xFF097575),
+        teal900 = Color(0xFF076565),
+
+        // Purple
+        purple50 = Color(0xFFF9F0FC),
+        purple100 = Color(0xFFEDCCF8),
+        purple200 = Color(0xFFDA9BEF),
+        purple300 = Color(0xFFC770E4),
+        purple400 = Color(0xFFB44BD7),
+        purple500 = Color(0xFFA234C7),
+        purple600 = Color(0xFF9128B4),
+        purple700 = Color(0xFF8222A2),
+        purple800 = Color(0xFF73228E),
+        purple900 = Color(0xFF65237B),
+
+        // Background
+        background = Color(0xFFFFFFFF),
+        greyBackground = Color(0xFFF2F4F6),
+        layeredBackground = Color(0xFFFFFFFF),
+        floatedBackground = Color(0xFFFFFFFF)
+    )
+
+    val DarkColor = DesignSystemColor(
+        // Grey
+        grey50 = Color(0xFFF9FAFB),
+        grey100 = Color(0xFFF2F4F6),
+        grey200 = Color(0xFFE5E8EB),
+        grey300 = Color(0xFFD1D6DB),
+        grey400 = Color(0xFFB0B8C1),
+        grey500 = Color(0xFF8B95A1),
+        grey600 = Color(0xFF6B7684),
+        grey700 = Color(0xFF4E5968),
+        grey800 = Color(0xFF333D4B),
+        grey900 = Color(0xFF191F28),
+
+        // Blue
+        blue50 = Color(0xFFE8F3FF),
+        blue100 = Color(0xFFC9E2FF),
+        blue200 = Color(0xFF90C2FF),
+        blue300 = Color(0xFF64A8FF),
+        blue400 = Color(0xFF4593FC),
+        blue500 = Color(0xFF3182F6),
+        blue600 = Color(0xFF2272EB),
+        blue700 = Color(0xFF1B64DA),
+        blue800 = Color(0xFF1957C2),
+        blue900 = Color(0xFF194AA6),
+
+        // Red
+        red50 = Color(0xFFFFEEEE),
+        red100 = Color(0xFFFFD4D6),
+        red200 = Color(0xFFFEAFB4),
+        red300 = Color(0xFFFB8890),
+        red400 = Color(0xFFF66570),
+        red500 = Color(0xFFF04452),
+        red600 = Color(0xFFE42939),
+        red700 = Color(0xFFD22030),
+        red800 = Color(0xFFBC1B2A),
+        red900 = Color(0xFFA51926),
+
+        // Grey Opacity
+        greyOpacity50 = Color(0x05001733),
+        greyOpacity100 = Color(0x0C022047),
+        greyOpacity200 = Color(0x19001B37),
+        greyOpacity300 = Color(0x2E001D3A),
+        greyOpacity400 = Color(0x4F001936),
+        greyOpacity500 = Color(0x75031832),
+        greyOpacity600 = Color(0x9300132B),
+        greyOpacity700 = Color(0xB2031228),
+        greyOpacity800 = Color(0xCC000C1E),
+        greyOpacity900 = Color(0xE8020913),
+
+        // Orange
+        orange50 = Color(0xFFFFF3E0),
+        orange100 = Color(0xFFFFE0B0),
+        orange200 = Color(0xFFFFCD80),
+        orange300 = Color(0xFFFFBD51),
+        orange400 = Color(0xFFFFA927),
+        orange500 = Color(0xFFFE9800),
+        orange600 = Color(0xFFFB8800),
+        orange700 = Color(0xFFF57800),
+        orange800 = Color(0xFFED6700),
+        orange900 = Color(0xFFE45600),
+
+        // Yellow
+        yellow50 = Color(0xFFFFF9E7),
+        yellow100 = Color(0xFFFFEFBF),
+        yellow200 = Color(0xFFFFE69B),
+        yellow300 = Color(0xFFFFDD78),
+        yellow400 = Color(0xFFFFD158),
+        yellow500 = Color(0xFFFFC342),
+        yellow600 = Color(0xFFFFB331),
+        yellow700 = Color(0xFFFAA131),
+        yellow800 = Color(0xFFEE8F11),
+        yellow900 = Color(0xFFDD7D02),
+
+        // Green
+        green50 = Color(0xFFF0FAF6),
+        green100 = Color(0xFFAEEFD5),
+        green200 = Color(0xFF76E4B8),
+        green300 = Color(0xFF3FD599),
+        green400 = Color(0xFF15C47E),
+        green500 = Color(0xFF03B26C),
+        green600 = Color(0xFF02A262),
+        green700 = Color(0xFF029359),
+        green800 = Color(0xFF028450),
+        green900 = Color(0xFF027648),
+
+        // Teal
+        teal50 = Color(0xFFEDF8F8),
+        teal100 = Color(0xFFBCE9E9),
+        teal200 = Color(0xFF89D8D8),
+        teal300 = Color(0xFF58C7C7),
+        teal400 = Color(0xFF30B6B6),
+        teal500 = Color(0xFF18A5A5),
+        teal600 = Color(0xFF109595),
+        teal700 = Color(0xFF0C8585),
+        teal800 = Color(0xFF097575),
+        teal900 = Color(0xFF076565),
+
+        // Purple
+        purple50 = Color(0xFFF9F0FC),
+        purple100 = Color(0xFFEDCCF8),
+        purple200 = Color(0xFFDA9BEF),
+        purple300 = Color(0xFFC770E4),
+        purple400 = Color(0xFFB44BD7),
+        purple500 = Color(0xFFA234C7),
+        purple600 = Color(0xFF9128B4),
+        purple700 = Color(0xFF8222A2),
+        purple800 = Color(0xFF73228E),
+        purple900 = Color(0xFF65237B),
+
+        // Background
+        background = Color(0xFFFFFFFF),
+        greyBackground = Color(0xFFF2F4F6),
+        layeredBackground = Color(0xFFFFFFFF),
+        floatedBackground = Color(0xFFFFFFFF)
+    )
+}
+
 
 val LocalColor = staticCompositionLocalOf {
     DesignSystemColor(
-        primary = DesignSystemColorSet.Unspecified,
-        secondary = DesignSystemColorSet.Unspecified,
-        tertiary = DesignSystemColorSet.Unspecified,
-        warning = DesignSystemColorSet.Unspecified,
-        alarm = DesignSystemColorSet.Unspecified,
-        success = DesignSystemColorSet.Unspecified,
-        caution = DesignSystemColorSet.Unspecified,
-        disable = DesignSystemColorSet.Unspecified,
-        white = Color.Unspecified,
-        black = Color.Unspecified,
-        gray600 = Color.Unspecified,
+        // Grey
+        grey50 = Color.Unspecified,
+        grey100 = Color.Unspecified,
+        grey200 = Color.Unspecified,
+        grey300 = Color.Unspecified,
+        grey400 = Color.Unspecified,
+        grey500 = Color.Unspecified,
+        grey600 = Color.Unspecified,
+        grey700 = Color.Unspecified,
+        grey800 = Color.Unspecified,
+        grey900 = Color.Unspecified,
+
+        // Blue
+        blue50 = Color.Unspecified,
+        blue100 = Color.Unspecified,
+        blue200 = Color.Unspecified,
+        blue300 = Color.Unspecified,
+        blue400 = Color.Unspecified,
+        blue500 = Color.Unspecified,
+        blue600 = Color.Unspecified,
+        blue700 = Color.Unspecified,
+        blue800 = Color.Unspecified,
+        blue900 = Color.Unspecified,
+
+        // Red
+        red50 = Color.Unspecified,
+        red100 = Color.Unspecified,
+        red200 = Color.Unspecified,
+        red300 = Color.Unspecified,
+        red400 = Color.Unspecified,
+        red500 = Color.Unspecified,
+        red600 = Color.Unspecified,
+        red700 = Color.Unspecified,
+        red800 = Color.Unspecified,
+        red900 = Color.Unspecified,
+
+        // Grey Opacity
+        greyOpacity50 = Color.Unspecified,
+        greyOpacity100 = Color.Unspecified,
+        greyOpacity200 = Color.Unspecified,
+        greyOpacity300 = Color.Unspecified,
+        greyOpacity400 = Color.Unspecified,
+        greyOpacity500 = Color.Unspecified,
+        greyOpacity600 = Color.Unspecified,
+        greyOpacity700 = Color.Unspecified,
+        greyOpacity800 = Color.Unspecified,
+        greyOpacity900 = Color.Unspecified,
+
+        // Orange
+        orange50 = Color.Unspecified,
+        orange100 = Color.Unspecified,
+        orange200 = Color.Unspecified,
+        orange300 = Color.Unspecified,
+        orange400 = Color.Unspecified,
+        orange500 = Color.Unspecified,
+        orange600 = Color.Unspecified,
+        orange700 = Color.Unspecified,
+        orange800 = Color.Unspecified,
+        orange900 = Color.Unspecified,
+
+        // Yellow
+        yellow50 = Color.Unspecified,
+        yellow100 = Color.Unspecified,
+        yellow200 = Color.Unspecified,
+        yellow300 = Color.Unspecified,
+        yellow400 = Color.Unspecified,
+        yellow500 = Color.Unspecified,
+        yellow600 = Color.Unspecified,
+        yellow700 = Color.Unspecified,
+        yellow800 = Color.Unspecified,
+        yellow900 = Color.Unspecified,
+
+        // Green
+        green50 = Color.Unspecified,
+        green100 = Color.Unspecified,
+        green200 = Color.Unspecified,
+        green300 = Color.Unspecified,
+        green400 = Color.Unspecified,
+        green500 = Color.Unspecified,
+        green600 = Color.Unspecified,
+        green700 = Color.Unspecified,
+        green800 = Color.Unspecified,
+        green900 = Color.Unspecified,
+
+        // Teal
+        teal50 = Color.Unspecified,
+        teal100 = Color.Unspecified,
+        teal200 = Color.Unspecified,
+        teal300 = Color.Unspecified,
+        teal400 = Color.Unspecified,
+        teal500 = Color.Unspecified,
+        teal600 = Color.Unspecified,
+        teal700 = Color.Unspecified,
+        teal800 = Color.Unspecified,
+        teal900 = Color.Unspecified,
+
+        // Purple
+        purple50 = Color.Unspecified,
+        purple100 = Color.Unspecified,
+        purple200 = Color.Unspecified,
+        purple300 = Color.Unspecified,
+        purple400 = Color.Unspecified,
+        purple500 = Color.Unspecified,
+        purple600 = Color.Unspecified,
+        purple700 = Color.Unspecified,
+        purple800 = Color.Unspecified,
+        purple900 = Color.Unspecified,
+
+        // Background
         background = Color.Unspecified,
-        backgroundElevated = Color.Unspecified,
-        activeIcon = Color.Unspecified,
-        inactiveIcon = Color.Unspecified,
-        text = Color.Unspecified
+        greyBackground = Color.Unspecified,
+        layeredBackground = Color.Unspecified,
+        floatedBackground = Color.Unspecified
     )
 }

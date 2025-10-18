@@ -6,7 +6,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 object DesignSystemSpaces {
-    val Space0 = 2.dp
+    val Space0 = 1.dp
     val Space1 = 4.dp
     val Space2 = 8.dp
     val Space3 = 12.dp

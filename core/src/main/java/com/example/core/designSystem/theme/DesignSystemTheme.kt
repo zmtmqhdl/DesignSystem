@@ -5,56 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 
-private val lightColor = DesignSystemColor(
-    primary = DesignSystemColors.Light.Primary,
-    secondary = DesignSystemColors.Light.Secondary,
-    tertiary = DesignSystemColors.Light.Tertiary,
-    warning = DesignSystemColors.Light.Warning,
-    alarm = DesignSystemColors.Light.Alarm,
-    success = DesignSystemColors.Light.Success,
-    caution = DesignSystemColors.Light.Caution,
-    disable = DesignSystemColors.Light.Caution,
-    white = DesignSystemColors.Light.white,
-    black = DesignSystemColors.Light.black,
-    gray600 = DesignSystemColors.Light.gray600,
-    background = DesignSystemColors.Light.background,
-    backgroundElevated = DesignSystemColors.Light.backgroundElevated,
-    activeIcon = DesignSystemColors.Light.activeIcon,
-    inactiveIcon = DesignSystemColors.Light.inactiveIcon,
-    text = DesignSystemColors.Light.text
-
-)
-
-private val darkColor = DesignSystemColor(
-    primary = DesignSystemColors.Dark.Primary,
-    secondary = DesignSystemColors.Dark.Secondary,
-    tertiary = DesignSystemColors.Dark.Tertiary,
-    warning = DesignSystemColors.Dark.Warning,
-    alarm = DesignSystemColors.Dark.Alarm,
-    success = DesignSystemColors.Dark.Success,
-    caution = DesignSystemColors.Dark.Caution,
-    disable = DesignSystemColors.Dark.Caution,
-    white = DesignSystemColors.Dark.white,
-    black = DesignSystemColors.Dark.black,
-    gray600 = DesignSystemColors.Dark.gray600,
-    background = DesignSystemColors.Dark.background,
-    backgroundElevated = DesignSystemColors.Dark.backgroundElevated,
-    activeIcon = DesignSystemColors.Dark.activeIcon,
-    inactiveIcon = DesignSystemColors.Dark.inactiveIcon,
-    text = DesignSystemColors.Dark.text
-)
-
-private val typograpy = DesignSystemTypography(
-    xxxl = DesignSystemTextStyles.XXXL,
-    xxl = DesignSystemTextStyles.XXL,
-    xl = DesignSystemTextStyles.XL,
-    l = DesignSystemTextStyles.L,
-    m = DesignSystemTextStyles.M,
-    s = DesignSystemTextStyles.S,
-    xs = DesignSystemTextStyles.XS,
-    xxs = DesignSystemTextStyles.XXS,
-)
-
 private val space = DesignSystemSpace(
     space0 = DesignSystemSpaces.Space0,
     space1 = DesignSystemSpaces.Space1,
@@ -89,11 +39,11 @@ fun DesignSystemTheme(
     isDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val color = if (isDarkTheme) darkColor else lightColor
+    val color = if (isDarkTheme) DesignSystemColorSet.LightColor else DesignSystemColorSet.DarkColor
 
     CompositionLocalProvider(
         LocalColor provides color,
-        LocalTypography provides typograpy,
+        LocalTypography provides typography(),
         LocalSpace provides space,
         LocalShape provides shape,
         content = content
@@ -106,6 +56,11 @@ object DesignSystemTheme {
         @ReadOnlyComposable
         get() = LocalColor.current
 
+    val typography: DesignSystemTypography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalTypography.current
+
     val shape: DesignSystemShape
         @Composable
         @ReadOnlyComposable
@@ -115,9 +70,4 @@ object DesignSystemTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalSpace.current
-
-    val typography: DesignSystemTypography
-        @Composable
-        @ReadOnlyComposable
-        get() = LocalTypography.current
 }
