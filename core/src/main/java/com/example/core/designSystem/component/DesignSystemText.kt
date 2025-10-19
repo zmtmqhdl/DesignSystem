@@ -14,46 +14,38 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
+import com.example.core.designSystem.theme.DesignSystemTheme
 
 @Composable
-fun SelectableText(
+fun DesignSystemText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = Color.Unspecified,
-    fontSize: TextUnit = TextUnit.Unspecified,
-    fontStyle: FontStyle? = null,
-    fontWeight: FontWeight? = null,
-    fontFamily: FontFamily? = null,
-    letterSpacing: TextUnit = TextUnit.Unspecified,
-    textDecoration: TextDecoration? = null,
-    textAlign: TextAlign? = null,
-    lineHeight: TextUnit = TextUnit.Unspecified,
+    color: Color = DesignSystemTheme.color.grey900,
     overflow: TextOverflow = TextOverflow.Clip,
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
     minLines: Int = 1,
-    onTextLayout: ((TextLayoutResult) -> Unit)? = null,
-    style: TextStyle = LocalTextStyle.current
+    style: TextStyle = DesignSystemTheme.typography.typography6Regular,
+    selectable: Boolean = false
 ) {
-    SelectionContainer {
+    val content: @Composable () -> Unit = {
         Text(
             text = text,
             modifier = modifier,
             color = color,
-            fontSize = fontSize,
-            fontStyle = fontStyle,
-            fontWeight = fontWeight,
-            fontFamily = fontFamily,
-            letterSpacing = letterSpacing,
-            textDecoration = textDecoration,
-            textAlign = textAlign,
-            lineHeight = lineHeight,
             overflow = overflow,
             softWrap = softWrap,
             maxLines = maxLines,
             minLines = minLines,
-            onTextLayout = onTextLayout,
             style = style
         )
+    }
+
+    if (selectable) {
+        SelectionContainer {
+            content()
+        }
+    } else {
+        content()
     }
 }

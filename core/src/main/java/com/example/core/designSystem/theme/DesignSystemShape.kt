@@ -1,14 +1,17 @@
 package com.example.core.designSystem.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 
+@Stable
 object DesignSystemShapes{
     val BottomSheet = RoundedCornerShape(DesignSystemSpaces.Space4)
-    val Button = RoundedCornerShape(DesignSystemSpaces.Space2)
+    val IconButton = RoundedCornerShape(DesignSystemSpaces.Space2)
+    val Button = RoundedCornerShape(DesignSystemSpaces.Space4)
     val Dialog = RoundedCornerShape(DesignSystemSpaces.Space2)
     val SnackBar = RoundedCornerShape(DesignSystemSpaces.Space2)
     val TextField = RoundedCornerShape(DesignSystemSpaces.Space4)
@@ -18,6 +21,7 @@ object DesignSystemShapes{
 @Stable
 class DesignSystemShape(
     val button: Shape,
+    val iconButton: Shape,
     val bottomSheet: Shape,
     val dialog: Shape,
     val snackBar: Shape,
@@ -25,13 +29,6 @@ class DesignSystemShape(
     val box: Shape
 )
 
-val LocalShape = staticCompositionLocalOf {
-    DesignSystemShape(
-        bottomSheet = RectangleShape,
-        button = RectangleShape,
-        dialog = RectangleShape,
-        snackBar = RectangleShape,
-        textField = RectangleShape,
-        box = RectangleShape
-    )
+val LocalShape: ProvidableCompositionLocal<DesignSystemShape> = staticCompositionLocalOf {
+    error("LocalShape not provided")
 }

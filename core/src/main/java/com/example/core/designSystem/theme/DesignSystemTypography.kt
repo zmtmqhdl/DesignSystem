@@ -2,6 +2,7 @@ package com.example.core.designSystem.theme
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.platform.LocalDensity
@@ -12,6 +13,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import com.example.core.R
+
+/**
+ * Light랑 SemiBold 추가 필요
+ *
+ * 기본 : Typography6Regular
+ *
+ */
 
 object DesignSystemFontSize {
     val Typography1 = 30.sp
@@ -88,10 +96,6 @@ object DesignSystemFontWeight {
     val Regular = FontWeight(weight = 400)
 }
 
-object DesignSystemFontScalePercent {
-    const val PERCENT = 0.01
-}
-
 private fun textStyle(
     fontSize: TextUnit,
     maxFontSize: TextUnit,
@@ -100,8 +104,7 @@ private fun textStyle(
     fontRes: Int,
     fontScale: Float
 ): TextStyle {
-    val percent = DesignSystemFontScalePercent.PERCENT
-    val scaledSize = (fontSize * fontScale * percent).value
+    val scaledSize = (fontSize * fontScale).value
 
     return TextStyle(
         fontFamily = FontFamily(Font(resId = fontRes)),
@@ -180,6 +183,7 @@ data class DesignSystemTypography(
 @Composable
 fun typography(): DesignSystemTypography {
     val fontScale = LocalDensity.current.fontScale
+
 
     return remember(key1 = fontScale) {
         DesignSystemTypography(
@@ -667,67 +671,6 @@ fun typography(): DesignSystemTypography {
     }
 }
 
-val LocalTypography = staticCompositionLocalOf {
-    DesignSystemTypography(
-        typography1Bold = TextStyle.Default,
-        typography1Medium = TextStyle.Default,
-        typography1Regular = TextStyle.Default,
-        subTypography1Bold = TextStyle.Default,
-        subTypography1Medium = TextStyle.Default,
-        subTypography1Regular = TextStyle.Default,
-        subTypography2Bold = TextStyle.Default,
-        subTypography2Medium = TextStyle.Default,
-        subTypography2Regular = TextStyle.Default,
-        subTypography3Bold = TextStyle.Default,
-        subTypography3Medium = TextStyle.Default,
-        subTypography3Regular = TextStyle.Default,
-        typography2Bold = TextStyle.Default,
-        typography2Medium = TextStyle.Default,
-        typography2Regular = TextStyle.Default,
-        subTypography4Bold = TextStyle.Default,
-        subTypography4Medium = TextStyle.Default,
-        subTypography4Regular = TextStyle.Default,
-        subTypography5Bold = TextStyle.Default,
-        subTypography5Medium = TextStyle.Default,
-        subTypography5Regular = TextStyle.Default,
-        subTypography6Bold = TextStyle.Default,
-        subTypography6Medium = TextStyle.Default,
-        subTypography6Regular = TextStyle.Default,
-        typography3Bold = TextStyle.Default,
-        typography3Medium = TextStyle.Default,
-        typography3Regular = TextStyle.Default,
-        subTypography7Bold = TextStyle.Default,
-        subTypography7Medium = TextStyle.Default,
-        subTypography7Regular = TextStyle.Default,
-        typography4Bold = TextStyle.Default,
-        typography4Medium = TextStyle.Default,
-        typography4Regular = TextStyle.Default,
-        subTypography8Bold = TextStyle.Default,
-        subTypography8Medium = TextStyle.Default,
-        subTypography8Regular = TextStyle.Default,
-        subTypography9Bold = TextStyle.Default,
-        subTypography9Medium = TextStyle.Default,
-        subTypography9Regular = TextStyle.Default,
-        typography5Bold = TextStyle.Default,
-        typography5Medium = TextStyle.Default,
-        typography5Regular = TextStyle.Default,
-        subTypography10Bold = TextStyle.Default,
-        subTypography10Medium = TextStyle.Default,
-        subTypography10Regular = TextStyle.Default,
-        typography6Bold = TextStyle.Default,
-        typography6Medium = TextStyle.Default,
-        typography6Regular = TextStyle.Default,
-        subTypography11Bold = TextStyle.Default,
-        subTypography11Medium = TextStyle.Default,
-        subTypography11Regular = TextStyle.Default,
-        typography7Bold = TextStyle.Default,
-        typography7Medium = TextStyle.Default,
-        typography7Regular = TextStyle.Default,
-        subTypography12Bold = TextStyle.Default,
-        subTypography12Medium = TextStyle.Default,
-        subTypography12Regular = TextStyle.Default,
-        subTypography13Bold = TextStyle.Default,
-        subTypography13Medium = TextStyle.Default,
-        subTypography13Regular = TextStyle.Default,
-    )
+val LocalTypography: ProvidableCompositionLocal<DesignSystemTypography> = staticCompositionLocalOf {
+    error("LocalTypography not provided")
 }

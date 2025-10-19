@@ -31,7 +31,8 @@ private val shape = DesignSystemShape(
     dialog = DesignSystemShapes.Dialog,
     snackBar = DesignSystemShapes.SnackBar,
     textField =  DesignSystemShapes.TextField,
-    box = DesignSystemShapes.Box
+    box = DesignSystemShapes.Box,
+    iconButton = DesignSystemShapes.IconButton
 )
 
 @Composable

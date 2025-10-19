@@ -1,8 +1,17 @@
 package com.example.core.designSystem.theme
 
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.ProvidableCompositionLocal
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+
+/**
+ * 글씨 색 : gray900
+ *
+ *
+ */
+
 
 @Immutable
 data class DesignSystemColor(
@@ -121,6 +130,7 @@ data class DesignSystemColor(
     val floatedBackground: Color
 )
 
+@Immutable
 object DesignSystemColorSet {
     val LightColor = DesignSystemColor(
         // Grey
@@ -356,120 +366,6 @@ object DesignSystemColorSet {
 }
 
 
-val LocalColor = staticCompositionLocalOf {
-    DesignSystemColor(
-        // Grey
-        grey50 = Color.Unspecified,
-        grey100 = Color.Unspecified,
-        grey200 = Color.Unspecified,
-        grey300 = Color.Unspecified,
-        grey400 = Color.Unspecified,
-        grey500 = Color.Unspecified,
-        grey600 = Color.Unspecified,
-        grey700 = Color.Unspecified,
-        grey800 = Color.Unspecified,
-        grey900 = Color.Unspecified,
-
-        // Blue
-        blue50 = Color.Unspecified,
-        blue100 = Color.Unspecified,
-        blue200 = Color.Unspecified,
-        blue300 = Color.Unspecified,
-        blue400 = Color.Unspecified,
-        blue500 = Color.Unspecified,
-        blue600 = Color.Unspecified,
-        blue700 = Color.Unspecified,
-        blue800 = Color.Unspecified,
-        blue900 = Color.Unspecified,
-
-        // Red
-        red50 = Color.Unspecified,
-        red100 = Color.Unspecified,
-        red200 = Color.Unspecified,
-        red300 = Color.Unspecified,
-        red400 = Color.Unspecified,
-        red500 = Color.Unspecified,
-        red600 = Color.Unspecified,
-        red700 = Color.Unspecified,
-        red800 = Color.Unspecified,
-        red900 = Color.Unspecified,
-
-        // Grey Opacity
-        greyOpacity50 = Color.Unspecified,
-        greyOpacity100 = Color.Unspecified,
-        greyOpacity200 = Color.Unspecified,
-        greyOpacity300 = Color.Unspecified,
-        greyOpacity400 = Color.Unspecified,
-        greyOpacity500 = Color.Unspecified,
-        greyOpacity600 = Color.Unspecified,
-        greyOpacity700 = Color.Unspecified,
-        greyOpacity800 = Color.Unspecified,
-        greyOpacity900 = Color.Unspecified,
-
-        // Orange
-        orange50 = Color.Unspecified,
-        orange100 = Color.Unspecified,
-        orange200 = Color.Unspecified,
-        orange300 = Color.Unspecified,
-        orange400 = Color.Unspecified,
-        orange500 = Color.Unspecified,
-        orange600 = Color.Unspecified,
-        orange700 = Color.Unspecified,
-        orange800 = Color.Unspecified,
-        orange900 = Color.Unspecified,
-
-        // Yellow
-        yellow50 = Color.Unspecified,
-        yellow100 = Color.Unspecified,
-        yellow200 = Color.Unspecified,
-        yellow300 = Color.Unspecified,
-        yellow400 = Color.Unspecified,
-        yellow500 = Color.Unspecified,
-        yellow600 = Color.Unspecified,
-        yellow700 = Color.Unspecified,
-        yellow800 = Color.Unspecified,
-        yellow900 = Color.Unspecified,
-
-        // Green
-        green50 = Color.Unspecified,
-        green100 = Color.Unspecified,
-        green200 = Color.Unspecified,
-        green300 = Color.Unspecified,
-        green400 = Color.Unspecified,
-        green500 = Color.Unspecified,
-        green600 = Color.Unspecified,
-        green700 = Color.Unspecified,
-        green800 = Color.Unspecified,
-        green900 = Color.Unspecified,
-
-        // Teal
-        teal50 = Color.Unspecified,
-        teal100 = Color.Unspecified,
-        teal200 = Color.Unspecified,
-        teal300 = Color.Unspecified,
-        teal400 = Color.Unspecified,
-        teal500 = Color.Unspecified,
-        teal600 = Color.Unspecified,
-        teal700 = Color.Unspecified,
-        teal800 = Color.Unspecified,
-        teal900 = Color.Unspecified,
-
-        // Purple
-        purple50 = Color.Unspecified,
-        purple100 = Color.Unspecified,
-        purple200 = Color.Unspecified,
-        purple300 = Color.Unspecified,
-        purple400 = Color.Unspecified,
-        purple500 = Color.Unspecified,
-        purple600 = Color.Unspecified,
-        purple700 = Color.Unspecified,
-        purple800 = Color.Unspecified,
-        purple900 = Color.Unspecified,
-
-        // Background
-        background = Color.Unspecified,
-        greyBackground = Color.Unspecified,
-        layeredBackground = Color.Unspecified,
-        floatedBackground = Color.Unspecified
-    )
+val LocalColor: ProvidableCompositionLocal<DesignSystemColor> = staticCompositionLocalOf {
+    error("LocalColor not provided")
 }
