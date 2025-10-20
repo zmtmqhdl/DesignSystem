@@ -25,7 +25,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
@@ -33,6 +32,7 @@ import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.icon.Back
 import com.example.core.designSystem.icon.Forward
 import com.example.core.designSystem.icon.Password
+import com.example.core.designSystem.theme.BackgroundColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,7 +43,7 @@ private fun PrimaryTopBar(
     navigationIcon: @Composable () -> Unit,
     actions: @Composable RowScope.() -> Unit,
     height: Dp = DesignSystemTheme.space.space12,
-    backgroundColor: Color = DesignSystemTheme.color.background,
+    backgroundColor: BackgroundColorSet = DesignSystemTheme.color.background,
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
     val expandedHeightPx = with(LocalDensity.current) { height.toPx().coerceAtLeast(0f) }
@@ -63,8 +63,8 @@ private fun PrimaryTopBar(
     val appBarContainerColor by
     animateColorAsState(
         targetValue = lerp(
-            start = backgroundColor,
-            stop = backgroundColor,
+            start = backgroundColor.background,
+            stop = backgroundColor.background,
             fraction = FastOutLinearInEasing.transform(colorTransitionFraction)
         ),
         animationSpec = spring(stiffness = Spring.StiffnessMediumLow)
@@ -132,15 +132,14 @@ object DesignSystemTopBar {
         navigationIcon: @Composable () -> Unit,
         actions: @Composable RowScope.() -> Unit,
         height: Dp = DesignSystemTheme.space.space12,
-        backgroundColor: Color = DesignSystemTheme.color.background,
+        backgroundColor: BackgroundColorSet = DesignSystemTheme.color.background,
         scrollBehavior: TopAppBarScrollBehavior? = null
     ) {
         PrimaryTopBar(
             title = {
                 DesignSystemText(
                     text = text,
-                    color = DesignSystemTheme.color.grey900,
-                    style =  DesignSystemTheme.typography.typography6Regular
+                    style =  DesignSystemTheme.typography.typography4.medium
                 )
             },
             centeredTitle = centeredTitle,
@@ -159,7 +158,7 @@ object DesignSystemTopBar {
         navigationIcon: @Composable () -> Unit,
         actions: @Composable RowScope.() -> Unit,
         height: Dp = DesignSystemTheme.space.space12,
-        backgroundColor: Color = DesignSystemTheme.color.background,
+        backgroundColor: BackgroundColorSet = DesignSystemTheme.color.background,
         scrollBehavior: TopAppBarScrollBehavior? = null
     ) {
         PrimaryTopBar(

@@ -1,6 +1,3 @@
-import androidx.compose.ui.graphics.vector.ImageVector
-import com.example.core.designSystem.icon.Close
-
 //package com.example.core.designSystem.component
 //
 //import androidx.compose.foundation.background
@@ -13,10 +10,8 @@ import com.example.core.designSystem.icon.Close
 //import androidx.compose.material3.Text
 //import androidx.compose.runtime.Composable
 //import androidx.compose.ui.Modifier
-//import androidx.compose.ui.draw.clip
 //import androidx.compose.ui.graphics.Color
 //import androidx.compose.ui.graphics.vector.ImageVector
-//import com.example.core.designSystem.core.DesignSystemPreview
 //import com.example.core.designSystem.icon.Close
 //import com.example.core.designSystem.theme.DesignSystemTheme
 //
@@ -79,29 +74,29 @@ import com.example.core.designSystem.icon.Close
 //    }
 //}
 //
-interface NavigationItem {
-    val route: String
-    val label: String?
-    val selectedIcon: ImageVector
-    val unselectedIcon: ImageVector
-}
-
-private data class NavigationItemPreview(
-    override val route: String,
-    override val label: String? = null,
-    override val selectedIcon: ImageVector = Close,
-    override val unselectedIcon: ImageVector = Close
-) : NavigationItem
-//
-//@DesignSystemPreview
-//@Composable
-//private fun DesignSystemNavigationBar_RoundedNavigationBar_Preview() {
-//    DesignSystemNavigationBar.RoundedNavigationBar(
-//        route = listOf(
-//            NavigationItemPreview(route = "first"),
-//            NavigationItemPreview(route = "second"),
-//        ),
-//        currentTab = 0,
-//        onSelectedTab = { index -> index }
-//    )
+//interface NavigationItem {
+//    val route: String
+//    val label: String?
+//    val selectedIcon: ImageVector
+//    val unselectedIcon: ImageVector
 //}
+//
+//private data class NavigationItemPreview(
+//    override val route: String,
+//    override val label: String? = null,
+//    override val selectedIcon: ImageVector = Close,
+//    override val unselectedIcon: ImageVector = Close
+//) : NavigationItem
+////
+////@DesignSystemPreview
+////@Composable
+////private fun DesignSystemNavigationBar_RoundedNavigationBar_Preview() {
+////    DesignSystemNavigationBar.RoundedNavigationBar(
+////        route = listOf(
+////            NavigationItemPreview(route = "first"),
+////            NavigationItemPreview(route = "second"),
+////        ),
+////        currentTab = 0,
+////        onSelectedTab = { index -> index }
+////    )
+////}

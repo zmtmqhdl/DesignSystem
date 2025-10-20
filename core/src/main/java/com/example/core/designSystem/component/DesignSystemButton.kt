@@ -1,12 +1,17 @@
 package com.example.core.designSystem.component
 
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.keyframes
 import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -15,23 +20,26 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.text.style.TextMotion
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.core.conditional
+import com.example.core.designSystem.theme.ColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
 
 enum class ButtonSize {
@@ -41,41 +49,51 @@ enum class ButtonSize {
     XLARGE
 }
 
-enum class ButtonColor {
-    PRIMARY,
-    DARK,
-    DANGER
-}
-
 enum class ButtonVariant {
     FILL,
     WEAK
 }
 
 @Composable
-fun PrimaryButton(
+fun DesignSystemButton(
     text: String,
     onClick: () -> Unit,
+    modifier: Modifier = Modifier,
     size: ButtonSize = ButtonSize.MEDIUM,
     variant: ButtonVariant = ButtonVariant.FILL,
-    color: ButtonColor = ButtonColor.PRIMARY,
+    colorSet: ColorSet,
     enabled: Boolean = true,
-    width: Dp? = null,
+    full: Boolean = false,
     fraction: Float = 1f,
-    loading: Boolean = false
+    loading: Boolean = false,
 ) {
-    val shape = when (size) {
-        ButtonSize.SMALL -> RoundedCornerShape(size = 8.dp)
-        ButtonSize.MEDIUM -> RoundedCornerShape(size = 10.dp)
-        ButtonSize.LARGE -> RoundedCornerShape(size = 14.dp)
-        ButtonSize.XLARGE -> RoundedCornerShape(size = 16.dp)
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+
+    val scale by animateFloatAsState(
+        targetValue = if (isPressed) 0.97f else 1f,
+        animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
+    )
+
+    // 추가: 글씨 크기 변화용
+    val baseFontSize = when (size) {
+        ButtonSize.SMALL -> 14.sp
+        ButtonSize.MEDIUM -> 16.sp
+        ButtonSize.LARGE -> 18.sp
+        ButtonSize.XLARGE -> 20.sp
     }
+    val animatedFontSize by animateFloatAsState(
+        targetValue = if (isPressed) baseFontSize.value * 0.95f else baseFontSize.value,
+        animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
+    )
 
     Box(
-        modifier = Modifier
-            .then(
-                if (width != null) Modifier.width(width) else Modifier.fillMaxWidth(fraction)
-            )
+        modifier = modifier
+            .graphicsLayer {
+                scaleX = scale
+                scaleY = scale
+            }
+            .conditional(condition = full) { fillMaxWidth(fraction) }
             .defaultMinSize(
                 minWidth = when (size) {
                     ButtonSize.SMALL -> 52.dp
@@ -93,23 +111,28 @@ fun PrimaryButton(
             .alpha(if (enabled) 1f else 0.3f)
             .background(
                 color = when (variant) {
-                    ButtonVariant.FILL -> when (color) {
-                        ButtonColor.PRIMARY -> DesignSystemTheme.color.blue500
-                        ButtonColor.DARK -> DesignSystemTheme.color.grey700
-                        ButtonColor.DANGER -> DesignSystemTheme.color.red500
-                    }
-
-                    ButtonVariant.WEAK -> when (color) {
-                        ButtonColor.PRIMARY -> DesignSystemTheme.color.blue100
-                        ButtonColor.DARK -> DesignSystemTheme.color.greyOpacity100
-                        ButtonColor.DANGER -> DesignSystemTheme.color.red50
-                    }
+                    ButtonVariant.FILL -> colorSet.mainBackgroundColor
+                    ButtonVariant.WEAK -> colorSet.subBackgroundColor
                 },
-                shape = shape
+                shape = when (size) {
+                    ButtonSize.SMALL -> RoundedCornerShape(8.dp)
+                    ButtonSize.MEDIUM -> RoundedCornerShape(10.dp)
+                    ButtonSize.LARGE -> RoundedCornerShape(14.dp)
+                    ButtonSize.XLARGE -> RoundedCornerShape(16.dp)
+                }
             )
-            .clip(shape)
+            .clip(
+                shape = when (size) {
+                    ButtonSize.SMALL -> RoundedCornerShape(8.dp)
+                    ButtonSize.MEDIUM -> RoundedCornerShape(10.dp)
+                    ButtonSize.LARGE -> RoundedCornerShape(14.dp)
+                    ButtonSize.XLARGE -> RoundedCornerShape(16.dp)
+                }
+            )
             .clickable(
                 enabled = enabled,
+                interactionSource = interactionSource,
+                indication = null,
                 onClick = onClick
             )
             .semantics { role = Role.Button },
@@ -135,29 +158,38 @@ fun PrimaryButton(
                     }
                 ),
                 color = when (variant) {
-                    ButtonVariant.FILL -> Color.White
-                    ButtonVariant.WEAK -> when (color) {
-                        ButtonColor.PRIMARY -> DesignSystemTheme.color.blue600
-                        ButtonColor.DARK -> DesignSystemTheme.color.greyOpacity700
-                        ButtonColor.DANGER -> DesignSystemTheme.color.red600
-                    }
+                    ButtonVariant.FILL -> colorSet.mainFontColor
+                    ButtonVariant.WEAK -> colorSet.subFontColor
                 },
                 style = when (size) {
-                    ButtonSize.SMALL -> DesignSystemTheme.typography.typography7Medium
-                    ButtonSize.MEDIUM -> DesignSystemTheme.typography.typography6Medium
-                    ButtonSize.LARGE -> DesignSystemTheme.typography.typography5Medium
-                    ButtonSize.XLARGE -> DesignSystemTheme.typography.typography5Medium
+                    ButtonSize.SMALL -> DesignSystemTheme.typography.typography7.medium.copy(
+                        fontSize = animatedFontSize.sp,
+                        textMotion = TextMotion.Animated
+                    )
+                    ButtonSize.MEDIUM -> DesignSystemTheme.typography.typography6.medium.copy(
+                        fontSize = animatedFontSize.sp,
+                        textMotion = TextMotion.Animated
+                    )
+                    ButtonSize.LARGE -> DesignSystemTheme.typography.typography5.medium.copy(
+                        fontSize = animatedFontSize.sp,
+                        textMotion = TextMotion.Animated
+                    )
+                    ButtonSize.XLARGE -> DesignSystemTheme.typography.typography5.medium.copy(
+                        fontSize = animatedFontSize.sp,
+                        textMotion = TextMotion.Animated
+                    )
                 }
             )
         }
     }
 }
 
+
 @Composable
 fun ButtonLoader(
     size: ButtonSize = ButtonSize.MEDIUM,
 ) {
-    val color = Color.White
+    val color = DesignSystemTheme.color.buttonLoader
     val infiniteTransition = rememberInfiniteTransition(label = "loader")
 
     val duration = 600
@@ -238,10 +270,10 @@ fun ButtonLoader(
 @Composable
 fun DesignSystemButtonPreview() {
     DesignSystemTheme {
-        PrimaryButton(
+        DesignSystemButton(
             text = "Preview",
             variant = ButtonVariant.WEAK,
-            color = ButtonColor.DARK,
+            colorSet = DesignSystemTheme.color.blue,
             loading = false,
             onClick = {},
         )

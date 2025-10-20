@@ -17,18 +17,18 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.example.core.designSystem.core.conditional
+import com.example.core.designSystem.theme.BackgroundColorSet
 import com.example.core.designSystem.theme.DesignSystemSpaces
 import com.example.core.designSystem.theme.DesignSystemTheme
 
 object DesignSystemScreen {
     @Composable
     fun ContentScreen(
-        containerColor: Color = DesignSystemTheme.color.background,
-        loadingColor: Color = DesignSystemTheme.color.blue50,
+        color: BackgroundColorSet = DesignSystemTheme.color.background,
         loading: Boolean,
         content: @Composable () -> Unit
     ) {
@@ -36,7 +36,7 @@ object DesignSystemScreen {
             modifier = Modifier
                 .fillMaxSize()
                 .windowInsetsPadding(WindowInsets.systemBars)
-                .background(color = containerColor)
+                .background(color = color.background)
         ) {
             content()
 
@@ -53,13 +53,13 @@ object DesignSystemScreen {
                         modifier = Modifier
                             .fillMaxSize()
                             .background(
-                                color = DesignSystemTheme.color.greyOpacity900.copy(alpha = 0.3f)
+                                color = color.loadingBackground.copy(alpha = 0.3f)
                             ),
                         contentAlignment = Alignment.Center
                     ) {
                         CircularProgressIndicator(
                             modifier = Modifier.size(size = DesignSystemTheme.space.space12),
-                            color = loadingColor,
+                            color = color.loadingBackground,
                             strokeWidth = DesignSystemTheme.space.space1
                         )
                     }
@@ -72,15 +72,19 @@ object DesignSystemScreen {
     fun Screen(
         imePadding: Boolean = false,
         padding: Boolean = false,
-        containerColor: Color = DesignSystemTheme.color.background,
+        color: BackgroundColorSet = DesignSystemTheme.color.background,
         content: @Composable () -> Unit
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .then(if (imePadding) Modifier.imePadding() else Modifier)
-                .then(if (padding) Modifier.padding(horizontal = DesignSystemSpaces.Space4) else Modifier)
-                .background(color = containerColor)
+                .conditional(condition = imePadding) {
+                    imePadding()
+                }
+                .conditional(condition = padding) {
+                    padding(horizontal = DesignSystemSpaces.Space4)
+                }
+                .background(color = color.background)
         ) {
             content()
         }
@@ -93,7 +97,7 @@ object DesignSystemScreen {
         snackBarHost: @Composable () -> Unit,
         imePadding: Boolean = false,
         padding: Boolean = false,
-        containerColor: Color = DesignSystemTheme.color.background,
+        color: BackgroundColorSet = DesignSystemTheme.color.background,
         content: @Composable () -> Unit
     ) {
         Scaffold(
@@ -101,13 +105,18 @@ object DesignSystemScreen {
             topBar = topBar,
             bottomBar = bottomBar,
             snackbarHost = snackBarHost,
-            containerColor = containerColor,
-        ) { innerPadding ->
+            containerColor = color.background,
+        ) { paddingValues ->
             Column (
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(innerPadding)
-                    .then(if (padding) Modifier.padding(horizontal = DesignSystemSpaces.Space4) else Modifier)
+                    .padding(paddingValues)
+                    .conditional(condition = imePadding) {
+                        imePadding()
+                    }
+                    .conditional(condition = padding) {
+                        padding(horizontal = DesignSystemSpaces.Space4)
+                    }
 
             ) {
                 content()

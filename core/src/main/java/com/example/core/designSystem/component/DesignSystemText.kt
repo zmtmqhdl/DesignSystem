@@ -14,18 +14,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
+import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.theme.ColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.TextColorSet
 
 @Composable
 fun DesignSystemText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = DesignSystemTheme.color.grey900,
+    color: Color = DesignSystemTheme.color.textColor.mainColor,
     overflow: TextOverflow = TextOverflow.Clip,
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
     minLines: Int = 1,
-    style: TextStyle = DesignSystemTheme.typography.typography6Regular,
+    style: TextStyle = DesignSystemTheme.typography.typography6.regular,
     selectable: Boolean = false
 ) {
     val content: @Composable () -> Unit = {
@@ -47,5 +50,15 @@ fun DesignSystemText(
         }
     } else {
         content()
+    }
+}
+
+@DesignSystemPreview
+@Composable
+fun DesignSystemTextPreview() {
+    DesignSystemTheme {
+        DesignSystemText(
+            text = "Preview",
+        )
     }
 }

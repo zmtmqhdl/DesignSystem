@@ -14,7 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.semantics
@@ -22,6 +21,7 @@ import androidx.compose.ui.unit.Dp
 import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.core.conditional
 import com.example.core.designSystem.icon.Close
+import com.example.core.designSystem.theme.ColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
 
 enum class IconButtonVariant {
@@ -38,8 +38,7 @@ fun DesignSystemIconButton(
     iconWidth: Dp = DesignSystemTheme.space.space6,
     iconHeight: Dp = DesignSystemTheme.space.space6,
     variant: IconButtonVariant = IconButtonVariant.CLEAR,
-    color: Color = DesignSystemTheme.color.blue100,
-    backgroundColor: Color = DesignSystemTheme.color.greyOpacity100,
+    colorSet: ColorSet = DesignSystemTheme.color.grey,
     interactionSource: MutableInteractionSource? = null,
     ariaLabel: String
 ) {
@@ -53,7 +52,7 @@ fun DesignSystemIconButton(
                 condition = variant == IconButtonVariant.FILL
             ) {
                 background(
-                    color = backgroundColor,
+                    color = colorSet.subBackgroundColor,
                     shape = shape
                 )
             }
@@ -61,8 +60,8 @@ fun DesignSystemIconButton(
                 condition = variant == IconButtonVariant.BORDER
             ) {
                 border(
-                    width = DesignSystemTheme.space.space1,
-                    color = DesignSystemTheme.color.blue100,
+                    width = DesignSystemTheme.space.space0,
+                    color = colorSet.subBackgroundColor,
                     shape = shape
                 )
             }
@@ -81,7 +80,7 @@ fun DesignSystemIconButton(
             modifier = Modifier
                 .width(iconWidth)
                 .height(iconHeight),
-            tint = color
+            tint = colorSet.subFontColor
         )
     }
 }
@@ -89,9 +88,13 @@ fun DesignSystemIconButton(
 @DesignSystemPreview
 @Composable
 private fun DesignSystemIconButtonPreview() {
-    DesignSystemIconButton(
-        icon = Close,
-        onClick = { },
-        ariaLabel = "test"
-    )
+    DesignSystemTheme {
+        DesignSystemIconButton(
+            icon = Close,
+            colorSet = DesignSystemTheme.color.blue,
+            variant = IconButtonVariant.BORDER,
+            onClick = { },
+            ariaLabel = "test"
+        )
+    }
 }
