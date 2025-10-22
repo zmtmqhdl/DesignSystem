@@ -12,32 +12,63 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogWindowProvider
 import com.example.core.designSystem.theme.DesignSystemTheme
+
+enum class DialogVariant {
+    ALERT,
+    CONFIRM
+}
 
 @Composable
 fun DesignSystemDialog(
-    title: String? = null,
-    certification: String? = null,
-    subText: String? = null,
-    text: String,
+    variant: DialogVariant = DialogVariant.ALERT,
+    title: String,
+    description: String? = null,
+
     onDismissRequest: (() -> Unit) = {},
     content: @Composable () -> Unit,
 ) {
-    (LocalView.current.parent as DialogWindowProvider).window.setDimAmount(0.4f)
+//    (LocalView.current.parent as DialogWindowProvider).window.setDimAmount(0.4f)
 
     Dialog(
         onDismissRequest = onDismissRequest,
         content = {
+
+            Column {
+                Column (
+                    modifier = Modifier
+                        // dp 22
+                        .padding(horizontal = DesignSystemTheme.space.space4)
+                        .padding(top = DesignSystemTheme.space.space4)
+                ) {
+                    DesignSystemText(
+                        text = title,
+                        style = DesignSystemTheme.typography.typography4.bold,
+                    )
+
+                    description?.let {
+                        DesignSystemText(
+                            text = it,
+                            style = DesignSystemTheme.typography.typography6.medium
+                        )
+                    }
+                }
+
+
+            }
+
+
+
+
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentHeight()
                     .padding(horizontal = DesignSystemTheme.space.space8)
                     .background(
-                        color = DesignSystemTheme.color.white,
+                        color = DesignSystemTheme.color.background.loadingBackground,
                         shape = DesignSystemTheme.shape.dialog
                     ),
                 contentAlignment = Alignment.Center
@@ -50,36 +81,18 @@ fun DesignSystemDialog(
                         ),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    // gap 8
                     Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
                     title?.let {
                         Text(
                             text = it,
-                            color = DesignSystemTheme.color.black,
+                            color = DesignSystemTheme.color.background.loadingBackground,
                             style = DesignSystemTheme.typography.xl.bold
                         )
                         Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
                     }
-                    certification?.let {
-                        Text(
-                            text = it,
-                            color = DesignSystemTheme.color.primary.fontColor,
-                            style = DesignSystemTheme.typography.xxl.regular
-                        )
-                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
-                    }
-                    subText?.let {
-                        Text(
-                            text = it,
-                            color = DesignSystemTheme.color.gray600,
-                            style = DesignSystemTheme.typography.s.regular
-                        )
-                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
-                    }
-                    Text(
-                        text = text,
-                        color = DesignSystemTheme.color.black,
-                        style = DesignSystemTheme.typography.m.regular
-                    )
+
+
                     Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
                     content()
                     Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
