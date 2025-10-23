@@ -312,8 +312,8 @@ object DesignSystemColorSet {
             subFontColor = lightPurple600
         ),
         textColor = TextColorSet(
-            mainColor = lightGrey900,
-            subColor = lightGrey900
+            mainColor = lightGreyOpacity800,
+            subColor = lightGrey600
         ),
         buttonLoader = white,
         background = BackgroundColorSet(
@@ -373,8 +373,8 @@ object DesignSystemColorSet {
             subFontColor = darkPurple600
         ),
         textColor = TextColorSet(
-            mainColor = darkGrey900,
-            subColor = darkGrey900
+            mainColor = darkGreyOpacity800,
+            subColor = darkGrey600
         ),
         buttonLoader = white,
         background = BackgroundColorSet(
