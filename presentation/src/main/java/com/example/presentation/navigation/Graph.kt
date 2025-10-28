@@ -11,7 +11,7 @@ fun MainGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = MainRoute.Splash.route
+        startDestination = MainRoute.Main.route
     ) {
         mainGraph(navController)
     }

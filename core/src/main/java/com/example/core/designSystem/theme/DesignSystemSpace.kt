@@ -1,5 +1,6 @@
 package com.example.core.designSystem.theme
 
+import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
@@ -19,10 +20,6 @@ object DesignSystemSpaces {
     val Space10 = 40.dp
     val Space11 = 44.dp
     val Space12 = 48.dp
-    val Space13 = 52.dp
-    val Space14 = 56.dp
-    val Space15 = 60.dp
-    val Space16 = 64.dp
 }
 
 @Stable
@@ -40,30 +37,8 @@ class DesignSystemSpace(
     val space10: Dp,
     val space11: Dp,
     val space12: Dp,
-    val space13: Dp,
-    val space14: Dp,
-    val space15: Dp,
-    val space16: Dp,
 )
 
-val LocalSpace = staticCompositionLocalOf {
-    DesignSystemSpace(
-        space0 = Dp.Unspecified,
-        space1 = Dp.Unspecified,
-        space2 = Dp.Unspecified,
-        space3 = Dp.Unspecified,
-        space4 = Dp.Unspecified,
-        space5 = Dp.Unspecified,
-        space6 = Dp.Unspecified,
-        space7 = Dp.Unspecified,
-        space8 = Dp.Unspecified,
-        space9 = Dp.Unspecified,
-        space10 = Dp.Unspecified,
-        space11 = Dp.Unspecified,
-        space12 = Dp.Unspecified,
-        space13 = Dp.Unspecified,
-        space14 = Dp.Unspecified,
-        space15 = Dp.Unspecified,
-        space16 = Dp.Unspecified,
-    )
+val LocalSpace: ProvidableCompositionLocal<DesignSystemSpace> = staticCompositionLocalOf {
+    error("LocalSpace not provided")
 }

@@ -6,15 +6,16 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.core.designSystem.component.DesignSystemScreen
+import com.example.presentation.navigation.MainGraph
 import com.example.presentation.screen.MainScreen
 
 @Composable
 fun Content() {
     // view model
-    val contentViewModel: ContentViewModel = hiltViewModel()
+    val viewModel: ContentViewModel = hiltViewModel()
 
     // view model state value
-    val loading by contentViewModel.loading.collectAsState()
+    val loading by viewModel.loading.collectAsState()
 
     // local state
     val navController = rememberNavController()
@@ -23,7 +24,9 @@ fun Content() {
     DesignSystemScreen.ContentScreen(
         loading = loading,
         content = {
-            MainScreen(navController = navController)
+            MainGraph(
+                navController = navController
+            )
         }
     )
 }

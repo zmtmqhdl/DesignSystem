@@ -1,20 +1,29 @@
 package com.example.core.designSystem.component
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.keyframes
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.theme.ColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
+import kotlinx.coroutines.launch
 
 enum class DialogVariant {
     ALERT,
@@ -31,12 +40,43 @@ fun DesignSystemDialog(
     onConfirmClick: () -> Unit = {},
     cancelText: String = "",
     onCancelClick: () -> Unit = {},
+    cancelButtonColor: ColorSet = DesignSystemTheme.color.red,
     dismissOnBackPress: Boolean = false,
-    dismissOnClickOutside: Boolean = false
+    dismissOnClickOutside: Boolean = false,
+    animation: Boolean = true
 ) {
-//    (LocalView.current.parent as DialogWindowProvider).window.setDimAmount(0.4f)
+    val coroutineScope = rememberCoroutineScope()
+    val shakeOffset = remember { Animatable(0f) }
+
+    val handleDismiss = {
+        if (animation) {
+            coroutineScope.launch {
+                val duration = 1000
+                val keyframes = keyframes {
+                    durationMillis = duration
+                    0f at 0
+                    10f at 100
+                    -8f at 200
+                    6f at 300
+                    -4f at 400
+                    3f at 500
+                    -2f at 600
+                    1f at 700
+                    -0.5f at 800
+                    0f at 1000
+                }
+                shakeOffset.animateTo(
+                    targetValue = 0f,
+                    animationSpec = keyframes
+                )
+            }
+        } else {
+            onDismissRequest()
+        }
+    }
+
     Dialog(
-        onDismissRequest = onDismissRequest,
+        onDismissRequest = handleDismiss as () -> Unit,
         properties = DialogProperties(
             dismissOnBackPress = dismissOnBackPress,
             dismissOnClickOutside = dismissOnClickOutside
@@ -44,16 +84,21 @@ fun DesignSystemDialog(
         content = {
             Column(
                 modifier = Modifier
+                    .offset(x = shakeOffset.value.dp)
+                    .background(
+                        color = DesignSystemTheme.color.background.background,
+                        shape = DesignSystemTheme.shape.dialog
+                    )
                     .padding(all = DesignSystemTheme.space.space4)
             ) {
                 when (variant) {
-                    DialogVariant.ALERT ->  {
+                    DialogVariant.ALERT -> {
                         DesignSystemText(
                             text = title,
                             style = DesignSystemTheme.typography.typography4.bold,
                         )
 
-                        Spacer(modifier = Modifier.height(height = DesignSystemTheme.space.space2))
+                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
 
                         description?.let {
                             DesignSystemText(
@@ -62,7 +107,7 @@ fun DesignSystemDialog(
                             )
                         }
 
-                        Spacer(modifier = Modifier.height(height = DesignSystemTheme.space.space4))
+                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
 
                         Box(
                             modifier = Modifier.fillMaxWidth(),
@@ -82,7 +127,7 @@ fun DesignSystemDialog(
                             style = DesignSystemTheme.typography.typography4.bold,
                         )
 
-                        Spacer(modifier = Modifier.height(height = DesignSystemTheme.space.space2))
+                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
 
                         description?.let {
                             DesignSystemText(
@@ -91,7 +136,7 @@ fun DesignSystemDialog(
                             )
                         }
 
-                        Spacer(modifier = Modifier.height(height = DesignSystemTheme.space.space4))
+                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
 
                         Row(
                             modifier = Modifier.fillMaxWidth()
@@ -99,17 +144,20 @@ fun DesignSystemDialog(
                             DesignSystemButton(
                                 text = cancelText,
                                 onClick = onCancelClick,
-                                colorSet = DesignSystemTheme.color.blue,
-                                modifier = Modifier.weight(weight = 1f)
+                                colorSet = cancelButtonColor,
+                                variant = ButtonVariant.WEAK,
+                                size = ButtonSize.LARGE,
+                                modifier = Modifier.weight(1f)
                             )
 
-                            Spacer(modifier = Modifier.width(width = DesignSystemTheme.space.space2))
+                            Spacer(modifier = Modifier.width(DesignSystemTheme.space.space2))
 
                             DesignSystemButton(
                                 text = confirmText,
                                 onClick = onConfirmClick,
                                 colorSet = DesignSystemTheme.color.blue,
-                                modifier = Modifier.weight(weight = 1f)
+                                size = ButtonSize.LARGE,
+                                modifier = Modifier.weight(1f)
                             )
                         }
                     }
@@ -128,7 +176,8 @@ fun DesignSystemDialogPreview() {
             title = "title",
             description = "description",
             confirmText = "confirm",
-            cancelText = "cancel"
+            cancelText = "cancel",
+            dismissOnClickOutside = true
         )
     }
 }

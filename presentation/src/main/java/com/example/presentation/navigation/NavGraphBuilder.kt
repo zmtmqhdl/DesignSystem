@@ -16,7 +16,11 @@ import com.example.presentation.screen.MainScreen
 import com.example.presentation.screen.SecondScreen
 
 fun NavGraphBuilder.mainGraph(navController: NavHostController) {
-    slideComposable(MainRoute.Main.route) { MainScreen(navController = navController) }
+    slideComposable(
+        route = MainRoute.Main.route
+    ) {
+        MainScreen()
+    }
 }
 
 @OptIn(ExperimentalAnimationApi::class)

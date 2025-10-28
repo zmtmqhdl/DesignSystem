@@ -82,6 +82,7 @@ fun DesignSystemButton(
         ButtonSize.LARGE -> 18.sp
         ButtonSize.XLARGE -> 20.sp
     }
+
     val animatedFontSize by animateFloatAsState(
         targetValue = if (isPressed) baseFontSize.value * 0.95f else baseFontSize.value,
         animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)

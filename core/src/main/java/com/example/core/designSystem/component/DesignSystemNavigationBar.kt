@@ -1,19 +1,19 @@
-//package com.example.core.designSystem.component
-//
-//import androidx.compose.foundation.background
-//import androidx.compose.foundation.border
-//import androidx.compose.foundation.layout.Box
-//import androidx.compose.foundation.layout.fillMaxWidth
-//import androidx.compose.foundation.shape.RoundedCornerShape
-//import androidx.compose.material3.NavigationBar
-//import androidx.compose.material3.NavigationBarItem
-//import androidx.compose.material3.Text
-//import androidx.compose.runtime.Composable
-//import androidx.compose.ui.Modifier
-//import androidx.compose.ui.graphics.Color
-//import androidx.compose.ui.graphics.vector.ImageVector
-//import com.example.core.designSystem.icon.Close
-//import com.example.core.designSystem.theme.DesignSystemTheme
+package com.example.core.designSystem.component
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.example.core.designSystem.icon.Close
+import com.example.core.designSystem.theme.DesignSystemTheme
 //
 //@Composable
 //fun PrimaryNavigationBar(
@@ -74,12 +74,12 @@
 //    }
 //}
 //
-//interface NavigationItem {
-//    val route: String
-//    val label: String?
-//    val selectedIcon: ImageVector
-//    val unselectedIcon: ImageVector
-//}
+interface NavigationItem {
+    val route: String
+    val label: String?
+    val selectedIcon: ImageVector
+    val unselectedIcon: ImageVector
+}
 //
 //private data class NavigationItemPreview(
 //    override val route: String,
