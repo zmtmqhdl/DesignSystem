@@ -43,7 +43,7 @@ private fun PrimaryTopBar(
     navigationIcon: @Composable () -> Unit,
     actions: @Composable RowScope.() -> Unit,
     height: Dp = DesignSystemTheme.space.space12,
-    backgroundColor: BackgroundColorSet = DesignSystemTheme.color.background,
+    backgroundColor: BackgroundColorSet = DesignSystemTheme.colorSet.background,
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
     val expandedHeightPx = with(LocalDensity.current) { height.toPx().coerceAtLeast(0f) }
@@ -132,7 +132,7 @@ object DesignSystemTopBar {
         navigationIcon: @Composable () -> Unit,
         actions: @Composable RowScope.() -> Unit,
         height: Dp = DesignSystemTheme.space.space12,
-        backgroundColor: BackgroundColorSet = DesignSystemTheme.color.background,
+        backgroundColor: BackgroundColorSet = DesignSystemTheme.colorSet.background,
         scrollBehavior: TopAppBarScrollBehavior? = null
     ) {
         PrimaryTopBar(
@@ -158,7 +158,7 @@ object DesignSystemTopBar {
         navigationIcon: @Composable () -> Unit,
         actions: @Composable RowScope.() -> Unit,
         height: Dp = DesignSystemTheme.space.space12,
-        backgroundColor: BackgroundColorSet = DesignSystemTheme.color.background,
+        backgroundColor: BackgroundColorSet = DesignSystemTheme.colorSet.background,
         scrollBehavior: TopAppBarScrollBehavior? = null
     ) {
         PrimaryTopBar(

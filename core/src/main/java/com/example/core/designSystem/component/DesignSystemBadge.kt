@@ -30,7 +30,7 @@ fun DesignSystemBadge(
     text: String,
     variant: BadgeVariant = BadgeVariant.FILL,
     size: BadgeSize = BadgeSize.MEDIUM,
-    colorSet: ColorSet = DesignSystemTheme.color.blue
+    colorSet: ColorSet = DesignSystemTheme.colorSet.blue
 ) {
     Box(
         modifier = Modifier
@@ -101,7 +101,7 @@ fun DesignSystemBadgePreview() {
         DesignSystemBadge(
             text = "Preview",
 
-            colorSet = DesignSystemTheme.color.blue
+            colorSet = DesignSystemTheme.colorSet.blue
         )
     }
 }

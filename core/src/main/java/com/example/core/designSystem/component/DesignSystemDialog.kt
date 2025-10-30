@@ -40,7 +40,7 @@ fun DesignSystemDialog(
     onConfirmClick: () -> Unit = {},
     cancelText: String = "",
     onCancelClick: () -> Unit = {},
-    cancelButtonColor: ColorSet = DesignSystemTheme.color.red,
+    cancelButtonColor: ColorSet = DesignSystemTheme.colorSet.red,
     dismissOnBackPress: Boolean = false,
     dismissOnClickOutside: Boolean = false,
     animation: Boolean = true
@@ -86,7 +86,7 @@ fun DesignSystemDialog(
                 modifier = Modifier
                     .offset(x = shakeOffset.value.dp)
                     .background(
-                        color = DesignSystemTheme.color.background.background,
+                        color = DesignSystemTheme.colorSet.background.background,
                         shape = DesignSystemTheme.shape.dialog
                     )
                     .padding(all = DesignSystemTheme.space.space4)
@@ -116,7 +116,7 @@ fun DesignSystemDialog(
                             DesignSystemButton(
                                 text = confirmText,
                                 onClick = onConfirmClick,
-                                colorSet = DesignSystemTheme.color.blue
+                                colorSet = DesignSystemTheme.colorSet.blue
                             )
                         }
                     }
@@ -155,7 +155,7 @@ fun DesignSystemDialog(
                             DesignSystemButton(
                                 text = confirmText,
                                 onClick = onConfirmClick,
-                                colorSet = DesignSystemTheme.color.blue,
+                                colorSet = DesignSystemTheme.colorSet.blue,
                                 size = ButtonSize.LARGE,
                                 modifier = Modifier.weight(1f)
                             )

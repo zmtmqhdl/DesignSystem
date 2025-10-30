@@ -38,7 +38,7 @@ fun DesignSystemIconButton(
     iconWidth: Dp = DesignSystemTheme.space.space6,
     iconHeight: Dp = DesignSystemTheme.space.space6,
     variant: IconButtonVariant = IconButtonVariant.CLEAR,
-    colorSet: ColorSet = DesignSystemTheme.color.grey,
+    colorSet: ColorSet = DesignSystemTheme.colorSet.grey,
     interactionSource: MutableInteractionSource? = null,
     ariaLabel: String
 ) {
@@ -91,7 +91,7 @@ private fun DesignSystemIconButtonPreview() {
     DesignSystemTheme {
         DesignSystemIconButton(
             icon = Close,
-            colorSet = DesignSystemTheme.color.blue,
+            colorSet = DesignSystemTheme.colorSet.blue,
             variant = IconButtonVariant.BORDER,
             onClick = { },
             ariaLabel = "test"

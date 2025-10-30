@@ -190,7 +190,7 @@ fun DesignSystemButton(
 fun ButtonLoader(
     size: ButtonSize = ButtonSize.MEDIUM,
 ) {
-    val color = DesignSystemTheme.color.buttonLoader
+    val color = DesignSystemTheme.colorSet.buttonLoader
     val infiniteTransition = rememberInfiniteTransition(label = "loader")
 
     val duration = 600
@@ -274,7 +274,7 @@ fun DesignSystemButtonPreview() {
         DesignSystemButton(
             text = "Preview",
             variant = ButtonVariant.WEAK,
-            colorSet = DesignSystemTheme.color.blue,
+            colorSet = DesignSystemTheme.colorSet.blue,
             loading = false,
             onClick = {},
         )

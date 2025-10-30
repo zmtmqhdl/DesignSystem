@@ -15,17 +15,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import com.example.core.designSystem.theme.BackgroundColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
-import com.example.core.designSystem.core.DesignSystemPreview
 import kotlinx.coroutines.launch
+
+enum class BottomSheet
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PrimaryModal(
-    title: String? = null,
-    text: String,
+fun DesignSystemBottomSheet(
+    title: String,
+    description: String? = null,
     onDismissRequest: () -> Unit,
     show: Boolean,
+    colorSet: BackgroundColorSet = DesignSystemTheme.colorSet.background,
     content: @Composable () -> Unit,
 ) {
     val sheetState = rememberModalBottomSheetState()
@@ -49,14 +52,11 @@ fun PrimaryModal(
         ModalBottomSheet(
             onDismissRequest = onDismissRequest,
             sheetState = sheetState,
-            modifier = Modifier.padding(
-                start = DesignSystemTheme.space.space2,
-                end = DesignSystemTheme.space.space2,
-                bottom = DesignSystemTheme.space.space2
-            ),
+            modifier = Modifier
+                .padding(bottom = DesignSystemTheme.space.space2)
+                .padding(horizontal = DesignSystemTheme.space.space2),
             shape = DesignSystemTheme.shape.bottomSheet,
-            containerColor = DesignSystemTheme.color.white,
-            dragHandle = null
+            containerColor = colorSet.background,
         ) {
             Column(
                 modifier = Modifier.padding(
@@ -70,161 +70,19 @@ fun PrimaryModal(
                     Text(
                         text = it,
                         modifier = Modifier.padding(bottom = DesignSystemTheme.space.space2),
-                        color = DesignSystemTheme.color.black,
+                        color = DesignSystemTheme.colorSet.black,
                         style = DesignSystemTheme.typography.xl.bold
                     )
                 }
                 Text(
                     text = text,
                     modifier = Modifier.padding(bottom = DesignSystemTheme.space.space4),
-                    color = DesignSystemTheme.color.black,
+                    color = DesignSystemTheme.colorSet.black,
                     style = DesignSystemTheme.typography.m.regular
                 )
                 Spacer(modifier = Modifier.height(DesignSystemTheme.space.space6))
                 content()
             }
         }
-    }
-}
-
-
-object DesignSystemBottomSheet {
-    object Modal {
-        object Single {
-            @Composable
-            fun SingleArrangement(
-                title: String? = null,
-                text: String,
-                onDismissRequest: () -> Unit,
-                show: Boolean,
-                buttonText: String,
-                onClick: () -> Unit,
-            ) {
-                PrimaryModal(
-                    title = title,
-                    text = text,
-                    onDismissRequest = onDismissRequest,
-                    show = show,
-                ) {
-                    DesignSystemButton.Primary.Medium(
-                        text = buttonText,
-                        onClick = onClick,
-                    )
-                }
-            }
-        }
-
-        object Double {
-            @Composable
-            fun ColumnArrangement(
-                title: String? = null,
-                text: String,
-                onDismissRequest: () -> Unit,
-                show: Boolean,
-                buttonText1: String,
-                buttonText2: String,
-                onClick1: () -> Unit,
-                onClick2: () -> Unit,
-            ) {
-                PrimaryModal(
-                    title = title,
-                    text = text,
-                    onDismissRequest = onDismissRequest,
-                    show = show,
-                ) {
-                    Column {
-                        DesignSystemButton.Primary.Medium(
-                            text = buttonText1,
-                            onClick = onClick1,
-                        )
-                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space3))
-                        DesignSystemButton.Primary.Medium(
-                            text = buttonText2,
-                            onClick = onClick2,
-                        )
-                    }
-                }
-            }
-
-            @Composable
-            fun RowArrangement(
-                title: String? = null,
-                text: String,
-                onDismissRequest: () -> Unit,
-                show: Boolean,
-                buttonText1: String,
-                buttonText2: String,
-                onClick1: () -> Unit,
-                onClick2: () -> Unit,
-            ) {
-                PrimaryModal(
-                    title = title,
-                    text = text,
-                    onDismissRequest = onDismissRequest,
-                    show = show,
-                ) {
-                    Row {
-                        DesignSystemButton.Primary.Medium(
-                            text = buttonText1,
-                            onClick = onClick1,
-                        )
-                        Spacer(modifier = Modifier.width(DesignSystemTheme.space.space2))
-                        DesignSystemButton.Primary.Medium(
-                            text = buttonText2,
-                            onClick = onClick2,
-                        )
-                    }
-                }
-            }
-        }
-    }
-}
-
-@DesignSystemPreview
-@Composable
-private fun DesignSystemBottomSheet_Modal_Single_SingleArrangement_Preview() {
-    DesignSystemTheme {
-        DesignSystemBottomSheet.Modal.Single.SingleArrangement(
-            title = "title",
-            text = "text",
-            onDismissRequest = {},
-            show = true,
-            buttonText = "button",
-            onClick = {}
-        )
-    }
-}
-
-@DesignSystemPreview
-@Composable
-private fun DesignSystemBottomSheet_Modal_Double_ColumnArrangement_Preview() {
-    DesignSystemTheme {
-        DesignSystemBottomSheet.Modal.Double.ColumnArrangement(
-            title = "title",
-            text = "text",
-            onDismissRequest = {},
-            show = true,
-            buttonText1 = "button1",
-            buttonText2 = "button2",
-            onClick1 = {},
-            onClick2 = {}
-        )
-    }
-}
-
-@DesignSystemPreview
-@Composable
-private fun DesignSystemBottomSheet_Modal_Double_RowArrangement_Preview() {
-    DesignSystemTheme {
-        DesignSystemBottomSheet.Modal.Double.RowArrangement(
-            title = "title",
-            text = "text",
-            onDismissRequest = {},
-            show = true,
-            buttonText1 = "button1",
-            buttonText2 = "button2",
-            onClick1 = {},
-            onClick2 = {}
-        )
     }
 }

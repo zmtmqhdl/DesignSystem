@@ -28,7 +28,7 @@ import com.example.core.designSystem.theme.DesignSystemTheme
 object DesignSystemScreen {
     @Composable
     fun ContentScreen(
-        color: BackgroundColorSet = DesignSystemTheme.color.background,
+        color: BackgroundColorSet = DesignSystemTheme.colorSet.background,
         loading: Boolean,
         content: @Composable () -> Unit
     ) {
@@ -72,7 +72,7 @@ object DesignSystemScreen {
     fun Screen(
         imePadding: Boolean = false,
         padding: Boolean = false,
-        color: BackgroundColorSet = DesignSystemTheme.color.background,
+        color: BackgroundColorSet = DesignSystemTheme.colorSet.background,
         content: @Composable () -> Unit
     ) {
         Column(
@@ -97,7 +97,7 @@ object DesignSystemScreen {
         snackBarHost: @Composable () -> Unit,
         imePadding: Boolean = false,
         padding: Boolean = false,
-        color: BackgroundColorSet = DesignSystemTheme.color.background,
+        color: BackgroundColorSet = DesignSystemTheme.colorSet.background,
         content: @Composable () -> Unit
     ) {
         Scaffold(

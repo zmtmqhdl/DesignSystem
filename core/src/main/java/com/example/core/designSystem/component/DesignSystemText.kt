@@ -1,29 +1,20 @@
 package com.example.core.designSystem.component
 
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.*
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.TextUnit
 import com.example.core.designSystem.core.DesignSystemPreview
-import com.example.core.designSystem.theme.ColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
-import com.example.core.designSystem.theme.TextColorSet
 
 @Composable
 fun DesignSystemText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = DesignSystemTheme.color.textColor.mainColor,
+    color: Color = DesignSystemTheme.colorSet.textColor.mainColor,
     overflow: TextOverflow = TextOverflow.Clip,
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,

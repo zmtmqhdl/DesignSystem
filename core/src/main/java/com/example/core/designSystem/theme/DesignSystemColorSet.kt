@@ -2,10 +2,8 @@ package com.example.core.designSystem.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.ProvidableCompositionLocal
-import androidx.compose.runtime.Stable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
-import com.example.core.designSystem.theme.ColorSet
 
 /**
  * 글씨 색 : gray900
@@ -245,8 +243,9 @@ data class BackgroundColorSet(
     val loadingBackground: Color
 )
 
+
 @Immutable
-data class DesignSystemColor(
+data class DesignSystemColorSet(
     val grey: ColorSet,
     val blue: ColorSet,
     val red: ColorSet,
@@ -257,12 +256,12 @@ data class DesignSystemColor(
     val purple: ColorSet,
     val textColor: TextColorSet,
     val buttonLoader: Color,
-    val background: BackgroundColorSet
+    val background: BackgroundColorSet,
 )
 
 @Immutable
-object DesignSystemColorSet {
-    val LightColor = DesignSystemColor(
+object DesignSystemColorSets {
+    val LightColor = DesignSystemColorSet(
         grey = ColorSet(
             mainBackgroundColor = lightGrey700,
             mainFontColor = white,
@@ -323,7 +322,7 @@ object DesignSystemColorSet {
         )
     )
 
-    val DarkColor = DesignSystemColor(
+    val DarkColor = DesignSystemColorSet(
         grey = ColorSet(
             mainBackgroundColor = darkGrey700,
             mainFontColor = white,
@@ -386,6 +385,6 @@ object DesignSystemColorSet {
 }
 
 
-val LocalColor: ProvidableCompositionLocal<DesignSystemColor> = staticCompositionLocalOf {
+val LocalColor: ProvidableCompositionLocal<DesignSystemColorSet> = staticCompositionLocalOf {
     error("LocalColor not provided")
 }

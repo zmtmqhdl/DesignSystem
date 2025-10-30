@@ -36,7 +36,7 @@ fun DesignSystemTheme(
     isDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val color = if (isDarkTheme) DesignSystemColorSet.LightColor else DesignSystemColorSet.DarkColor
+    val color = if (isDarkTheme) DesignSystemColorSets.LightColor else DesignSystemColorSets.DarkColor
 
     CompositionLocalProvider(
         LocalColor provides color,
@@ -48,7 +48,7 @@ fun DesignSystemTheme(
 }
 
 object DesignSystemTheme {
-    val color: DesignSystemColor
+    val colorSet: DesignSystemColorSet
         @Composable
         @ReadOnlyComposable
         get() = LocalColor.current

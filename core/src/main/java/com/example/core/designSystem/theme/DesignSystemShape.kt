@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.Shape
 
 @Stable
 object DesignSystemShapes{
-    val BottomSheet = RoundedCornerShape(DesignSystemSpaces.Space4)
+    val BottomSheet = RoundedCornerShape(DesignSystemSpaces.Space7)
     val IconButton = RoundedCornerShape(DesignSystemSpaces.Space2)
     val Button = RoundedCornerShape(DesignSystemSpaces.Space4)
     val Dialog = RoundedCornerShape(DesignSystemSpaces.Space2)
