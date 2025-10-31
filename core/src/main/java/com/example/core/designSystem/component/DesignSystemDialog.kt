@@ -48,7 +48,7 @@ fun DesignSystemDialog(
     val coroutineScope = rememberCoroutineScope()
     val shakeOffset = remember { Animatable(0f) }
 
-    val handleDismiss = {
+    val handleDismiss: () -> Unit = {
         if (animation) {
             coroutineScope.launch {
                 val duration = 1000
@@ -76,7 +76,7 @@ fun DesignSystemDialog(
     }
 
     Dialog(
-        onDismissRequest = handleDismiss as () -> Unit,
+        onDismissRequest = handleDismiss,
         properties = DialogProperties(
             dismissOnBackPress = dismissOnBackPress,
             dismissOnClickOutside = dismissOnClickOutside
@@ -91,24 +91,24 @@ fun DesignSystemDialog(
                     )
                     .padding(all = DesignSystemTheme.space.space4)
             ) {
+                DesignSystemText(
+                    text = title,
+                    style = DesignSystemTheme.typography.typography4.bold,
+                )
+
+                description?.let {
+                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
+
+                    DesignSystemText(
+                        text = it,
+                        style = DesignSystemTheme.typography.typography6.medium
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
+
                 when (variant) {
                     DialogVariant.ALERT -> {
-                        DesignSystemText(
-                            text = title,
-                            style = DesignSystemTheme.typography.typography4.bold,
-                        )
-
-                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
-
-                        description?.let {
-                            DesignSystemText(
-                                text = it,
-                                style = DesignSystemTheme.typography.typography6.medium
-                            )
-                        }
-
-                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
-
                         Box(
                             modifier = Modifier.fillMaxWidth(),
                             contentAlignment = Alignment.BottomEnd
@@ -122,22 +122,6 @@ fun DesignSystemDialog(
                     }
 
                     DialogVariant.CONFIRM -> {
-                        DesignSystemText(
-                            text = title,
-                            style = DesignSystemTheme.typography.typography4.bold,
-                        )
-
-                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
-
-                        description?.let {
-                            DesignSystemText(
-                                text = it,
-                                style = DesignSystemTheme.typography.typography6.medium
-                            )
-                        }
-
-                        Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
-
                         Row(
                             modifier = Modifier.fillMaxWidth()
                         ) {
