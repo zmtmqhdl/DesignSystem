@@ -3,7 +3,6 @@ package com.example.core.designSystem.component
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -94,7 +93,8 @@ fun DesignSystemBottomSheet(
                         DesignSystemButton(
                             text = confirmText,
                             onClick = onConfirmClick,
-                            colorSet = DesignSystemTheme.colorSet.blue
+                            colorSet = DesignSystemTheme.colorSet.blue,
+                            full = true
                         )
                     }
                     BottomSheetVariant.DOUBLE_CTA -> {
@@ -132,7 +132,7 @@ fun DesignSystemBottomSheet(
 fun DesignSystemBottomSheetPreview() {
     DesignSystemTheme {
         DesignSystemBottomSheet(
-            variant = BottomSheetVariant.CTA,
+            variant = BottomSheetVariant.DOUBLE_CTA,
             title = "title",
             description = "description",
             confirmText = "confirm",
