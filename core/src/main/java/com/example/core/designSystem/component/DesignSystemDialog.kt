@@ -105,7 +105,7 @@ fun DesignSystemDialog(
                     )
                 }
 
-                Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
+                Spacer(modifier = Modifier.height(DesignSystemTheme.space.space8))
 
                 when (variant) {
                     DialogVariant.ALERT -> {
@@ -156,7 +156,7 @@ fun DesignSystemDialog(
 fun DesignSystemDialogPreview() {
     DesignSystemTheme {
         DesignSystemDialog(
-            variant = DialogVariant.CONFIRM,
+            variant = DialogVariant.ALERT,
             title = "title",
             description = "description",
             confirmText = "confirm",

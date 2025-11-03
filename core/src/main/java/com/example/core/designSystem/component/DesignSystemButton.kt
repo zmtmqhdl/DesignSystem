@@ -139,49 +139,57 @@ fun DesignSystemButton(
             .semantics { role = Role.Button },
         contentAlignment = Alignment.Center
     ) {
+        DesignSystemText(
+            text = text,
+            modifier = Modifier.padding(
+                horizontal = when (size) {
+                    ButtonSize.SMALL -> 10.dp
+                    ButtonSize.MEDIUM -> 16.dp
+                    ButtonSize.LARGE -> 16.dp
+                    ButtonSize.XLARGE -> 15.dp
+                },
+                vertical = when (size) {
+                    ButtonSize.SMALL -> 2.dp
+                    ButtonSize.MEDIUM -> 2.dp
+                    ButtonSize.LARGE -> 2.dp
+                    ButtonSize.XLARGE -> 28.dp
+                }
+            ),
+            color =
+                when (variant) {
+                    ButtonVariant.FILL ->
+                        if (loading) colorSet.mainBackgroundColor else colorSet.mainFontColor
+
+                    ButtonVariant.WEAK ->
+                        if (loading) colorSet.subBackgroundColor else colorSet.subFontColor
+                },
+            style = when (size) {
+                ButtonSize.SMALL -> DesignSystemTheme.typography.typography7.medium.copy(
+                    fontSize = animatedFontSize.sp,
+                    textMotion = TextMotion.Animated
+                )
+
+                ButtonSize.MEDIUM -> DesignSystemTheme.typography.typography6.medium.copy(
+                    fontSize = animatedFontSize.sp,
+                    textMotion = TextMotion.Animated
+                )
+
+                ButtonSize.LARGE -> DesignSystemTheme.typography.typography5.medium.copy(
+                    fontSize = animatedFontSize.sp,
+                    textMotion = TextMotion.Animated
+                )
+
+                ButtonSize.XLARGE -> DesignSystemTheme.typography.typography5.medium.copy(
+                    fontSize = animatedFontSize.sp,
+                    textMotion = TextMotion.Animated
+                )
+            }
+        )
+
         if (loading) {
             ButtonLoader(size = size)
-        } else {
-            DesignSystemText(
-                text = text,
-                modifier = Modifier.padding(
-                    horizontal = when (size) {
-                        ButtonSize.SMALL -> 10.dp
-                        ButtonSize.MEDIUM -> 16.dp
-                        ButtonSize.LARGE -> 16.dp
-                        ButtonSize.XLARGE -> 15.dp
-                    },
-                    vertical = when (size) {
-                        ButtonSize.SMALL -> 2.dp
-                        ButtonSize.MEDIUM -> 2.dp
-                        ButtonSize.LARGE -> 2.dp
-                        ButtonSize.XLARGE -> 28.dp
-                    }
-                ),
-                color = when (variant) {
-                    ButtonVariant.FILL -> colorSet.mainFontColor
-                    ButtonVariant.WEAK -> colorSet.subFontColor
-                },
-                style = when (size) {
-                    ButtonSize.SMALL -> DesignSystemTheme.typography.typography7.medium.copy(
-                        fontSize = animatedFontSize.sp,
-                        textMotion = TextMotion.Animated
-                    )
-                    ButtonSize.MEDIUM -> DesignSystemTheme.typography.typography6.medium.copy(
-                        fontSize = animatedFontSize.sp,
-                        textMotion = TextMotion.Animated
-                    )
-                    ButtonSize.LARGE -> DesignSystemTheme.typography.typography5.medium.copy(
-                        fontSize = animatedFontSize.sp,
-                        textMotion = TextMotion.Animated
-                    )
-                    ButtonSize.XLARGE -> DesignSystemTheme.typography.typography5.medium.copy(
-                        fontSize = animatedFontSize.sp,
-                        textMotion = TextMotion.Animated
-                    )
-                }
-            )
         }
+
     }
 }
 
@@ -275,7 +283,7 @@ fun DesignSystemButtonPreview() {
             text = "Preview",
             variant = ButtonVariant.WEAK,
             colorSet = DesignSystemTheme.colorSet.blue,
-            loading = false,
+            loading = true,
             onClick = {},
         )
     }

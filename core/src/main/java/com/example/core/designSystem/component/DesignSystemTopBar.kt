@@ -4,6 +4,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -15,8 +16,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
@@ -37,15 +36,20 @@ import com.example.core.designSystem.theme.DesignSystemTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun PrimaryTopBar(
-    title: @Composable () -> Unit,
+private fun DesignSystemTopBar(
+    title: String? = null,
+    titleContent: @Composable (() -> Unit)? = null,
     centeredTitle: Boolean = false,
-    navigationIcon: @Composable () -> Unit,
-    actions: @Composable RowScope.() -> Unit,
+    navigationIcon: @Composable (() -> Unit)? = null,
+    actions: @Composable (RowScope.() -> Unit)? = null,
     height: Dp = DesignSystemTheme.space.space12,
     backgroundColor: BackgroundColorSet = DesignSystemTheme.colorSet.background,
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
+    require(!(title != null && titleContent != null)) {
+        "You cannot provide both 'title' and 'titleContent' at the same time."
+    }
+
     val expandedHeightPx = with(LocalDensity.current) { height.toPx().coerceAtLeast(0f) }
     SideEffect {
         if (scrollBehavior?.state?.heightOffsetLimit != -expandedHeightPx) {
@@ -70,152 +74,96 @@ private fun PrimaryTopBar(
         animationSpec = spring(stiffness = Spring.StiffnessMediumLow)
     )
 
-    Surface(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(height = height),
-        color = appBarContainerColor
-    ) {
-        if (centeredTitle) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = DesignSystemTheme.space.space4),
-                contentAlignment = Alignment.Center
-            ) {
-                title()
 
-                Row(
-                    modifier = Modifier.fillMaxSize(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    navigationIcon()
-                    Spacer(modifier = Modifier.weight(1f))
+    if (centeredTitle) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(height = height)
+                .background(color = appBarContainerColor)
+                .padding(horizontal = DesignSystemTheme.space.space4),
+            contentAlignment = Alignment.Center
+        ) {
+            title?.let {
+                DesignSystemText(
+                    text = it,
+                    style = DesignSystemTheme.typography.typography4.medium
+                )
+            }
+
+            titleContent?.let {
+                it()
+            }
+
+            Row(
+                modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                navigationIcon?.let {
+                    it()
+                }
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                actions?.let {
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(DesignSystemTheme.space.space2),
                         verticalAlignment = Alignment.CenterVertically,
-                        content = actions
-                    )
+                    ) {
+                        it()
+                    }
                 }
-            }
-        } else {
-            Row(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(
-                        horizontal = DesignSystemTheme.space.space4
-                    ),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                navigationIcon()
-                Spacer(modifier = Modifier.width(width = DesignSystemTheme.space.space3))
-                title()
-                Spacer(modifier = Modifier.weight(1f))
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(
-                        space = DesignSystemTheme.space.space1
-                    ),
-                    verticalAlignment = Alignment.CenterVertically,
-                    content = actions
-                )
+
             }
         }
-    }
-}
+    } else {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(height = height)
+                .background(color = appBarContainerColor)
+                .padding(horizontal = DesignSystemTheme.space.space4),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            navigationIcon?.let {
+                it()
+            }
+            Spacer(modifier = Modifier.width(width = DesignSystemTheme.space.space3))
 
-@OptIn(ExperimentalMaterial3Api::class)
-object DesignSystemTopBar {
-    @Composable
-    fun TextTopBar(
-        text: String,
-        centeredTitle: Boolean = false,
-        navigationIcon: @Composable () -> Unit,
-        actions: @Composable RowScope.() -> Unit,
-        height: Dp = DesignSystemTheme.space.space12,
-        backgroundColor: BackgroundColorSet = DesignSystemTheme.colorSet.background,
-        scrollBehavior: TopAppBarScrollBehavior? = null
-    ) {
-        PrimaryTopBar(
-            title = {
+            title?.let {
                 DesignSystemText(
-                    text = text,
-                    style =  DesignSystemTheme.typography.typography4.medium
+                    text = it,
+                    style = DesignSystemTheme.typography.typography4.medium
                 )
-            },
-            centeredTitle = centeredTitle,
-            navigationIcon = navigationIcon,
-            actions = actions,
-            height = height,
-            backgroundColor = backgroundColor,
-            scrollBehavior = scrollBehavior
-        )
-    }
+            }
 
-    @Composable
-    fun ContentTopBar(
-        content: @Composable () -> Unit,
-        centeredTitle: Boolean = false,
-        navigationIcon: @Composable () -> Unit,
-        actions: @Composable RowScope.() -> Unit,
-        height: Dp = DesignSystemTheme.space.space12,
-        backgroundColor: BackgroundColorSet = DesignSystemTheme.colorSet.background,
-        scrollBehavior: TopAppBarScrollBehavior? = null
-    ) {
-        PrimaryTopBar(
-            title = content,
-            centeredTitle = centeredTitle,
-            navigationIcon = navigationIcon,
-            actions = actions,
-            height = height,
-            backgroundColor = backgroundColor,
-            scrollBehavior = scrollBehavior
-        )
+            titleContent?.let {
+                it()
+            }
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            actions?.let {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(DesignSystemTheme.space.space2),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    it()
+                }
+            }
+        }
+
     }
 }
 
-
+@OptIn(ExperimentalMaterial3Api::class)
 @DesignSystemPreview
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
-private fun DesignSystemTopBar_TextTopBar_Preview() {
+private fun DesignSystemTopBarPreview() {
     DesignSystemTheme {
-        DesignSystemTopBar.TextTopBar(
-            text = "preview",
-            navigationIcon = {
-                DesignSystemIconButton(
-                    icon = Back,
-                    onClick = {},
-                    ariaLabel = "뒤로가기"
-                )
-            },
-            actions = {
-                DesignSystemIconButton(
-                    icon = Password,
-                    onClick = {},
-                    ariaLabel = "비밀번호"
-                )
-
-                DesignSystemIconButton(
-                    icon = Forward,
-                    onClick = {},
-                    ariaLabel = "앞으로"
-                )
-            },
-        )
-    }
-}
-
-@DesignSystemPreview
-@Composable
-@OptIn(ExperimentalMaterial3Api::class)
-private fun DesignSystemTopBar_ContentTopBar_Preview() {
-    DesignSystemTheme {
-        DesignSystemTopBar.ContentTopBar(
-            content = {
-                Text(
-                    text = "preview"
-                )
-            },
+        DesignSystemTopBar(
+            title = "preview",
+            centeredTitle = false,
             navigationIcon = {
                 DesignSystemIconButton(
                     icon = Back,

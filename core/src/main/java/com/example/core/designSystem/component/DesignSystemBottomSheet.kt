@@ -1,5 +1,6 @@
 package com.example.core.designSystem.component
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,6 +15,7 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.theme.BackgroundColorSet
@@ -86,17 +88,23 @@ fun DesignSystemBottomSheet(
                     )
                 }
 
-                Spacer(modifier = Modifier.height(DesignSystemTheme.space.space4))
+                Spacer(modifier = Modifier.height(DesignSystemTheme.space.space8))
 
                 when (variant) {
                     BottomSheetVariant.CTA -> {
-                        DesignSystemButton(
-                            text = confirmText,
-                            onClick = onConfirmClick,
-                            colorSet = DesignSystemTheme.colorSet.blue,
-                            full = true
-                        )
+                        Box(
+                            modifier = Modifier.fillMaxWidth(),
+                            contentAlignment = Alignment.BottomEnd
+                        ) {
+                            DesignSystemButton(
+                                text = confirmText,
+                                onClick = onConfirmClick,
+                                colorSet = DesignSystemTheme.colorSet.blue,
+                                full = true
+                            )
+                        }
                     }
+
                     BottomSheetVariant.DOUBLE_CTA -> {
                         Row(
                             modifier = Modifier.fillMaxWidth()
@@ -132,7 +140,7 @@ fun DesignSystemBottomSheet(
 fun DesignSystemBottomSheetPreview() {
     DesignSystemTheme {
         DesignSystemBottomSheet(
-            variant = BottomSheetVariant.DOUBLE_CTA,
+            variant = BottomSheetVariant.CTA,
             title = "title",
             description = "description",
             confirmText = "confirm",
