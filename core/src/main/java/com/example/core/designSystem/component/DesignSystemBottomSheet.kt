@@ -137,7 +137,7 @@ fun DesignSystemBottomSheet(
 
 @DesignSystemPreview
 @Composable
-fun DesignSystemBottomSheetPreview() {
+fun BottomSheetPreview() {
     DesignSystemTheme {
         DesignSystemBottomSheet(
             variant = BottomSheetVariant.CTA,

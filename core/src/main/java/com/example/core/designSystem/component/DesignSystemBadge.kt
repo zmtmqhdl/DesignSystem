@@ -96,7 +96,7 @@ fun DesignSystemBadge(
 
 @DesignSystemPreview
 @Composable
-fun DesignSystemBadgePreview() {
+fun BadgePreview() {
     DesignSystemTheme {
         DesignSystemBadge(
             text = "Preview",

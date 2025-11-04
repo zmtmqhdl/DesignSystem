@@ -243,6 +243,14 @@ data class BackgroundColorSet(
     val loadingBackground: Color
 )
 
+@Immutable
+data class NavigationBarColorSet(
+    val background: Color,
+    val outline: Color,
+    val selectedIcon: Color,
+    val unselectedIcon: Color
+)
+
 
 @Immutable
 data class DesignSystemColorSet(
@@ -254,9 +262,10 @@ data class DesignSystemColorSet(
     val green: ColorSet,
     val teal: ColorSet,
     val purple: ColorSet,
-    val textColor: TextColorSet,
     val buttonLoader: Color,
+    val textColor: TextColorSet,
     val background: BackgroundColorSet,
+    val navigationBar: NavigationBarColorSet
 )
 
 @Immutable
@@ -319,6 +328,12 @@ object DesignSystemColorSets {
             background = lightBackground,
             loading = lightBlue500,
             loadingBackground = lightGreyOpacity900
+        ),
+        navigationBar = NavigationBarColorSet(
+            background = lightBackground,
+            outline = lightBackground,
+            selectedIcon = lightGreyOpacity900,
+            unselectedIcon = lightGrey500
         )
     )
 
@@ -380,6 +395,12 @@ object DesignSystemColorSets {
             background = darkBackground,
             loading = darkBlue500,
             loadingBackground = darkGreyOpacity900
+        ),
+        navigationBar = NavigationBarColorSet(
+            background = darkBackground,
+            outline = darkBackground,
+            selectedIcon = darkGreyOpacity900,
+            unselectedIcon = darkGrey500
         )
     )
 }

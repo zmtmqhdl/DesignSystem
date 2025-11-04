@@ -159,7 +159,7 @@ private fun DesignSystemTopBar(
 @OptIn(ExperimentalMaterial3Api::class)
 @DesignSystemPreview
 @Composable
-private fun DesignSystemTopBarPreview() {
+private fun TopBarPreview() {
     DesignSystemTheme {
         DesignSystemTopBar(
             title = "preview",

@@ -277,7 +277,7 @@ fun ButtonLoader(
 
 @DesignSystemPreview
 @Composable
-fun DesignSystemButtonPreview() {
+fun ButtonPreview() {
     DesignSystemTheme {
         DesignSystemButton(
             text = "Preview",

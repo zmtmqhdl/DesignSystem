@@ -26,7 +26,7 @@ class DesignSystemShape(
     val dialog: Shape,
     val snackBar: Shape,
     val textField: Shape,
-    val box: Shape
+    val box: Shape,
 )
 
 val LocalShape: ProvidableCompositionLocal<DesignSystemShape> = staticCompositionLocalOf {

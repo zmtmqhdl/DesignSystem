@@ -153,7 +153,7 @@ fun DesignSystemDialog(
 
 @DesignSystemPreview
 @Composable
-fun DesignSystemDialogPreview() {
+fun DialogPreview() {
     DesignSystemTheme {
         DesignSystemDialog(
             variant = DialogVariant.ALERT,

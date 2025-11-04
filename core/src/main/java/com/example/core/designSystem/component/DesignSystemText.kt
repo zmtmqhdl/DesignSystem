@@ -46,7 +46,7 @@ fun DesignSystemText(
 
 @DesignSystemPreview
 @Composable
-fun DesignSystemTextPreview() {
+fun TextPreview() {
     DesignSystemTheme {
         DesignSystemText(
             text = "Preview",

@@ -2,101 +2,128 @@ package com.example.core.designSystem.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.example.core.designSystem.icon.Close
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavHostController
 import com.example.core.designSystem.theme.DesignSystemTheme
 
-@Composable
-fun PrimaryNavigationBar(
-    route: List<NavigationItem>,
-    currentTab: Int,
-    onSelectedTab: (Int) -> Unit
-) {
-    NavigationBar {
-        route.forEachIndexed { index, value ->
-            NavigationBarItem(
-                selected = currentTab == index,
-                onClick = {
-                    onSelectedTab(index)
-                },
-                icon = {
-                    DesignSystemIcon(
-                        icon = if (currentTab == index) value.selectedIcon else value.unselectedIcon
-                    )
-                },
-                label = { value.label?.let { Text(it) } },
-            )
-        }
-    }
-}
-
-object DesignSystemNavigationBar {
-    @Composable
-    fun RoundedNavigationBar(
-        route: List<NavigationItem>,
-        currentTab: Int,
-        onSelectedTab: (Int) -> Unit
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(
-                    color = Color.Transparent,
-                    shape = RoundedCornerShape(
-                        topStart = DesignSystemTheme.space.space2,
-                        topEnd = DesignSystemTheme.space.space2,
-                    )
-                )
-                .border(
-                    width = DesignSystemTheme.space.space1,
-                    color = DesignSystemTheme.color.primary.outline,
-                    shape = RoundedCornerShape(
-                        topStart = DesignSystemTheme.space.space2,
-                        topEnd = DesignSystemTheme.space.space2,
-                    )
-                )
-        ) {
-            PrimaryNavigationBar(
-                route = route,
-                currentTab = currentTab,
-                onSelectedTab = onSelectedTab
-            )
-        }
-    }
+enum class NavigationBarVariant {
+    ROUND
 }
 
 interface NavigationItem {
     val route: String
-    val label: String?
-    val selectedIcon: ImageVector
-    val unselectedIcon: ImageVector
+    val label: String
+    val icon: ImageVector
 }
 
-private data class NavigationItemPreview(
-    override val route: String,
-    override val label: String? = null,
-    override val selectedIcon: ImageVector = Close,
-    override val unselectedIcon: ImageVector = Close
-) : NavigationItem
-//
+@Composable
+fun DesignSystemNavigationBar(
+    variant: NavigationBarVariant = NavigationBarVariant.ROUND,
+    navController: NavHostController,
+    navigationItems: List<NavigationItem>,
+) {
+
+    val color = DesignSystemTheme.colorSet.navigationBar
+
+    val navBackStackEntry by navController
+        .currentBackStackEntryFlow
+        .collectAsStateWithLifecycle(
+            initialValue = null
+        )
+
+    val currentDestination = navBackStackEntry?.destination
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(
+                color = color.outline,
+                shape = RoundedCornerShape(
+                    topStart = DesignSystemTheme.space.space2,
+                    topEnd = DesignSystemTheme.space.space2,
+                )
+            )
+            .then(
+                when (variant) {
+                    NavigationBarVariant.ROUND -> {
+                        Modifier
+                            .border(
+                                width = DesignSystemTheme.space.space1,
+                                color = color.outline,
+                                shape = RoundedCornerShape(
+                                    topStart = DesignSystemTheme.space.space2,
+                                    topEnd = DesignSystemTheme.space.space2,
+                                )
+                            )
+                    }
+                }
+            ),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        navigationItems.forEach { item ->
+            Column(
+                modifier = Modifier
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            navController.navigate(route = item.route) {
+                                navController.graph.startDestinationRoute?.let {
+                                    popUpTo(route = it) { saveState = true }
+                                }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        }
+                    ),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                DesignSystemIconButton(
+                    icon = item.icon,
+                    onClick = {},
+                    ariaLabel = item.label
+                )
+
+                Spacer(modifier = Modifier.height(height = DesignSystemTheme.space.space1))
+
+                Text(
+                    text = item.label
+                )
+
+            }
+        }
+    }
+}
+
 //@DesignSystemPreview
 //@Composable
-//private fun DesignSystemNavigationBar_RoundedNavigationBar_Preview() {
-//    DesignSystemNavigationBar.RoundedNavigationBar(
-//        route = listOf(
-//            NavigationItemPreview(route = "first"),
-//            NavigationItemPreview(route = "second"),
-//        ),
-//        currentTab = 0,
-//        onSelectedTab = { index -> index }
-//    )
+//fun NavigationBarPreview() {
+//    var current = ""
+//
+//    DesignSystemTheme {
+//        DesignSystemNavigationBar(
+//            variant = NavigationBarVariant.ROUND,
+//            routeList =  List<NavigationItem>,
+//            currentRoute = current,
+//            onClick = { current = it}
+//        )
+//    }
 //}

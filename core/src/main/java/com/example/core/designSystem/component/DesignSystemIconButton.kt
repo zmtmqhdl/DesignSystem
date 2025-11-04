@@ -87,7 +87,7 @@ fun DesignSystemIconButton(
 
 @DesignSystemPreview
 @Composable
-private fun DesignSystemIconButtonPreview() {
+private fun IconButtonPreview() {
     DesignSystemTheme {
         DesignSystemIconButton(
             icon = Close,

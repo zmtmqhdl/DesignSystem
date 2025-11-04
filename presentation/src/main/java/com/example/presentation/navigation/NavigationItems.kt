@@ -4,13 +4,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.core.designSystem.component.NavigationItem
 import com.example.core.designSystem.icon.Close
 
-sealed class MainRoute(
+sealed class NavigationItems(
     override val route: String,
-    override val label: String? = null,
-    override val selectedIcon: ImageVector = Close,
-    override val unselectedIcon: ImageVector = Close
+    override val label: String,
+    override val icon: ImageVector = Close,
 ) : NavigationItem {
-    data object Main : MainRoute(
+    data object Main : NavigationItems(
         route = "main",
         label = "main"
     )
