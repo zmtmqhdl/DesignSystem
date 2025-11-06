@@ -251,6 +251,15 @@ data class NavigationBarColorSet(
     val unselectedIcon: Color
 )
 
+@Immutable
+data class TextFieldColorSet(
+    val main: Color,
+    val disabled: Color,
+    val error: Color,
+    val container: Color,
+    val icon: Color
+)
+
 
 @Immutable
 data class DesignSystemColorSet(
@@ -263,9 +272,10 @@ data class DesignSystemColorSet(
     val teal: ColorSet,
     val purple: ColorSet,
     val buttonLoader: Color,
-    val textColor: TextColorSet,
+    val text: TextColorSet,
     val background: BackgroundColorSet,
-    val navigationBar: NavigationBarColorSet
+    val navigationBar: NavigationBarColorSet,
+    val textField: TextFieldColorSet
 )
 
 @Immutable
@@ -319,7 +329,7 @@ object DesignSystemColorSets {
             subBackgroundColor = lightPurple100,
             subFontColor = lightPurple600
         ),
-        textColor = TextColorSet(
+        text = TextColorSet(
             mainColor = lightGreyOpacity800,
             subColor = lightGrey600
         ),
@@ -334,6 +344,13 @@ object DesignSystemColorSets {
             outline = lightBackground,
             selectedIcon = lightGreyOpacity900,
             unselectedIcon = lightGrey500
+        ),
+        textField = TextFieldColorSet(
+            main =lightGreyOpacity800,
+            disabled = lightGrey600,
+            error = lightRed600,
+            container = lightGrey100,
+            icon = lightGrey600
         )
     )
 
@@ -386,7 +403,7 @@ object DesignSystemColorSets {
             subBackgroundColor = darkPurple100,
             subFontColor = darkPurple600
         ),
-        textColor = TextColorSet(
+        text = TextColorSet(
             mainColor = darkGreyOpacity800,
             subColor = darkGrey600
         ),
@@ -401,6 +418,13 @@ object DesignSystemColorSets {
             outline = darkBackground,
             selectedIcon = darkGreyOpacity900,
             unselectedIcon = darkGrey500
+        ),
+        textField = TextFieldColorSet(
+            main = darkGreyOpacity800,
+            disabled = darkGrey600,
+            error = darkRed600,
+            container = darkGrey100,
+            icon = darkGrey600
         )
     )
 }

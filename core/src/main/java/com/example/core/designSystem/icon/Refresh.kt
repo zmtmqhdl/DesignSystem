@@ -10,6 +10,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.theme.DesignSystemTheme
 
 val Refresh: ImageVector = ImageVector.Builder(
     defaultWidth = 16.dp,
@@ -55,11 +57,13 @@ val Refresh: ImageVector = ImageVector.Builder(
     }
 }.build()
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 private fun RefreshPreview() {
-    Icon(
-        imageVector = Refresh,
-        contentDescription = null,
-    )
+    DesignSystemTheme {
+        Icon(
+            imageVector = Refresh,
+            contentDescription = null,
+        )
+    }
 }

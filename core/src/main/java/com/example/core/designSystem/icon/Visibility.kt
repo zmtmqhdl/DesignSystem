@@ -8,8 +8,9 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.theme.DesignSystemTheme
 
 val Visibility: ImageVector = ImageVector.Builder(
     defaultWidth = 16.dp,
@@ -76,11 +77,13 @@ val Visibility: ImageVector = ImageVector.Builder(
     }
 }.build()
 
-@Preview(showBackground = true)
+@DesignSystemPreview
 @Composable
 private fun VisibilityPreview() {
-    Icon(
-        imageVector = Visibility,
-        contentDescription = null,
-    )
+    DesignSystemTheme {
+        Icon(
+            imageVector = Visibility,
+            contentDescription = null,
+        )
+    }
 }
