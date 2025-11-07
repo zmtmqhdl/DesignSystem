@@ -78,9 +78,9 @@ fun DesignSystemIconButton(
             imageVector = icon,
             contentDescription = ariaLabel,
             modifier = Modifier
-                .width(iconWidth)
-                .height(iconHeight),
-            tint = colorSet.subFontColor
+                .width(width = iconWidth)
+                .height(height = iconHeight),
+            tint = colorSet.subColor
         )
     }
 }

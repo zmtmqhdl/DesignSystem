@@ -158,10 +158,10 @@ fun DesignSystemButton(
             color =
                 when (variant) {
                     ButtonVariant.FILL ->
-                        if (loading) colorSet.mainBackgroundColor else colorSet.mainFontColor
+                        if (loading) colorSet.mainBackgroundColor else colorSet.mainColor
 
                     ButtonVariant.WEAK ->
-                        if (loading) colorSet.subBackgroundColor else colorSet.subFontColor
+                        if (loading) colorSet.subBackgroundColor else colorSet.subColor
                 },
             style = when (size) {
                 ButtonSize.SMALL -> DesignSystemTheme.typography.typography7.medium.copy(

@@ -225,15 +225,15 @@ val white = Color(0xFFFFFFFF)
 @Immutable
 data class ColorSet(
     val mainBackgroundColor: Color,
-    val mainFontColor: Color,
+    val mainColor: Color,
     val subBackgroundColor: Color,
-    val subFontColor: Color
+    val subColor: Color
 )
 
 @Immutable
 data class TextColorSet(
-    val mainColor: Color,
-    val subColor: Color
+    val main: Color,
+    val sub: Color,
 )
 
 @Immutable
@@ -257,7 +257,8 @@ data class TextFieldColorSet(
     val disabled: Color,
     val error: Color,
     val container: Color,
-    val icon: Color
+    val icon: Color,
+    val placeholder: Color
 )
 
 
@@ -283,55 +284,55 @@ object DesignSystemColorSets {
     val LightColor = DesignSystemColorSet(
         grey = ColorSet(
             mainBackgroundColor = lightGrey700,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = lightGreyOpacity100,
-            subFontColor = lightGreyOpacity600
+            subColor = lightGreyOpacity600
         ),
         blue = ColorSet(
             mainBackgroundColor = lightBlue500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = lightBlue100,
-            subFontColor = lightBlue600
+            subColor = lightBlue600
         ),
         red = ColorSet(
             mainBackgroundColor = lightRed500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = lightRed100,
-            subFontColor = lightRed600
+            subColor = lightRed600
         ),
         orange = ColorSet(
             mainBackgroundColor = lightOrange500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = lightOrange100,
-            subFontColor = lightOrange600
+            subColor = lightOrange600
         ),
         yellow = ColorSet(
             mainBackgroundColor = lightYellow500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = lightYellow100,
-            subFontColor = lightYellow600
+            subColor = lightYellow600
         ),
         green = ColorSet(
             mainBackgroundColor = lightGreen500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = lightGreen100,
-            subFontColor = lightGreen600
+            subColor = lightGreen600
         ),
         teal = ColorSet(
             mainBackgroundColor = lightTeal500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = lightTeal100,
-            subFontColor = lightTeal600
+            subColor = lightTeal600
         ),
         purple = ColorSet(
             mainBackgroundColor = lightPurple500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = lightPurple100,
-            subFontColor = lightPurple600
+            subColor = lightPurple600
         ),
         text = TextColorSet(
-            mainColor = lightGreyOpacity800,
-            subColor = lightGrey600
+            main = lightGreyOpacity800,
+            sub = lightGrey600
         ),
         buttonLoader = white,
         background = BackgroundColorSet(
@@ -350,62 +351,63 @@ object DesignSystemColorSets {
             disabled = lightGrey600,
             error = lightRed600,
             container = lightGrey100,
-            icon = lightGrey600
+            icon = lightGrey600,
+            placeholder = lightGrey900
         )
     )
 
     val DarkColor = DesignSystemColorSet(
         grey = ColorSet(
             mainBackgroundColor = darkGrey700,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = darkGreyOpacity100,
-            subFontColor = darkGreyOpacity600
+            subColor = darkGreyOpacity600
         ),
         blue = ColorSet(
             mainBackgroundColor = darkBlue500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = darkBlue100,
-            subFontColor = darkBlue600
+            subColor = darkBlue600
         ),
         red = ColorSet(
             mainBackgroundColor = darkRed500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = darkRed100,
-            subFontColor = darkRed600
+            subColor = darkRed600
         ),
         orange = ColorSet(
             mainBackgroundColor = darkOrange500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = darkOrange100,
-            subFontColor = darkOrange600
+            subColor = darkOrange600
         ),
         yellow = ColorSet(
             mainBackgroundColor = darkYellow500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = darkYellow100,
-            subFontColor = darkYellow600
+            subColor = darkYellow600
         ),
         green = ColorSet(
             mainBackgroundColor = darkGreen500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = darkGreen100,
-            subFontColor = darkGreen600
+            subColor = darkGreen600
         ),
         teal = ColorSet(
             mainBackgroundColor = darkTeal500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = darkTeal100,
-            subFontColor = darkTeal600
+            subColor = darkTeal600
         ),
         purple = ColorSet(
             mainBackgroundColor = darkPurple500,
-            mainFontColor = white,
+            mainColor = white,
             subBackgroundColor = darkPurple100,
-            subFontColor = darkPurple600
+            subColor = darkPurple600
         ),
         text = TextColorSet(
-            mainColor = darkGreyOpacity800,
-            subColor = darkGrey600
+            main = darkGreyOpacity800,
+            sub = darkGrey600,
         ),
         buttonLoader = white,
         background = BackgroundColorSet(
@@ -424,7 +426,8 @@ object DesignSystemColorSets {
             disabled = darkGrey600,
             error = darkRed600,
             container = darkGrey100,
-            icon = darkGrey600
+            icon = darkGrey600,
+            placeholder = darkGrey900
         )
     )
 }

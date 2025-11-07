@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.icon.Invisibility
+import com.example.core.designSystem.icon.Search
 import com.example.core.designSystem.icon.Visibility
 import com.example.core.designSystem.theme.DesignSystemTheme
 
@@ -28,6 +29,7 @@ fun DesignSystemTextField(
     variant: TextFieldVariant = TextFieldVariant.TEXT,
     value: TextFieldValue,
     onValueChange: (TextFieldValue) -> Unit,
+    onIconClick: (() -> Unit)? = null,
     enabled: Boolean = true,
     readOnly: Boolean = false,
     isError: Boolean = false,
@@ -38,6 +40,7 @@ fun DesignSystemTextField(
     maxLines: Int = 2,
 ) {
     val color = DesignSystemTheme.colorSet.textField
+    var iconColor = color.icon
     var visibility by remember { mutableStateOf(value = false) }
 
     OutlinedTextField(
@@ -50,18 +53,21 @@ fun DesignSystemTextField(
         enabled = enabled,
         readOnly = readOnly,
         placeholder = {
-            Text(
+            DesignSystemText(
                 text = placeholder,
-                // 디자인
+                color = DesignSystemTheme.colorSet.textField.main,
+//                style = DesignSystemTheme.typography.
             )
         },
         leadingIcon = {
-            if (variant == TextFieldVariant.SEARCH) {
-                DesignSystemIconButton(
-                    icon = Close,
-                    onClick = {},
-                    ariaLabel = ""
-                )
+            when (variant) {
+                TextFieldVariant.SEARCH -> {
+                    DesignSystemIcon(
+                        icon = Search,
+                        ariaLabel = ""
+                    )
+                }
+                else -> null
             }
         },
         trailingIcon = {
@@ -70,7 +76,7 @@ fun DesignSystemTextField(
                 TextFieldVariant.SEARCH -> {
                     DesignSystemIconButton(
                         icon = Close,
-                        onClick = {},
+                        onClick = onIconClick,
                         ariaLabel = ""
                     )
                 }

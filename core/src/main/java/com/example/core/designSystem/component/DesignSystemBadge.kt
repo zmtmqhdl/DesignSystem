@@ -81,8 +81,8 @@ fun DesignSystemBadge(
                     }
                 ),
             color = when(variant) {
-                BadgeVariant.FILL -> colorSet.mainFontColor
-                BadgeVariant.WEAK -> colorSet.subFontColor
+                BadgeVariant.FILL -> colorSet.mainColor
+                BadgeVariant.WEAK -> colorSet.subColor
             },
             style = when(size) {
                 BadgeSize.XSMALL -> DesignSystemTheme.typography.subTypography13.semiBold

@@ -10,11 +10,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.theme.DesignSystemTheme
 
+
+
 @Composable
 fun DesignSystemText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = DesignSystemTheme.colorSet.text.mainColor,
+    color: Color = DesignSystemTheme.colorSet.text.main,
     overflow: TextOverflow = TextOverflow.Clip,
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
