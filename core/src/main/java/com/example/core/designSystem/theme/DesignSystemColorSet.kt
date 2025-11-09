@@ -272,7 +272,9 @@ data class DesignSystemColorSet(
     val green: ColorSet,
     val teal: ColorSet,
     val purple: ColorSet,
+
     val buttonLoader: Color,
+
     val text: TextColorSet,
     val background: BackgroundColorSet,
     val navigationBar: NavigationBarColorSet,

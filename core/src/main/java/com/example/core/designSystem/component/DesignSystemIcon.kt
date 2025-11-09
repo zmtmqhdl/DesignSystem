@@ -11,6 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
+import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.icon.Search
 import com.example.core.designSystem.theme.DesignSystemTheme
 
 @Composable
@@ -37,4 +39,15 @@ fun DesignSystemIcon(
         )
     }
 
+}
+
+@DesignSystemPreview
+@Composable
+fun DesignSystemIconPreview() {
+    DesignSystemTheme {
+        DesignSystemIcon(
+            icon = Search,
+            ariaLabel = "Search"
+        )
+    }
 }

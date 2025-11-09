@@ -55,10 +55,11 @@ fun DesignSystemTextField(
         placeholder = {
             DesignSystemText(
                 text = placeholder,
-                color = DesignSystemTheme.colorSet.textField.main,
-//                style = DesignSystemTheme.typography.
+                color = DesignSystemTheme.colorSet.textField.placeholder,
+                style = DesignSystemTheme.typography.subTypography10.medium
             )
         },
+        textStyle = DesignSystemTheme.typography.subTypography10.medium,
         leadingIcon = {
             when (variant) {
                 TextFieldVariant.SEARCH -> {
@@ -76,7 +77,7 @@ fun DesignSystemTextField(
                 TextFieldVariant.SEARCH -> {
                     DesignSystemIconButton(
                         icon = Close,
-                        onClick = onIconClick,
+                        onClick = { onIconClick?.invoke() },
                         ariaLabel = ""
                     )
                 }
