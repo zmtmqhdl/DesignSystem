@@ -10,10 +10,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.SheetValue
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,7 +27,6 @@ enum class BottomSheetVariant {
     CTA, DOUBLE_CTA
 }
 
-// 바텀 시트 자연스럽게 닫히도록 해야함
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DesignSystemBottomSheet(
@@ -46,21 +45,23 @@ fun DesignSystemBottomSheet(
     val sheetState = rememberModalBottomSheetState()
     val scope = rememberCoroutineScope()
 
-    LaunchedEffect(sheetState.currentValue) {
-        if (sheetState.currentValue == SheetValue.Expanded && !isOpen) {
-            onDismissRequest()
+    val onClickDismiss = remember(sheetState, scope, onDismissRequest) {
+        { onClick: () -> Unit ->
+            scope.launch {
+                onClick()
+                sheetState.hide()
+                onDismissRequest()
+            }
         }
     }
 
     LaunchedEffect(isOpen) {
         if (isOpen) {
-            scope.launch { sheetState.expand() }
-        } else {
-            scope.launch { sheetState.hide() }
+            sheetState.show()
         }
     }
 
-    if (isOpen || sheetState.currentValue != SheetValue.Hidden) {
+    if (isOpen) {
         ModalBottomSheet(
             onDismissRequest = onDismissRequest,
             sheetState = sheetState,
@@ -99,7 +100,11 @@ fun DesignSystemBottomSheet(
                         ) {
                             DesignSystemButton(
                                 text = confirmText,
-                                onClick = onConfirmClick,
+                                onClick = {
+                                    onClickDismiss {
+                                        onConfirmClick()
+                                    }
+                                },
                                 colorSet = DesignSystemTheme.colorSet.blue,
                                 full = true
                             )
@@ -112,7 +117,11 @@ fun DesignSystemBottomSheet(
                         ) {
                             DesignSystemButton(
                                 text = cancelText,
-                                onClick = onCancelClick,
+                                onClick = {
+                                    onClickDismiss {
+                                        onCancelClick()
+                                    }
+                                },
                                 colorSet = cancelButtonColor,
                                 variant = ButtonVariant.WEAK,
                                 size = ButtonSize.LARGE,
@@ -123,7 +132,11 @@ fun DesignSystemBottomSheet(
 
                             DesignSystemButton(
                                 text = confirmText,
-                                onClick = onConfirmClick,
+                                onClick = {
+                                    onClickDismiss {
+                                        onConfirmClick()
+                                    }
+                                },
                                 colorSet = DesignSystemTheme.colorSet.blue,
                                 size = ButtonSize.LARGE,
                                 modifier = Modifier.weight(1f)
