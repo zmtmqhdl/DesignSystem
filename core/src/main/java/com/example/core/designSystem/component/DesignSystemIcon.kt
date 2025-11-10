@@ -21,7 +21,7 @@ fun DesignSystemIcon(
     boxSize: Dp = DesignSystemTheme.space.space12,
     iconWidth: Dp = DesignSystemTheme.space.space6,
     iconHeight: Dp = DesignSystemTheme.space.space6,
-    color: Color = DesignSystemTheme.colorSet.grey.mainColor,
+    color: Color = DesignSystemTheme.colorSet.grey.mainBackgroundColor,
     ariaLabel: String
 ) {
     Box(

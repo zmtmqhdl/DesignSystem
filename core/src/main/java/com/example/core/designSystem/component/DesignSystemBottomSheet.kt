@@ -27,6 +27,7 @@ enum class BottomSheetVariant {
     CTA, DOUBLE_CTA
 }
 
+// 바텀 시트 자연스럽게 닫히도록 해야함
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DesignSystemBottomSheet(
@@ -39,27 +40,27 @@ fun DesignSystemBottomSheet(
     cancelText: String = "",
     onCancelClick: () -> Unit = {},
     cancelButtonColor: ColorSet = DesignSystemTheme.colorSet.red,
-    open: Boolean,
+    isOpen: Boolean,
     colorSet: BackgroundColorSet = DesignSystemTheme.colorSet.background,
 ) {
     val sheetState = rememberModalBottomSheetState()
     val scope = rememberCoroutineScope()
 
     LaunchedEffect(sheetState.currentValue) {
-        if (sheetState.currentValue == SheetValue.Expanded && !open) {
+        if (sheetState.currentValue == SheetValue.Expanded && !isOpen) {
             onDismissRequest()
         }
     }
 
-    LaunchedEffect(open) {
-        if (open) {
+    LaunchedEffect(isOpen) {
+        if (isOpen) {
             scope.launch { sheetState.expand() }
         } else {
             scope.launch { sheetState.hide() }
         }
     }
 
-    if (open || sheetState.currentValue != SheetValue.Hidden) {
+    if (isOpen || sheetState.currentValue != SheetValue.Hidden) {
         ModalBottomSheet(
             onDismissRequest = onDismissRequest,
             sheetState = sheetState,
@@ -146,7 +147,7 @@ fun BottomSheetPreview() {
             confirmText = "confirm",
             cancelText = "cancel",
             onDismissRequest = {},
-            open = true
+            isOpen = true
         )
     }
 }

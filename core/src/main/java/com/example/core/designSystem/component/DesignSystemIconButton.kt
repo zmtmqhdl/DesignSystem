@@ -91,7 +91,7 @@ private fun IconButtonPreview() {
     DesignSystemTheme {
         DesignSystemIconButton(
             icon = Close,
-            colorSet = DesignSystemTheme.colorSet.blue,
+            colorSet = DesignSystemTheme.colorSet.grey,
             variant = IconButtonVariant.BORDER,
             onClick = { },
             ariaLabel = "test"

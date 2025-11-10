@@ -354,7 +354,7 @@ object DesignSystemColorSets {
             error = lightRed600,
             container = lightGrey100,
             icon = lightGrey600,
-            placeholder = lightGrey900
+            placeholder = lightGrey600
         )
     )
 
@@ -429,7 +429,7 @@ object DesignSystemColorSets {
             error = darkRed600,
             container = darkGrey100,
             icon = darkGrey600,
-            placeholder = darkGrey900
+            placeholder = darkGrey600
         )
     )
 }
