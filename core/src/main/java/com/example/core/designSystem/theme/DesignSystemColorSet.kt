@@ -344,7 +344,7 @@ object DesignSystemColorSets {
         ),
         navigationBar = NavigationBarColorSet(
             background = lightBackground,
-            outline = lightBackground,
+            outline = lightGrey500,
             selectedIcon = lightGreyOpacity900,
             unselectedIcon = lightGrey500
         ),
@@ -419,7 +419,7 @@ object DesignSystemColorSets {
         ),
         navigationBar = NavigationBarColorSet(
             background = darkBackground,
-            outline = darkBackground,
+            outline = darkGrey500,
             selectedIcon = darkGreyOpacity900,
             unselectedIcon = darkGrey500
         ),

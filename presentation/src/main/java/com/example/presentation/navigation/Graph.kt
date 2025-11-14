@@ -25,7 +25,17 @@ fun MainGraph(
         slideComposable(
             route = NavigationItems.Main.route
         ) {
-            MainScreen()
+            MainScreen(
+                navController = navController
+            )
+        }
+
+        slideComposable(
+            route = NavigationItems.Test.route
+        ) {
+            MainScreen(
+                navController = navController
+            )
         }
     }
 }

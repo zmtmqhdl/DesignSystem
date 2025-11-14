@@ -1,33 +1,28 @@
 package com.example.presentation.screen
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import com.example.core.designSystem.component.BottomSheetVariant
-import com.example.core.designSystem.component.DesignSystemBottomSheet
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.core.designSystem.component.DesignSystemNavigationBar
 import com.example.core.designSystem.component.DesignSystemScreen
-import kotlinx.coroutines.delay
+import com.example.core.designSystem.component.NavigationBarVariant
+import com.example.presentation.navigation.NavigationItems
 
 @Composable
-fun MainScreen() {
-    DesignSystemScreen.Screen() {
-        var isOpen by remember { mutableStateOf(false) }
+fun MainScreen(
+    navController: NavHostController
+) {
 
-        LaunchedEffect(Unit) {
-            delay(2000)
-            isOpen = true
-        }
-
-        DesignSystemBottomSheet(
-            title = "테스트",
-            isOpen = isOpen,
-            onDismissRequest = { isOpen = false },
-            confirmText = "닫기",
-            onConfirmClick = {  },
-            variant = BottomSheetVariant.DOUBLE_CTA
-        )
-    }
+    DesignSystemScreen.Scaffold(
+        bottomBar = {
+            DesignSystemNavigationBar(
+                variant = NavigationBarVariant.ROUND,
+                navController = navController,
+                navigationItems = listOf(
+                    NavigationItems.Main,
+                    NavigationItems.Test
+                )
+            )
+        },
+    ) { }
 }

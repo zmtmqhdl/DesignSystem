@@ -13,4 +13,9 @@ sealed class NavigationItems(
         route = "main",
         label = "main"
     )
+
+    data object Test: NavigationItems(
+        route = "test",
+        label = "test"
+    )
 }

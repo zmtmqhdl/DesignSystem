@@ -92,9 +92,9 @@ object DesignSystemScreen {
 
     @Composable
     fun Scaffold(
-        topBar: @Composable () -> Unit,
-        bottomBar: @Composable () -> Unit,
-        snackBarHost: @Composable () -> Unit,
+        topBar: @Composable () -> Unit = {},
+        bottomBar: @Composable () -> Unit = {},
+        snackBarHost: @Composable () -> Unit = { },
         imePadding: Boolean = false,
         padding: Boolean = false,
         color: BackgroundColorSet = DesignSystemTheme.colorSet.background,
