@@ -248,7 +248,9 @@ data class NavigationBarColorSet(
     val background: Color,
     val outline: Color,
     val selectedIcon: Color,
-    val unselectedIcon: Color
+    val unselectedIcon: Color,
+    val selectedText: Color,
+    val unselectedText: Color,
 )
 
 @Immutable
@@ -346,7 +348,9 @@ object DesignSystemColorSets {
             background = lightBackground,
             outline = lightGrey500,
             selectedIcon = lightGreyOpacity900,
-            unselectedIcon = lightGrey500
+            unselectedIcon = lightGrey500,
+            selectedText = lightGreyOpacity900,
+            unselectedText = lightGrey500
         ),
         textField = TextFieldColorSet(
             main =lightGreyOpacity800,
@@ -421,7 +425,9 @@ object DesignSystemColorSets {
             background = darkBackground,
             outline = darkGrey500,
             selectedIcon = darkGreyOpacity900,
-            unselectedIcon = darkGrey500
+            unselectedIcon = darkGrey500,
+            selectedText = darkGreyOpacity900,
+            unselectedText = darkGrey500
         ),
         textField = TextFieldColorSet(
             main = darkGreyOpacity800,

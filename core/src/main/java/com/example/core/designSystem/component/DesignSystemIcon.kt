@@ -18,7 +18,7 @@ import com.example.core.designSystem.theme.DesignSystemTheme
 @Composable
 fun DesignSystemIcon(
     icon: ImageVector,
-    boxSize: Dp = DesignSystemTheme.space.space10,
+    boxSize: Dp = DesignSystemTheme.space.space8,
     iconWidth: Dp = DesignSystemTheme.space.space6,
     iconHeight: Dp = DesignSystemTheme.space.space6,
     color: Color = DesignSystemTheme.colorSet.grey.mainBackgroundColor,

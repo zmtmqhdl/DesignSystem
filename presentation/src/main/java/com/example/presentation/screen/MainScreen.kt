@@ -16,7 +16,6 @@ fun MainScreen(
     DesignSystemScreen.Scaffold(
         bottomBar = {
             DesignSystemNavigationBar(
-                variant = NavigationBarVariant.ROUND,
                 navController = navController,
                 navigationItems = listOf(
                     NavigationItems.Main,
