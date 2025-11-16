@@ -42,11 +42,13 @@ Jetpack Compose 기반으로 구축한 Design System 프로젝트입니다. 앱 
 
 
 <br>
+
 ## ✏️ 배운 내용
 - Multi-Module 설계 및 의존성 주입
 - Room DB 사용시 계정별로 서로 다른 Room Database 파일을 생성하고, 각 계정에 대응되는 DAO 제공하는 방법
 - 안드로이드 기본 컴포넌트 분석 후 커스텀하는 방법
 - Proto DataStore 설정 및 사용
+
 <br>
 
 ## 🛠️ 사용 기술
