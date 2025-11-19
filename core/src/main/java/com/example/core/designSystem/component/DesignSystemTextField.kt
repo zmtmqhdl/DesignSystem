@@ -1,5 +1,6 @@
 package com.example.core.designSystem.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -59,7 +60,16 @@ fun DesignSystemTextField(
 
     BasicTextField(
         state = state,
-        modifier = Modifier,
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(
+                color = color.container,
+                shape = DesignSystemTheme.shape.textField
+            )
+            .padding(
+                horizontal = DesignSystemTheme.space.space2,
+                vertical = DesignSystemTheme.space.space1
+            ),
         enabled = enabled,
         readOnly = readOnly,
         inputTransformation = inputTransformation,
@@ -102,10 +112,15 @@ fun DesignSystemTextField(
         decorator = { innerTextField ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 12.dp, vertical = 8.dp)
             ) {
+                when (variant) {
+                    TextFieldVariant.SEARCH -> DesignSystemIcon(
+                        icon = Search,
+                        ariaLabel = stringResource(id = R.string.aria_label_search),
+                    )
+
+                    else -> {}
+                }
 
                 Box(modifier = Modifier.weight(1f)) {
                     if (placeholder != null && state.text.isEmpty()) {
@@ -115,13 +130,15 @@ fun DesignSystemTextField(
                             color = color.placeholder,
                         )
                     }
+
                     innerTextField()
                 }
 
                 when (variant) {
                     TextFieldVariant.TEXT,
                     TextFieldVariant.NUMBER,
-                    TextFieldVariant.EMAIL -> DesignSystemIconButton(
+                    TextFieldVariant.EMAIL,
+                    TextFieldVariant.SEARCH -> DesignSystemIconButton(
                         icon = Cancel,
                         onClick = {
                             state.edit {
@@ -140,25 +157,10 @@ fun DesignSystemTextField(
                         onClick = { visibility = !visibility },
                         ariaLabel = stringResource(id = if (visibility) R.string.aria_label_hide_password else R.string.aria_label_show_password)
                     )
-
-                    TextFieldVariant.SEARCH -> DesignSystemIconButton(
-                        icon = Search,
-                        onClick = {
-                            state.edit {
-                                replace(
-                                    start = 0,
-                                    end = state.text.length,
-                                    text = ""
-                                )
-                            }
-                        },
-                        ariaLabel = stringResource(id = R.string.aria_label_search)
-                    )
                 }
             }
         }
     )
-
 }
 
 @DesignSystemPreview
@@ -170,7 +172,8 @@ fun DesignSystemTextFieldPreview() {
         DesignSystemTextField(
             state = state,
             placeholder = "placeholder",
-            onKeyboardActionClick = {}
+            onKeyboardActionClick = {},
+            variant = TextFieldVariant.SEARCH
         )
     }
 }
