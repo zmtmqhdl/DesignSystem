@@ -16,7 +16,7 @@ class DatabaseProvider @Inject constructor(
             Room.databaseBuilder(
                 context = context,
                 klass = AppDatabase::class.java,
-                name = "${id}_database"
+                name = "database_${id}"
             ).build()
         }
     }

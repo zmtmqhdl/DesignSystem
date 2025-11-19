@@ -1,174 +1,176 @@
 package com.example.core.designSystem.component
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.InputTransformation
+import androidx.compose.foundation.text.input.KeyboardActionHandler
+import androidx.compose.foundation.text.input.OutputTransformation
+import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.TextFieldState
-import androidx.compose.material3.OutlinedTextField
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
+import com.example.core.R
 import com.example.core.designSystem.core.DesignSystemPreview
-import com.example.core.designSystem.icon.Close
+import com.example.core.designSystem.icon.Cancel
 import com.example.core.designSystem.icon.Invisibility
 import com.example.core.designSystem.icon.Search
 import com.example.core.designSystem.icon.Visibility
 import com.example.core.designSystem.theme.DesignSystemTheme
 
 enum class TextFieldVariant {
-    TEXT, PASSWORD, SEARCH
+    TEXT, PASSWORD, NUMBER, SEARCH, EMAIL
 }
 
 @Composable
 fun DesignSystemTextField(
     variant: TextFieldVariant = TextFieldVariant.TEXT,
-    value: TextFieldValue,
-    onValueChange: (TextFieldValue) -> Unit,
-    onIconClick: (() -> Unit)? = null,
+    state: TextFieldState,
+    onKeyboardActionClick: () -> Unit,
     enabled: Boolean = true,
     readOnly: Boolean = false,
-    isError: Boolean = false,
+    inputTransformation: InputTransformation? = null,
+    outputTransformation: OutputTransformation? = null,
     placeholder: String? = null,
-    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions.Default,
     singleLine: Boolean = true,
-    maxLines: Int = 2,
+    minHeightInLines: Int = 1,
+    maxHeightInLines: Int = Int.MAX_VALUE,
 ) {
     val color = DesignSystemTheme.colorSet.textField
-    val iconColor = color.icon
+    val textColor = color.main
+    val textStyle = DesignSystemTheme.typography.subTypography10.medium
     var visibility by remember { mutableStateOf(value = false) }
 
-    val state = remember { TextFieldState("Hello") }
 
     BasicTextField(
-        state = state
+        state = state,
+        modifier = Modifier,
+        enabled = enabled,
+        readOnly = readOnly,
+        inputTransformation = inputTransformation,
+        outputTransformation = outputTransformation,
+        textStyle = textStyle,
+        keyboardOptions = when (variant) {
+            TextFieldVariant.TEXT -> KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Done
+            )
 
+            TextFieldVariant.PASSWORD -> KeyboardOptions(
+                keyboardType = KeyboardType.Password,
+                imeAction = ImeAction.Done
+            )
+
+            TextFieldVariant.NUMBER -> KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Done
+            )
+
+            TextFieldVariant.SEARCH -> KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Search
+            )
+
+            TextFieldVariant.EMAIL -> KeyboardOptions(
+                keyboardType = KeyboardType.Email,
+                imeAction = ImeAction.Done
+            )
+        },
+        onKeyboardAction = KeyboardActionHandler { onKeyboardActionClick() },
+        lineLimits = if (singleLine) TextFieldLineLimits.SingleLine else TextFieldLineLimits.MultiLine(
+            minHeightInLines = minHeightInLines,
+            maxHeightInLines = maxHeightInLines
+        ),
+        cursorBrush = SolidColor(
+            value = textColor
+        ),
+        decorator = { innerTextField ->
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 12.dp, vertical = 8.dp)
+            ) {
+
+                Box(modifier = Modifier.weight(1f)) {
+                    if (placeholder != null && state.text.isEmpty()) {
+                        Text(
+                            text = placeholder,
+                            style = textStyle,
+                            color = color.placeholder,
+                        )
+                    }
+                    innerTextField()
+                }
+
+                when (variant) {
+                    TextFieldVariant.TEXT,
+                    TextFieldVariant.NUMBER,
+                    TextFieldVariant.EMAIL -> DesignSystemIconButton(
+                        icon = Cancel,
+                        onClick = {
+                            state.edit {
+                                replace(
+                                    start = 0,
+                                    end = state.text.length,
+                                    text = ""
+                                )
+                            }
+                        },
+                        ariaLabel = stringResource(id = R.string.aria_label_text_clear)
+                    )
+
+                    TextFieldVariant.PASSWORD -> DesignSystemIconButton(
+                        icon = if (visibility) Invisibility else Visibility,
+                        onClick = { visibility = !visibility },
+                        ariaLabel = stringResource(id = if (visibility) R.string.aria_label_hide_password else R.string.aria_label_show_password)
+                    )
+
+                    TextFieldVariant.SEARCH -> DesignSystemIconButton(
+                        icon = Search,
+                        onClick = {
+                            state.edit {
+                                replace(
+                                    start = 0,
+                                    end = state.text.length,
+                                    text = ""
+                                )
+                            }
+                        },
+                        ariaLabel = stringResource(id = R.string.aria_label_search)
+                    )
+                }
+            }
+        }
     )
 
-//    OutlinedTextField(
-//        value = value,
-//        onValueChange = {
-//            onValueChange(it)
-//        },
-//        modifier = Modifier
-//            .fillMaxWidth(),
-//        enabled = enabled,
-//        readOnly = readOnly,
-//        placeholder = {
-//            placeholder?.let {
-//                DesignSystemText(
-//                    text = it,
-//                    color = DesignSystemTheme.colorSet.textField.placeholder,
-//                    style = DesignSystemTheme.typography.subTypography10.medium
-//                )
-//            }
-//        },
-//        textStyle = DesignSystemTheme.typography.subTypography10.medium,
-//        leadingIcon = {
-//            when (variant) {
-//                TextFieldVariant.SEARCH -> {
-//                    DesignSystemIcon(
-//                        icon = Search,
-//                        color = iconColor,
-//                        ariaLabel = ""
-//                    )
-//                }
-//                else -> null
-//            }
-//        },
-//        trailingIcon = {
-//            when (variant) {
-//                TextFieldVariant.TEXT,
-//                TextFieldVariant.SEARCH -> {
-//                    DesignSystemIconButton(
-//                        icon = Close,
-//                        onClick = { onIconClick?.invoke() },
-//                        ariaLabel = ""
-//                    )
-//                }
-//
-//                TextFieldVariant.PASSWORD -> {
-//                    DesignSystemIconButton(
-//                        icon = if (visibility) Visibility else Invisibility,
-//                        onClick = { visibility = !visibility },
-//                        ariaLabel = ""
-//                    )
-//                }
-//            }
-//        },
-//        isError = isError,
-//        keyboardOptions = keyboardOptions,
-//        keyboardActions = keyboardActions,
-//        singleLine = singleLine,
-//        maxLines = maxLines,
-//        shape = DesignSystemTheme.shape.textField,
-////        colors = TextFieldColors(
-////            focusedTextColor = color.main,
-////            unfocusedTextColor = color.main,
-////            disabledTextColor = color.disabled,
-////            errorTextColor = color.error,
-////            focusedContainerColor = color.container,
-////            unfocusedContainerColor = color.container,
-////            disabledContainerColor = color.container,
-////            errorContainerColor = color.container,
-////            cursorColor = color.main,
-////            errorCursorColor = color.main,
-////
-////            textSelectionColors = TODO(),
-////            focusedIndicatorColor = TODO(),
-////            unfocusedIndicatorColor = TODO(),
-////            disabledIndicatorColor = TODO(),
-////            errorIndicatorColor = TODO(),
-////            focusedLeadingIconColor = TODO(),
-////            unfocusedLeadingIconColor = TODO(),
-////            disabledLeadingIconColor = TODO(),
-////            errorLeadingIconColor = TODO(),
-////            focusedTrailingIconColor = TODO(),
-////            unfocusedTrailingIconColor = TODO(),
-////            disabledTrailingIconColor = TODO(),
-////            errorTrailingIconColor = TODO(),
-////            focusedLabelColor = TODO(),
-////            unfocusedLabelColor = TODO(),
-////            disabledLabelColor = TODO(),
-////            errorLabelColor = TODO(),
-////            focusedPlaceholderColor = TODO(),
-////            unfocusedPlaceholderColor = TODO(),
-////            disabledPlaceholderColor = TODO(),
-////            errorPlaceholderColor = TODO(),
-////            focusedSupportingTextColor = TODO(),
-////            unfocusedSupportingTextColor = TODO(),
-////            disabledSupportingTextColor = TODO(),
-////            errorSupportingTextColor = TODO(),
-////            focusedPrefixColor = TODO(),
-////            unfocusedPrefixColor = TODO(),
-////            disabledPrefixColor = TODO(),
-////            errorPrefixColor = TODO(),
-////            focusedSuffixColor = TODO(),
-////            unfocusedSuffixColor = TODO(),
-////            disabledSuffixColor = TODO(),
-////            errorSuffixColor = TODO(),
-////        )
-//    )
 }
 
 @DesignSystemPreview
 @Composable
 fun DesignSystemTextFieldPreview() {
-    var value by remember { mutableStateOf(TextFieldValue(""))}
+    val state = rememberTextFieldState()
 
     DesignSystemTheme {
         DesignSystemTextField(
-            value = value,
-            onValueChange = { value = it },
-            placeholder = "preview"
+            state = state,
+            placeholder = "placeholder",
+            onKeyboardActionClick = {}
         )
     }
 }

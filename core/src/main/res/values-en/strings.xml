@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="aria_label_show_password">Show Password</string>
+    <string name="aria_label_hide_password">Hide Password</string>
+    <string name="aria_label_text_clear">Clear Input</string>
+    <string name="aria_label_search">Search</string>
+
+
+</resources>

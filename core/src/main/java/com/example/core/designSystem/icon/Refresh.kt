@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.theme.DesignSystemTheme
 
-val Refresh: ImageVector = ImageVector.Builder(
+val Refresh = ImageVector.Builder(
     defaultWidth = 16.dp,
     defaultHeight = 16.dp,
     viewportWidth = 960f,

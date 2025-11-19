@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">DesignSystem</string>
     <string name="title_activity_main">Start</string>
+
+
 </resources>
