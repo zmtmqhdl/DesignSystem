@@ -3,83 +3,72 @@ package com.example.core.designSystem.icon
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
+import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
+import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.theme.DesignSystemTheme
 
-// todo - 아이콘 바꿔야하고 배경이 가득차고, x만 빈 색깔
-val Cancel = ImageVector.Builder(
-    defaultWidth = 24.dp,
-    defaultHeight = 24.dp,
-    viewportWidth = 960f,
-    viewportHeight = 960f
+val Cancel = Builder(
+    defaultWidth = 24.0.dp, defaultHeight =
+        24.0.dp, viewportWidth = 960.0f, viewportHeight = 960.0f
 ).apply {
     path(
-        fill = SolidColor(Color.Black),
-        fillAlpha = 1.0f,
-        stroke = null,
-        strokeAlpha = 1.0f,
-        strokeLineWidth = 1.0f,
-        strokeLineCap = StrokeCap.Butt,
-        strokeLineJoin = StrokeJoin.Miter,
-        strokeLineMiter = 1.0f
+        fill = SolidColor(Color(0xFFe8eaed)), stroke = null, strokeLineWidth = 0.0f,
+        strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+        pathFillType = NonZero
     ) {
-        moveTo(12f, 2f)
-        arcToRelative(10f, 10f, 0f, true, false, 0f, 20f)
-        arcToRelative(10f, 10f, 0f, false, false, 0f, -20f)
+        moveToRelative(336.0f, 680.0f)
+        lineToRelative(144.0f, -144.0f)
+        lineToRelative(144.0f, 144.0f)
+        lineToRelative(56.0f, -56.0f)
+        lineToRelative(-144.0f, -144.0f)
+        lineToRelative(144.0f, -144.0f)
+        lineToRelative(-56.0f, -56.0f)
+        lineToRelative(-144.0f, 144.0f)
+        lineToRelative(-144.0f, -144.0f)
+        lineToRelative(-56.0f, 56.0f)
+        lineToRelative(144.0f, 144.0f)
+        lineToRelative(-144.0f, 144.0f)
+        lineToRelative(56.0f, 56.0f)
         close()
-
-        moveToRelative(336f, -280f)
-        lineToRelative(144f, -144f)
-        lineToRelative(144f, 144f)
-        lineToRelative(56f, -56f)
-        lineToRelative(-144f, -144f)
-        lineToRelative(144f, -144f)
-        lineToRelative(-56f, -56f)
-        lineToRelative(-144f, 144f)
-        lineToRelative(-144f, -144f)
-        lineToRelative(-56f, 56f)
-        lineToRelative(144f, 144f)
-        lineToRelative(-144f, 144f)
-        lineToRelative(56f, 56f)
+        moveTo(480.0f, 880.0f)
+        quadToRelative(-83.0f, 0.0f, -156.0f, -31.5f)
+        reflectiveQuadTo(197.0f, 763.0f)
+        quadToRelative(-54.0f, -54.0f, -85.5f, -127.0f)
+        reflectiveQuadTo(80.0f, 480.0f)
+        quadToRelative(0.0f, -83.0f, 31.5f, -156.0f)
+        reflectiveQuadTo(197.0f, 197.0f)
+        quadToRelative(54.0f, -54.0f, 127.0f, -85.5f)
+        reflectiveQuadTo(480.0f, 80.0f)
+        quadToRelative(83.0f, 0.0f, 156.0f, 31.5f)
+        reflectiveQuadTo(763.0f, 197.0f)
+        quadToRelative(54.0f, 54.0f, 85.5f, 127.0f)
+        reflectiveQuadTo(880.0f, 480.0f)
+        quadToRelative(0.0f, 83.0f, -31.5f, 156.0f)
+        reflectiveQuadTo(763.0f, 763.0f)
+        quadToRelative(-54.0f, 54.0f, -127.0f, 85.5f)
+        reflectiveQuadTo(480.0f, 880.0f)
         close()
-        moveTo(480f, 880f)
-        quadToRelative(-83f, 0f, -156f, -31.5f)
-        reflectiveQuadTo(197f, 763f)
-        quadToRelative(-54f, -54f, -85.5f, -127f)
-        reflectiveQuadTo(80f, 480f)
-        quadToRelative(0f, -83f, 31.5f, -156f)
-        reflectiveQuadTo(197f, 197f)
-        quadToRelative(54f, -54f, 127f, -85.5f)
-        reflectiveQuadTo(480f, 80f)
-        quadToRelative(83f, 0f, 156f, 31.5f)
-        reflectiveQuadTo(763f, 197f)
-        quadToRelative(54f, 54f, 85.5f, 127f)
-        reflectiveQuadTo(880f, 480f)
-        quadToRelative(0f, 83f, -31.5f, 156f)
-        reflectiveQuadTo(763f, 763f)
-        quadToRelative(-54f, 54f, -127f, 85.5f)
-        reflectiveQuadTo(480f, 880f)
+        moveTo(480.0f, 800.0f)
+        quadToRelative(134.0f, 0.0f, 227.0f, -93.0f)
+        reflectiveQuadToRelative(93.0f, -227.0f)
+        quadToRelative(0.0f, -134.0f, -93.0f, -227.0f)
+        reflectiveQuadToRelative(-227.0f, -93.0f)
+        quadToRelative(-134.0f, 0.0f, -227.0f, 93.0f)
+        reflectiveQuadToRelative(-93.0f, 227.0f)
+        quadToRelative(0.0f, 134.0f, 93.0f, 227.0f)
+        reflectiveQuadToRelative(227.0f, 93.0f)
         close()
-        moveToRelative(0f, -80f)
-        quadToRelative(134f, 0f, 227f, -93f)
-        reflectiveQuadToRelative(93f, -227f)
-        quadToRelative(0f, -134f, -93f, -227f)
-        reflectiveQuadToRelative(-227f, -93f)
-        quadToRelative(-134f, 0f, -227f, 93f)
-        reflectiveQuadToRelative(-93f, 227f)
-        quadToRelative(0f, 134f, 93f, 227f)
-        reflectiveQuadToRelative(227f, 93f)
-        close()
-        moveToRelative(0f, -320f)
+        moveTo(480.0f, 480.0f)
         close()
     }
-}.build()
+}
+    .build()
 
 @DesignSystemPreview
 @Composable
