@@ -138,11 +138,11 @@ fun DesignSystemNavigationBar(
                     )
 
                     Spacer(modifier = Modifier.height(DesignSystemTheme.space.space0))
-
-                    Text(
+                    
+                    DesignSystemText(
                         text = item.label,
                         color = if (selected) color.selectedText else color.unselectedText,
-                        style = DesignSystemTheme.typography.subTypography11.medium,
+                        style = DesignSystemTheme.typography.subTypography11.medium
                     )
                 }
             }

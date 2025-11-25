@@ -29,6 +29,7 @@ data class FontStyleSet(
     val bold: TextStyle
 )
 
+@Immutable
 object DesignSystemFontSize {
     val Typography1 = 30.sp
     val SubTypography1 = 29.sp
@@ -52,6 +53,7 @@ object DesignSystemFontSize {
     val SubTypography13 = 11.sp
 }
 
+@Immutable
 object DesignSystemLineHeight {
     val Typography1 = 40.sp
     val SubTypography1 = 38.sp
@@ -75,6 +77,7 @@ object DesignSystemLineHeight {
     val SubTypography13 = 16.5.sp
 }
 
+@Immutable
 object DesignSystemMaxFontSize {
     val Typography1 = 42.sp
     val SubTypography1 = 42.sp
@@ -98,6 +101,7 @@ object DesignSystemMaxFontSize {
     val SubTypography13 = 31.sp
 }
 
+@Immutable
 object DesignSystemFontWeight {
     val Light = FontWeight(weight = 1)
     val Regular = FontWeight(weight = 400)

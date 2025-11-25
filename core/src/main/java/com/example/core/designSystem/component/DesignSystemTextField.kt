@@ -123,10 +123,10 @@ fun DesignSystemTextField(
 
                 Box(modifier = Modifier.weight(1f)) {
                     if (placeholder != null && state.text.isEmpty()) {
-                        Text(
+                        DesignSystemText(
                             text = placeholder,
                             style = textStyle,
-                            color = color.placeholder,
+                            color = color.placeholder
                         )
                     }
 

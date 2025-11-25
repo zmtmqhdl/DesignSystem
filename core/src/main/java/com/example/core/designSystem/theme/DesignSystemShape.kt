@@ -1,13 +1,14 @@
 package com.example.core.designSystem.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 
-@Stable
+@Immutable
 object DesignSystemShapes{
     val BottomSheet = RoundedCornerShape(DesignSystemSpaces.Space7)
     val IconButton = RoundedCornerShape(DesignSystemSpaces.Space2)
@@ -18,7 +19,7 @@ object DesignSystemShapes{
     val Box = RoundedCornerShape(DesignSystemSpaces.Space2)
 }
 
-@Stable
+@Immutable
 class DesignSystemShape(
     val button: Shape,
     val iconButton: Shape,

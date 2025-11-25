@@ -3,6 +3,7 @@ package com.example.core.designSystem.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.ReadOnlyComposable
 
 private val space = DesignSystemSpace(
@@ -47,6 +48,7 @@ fun DesignSystemTheme(
     )
 }
 
+@Immutable
 object DesignSystemTheme {
     val colorSet: DesignSystemColorSet
         @Composable

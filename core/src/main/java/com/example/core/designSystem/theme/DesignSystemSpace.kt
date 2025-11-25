@@ -1,11 +1,13 @@
 package com.example.core.designSystem.theme
 
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+@Immutable
 object DesignSystemSpaces {
     val Space0 = 1.dp
     val Space1 = 4.dp
@@ -22,7 +24,7 @@ object DesignSystemSpaces {
     val Space12 = 48.dp
 }
 
-@Stable
+@Immutable
 class DesignSystemSpace(
     val space0: Dp,
     val space1: Dp,
