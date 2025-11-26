@@ -10,8 +10,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.theme.DesignSystemTheme
 
-
-
 @Composable
 fun DesignSystemText(
     text: String,

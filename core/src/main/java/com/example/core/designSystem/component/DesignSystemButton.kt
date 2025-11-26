@@ -42,16 +42,16 @@ import com.example.core.designSystem.core.conditional
 import com.example.core.designSystem.theme.ColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
 
+enum class ButtonVariant {
+    FILL,
+    WEAK
+}
+
 enum class ButtonSize {
     SMALL,
     MEDIUM,
     LARGE,
     XLARGE
-}
-
-enum class ButtonVariant {
-    FILL,
-    WEAK
 }
 
 @Composable

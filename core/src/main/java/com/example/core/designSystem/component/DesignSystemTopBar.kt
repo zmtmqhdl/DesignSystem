@@ -46,6 +46,8 @@ private fun DesignSystemTopBar(
     backgroundColor: BackgroundColorSet = DesignSystemTheme.colorSet.background,
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
+    // todo - scrollBehavior 테스트 필요
+
     require(!(title != null && titleContent != null)) {
         "You cannot provide both 'title' and 'titleContent' at the same time."
     }
