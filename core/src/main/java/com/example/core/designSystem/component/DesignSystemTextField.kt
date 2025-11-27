@@ -13,7 +13,6 @@ import androidx.compose.foundation.text.input.OutputTransformation
 import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -51,7 +50,7 @@ fun DesignSystemTextField(
     minHeightInLines: Int = 1,
     maxHeightInLines: Int = Int.MAX_VALUE,
 ) {
-    val color = DesignSystemTheme.colorSet.textField
+    val color = DesignSystemTheme.color.textField
     val textColor = color.main
     val textStyle = DesignSystemTheme.typography.subTypography10.medium
     var visibility by remember { mutableStateOf(value = false) }

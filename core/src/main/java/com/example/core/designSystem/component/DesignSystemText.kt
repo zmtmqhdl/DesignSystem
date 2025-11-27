@@ -14,7 +14,7 @@ import com.example.core.designSystem.theme.DesignSystemTheme
 fun DesignSystemText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = DesignSystemTheme.colorSet.text.main,
+    color: Color = DesignSystemTheme.color.text.main,
     overflow: TextOverflow = TextOverflow.Clip,
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,

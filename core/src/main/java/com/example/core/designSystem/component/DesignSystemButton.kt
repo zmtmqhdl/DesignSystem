@@ -39,7 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.core.conditional
-import com.example.core.designSystem.theme.ColorSet
+import com.example.core.designSystem.theme.scheme.ColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
 
 enum class ButtonVariant {
@@ -198,7 +198,7 @@ fun DesignSystemButton(
 fun ButtonLoader(
     size: ButtonSize = ButtonSize.MEDIUM,
 ) {
-    val color = DesignSystemTheme.colorSet.buttonLoader
+    val color = DesignSystemTheme.color.buttonLoader
     val infiniteTransition = rememberInfiniteTransition(label = "loader")
 
     val duration = 600
@@ -282,7 +282,7 @@ fun ButtonPreview() {
         DesignSystemButton(
             text = "Preview",
             variant = ButtonVariant.WEAK,
-            colorSet = DesignSystemTheme.colorSet.blue,
+            colorSet = DesignSystemTheme.color.blue,
             loading = true,
             onClick = {},
         )

@@ -6,12 +6,11 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.core.DesignSystemPreview
-import com.example.core.designSystem.theme.ColorSet
+import com.example.core.designSystem.theme.scheme.ColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
 
 enum class BadgeVariant {
@@ -32,11 +31,11 @@ fun DesignSystemBadge(
     text: String,
     variant: BadgeVariant = BadgeVariant.FILL,
     size: BadgeSize = BadgeSize.MEDIUM,
-    colorSet: ColorSet = DesignSystemTheme.colorSet.blue
+    colorSet: ColorSet = DesignSystemTheme.color.blue
 ) {
     Box(
         modifier = Modifier
-            .defaultMinSize( // 설정 필요
+            .defaultMinSize(
                 minWidth = when (size) {
                     BadgeSize.XSMALL -> 96.dp
                     BadgeSize.SMALL -> 52.dp
@@ -102,8 +101,7 @@ fun BadgePreview() {
     DesignSystemTheme {
         DesignSystemBadge(
             text = "Preview",
-
-            colorSet = DesignSystemTheme.colorSet.blue
+            colorSet = DesignSystemTheme.color.blue
         )
     }
 }

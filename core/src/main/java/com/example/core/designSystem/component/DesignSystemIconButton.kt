@@ -18,10 +18,11 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.core.DesignSystemPreview
 import com.example.core.designSystem.core.conditional
 import com.example.core.designSystem.icon.Close
-import com.example.core.designSystem.theme.ColorSet
+import com.example.core.designSystem.theme.scheme.ColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
 
 enum class IconButtonVariant {
@@ -38,7 +39,7 @@ fun DesignSystemIconButton(
     iconWidth: Dp = DesignSystemTheme.space.space6,
     iconHeight: Dp = DesignSystemTheme.space.space6,
     variant: IconButtonVariant = IconButtonVariant.CLEAR,
-    colorSet: ColorSet = DesignSystemTheme.colorSet.grey,
+    colorSet: ColorSet = DesignSystemTheme.color.grey,
     interactionSource: MutableInteractionSource? = null,
     ariaLabel: String
 ) {
@@ -60,7 +61,7 @@ fun DesignSystemIconButton(
                 condition = variant == IconButtonVariant.BORDER
             ) {
                 border(
-                    width = DesignSystemTheme.space.space0,
+                    width = 1.dp,
                     color = colorSet.subBackgroundColor,
                     shape = shape
                 )
@@ -91,7 +92,7 @@ private fun IconButtonPreview() {
     DesignSystemTheme {
         DesignSystemIconButton(
             icon = Close,
-            colorSet = DesignSystemTheme.colorSet.grey,
+            colorSet = DesignSystemTheme.color.grey,
             variant = IconButtonVariant.BORDER,
             onClick = { },
             ariaLabel = "test"

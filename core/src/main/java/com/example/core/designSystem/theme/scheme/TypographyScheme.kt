@@ -1,4 +1,4 @@
-package com.example.core.designSystem.theme
+package com.example.core.designSystem.theme.scheme
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -131,7 +131,7 @@ private fun textStyle(
 }
 
 @Immutable
-data class DesignSystemTypography(
+data class TypographyScheme(
     val typography1: FontStyleSet,
     val subTypography1: FontStyleSet,
     val subTypography2: FontStyleSet,
@@ -155,11 +155,11 @@ data class DesignSystemTypography(
 )
 
 @Composable
-fun typography(): DesignSystemTypography {
+fun typography(): TypographyScheme {
     val fontScale = LocalDensity.current.fontScale
 
     return remember(key1 = fontScale) {
-        DesignSystemTypography(
+        TypographyScheme(
             typography1 = FontStyleSet(
                 light = textStyle(
                     fontSize = DesignSystemFontSize.Typography1,
@@ -1020,6 +1020,6 @@ fun typography(): DesignSystemTypography {
     }
 }
 
-val LocalTypography: ProvidableCompositionLocal<DesignSystemTypography> = staticCompositionLocalOf {
+val LocalTypography: ProvidableCompositionLocal<TypographyScheme> = staticCompositionLocalOf {
     error("LocalTypography not provided")
 }

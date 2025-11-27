@@ -21,8 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.core.designSystem.core.DesignSystemPreview
-import com.example.core.designSystem.theme.ColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.scheme.ColorSet
 import kotlinx.coroutines.launch
 
 enum class DialogVariant {
@@ -40,7 +40,7 @@ fun DesignSystemDialog(
     onConfirmClick: () -> Unit = {},
     cancelText: String = "",
     onCancelClick: () -> Unit = {},
-    cancelButtonColor: ColorSet = DesignSystemTheme.colorSet.red,
+    cancelButtonColorSet: ColorSet = DesignSystemTheme.color.red,
     dismissOnBackPress: Boolean = false,
     dismissOnClickOutside: Boolean = false,
     animation: Boolean = true
@@ -56,13 +56,13 @@ fun DesignSystemDialog(
                     durationMillis = duration
                     0f at 0
                     10f at 100
-                    -8f at 200
+                    (-8f) at 200
                     6f at 300
-                    -4f at 400
+                    (-4f) at 400
                     3f at 500
-                    -2f at 600
+                    (-2f) at 600
                     1f at 700
-                    -0.5f at 800
+                    (-0.5f) at 800
                     0f at 1000
                 }
                 shakeOffset.animateTo(
@@ -86,10 +86,10 @@ fun DesignSystemDialog(
                 modifier = Modifier
                     .offset(x = shakeOffset.value.dp)
                     .background(
-                        color = DesignSystemTheme.colorSet.background.background,
+                        color = DesignSystemTheme.color.background.background,
                         shape = DesignSystemTheme.shape.dialog
                     )
-                    .padding(all = DesignSystemTheme.space.space4)
+                    .padding(all = 16.dp)
             ) {
                 DesignSystemText(
                     text = title,
@@ -116,7 +116,7 @@ fun DesignSystemDialog(
                             DesignSystemButton(
                                 text = confirmText,
                                 onClick = onConfirmClick,
-                                colorSet = DesignSystemTheme.colorSet.blue
+                                colorSet = DesignSystemTheme.color.blue
                             )
                         }
                     }
@@ -128,7 +128,7 @@ fun DesignSystemDialog(
                             DesignSystemButton(
                                 text = cancelText,
                                 onClick = onCancelClick,
-                                colorSet = cancelButtonColor,
+                                colorSet = cancelButtonColorSet,
                                 variant = ButtonVariant.WEAK,
                                 size = ButtonSize.LARGE,
                                 modifier = Modifier.weight(1f)
@@ -139,7 +139,7 @@ fun DesignSystemDialog(
                             DesignSystemButton(
                                 text = confirmText,
                                 onClick = onConfirmClick,
-                                colorSet = DesignSystemTheme.colorSet.blue,
+                                colorSet = DesignSystemTheme.color.blue,
                                 size = ButtonSize.LARGE,
                                 modifier = Modifier.weight(1f)
                             )

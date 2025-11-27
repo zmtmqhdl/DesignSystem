@@ -17,9 +17,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.core.DesignSystemPreview
-import com.example.core.designSystem.theme.BackgroundColorSet
-import com.example.core.designSystem.theme.ColorSet
+import com.example.core.designSystem.theme.scheme.BackgroundColorSet
+import com.example.core.designSystem.theme.scheme.ColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
 import kotlinx.coroutines.launch
 
@@ -38,9 +39,9 @@ fun DesignSystemBottomSheet(
     onConfirmClick: () -> Unit = {},
     cancelText: String = "",
     onCancelClick: () -> Unit = {},
-    cancelButtonColor: ColorSet = DesignSystemTheme.colorSet.red,
+    cancelButtonColorSet: ColorSet = DesignSystemTheme.color.red,
     isOpen: Boolean,
-    colorSet: BackgroundColorSet = DesignSystemTheme.colorSet.background,
+    backgroundColorSet: BackgroundColorSet = DesignSystemTheme.color.background,
 ) {
     val sheetState = rememberModalBottomSheetState()
     val scope = rememberCoroutineScope()
@@ -66,15 +67,15 @@ fun DesignSystemBottomSheet(
             onDismissRequest = onDismissRequest,
             sheetState = sheetState,
             modifier = Modifier
-                .padding(bottom = DesignSystemTheme.space.space2)
-                .padding(horizontal = DesignSystemTheme.space.space2),
+                .padding(bottom = 8.dp)
+                .padding(horizontal = 8.dp),
             shape = DesignSystemTheme.shape.bottomSheet,
-            containerColor = colorSet.background,
+            containerColor = backgroundColorSet.background,
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(all = DesignSystemTheme.space.space4)
+                    .padding(all = 16.dp)
             ) {
                 DesignSystemText(
                     text = title,
@@ -82,7 +83,7 @@ fun DesignSystemBottomSheet(
                 )
 
                 description?.let {
-                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
+                    Spacer(modifier = Modifier.height(height = DesignSystemTheme.space.space2))
 
                     DesignSystemText(
                         text = it,
@@ -90,7 +91,7 @@ fun DesignSystemBottomSheet(
                     )
                 }
 
-                Spacer(modifier = Modifier.height(DesignSystemTheme.space.space8))
+                Spacer(modifier = Modifier.height(height = DesignSystemTheme.space.space8))
 
                 when (variant) {
                     BottomSheetVariant.CTA -> {
@@ -105,7 +106,7 @@ fun DesignSystemBottomSheet(
                                         onConfirmClick()
                                     }
                                 },
-                                colorSet = DesignSystemTheme.colorSet.blue,
+                                colorSet = DesignSystemTheme.color.blue,
                                 full = true
                             )
                         }
@@ -122,13 +123,13 @@ fun DesignSystemBottomSheet(
                                         onCancelClick()
                                     }
                                 },
-                                colorSet = cancelButtonColor,
+                                colorSet = cancelButtonColorSet,
                                 variant = ButtonVariant.WEAK,
                                 size = ButtonSize.LARGE,
-                                modifier = Modifier.weight(1f)
+                                modifier = Modifier.weight(weight = 1f)
                             )
 
-                            Spacer(modifier = Modifier.width(DesignSystemTheme.space.space2))
+                            Spacer(modifier = Modifier.width(width = DesignSystemTheme.space.space2))
 
                             DesignSystemButton(
                                 text = confirmText,
@@ -137,9 +138,9 @@ fun DesignSystemBottomSheet(
                                         onConfirmClick()
                                     }
                                 },
-                                colorSet = DesignSystemTheme.colorSet.blue,
+                                colorSet = DesignSystemTheme.color.blue,
                                 size = ButtonSize.LARGE,
-                                modifier = Modifier.weight(1f)
+                                modifier = Modifier.weight(weight = 1f)
                             )
                         }
                     }

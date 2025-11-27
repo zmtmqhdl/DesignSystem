@@ -17,19 +17,18 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.UiComposable
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.core.designSystem.core.conditional
-import com.example.core.designSystem.theme.BackgroundColorSet
-import com.example.core.designSystem.theme.DesignSystemSpaces
+import com.example.core.designSystem.theme.scheme.BackgroundColorSet
 import com.example.core.designSystem.theme.DesignSystemTheme
 
 object DesignSystemScreen {
     @Composable
     fun ContentScreen(
-        color: BackgroundColorSet = DesignSystemTheme.colorSet.background,
+        color: BackgroundColorSet = DesignSystemTheme.color.background,
         loading: Boolean,
         content: @Composable () -> Unit
     ) {
@@ -59,9 +58,9 @@ object DesignSystemScreen {
                         contentAlignment = Alignment.Center
                     ) {
                         CircularProgressIndicator(
-                            modifier = Modifier.size(size = DesignSystemTheme.space.space12),
+                            modifier = Modifier.size(size = 48.dp),
                             color = color.loadingBackground,
-                            strokeWidth = DesignSystemTheme.space.space1
+                            strokeWidth = 1.dp
                         )
                     }
                 }
@@ -73,7 +72,7 @@ object DesignSystemScreen {
     fun Screen(
         imePadding: Boolean = false,
         padding: Boolean = false,
-        color: BackgroundColorSet = DesignSystemTheme.colorSet.background,
+        color: BackgroundColorSet = DesignSystemTheme.color.background,
         content: @Composable () -> Unit
     ) {
         Column(
@@ -83,7 +82,7 @@ object DesignSystemScreen {
                     imePadding()
                 }
                 .conditional(condition = padding) {
-                    padding(horizontal = DesignSystemSpaces.Space4)
+                    padding(horizontal = DesignSystemTheme.space.space4)
                 }
                 .background(color = color.background)
         ) {
@@ -98,11 +97,10 @@ object DesignSystemScreen {
         snackBarHost: @Composable () -> Unit = { },
         imePadding: Boolean = false,
         padding: Boolean = false,
-        color: BackgroundColorSet = DesignSystemTheme.colorSet.background,
+        color: BackgroundColorSet = DesignSystemTheme.color.background,
         content: @Composable () -> Unit
     ) {
         Scaffold(
-            modifier = Modifier.fillMaxSize(),
             topBar = topBar,
             bottomBar = bottomBar,
             snackbarHost = snackBarHost,
@@ -116,7 +114,7 @@ object DesignSystemScreen {
                         imePadding()
                     }
                     .conditional(condition = padding) {
-                        padding(horizontal = DesignSystemSpaces.Space4)
+                        padding(horizontal = DesignSystemTheme.space.space4)
                     }
 
             ) {

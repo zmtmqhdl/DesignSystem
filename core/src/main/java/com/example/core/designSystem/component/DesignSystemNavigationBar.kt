@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,6 +22,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -48,7 +48,7 @@ fun DesignSystemNavigationBar(
     navController: NavHostController,
     navigationItems: List<NavigationItem>,
 ) {
-    val color = DesignSystemTheme.colorSet.navigationBar
+    val color = DesignSystemTheme.color.navigationBar
     val navBackStackEntry by navController
         .currentBackStackEntryFlow
         .collectAsStateWithLifecycle(
@@ -56,7 +56,7 @@ fun DesignSystemNavigationBar(
         )
 
     val currentRoute = navBackStackEntry?.destination
-    val borderWidth = DesignSystemTheme.space.space0
+    val borderWidth = 1.dp
 
     Row(
         modifier = Modifier
@@ -80,7 +80,6 @@ fun DesignSystemNavigationBar(
                     }
 
                     NavigationBarVariant.ROUND -> {
-                        // todo - 테두리 미완성
                         val shape = DesignSystemTheme.space.space2
 
                         Modifier
@@ -173,7 +172,7 @@ fun NavigationBarPreview() {
     val navController = rememberNavController()
     DesignSystemTheme {
         DesignSystemNavigationBar(
-            variant = NavigationBarVariant.DEFAULT,
+            variant = NavigationBarVariant.ROUND,
             navController = navController,
             navigationItems =
                 listOf(

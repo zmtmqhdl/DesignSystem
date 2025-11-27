@@ -20,7 +20,7 @@
 //import androidx.compose.ui.graphics.vector.ImageVector
 //import androidx.compose.ui.text.style.TextAlign
 //import com.example.core.designSystem.icon.Person
-//import com.example.core.designSystem.theme.DesignSystemColorSet
+//import com.example.core.designSystem.theme.scheme.DesignSystemColorSet
 //import com.example.core.designSystem.theme.DesignSystemTheme
 //import com.example.core.designSystem.core.DesignSystemPreview
 //import kotlinx.coroutines.CoroutineScope
