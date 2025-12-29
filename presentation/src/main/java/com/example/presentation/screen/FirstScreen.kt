@@ -6,7 +6,5 @@ import com.example.core.designSystem.component.DesignSystemScreen
 
 @Composable
 fun FirstScreen() {
-    DesignSystemScreen.Screen() {
-        Text("First")
-    }
+
 }

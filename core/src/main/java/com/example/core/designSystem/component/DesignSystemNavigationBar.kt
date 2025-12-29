@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
@@ -80,16 +81,26 @@ fun DesignSystemNavigationBar(
                     }
 
                     NavigationBarVariant.ROUND -> {
-                        val shape = DesignSystemTheme.space.space2
+                        val shape = DesignSystemTheme.space.space5
 
                         Modifier
+                            .clip(RoundedCornerShape(topStart = shape, topEnd = shape))
                             .background(
-                                color = color.background,
+                                color = color.selectedIcon,
                                 shape = RoundedCornerShape(
                                     topStart = shape,
                                     topEnd = shape,
                                 )
                             )
+                            .drawBehind {
+                                val strokeWidth = 5.dp.toPx()
+                                drawLine(
+                                    color = Color.Red,
+                                    start = Offset(0f, 0f),
+                                    end = Offset(size.width, 0f),
+                                    strokeWidth = strokeWidth
+                                )
+                            }
                     }
                 }
             ),

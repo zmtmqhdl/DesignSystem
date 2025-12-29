@@ -1,22 +1,15 @@
 package com.example.presentation.screen
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.core.designSystem.component.DesignSystemIconButton
 import com.example.core.designSystem.component.DesignSystemNavigationBar
 import com.example.core.designSystem.component.DesignSystemScreen
 import com.example.core.designSystem.component.DesignSystemTopBar
+import com.example.core.designSystem.component.NavigationBarVariant
 import com.example.core.designSystem.icon.Back
 import com.example.core.designSystem.icon.Forward
 import com.example.core.designSystem.icon.Password
@@ -29,7 +22,7 @@ fun MainScreen(
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
 
-    DesignSystemScreen.Scaffold(
+    DesignSystemScreen(
         topBar = {
             DesignSystemTopBar(
                 title = "preview",
@@ -59,6 +52,7 @@ fun MainScreen(
         },
         bottomBar = {
             DesignSystemNavigationBar(
+                variant = NavigationBarVariant.ROUND,
                 navController = navController,
                 navigationItems = listOf(
                     NavigationItems.Main,
@@ -67,17 +61,5 @@ fun MainScreen(
             )
         },
     ) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize().nestedScroll(scrollBehavior.nestedScrollConnection)
-        ) {
-            items(51) { index ->
-                Text(
-                    text = "Item $index",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
-                )
-            }
-        }
     }
 }

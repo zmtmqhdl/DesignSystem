@@ -1,13 +1,12 @@
 package com.example.presentation.content
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
-import com.example.core.designSystem.component.DesignSystemScreen
+import com.example.core.designSystem.component.DesignSystemContentLayout
 import com.example.presentation.navigation.MainGraph
-import com.example.presentation.screen.MainScreen
 
 @Composable
 fun Content() {
@@ -15,13 +14,13 @@ fun Content() {
     val viewModel: ContentViewModel = hiltViewModel()
 
     // view model state value
-    val loading by viewModel.loading.collectAsState()
+    val loading by viewModel.loading.collectAsStateWithLifecycle()
 
     // local state
     val navController = rememberNavController()
 
     // screen
-    DesignSystemScreen.ContentScreen(
+    DesignSystemContentLayout(
         loading = loading,
         content = {
             MainGraph(
