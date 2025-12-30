@@ -19,8 +19,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
@@ -81,24 +85,60 @@ fun DesignSystemNavigationBar(
                     }
 
                     NavigationBarVariant.ROUND -> {
-                        val shape = DesignSystemTheme.space.space5
+                        val shapeSize = DesignSystemTheme.space.space5
 
                         Modifier
-                            .clip(RoundedCornerShape(topStart = shape, topEnd = shape))
-                            .background(
-                                color = color.selectedIcon,
-                                shape = RoundedCornerShape(
-                                    topStart = shape,
-                                    topEnd = shape,
-                                )
-                            )
-                            .drawBehind {
-                                val strokeWidth = 5.dp.toPx()
-                                drawLine(
-                                    color = Color.Red,
-                                    start = Offset(0f, 0f),
-                                    end = Offset(size.width, 0f),
-                                    strokeWidth = strokeWidth
+                            .clip(RoundedCornerShape(topStart = shapeSize, topEnd = shapeSize))
+                            .background(color = color.background)
+                            .drawWithContent {
+                                drawContent()
+
+                                val strokeWidth = borderWidth.toPx()
+                                val cornerRadius = shapeSize.toPx()
+
+                                val topBorderPath = Path().apply {
+                                    moveTo(
+                                        x = 0f,
+                                        y = cornerRadius
+                                    )
+
+                                    arcTo(
+                                        rect = Rect(
+                                            left = 0f,
+                                            top = 0f,
+                                            right = cornerRadius * 2,
+                                            bottom = cornerRadius * 2
+                                        ),
+                                        startAngleDegrees = 180f,
+                                        sweepAngleDegrees = 90f,
+                                        forceMoveTo = false
+                                    )
+
+                                    lineTo(
+                                        x = size.width - cornerRadius,
+                                        y = 0f
+                                    )
+
+                                    arcTo(
+                                        rect = Rect(
+                                            left = size.width - cornerRadius * 2,
+                                            top = 0f,
+                                            right = size.width,
+                                            bottom = cornerRadius * 2
+                                        ),
+                                        startAngleDegrees = 270f,
+                                        sweepAngleDegrees = 90f,
+                                        forceMoveTo = false
+                                    )
+                                }
+
+                                drawPath(
+                                    path = topBorderPath,
+                                    color = color.outline,
+                                    style = Stroke(
+                                        width = strokeWidth,
+                                        cap = StrokeCap.Round
+                                    )
                                 )
                             }
                     }
