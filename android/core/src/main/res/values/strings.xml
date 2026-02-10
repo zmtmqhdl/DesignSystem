@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="aria_label_show_password">비밀번호 표시</string>
+    <string name="aria_label_hide_password">비밀번호 숨기기</string>
+    <string name="aria_label_text_clear">입력 초기화</string>
+    <string name="aria_label_search">검색</string>
+</resources>

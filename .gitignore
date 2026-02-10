@@ -1,0 +1,24 @@
+﻿# Gradle
+.gradle/
+build/
+
+# Local config
+local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Keystore (절대 커밋 금지)
+*.jks
+*.keystore
+
+# Secrets
+*.env
