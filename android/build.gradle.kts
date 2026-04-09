@@ -11,8 +11,6 @@ plugins {
 
     // ksp
     alias(libs.plugins.ksp) apply false
-
-    id("com.facebook.react")
 }
 
 extra.apply {

@@ -10,8 +10,6 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
-    includeBuild("../reactNative/node_modules/@react-native/gradle-plugin")
-
 }
 
 dependencyResolutionManagement {
