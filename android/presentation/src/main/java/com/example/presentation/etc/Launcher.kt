@@ -15,7 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import java.io.File
 
-object Launcher {
+// object Launcher {
     @Composable
     fun permissionLauncher(): (
         permissionList: List<String>,
@@ -24,7 +24,8 @@ object Launcher {
         onPermanentlyDenied: (List<String>) -> Unit
     ) -> Unit {
         val context = LocalContext.current
-        val activity = context as Activity
+        val activity = context as? Activity
+            ?: error("Activity context required")
 
         val onSuccessState = remember { mutableStateOf({}) }
         val onDeniedState = remember { mutableStateOf({}) }
@@ -52,7 +53,6 @@ object Launcher {
             launcher.launch(permissionList.toTypedArray())
         }
     }
-
 
     fun createImageUri(
         context: Context,
@@ -117,8 +117,8 @@ object Launcher {
         onVideoSuccess: (List<Uri>) -> Unit,
         onFailure: () -> Unit = {},
     ): ManagedActivityResultLauncher<Array<String>, List<Uri>> {
-        val imageUriList = mutableListOf<Uri>()
-        val videoUriList = mutableListOf<Uri>()
+        val imageUriList = remember { mutableListOf<Uri>() }
+        val videoUriList = remember { mutableListOf<Uri>() }
 
         return rememberLauncherForActivityResult(
             ActivityResultContracts.OpenMultipleDocuments()
@@ -152,4 +152,4 @@ object Launcher {
 
         }
     }
-}
+// }

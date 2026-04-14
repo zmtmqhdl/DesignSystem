@@ -64,6 +64,7 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
+    implementation(libs.androidx.biometric)
     androidTestImplementation(libs.androidx.espresso.core)
 
     // data store

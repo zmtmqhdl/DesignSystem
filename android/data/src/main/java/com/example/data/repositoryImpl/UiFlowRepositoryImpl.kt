@@ -17,10 +17,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class UiFlowRepositoryImpl
-@Inject
-constructor(
-) : UiFlowRepository {
+class UiFlowRepositoryImpl @Inject constructor() : UiFlowRepository {
     private val loadingCount = AtomicInteger(0)
 
     private val _loading = MutableStateFlow(false)

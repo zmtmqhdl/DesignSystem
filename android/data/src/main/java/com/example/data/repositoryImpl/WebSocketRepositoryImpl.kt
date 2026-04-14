@@ -20,8 +20,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class WebSocketRepositoryImpl @Inject constructor(
-): WebSocketRepository {
+class WebSocketRepositoryImpl @Inject constructor(): WebSocketRepository {
 //    private val _webSocketConnect = MutableSharedFlow<WebSocketStatus>(
 //        replay = 0,
 //        extraBufferCapacity = 64,
