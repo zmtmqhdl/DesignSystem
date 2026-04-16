@@ -1,7 +1,6 @@
 package com.example.domain.useCase
 
 import com.example.domain.Event
-import com.example.domain.repository.UiFlowRepository
 import javax.inject.Inject
 
 class EmitEventUseCase @Inject constructor(

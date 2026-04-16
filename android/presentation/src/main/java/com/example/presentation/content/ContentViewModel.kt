@@ -1,17 +1,17 @@
 package com.example.presentation.content
 
 import com.example.core.designSystem.core.DesignSystemViewModel
-import com.example.domain.repository.UiFlowRepository
+import com.example.presentation.manager.LoadingManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class ContentViewModel @Inject constructor(
-    uiFlowRepository: UiFlowRepository
+    private val loadingManager: LoadingManager
 ): DesignSystemViewModel(
     tag = "ContentViewModel"
-){
-    val loading = uiFlowRepository.loading
+) {
+   val loading = loadingManager.loading
 
 
 }

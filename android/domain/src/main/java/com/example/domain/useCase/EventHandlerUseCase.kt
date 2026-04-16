@@ -1,6 +1,5 @@
 package com.example.domain.useCase
 
-import com.example.domain.repository.UiFlowRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch

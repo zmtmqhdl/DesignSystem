@@ -6,7 +6,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.core.designSystem.theme.DesignSystemTheme
-import com.example.domain.repository.UiFlowRepository
 import com.example.presentation.content.Content
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
