@@ -8,9 +8,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ContentViewModel @Inject constructor(
     private val loadingManager: LoadingManager
-): DesignSystemViewModel(
-    tag = "ContentViewModel"
-) {
+): DesignSystemViewModel() {
    val loading = loadingManager.loading
 
 

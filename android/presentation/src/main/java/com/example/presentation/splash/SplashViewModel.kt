@@ -6,7 +6,5 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-) : DesignSystemViewModel(
-    tag = "SplashViewModel"
-) {
+) : DesignSystemViewModel() {
 }
