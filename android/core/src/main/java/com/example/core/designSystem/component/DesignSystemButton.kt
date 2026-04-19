@@ -69,13 +69,7 @@ fun DesignSystemButton(
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
-
-    val scale by animateFloatAsState(
-        targetValue = if (isPressed) 0.97f else 1f,
-        animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
-    )
-
-    // 추가: 글씨 크기 변화용
+    val pushedSize = 0.9f
     val baseFontSize = when (size) {
         ButtonSize.SMALL -> 14.sp
         ButtonSize.MEDIUM -> 16.sp
@@ -83,8 +77,13 @@ fun DesignSystemButton(
         ButtonSize.XLARGE -> 20.sp
     }
 
+    val scale by animateFloatAsState(
+        targetValue = if (isPressed) pushedSize else 1f,
+        animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
+    )
+
     val animatedFontSize by animateFloatAsState(
-        targetValue = if (isPressed) baseFontSize.value * 0.95f else baseFontSize.value,
+        targetValue = if (isPressed) baseFontSize.value * pushedSize else baseFontSize.value,
         animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
     )
 
