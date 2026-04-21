@@ -33,7 +33,7 @@ import com.example.core.designSystem.icon.Visibility
 import com.example.core.designSystem.theme.DesignSystemTheme
 
 enum class TextFieldVariant {
-    TEXT, PASSWORD, NUMBER, SEARCH, EMAIL
+    TEXT, PASSWORD, NUMBER, SEARCH, EMAIL, PHONE_NUMBER
 }
 
 @Composable
@@ -45,6 +45,7 @@ fun DesignSystemTextField(
     readOnly: Boolean = false,
     inputTransformation: InputTransformation? = null,
     outputTransformation: OutputTransformation? = null,
+    imeAction: ImeAction = ImeAction.Default,
     placeholder: String? = null,
     singleLine: Boolean = true,
     minHeightInLines: Int = 1,
@@ -54,7 +55,6 @@ fun DesignSystemTextField(
     val textColor = color.main
     val textStyle = DesignSystemTheme.typography.subTypography10.medium
     var visibility by remember { mutableStateOf(value = false) }
-
 
     BasicTextField(
         state = state,
@@ -70,33 +70,81 @@ fun DesignSystemTextField(
             ),
         enabled = enabled,
         readOnly = readOnly,
-        inputTransformation = inputTransformation,
-        outputTransformation = outputTransformation,
+        inputTransformation =
+            when (variant) {
+                TextFieldVariant.TEXT,
+                TextFieldVariant.SEARCH -> null
+
+                TextFieldVariant.NUMBER,
+                TextFieldVariant.PHONE_NUMBER -> InputTransformation {
+                    if (!asCharSequence().all { it.isDigit() }) {
+                        revertAllChanges()
+                    }
+                }
+
+                TextFieldVariant.EMAIL -> InputTransformation {
+                    if (!asCharSequence().all {
+                            it.isLetterOrDigit() || it == '@' || it == '.'
+                        }
+                    ) {
+                        revertAllChanges()
+                    }
+                }
+
+                TextFieldVariant.PASSWORD -> InputTransformation {
+                    if (!asCharSequence().all {
+                            it.isLetterOrDigit() ||
+                                    "!@#$%^&*()_+-=[]{}|;:'\",.<>?/".contains(it)
+                        }
+                    ) {
+                        revertAllChanges()
+                    }
+                }
+            },
+        outputTransformation = when (variant) {
+            TextFieldVariant.TEXT,
+            TextFieldVariant.SEARCH,
+            TextFieldVariant.NUMBER,
+            TextFieldVariant.PHONE_NUMBER,
+            TextFieldVariant.EMAIL -> null
+
+            TextFieldVariant.PASSWORD -> {
+                if (visibility) {
+                    null
+                } else {
+                    OutputTransformation {
+                        val length = asCharSequence().length
+                        replace(
+                            start = 0,
+                            end = length,
+                            text = "*".repeat(length)
+                        )
+                    }
+                }
+            }
+        },
         textStyle = textStyle,
         keyboardOptions = when (variant) {
-            TextFieldVariant.TEXT -> KeyboardOptions(
+            TextFieldVariant.TEXT,
+            TextFieldVariant.SEARCH -> KeyboardOptions(
                 keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Done
+                imeAction = imeAction
             )
 
             TextFieldVariant.PASSWORD -> KeyboardOptions(
                 keyboardType = KeyboardType.Password,
-                imeAction = ImeAction.Done
+                imeAction = imeAction
             )
 
-            TextFieldVariant.NUMBER -> KeyboardOptions(
+            TextFieldVariant.NUMBER,
+            TextFieldVariant.PHONE_NUMBER -> KeyboardOptions(
                 keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Done
-            )
-
-            TextFieldVariant.SEARCH -> KeyboardOptions(
-                keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Search
+                imeAction = imeAction
             )
 
             TextFieldVariant.EMAIL -> KeyboardOptions(
                 keyboardType = KeyboardType.Email,
-                imeAction = ImeAction.Done
+                imeAction = imeAction
             )
         },
         onKeyboardAction = KeyboardActionHandler { onKeyboardActionClick() },
@@ -136,7 +184,8 @@ fun DesignSystemTextField(
                     TextFieldVariant.TEXT,
                     TextFieldVariant.NUMBER,
                     TextFieldVariant.EMAIL,
-                    TextFieldVariant.SEARCH -> DesignSystemIconButton(
+                    TextFieldVariant.SEARCH,
+                    TextFieldVariant.PHONE_NUMBER -> DesignSystemIconButton(
                         icon = Cancel,
                         onClick = {
                             state.edit {
