@@ -1,6 +1,8 @@
 package com.example.core.designSystem.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -43,8 +45,6 @@ fun DesignSystemTextField(
     onKeyboardActionClick: () -> Unit,
     enabled: Boolean = true,
     readOnly: Boolean = false,
-    inputTransformation: InputTransformation? = null,
-    outputTransformation: OutputTransformation? = null,
     imeAction: ImeAction = ImeAction.Default,
     placeholder: String? = null,
     singleLine: Boolean = true,
@@ -55,6 +55,8 @@ fun DesignSystemTextField(
     val textColor = color.main
     val textStyle = DesignSystemTheme.typography.subTypography10.medium
     var visibility by remember { mutableStateOf(value = false) }
+    val interactionSource = remember { MutableInteractionSource() }
+    val isFocused by interactionSource.collectIsFocusedAsState()
 
     BasicTextField(
         state = state,
@@ -117,7 +119,7 @@ fun DesignSystemTextField(
                         replace(
                             start = 0,
                             end = length,
-                            text = "*".repeat(length)
+                            text = "•".repeat(length)
                         )
                     }
                 }
@@ -152,6 +154,7 @@ fun DesignSystemTextField(
             minHeightInLines = minHeightInLines,
             maxHeightInLines = maxHeightInLines
         ),
+        interactionSource = interactionSource,
         cursorBrush = SolidColor(
             value = textColor
         ),
@@ -169,7 +172,7 @@ fun DesignSystemTextField(
                 }
 
                 Box(modifier = Modifier.weight(1f)) {
-                    if (placeholder != null && state.text.isEmpty()) {
+                    if (placeholder != null && state.text.isEmpty() && !isFocused) {
                         DesignSystemText(
                             text = placeholder,
                             style = textStyle,
@@ -200,7 +203,7 @@ fun DesignSystemTextField(
                     )
 
                     TextFieldVariant.PASSWORD -> DesignSystemIconButton(
-                        icon = if (visibility) Invisibility else Visibility,
+                        icon = if (visibility) Visibility else Invisibility,
                         onClick = { visibility = !visibility },
                         ariaLabel = stringResource(id = if (visibility) R.string.aria_label_hide_password else R.string.aria_label_show_password)
                     )
@@ -220,7 +223,7 @@ fun DesignSystemTextFieldPreview() {
             state = state,
             placeholder = "placeholder",
             onKeyboardActionClick = {},
-            variant = TextFieldVariant.SEARCH
+            variant = TextFieldVariant.PASSWORD
         )
     }
 }
