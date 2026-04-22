@@ -2,11 +2,13 @@ package com.example.data.di
 
 import com.example.data.repositoryImpl.DataStoreRepositoryImpl
 import com.example.data.repositoryImpl.DeviceAuthRepositoryImpl
+import com.example.data.repositoryImpl.UiFlowRepositoryImpl
 import com.example.data.repositoryImpl.api.AccountApiRepositoryImpl
 import com.example.data.repositoryImpl.WebSocketRepositoryImpl
 import com.example.data.repositoryImpl.dataStore.AccountDataStoreRepositoryImpl
 import com.example.domain.repository.DataStoreRepository
 import com.example.domain.repository.DeviceAuthRepository
+import com.example.domain.repository.UiFlowRepository
 import com.example.domain.repository.api.AccountApiRepository
 import com.example.domain.repository.WebSocketRepository
 import com.example.domain.repository.dataStore.AccountDataStoreRepository
@@ -19,6 +21,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
+    @Binds
+    @Singleton
+    abstract fun bindUiFlowRepository(impl: UiFlowRepositoryImpl): UiFlowRepository
+
     @Binds
     @Singleton
     abstract fun bindWebSocketRepository(impl: WebSocketRepositoryImpl): WebSocketRepository
