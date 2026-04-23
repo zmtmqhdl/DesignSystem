@@ -1,33 +1,33 @@
 [versions]
-agp = "9.1.1"
+agp = "9.2.0"
 coreSplashscreen = "1.2.0"
 datastorePreferences = "1.2.1"
 hiltNavigationCompose = "1.3.0"
-kotlin = "2.3.20"
+kotlin = "2.3.21"
 coreKtx = "1.18.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
 kotlinxCoroutinesAndroid = "1.10.2"
 kotlinxSerializationJson = "1.11.0"
-navigation3Runtime = "1.1.0"
+navigation3Runtime = "1.1.1"
 protobufJavalite = "4.34.1"
 retrofit2KotlinxSerializationConverter = "1.0.0"
 lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.13.0"
-composeBom = "2026.03.01"
+composeBom = "2026.04.01"
 appcompat = "1.7.1"
 loggingInterceptor = "5.3.2"
 material = "1.13.0"
-jetbrainsKotlinJvm = "2.3.20"
+jetbrainsKotlinJvm = "2.3.21"
 hilt = "2.59.2"
 material3 = "1.4.0"
 retrofit = "3.0.0"
 roomCompiler = "2.8.4"
-runtime = "1.10.6"
+runtime = "1.11.0"
 ksp = "2.3.2"
-runtimeAndroid = "1.10.6"
-foundationAndroid = "1.10.6"
+runtimeAndroid = "1.11.0"
+foundationAndroid = "1.11.0"
 lifecycleViewmodelNav3 = "2.10.0"
 biometric = "1.1.0"
 
@@ -78,5 +78,5 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt"}
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version = "2.3.20" }
-protobuf = { id = "com.google.protobuf", version = "0.9.6" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version = "2.3.21" }
+protobuf = { id = "com.google.protobuf", version = "0.10.0" }

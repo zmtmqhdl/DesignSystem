@@ -15,7 +15,8 @@ import kotlinx.coroutines.flow.update
 @Singleton
 class LoadingManager @Inject constructor() {
     private val _count = MutableStateFlow(0)
-    val loading : StateFlow<Boolean> = _count.map { it > 0 }
+    val loading : StateFlow<Boolean> = _count
+        .map { it > 0 }
         .stateIn(
             scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate),
             started = SharingStarted.WhileSubscribed(5000),
@@ -27,62 +28,8 @@ class LoadingManager @Inject constructor() {
     }
 
     fun hide() {
-        _count.update { it - 1 }
+        _count.update {
+            (it - 1).coerceAtLeast(minimumValue = 0)
+        }
     }
-
-
-
-
-
-
-
-
-
-//    private val loadingCount = AtomicInteger(0)
-//
-//    private val _loading = MutableStateFlow(false)
-//    override val loading: StateFlow<Boolean> = _loading.asStateFlow()
-//
-//    private val _event = MutableSharedFlow<Event>(
-//        replay = 0,
-//        extraBufferCapacity = 64,
-//        onBufferOverflow = BufferOverflow.SUSPEND
-//    )
-//    override val event: SharedFlow<Event> = _event.asSharedFlow()
-//
-//    private var showTime: Long = 0L
-//    private val minDurationMillis = 1500L
-//    private val handler = Handler(Looper.getMainLooper())
-//
-//    override fun show() {
-//        if (loadingCount.incrementAndGet() == 1) {
-//            showTime = System.currentTimeMillis()
-//            _loading.value = true
-//        }
-//    }
-//
-//    override suspend fun hide() {
-//        if (loadingCount.decrementAndGet() == 0) {
-//            val elapsed = System.currentTimeMillis() - showTime
-//            if (elapsed >= minDurationMillis) {
-//                _loading.value = false
-//            } else {
-//                val delayMillis = minDurationMillis - elapsed
-//                delay(delayMillis)
-//                if (loadingCount.get() == 0) {
-//                    _loading.value = false
-//                }
-//            }
-//        }
-//    }
-//
-//    override fun superHide() {
-//        loadingCount.set(0)
-//        handler.removeCallbacksAndMessages(null)
-//        _loading.value = false
-//    }
-//
-//    override suspend fun emitEvent(event: Event) {
-//        _event.emit(value = event)
-//    }
 }
