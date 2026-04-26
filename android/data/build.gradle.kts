@@ -1,3 +1,4 @@
+import com.google.protobuf.gradle.proto
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -71,6 +72,7 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.datastore)
     implementation(libs.protobuf.javalite)
+    implementation(libs.protobuf.kotlin.lite)
 
     // module
     implementation(project(":domain"))
@@ -101,7 +103,7 @@ dependencies {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.21.12"
+        artifact = "com.google.protobuf:protoc:3.25.1"
     }
     generateProtoTasks {
         all().forEach { task ->
@@ -109,7 +111,12 @@ protobuf {
                 create("java") {
                     option("lite")
                 }
+
+                create("kotlin") {
+                    option("lite")
+                }
             }
         }
     }
 }
+

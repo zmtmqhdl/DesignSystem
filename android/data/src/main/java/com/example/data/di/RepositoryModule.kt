@@ -5,11 +5,13 @@ import com.example.data.repositoryImpl.DeviceAuthRepositoryImpl
 import com.example.data.repositoryImpl.api.AccountApiRepositoryImpl
 import com.example.data.repositoryImpl.WebSocketRepositoryImpl
 import com.example.data.repositoryImpl.dataStore.AccountDataStoreRepositoryImpl
+import com.example.data.repositoryImpl.database.AccountDatabaseRepositoryImpl
 import com.example.domain.repository.DataStoreRepository
 import com.example.domain.repository.DeviceAuthRepository
 import com.example.domain.repository.api.AccountApiRepository
 import com.example.domain.repository.WebSocketRepository
 import com.example.domain.repository.dataStore.AccountDataStoreRepository
+import com.example.domain.repository.database.AccountDatabaseRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -27,6 +29,10 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindAccountApiRepository(impl: AccountApiRepositoryImpl): AccountApiRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindAccountDatabaseRepository(impl: AccountDatabaseRepositoryImpl): AccountDatabaseRepository
 
     @Binds
     @Singleton
