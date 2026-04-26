@@ -9,20 +9,22 @@ import javax.inject.Inject
 class DatabaseProvider @Inject constructor(
     @param:ApplicationContext private val context: Context
 ) {
-    private val accountDaoMap = mutableMapOf<Long, AccountDao>()
+    private val accountDaoMap = mutableMapOf<Long, AppDatabase>()
 
     fun getDatabase(accountId: Long): AppDatabase {
-        return accountId.let { id ->
+        return accountDaoMap.getOrPut(accountId) {
             Room.databaseBuilder(
-                context = context,
-                klass = AppDatabase::class.java,
-                name = "database_${id}"
+                context,
+                AppDatabase::class.java,
+                "database_$accountId"
             ).build()
         }
     }
 
-    fun accountDao(accountId: Long): AccountDao =
-        accountDaoMap.getOrPut(key = accountId) {
-            getDatabase(accountId = accountId).accountDao()
-        }
+
+    fun accountDao(accountId: Long): AccountDao {
+        return getDatabase(accountId = accountId).accountDao()
+    }
+
+
 }
