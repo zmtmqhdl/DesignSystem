@@ -6,10 +6,22 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.example.core.BuildConfig.DEBUG
 
-abstract class DesignSystemViewModel(
-) : ViewModel() {
+abstract class DesignSystemViewModel : ViewModel() {
+
+    protected open val tag: String by lazy { this::class.java.simpleName }
+
+    protected fun logD(message: String) {
+        Log.d(tag, message)
+
+    }
+
+    protected fun logE(message: String) {
+        Log.e(tag, message)
+
+    }
+
+
     protected fun launch(block: suspend CoroutineScope.() -> Unit) {
         viewModelScope.launch(block = block)
     }
