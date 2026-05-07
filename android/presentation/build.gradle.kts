@@ -4,14 +4,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-
-    // hilt
     alias(libs.plugins.hilt)
-
-    // kotlinx
     alias(libs.plugins.kotlin.serialization)
-
-    // ksp
     alias(libs.plugins.ksp)
 }
 
@@ -84,26 +78,15 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.activity.compose)
-
-    // module
-    implementation(project(":domain"))
-    implementation(project(":data"))
-    implementation(project(":core"))
-
-    // coroutines
     implementation(libs.kotlinx.coroutines.android)
-
-    // hilt
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
-
-    // navigation
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
 
-    // splash
-    implementation(libs.androidx.core.splashscreen)
-    implementation(kotlin("test"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":core"))
 }

@@ -18,10 +18,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.scheme.BackgroundColorSet
 import com.example.core.designSystem.theme.scheme.ColorSet
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DSTheme
 import kotlinx.coroutines.launch
 
 enum class BottomSheetVariant {
@@ -30,7 +30,7 @@ enum class BottomSheetVariant {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DesignSystemBottomSheet(
+fun DSBottomSheet(
     variant: BottomSheetVariant = BottomSheetVariant.CTA,
     title: String,
     description: String? = null,
@@ -39,9 +39,9 @@ fun DesignSystemBottomSheet(
     onConfirmClick: () -> Unit = {},
     cancelText: String = "",
     onCancelClick: () -> Unit = {},
-    cancelButtonColorSet: ColorSet = DesignSystemTheme.color.red,
+    cancelButtonColorSet: ColorSet = DSTheme.color.red,
     isOpen: Boolean,
-    backgroundColorSet: BackgroundColorSet = DesignSystemTheme.color.background,
+    backgroundColorSet: BackgroundColorSet = DSTheme.color.background,
 ) {
     val sheetState = rememberModalBottomSheetState()
     val scope = rememberCoroutineScope()
@@ -69,7 +69,7 @@ fun DesignSystemBottomSheet(
             modifier = Modifier
                 .padding(bottom = 8.dp)
                 .padding(horizontal = 8.dp),
-            shape = DesignSystemTheme.shape.bottomSheet,
+            shape = DSTheme.shape.bottomSheet,
             containerColor = backgroundColorSet.background,
         ) {
             Column(
@@ -77,21 +77,21 @@ fun DesignSystemBottomSheet(
                     .fillMaxWidth()
                     .padding(all = 16.dp)
             ) {
-                DesignSystemText(
+                DSText(
                     text = title,
-                    style = DesignSystemTheme.typography.typography4.bold,
+                    style = DSTheme.typography.typography4.bold,
                 )
 
                 description?.let {
-                    Spacer(modifier = Modifier.height(height = DesignSystemTheme.space.space2))
+                    Spacer(modifier = Modifier.height(height = DSTheme.space.space2))
 
-                    DesignSystemText(
+                    DSText(
                         text = it,
-                        style = DesignSystemTheme.typography.typography6.medium
+                        style = DSTheme.typography.typography6.medium
                     )
                 }
 
-                Spacer(modifier = Modifier.height(height = DesignSystemTheme.space.space8))
+                Spacer(modifier = Modifier.height(height = DSTheme.space.space8))
 
                 when (variant) {
                     BottomSheetVariant.CTA -> {
@@ -99,14 +99,14 @@ fun DesignSystemBottomSheet(
                             modifier = Modifier.fillMaxWidth(),
                             contentAlignment = Alignment.BottomEnd
                         ) {
-                            DesignSystemButton(
+                            DSButton(
                                 text = confirmText,
                                 onClick = {
                                     onClickDismiss {
                                         onConfirmClick()
                                     }
                                 },
-                                colorSet = DesignSystemTheme.color.blue,
+                                colorSet = DSTheme.color.blue,
                                 full = true
                             )
                         }
@@ -116,7 +116,7 @@ fun DesignSystemBottomSheet(
                         Row(
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            DesignSystemButton(
+                            DSButton(
                                 text = cancelText,
                                 onClick = {
                                     onClickDismiss {
@@ -129,16 +129,16 @@ fun DesignSystemBottomSheet(
                                 modifier = Modifier.weight(weight = 1f)
                             )
 
-                            Spacer(modifier = Modifier.width(width = DesignSystemTheme.space.space2))
+                            Spacer(modifier = Modifier.width(width = DSTheme.space.space2))
 
-                            DesignSystemButton(
+                            DSButton(
                                 text = confirmText,
                                 onClick = {
                                     onClickDismiss {
                                         onConfirmClick()
                                     }
                                 },
-                                colorSet = DesignSystemTheme.color.blue,
+                                colorSet = DSTheme.color.blue,
                                 size = ButtonSize.LARGE,
                                 modifier = Modifier.weight(weight = 1f)
                             )
@@ -150,11 +150,11 @@ fun DesignSystemBottomSheet(
     }
 }
 
-@DesignSystemPreview
+@DSPreview
 @Composable
 fun BottomSheetPreview() {
-    DesignSystemTheme {
-        DesignSystemBottomSheet(
+    DSTheme {
+        DSBottomSheet(
             variant = BottomSheetVariant.CTA,
             title = "title",
             description = "description",

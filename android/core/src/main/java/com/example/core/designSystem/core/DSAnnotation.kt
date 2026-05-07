@@ -12,4 +12,4 @@ import androidx.compose.ui.tooling.preview.Preview
     uiMode = Configuration.UI_MODE_NIGHT_YES,
     showBackground = true,
 )
-annotation class DesignSystemPreview
+annotation class DSPreview

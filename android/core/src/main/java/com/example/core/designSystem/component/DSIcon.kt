@@ -11,17 +11,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
-import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.icon.Search
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DSTheme
 
 @Composable
-fun DesignSystemIcon(
+fun DSIcon(
     icon: ImageVector,
-    boxSize: Dp = DesignSystemTheme.space.space8,
-    iconWidth: Dp = DesignSystemTheme.space.space6,
-    iconHeight: Dp = DesignSystemTheme.space.space6,
-    color: Color = DesignSystemTheme.color.grey700,
+    boxSize: Dp = DSTheme.space.space8,
+    iconWidth: Dp = DSTheme.space.space6,
+    iconHeight: Dp = DSTheme.space.space6,
+    color: Color = DSTheme.color.grey700,
     ariaLabel: String
 ) {
     Box(
@@ -41,11 +41,11 @@ fun DesignSystemIcon(
 
 }
 
-@DesignSystemPreview
+@DSPreview
 @Composable
-fun DesignSystemIconPreview() {
-    DesignSystemTheme {
-        DesignSystemIcon(
+fun DSIconPreview() {
+    DSTheme {
+        DSIcon(
             icon = Search,
             ariaLabel = "Search"
         )

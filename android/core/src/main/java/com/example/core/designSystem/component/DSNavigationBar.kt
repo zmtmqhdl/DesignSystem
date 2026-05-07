@@ -30,9 +30,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.rememberNavBackStack
-import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.icon.Close
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DSTheme
 
 enum class NavigationBarVariant {
     DEFAULT, ROUND
@@ -45,12 +45,12 @@ interface NavigationItem {
 }
 
 @Composable
-fun DesignSystemNavigationBar(
+fun DSNavigationBar(
     variant: NavigationBarVariant = NavigationBarVariant.DEFAULT,
     navigationItems: List<NavigationItem>,
     backStack: NavBackStack<NavKey>,
 ) {
-    val color = DesignSystemTheme.color.navigationBar
+    val color = DSTheme.color.navigationBar
     val currentKey = backStack.lastOrNull()
 
     val borderWidth = 1.dp
@@ -77,7 +77,7 @@ fun DesignSystemNavigationBar(
                     }
 
                     NavigationBarVariant.ROUND -> {
-                        val shapeSize = DesignSystemTheme.space.space5
+                        val shapeSize = DSTheme.space.space5
 
                         Modifier
                             .clip(RoundedCornerShape(topStart = shapeSize, topEnd = shapeSize))
@@ -144,9 +144,9 @@ fun DesignSystemNavigationBar(
             Column(
                 modifier = Modifier
                     .padding(
-                        vertical = DesignSystemTheme.space.space2
+                        vertical = DSTheme.space.space2
                     )
-                    .clip(shape = DesignSystemTheme.shape.iconButton)
+                    .clip(shape = DSTheme.shape.iconButton)
                     .clickable(
                         interactionSource = remember { MutableInteractionSource() },
                         indication = ripple(),
@@ -163,24 +163,24 @@ fun DesignSystemNavigationBar(
             ) {
                 Column(
                     modifier = Modifier.padding(
-                        horizontal = DesignSystemTheme.space.space3,
-                        vertical = DesignSystemTheme.space.space1
+                        horizontal = DSTheme.space.space3,
+                        vertical = DSTheme.space.space1
                     ),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    DesignSystemIcon(
+                    DSIcon(
                         icon = item.icon,
                         ariaLabel = item.label,
                         color = if (selected) color.selectedIcon else color.unselectedIcon
                     )
 
-                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space0))
+                    Spacer(modifier = Modifier.height(DSTheme.space.space0))
                     
-                    DesignSystemText(
+                    DSText(
                         text = item.label,
                         color = if (selected) color.selectedText else color.unselectedText,
-                        style = DesignSystemTheme.typography.subTypography11.medium
+                        style = DSTheme.typography.subTypography11.medium
                     )
                 }
             }
@@ -227,13 +227,13 @@ sealed class PreviewNavigationItems (
 
 
 
-@DesignSystemPreview
+@DSPreview
 @Composable
 fun NavigationBarPreview() {
-    DesignSystemTheme {
+    DSTheme {
         val backStack = rememberNavBackStack()
 
-        DesignSystemNavigationBar(
+        DSNavigationBar(
             variant = NavigationBarVariant.ROUND,
             navigationItems = listOf(
                 PreviewNavigationItems.First,

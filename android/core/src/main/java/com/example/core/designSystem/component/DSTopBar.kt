@@ -30,23 +30,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
-import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.icon.Back
 import com.example.core.designSystem.icon.Forward
 import com.example.core.designSystem.icon.Password
 import com.example.core.designSystem.theme.scheme.BackgroundColorSet
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DSTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DesignSystemTopBar(
+fun DSTopBar(
     title: String? = null,
     titleContent: @Composable (() -> Unit)? = null,
     centeredTitle: Boolean = false,
     navigationIcon: @Composable (() -> Unit)? = null,
     actions: @Composable (RowScope.() -> Unit)? = null,
-    height: Dp = DesignSystemTheme.space.space12,
-    backgroundColor: BackgroundColorSet = DesignSystemTheme.color.background,
+    height: Dp = DSTheme.space.space12,
+    backgroundColor: BackgroundColorSet = DSTheme.color.background,
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
 
@@ -91,14 +91,14 @@ fun DesignSystemTopBar(
                 .fillMaxWidth()
                 .height(height = height + heightOffsetDp)
                 .background(color = appBarContainerColor)
-                .padding(horizontal = DesignSystemTheme.space.space4)
+                .padding(horizontal = DSTheme.space.space4)
                 .offset(y = heightOffsetDp),
             contentAlignment = Alignment.Center
         ) {
             title?.let {
-                DesignSystemText(
+                DSText(
                     text = it,
-                    style = DesignSystemTheme.typography.typography4.medium
+                    style = DSTheme.typography.typography4.medium
                 )
             }
 
@@ -118,7 +118,7 @@ fun DesignSystemTopBar(
 
                 actions?.let {
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(space = DesignSystemTheme.space.space2),
+                        horizontalArrangement = Arrangement.spacedBy(space = DSTheme.space.space2),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         it()
@@ -133,19 +133,19 @@ fun DesignSystemTopBar(
                 .fillMaxWidth()
                 .height(height = height + heightOffsetDp)
                 .background(color = appBarContainerColor)
-                .padding(horizontal = DesignSystemTheme.space.space4)
+                .padding(horizontal = DSTheme.space.space4)
                 .offset(y = heightOffsetDp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             navigationIcon?.let {
                 it()
             }
-            Spacer(modifier = Modifier.width(width = DesignSystemTheme.space.space3))
+            Spacer(modifier = Modifier.width(width = DSTheme.space.space3))
 
             title?.let {
-                DesignSystemText(
+                DSText(
                     text = it,
-                    style = DesignSystemTheme.typography.typography4.medium
+                    style = DSTheme.typography.typography4.medium
                 )
             }
 
@@ -157,7 +157,7 @@ fun DesignSystemTopBar(
 
             actions?.let {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(DesignSystemTheme.space.space2),
+                    horizontalArrangement = Arrangement.spacedBy(DSTheme.space.space2),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     it()
@@ -169,32 +169,32 @@ fun DesignSystemTopBar(
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@DesignSystemPreview
+@DSPreview
 @Composable
 private fun TopBarPreview() {
-    DesignSystemTheme {
+    DSTheme {
         val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
 
         // .nestedScroll(scrollBehavior.nestedScrollConnection)를 LazyColumn의 modifier에 넣기
 
-        DesignSystemTopBar(
+        DSTopBar(
             title = "preview",
             centeredTitle = false,
             navigationIcon = {
-                DesignSystemIconButton(
+                DSIconButton(
                     icon = Back,
                     onClick = {},
                     ariaLabel = "뒤로가기"
                 )
             },
             actions = {
-                DesignSystemIconButton(
+                DSIconButton(
                     icon = Password,
                     onClick = {},
                     ariaLabel = "비밀번호"
                 )
 
-                DesignSystemIconButton(
+                DSIconButton(
                     icon = Forward,
                     onClick = {},
                     ariaLabel = "앞으로"

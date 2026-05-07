@@ -6,10 +6,10 @@ import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
-import com.example.core.designSystem.component.DesignSystemIconButton
-import com.example.core.designSystem.component.DesignSystemNavigationBar
-import com.example.core.designSystem.component.DesignSystemScreen
-import com.example.core.designSystem.component.DesignSystemTopBar
+import com.example.core.designSystem.component.DSIconButton
+import com.example.core.designSystem.component.DSNavigationBar
+import com.example.core.designSystem.component.DSScreen
+import com.example.core.designSystem.component.DSTopBar
 import com.example.core.designSystem.component.NavigationBarVariant
 import com.example.core.designSystem.icon.Back
 import com.example.core.designSystem.icon.Forward
@@ -23,26 +23,26 @@ fun MainScreen(
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
 
-    DesignSystemScreen(
+    DSScreen(
         topBar = {
-            DesignSystemTopBar(
+            DSTopBar(
                 title = "preview",
                 centeredTitle = false,
                 navigationIcon = {
-                    DesignSystemIconButton(
+                    DSIconButton(
                         icon = Back,
                         onClick = {},
                         ariaLabel = "뒤로가기"
                     )
                 },
                 actions = {
-                    DesignSystemIconButton(
+                    DSIconButton(
                         icon = Password,
                         onClick = {},
                         ariaLabel = "비밀번호"
                     )
 
-                    DesignSystemIconButton(
+                    DSIconButton(
                         icon = Forward,
                         onClick = {},
                         ariaLabel = "앞으로"
@@ -52,7 +52,7 @@ fun MainScreen(
             )
         },
         bottomBar = {
-            DesignSystemNavigationBar(
+            DSNavigationBar(
                 variant = NavigationBarVariant.ROUND,
                 backStack = backStack,
                 navigationItems = listOf(

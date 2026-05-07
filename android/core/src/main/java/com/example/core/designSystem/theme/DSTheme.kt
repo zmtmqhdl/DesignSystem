@@ -57,7 +57,7 @@ private val shape = ShapeScheme(
 )
 
 @Composable
-fun DesignSystemTheme(
+fun DSTheme(
     isDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
@@ -73,7 +73,7 @@ fun DesignSystemTheme(
 }
 
 @Immutable
-object DesignSystemTheme {
+object DSTheme {
     val color: ColorScheme
         @Composable
         @ReadOnlyComposable

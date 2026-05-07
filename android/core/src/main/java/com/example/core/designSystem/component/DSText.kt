@@ -12,21 +12,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.core.conditional
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DSTheme
 
 @Composable
-fun DesignSystemText(
+fun DSText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = DesignSystemTheme.color.text.main,
+    color: Color = DSTheme.color.text.main,
     marquee: Boolean = false,
     overflow: TextOverflow = TextOverflow.Clip,
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
     minLines: Int = 1,
-    style: TextStyle = DesignSystemTheme.typography.typography6.regular,
+    style: TextStyle = DSTheme.typography.typography6.regular,
     selectable: Boolean = false
 ) {
     val enableMarquee = marquee && !selectable
@@ -74,12 +74,12 @@ fun DesignSystemText(
     }
 }
 
-@DesignSystemPreview
+@DSPreview
 @Composable
 fun TextPreview() {
-    DesignSystemTheme {
-        DesignSystemText(
-            text = "sdafdsaasfddfsafdsasdfa",
+    DSTheme {
+        DSText(
+            text = "test",
             marquee = true
         )
     }

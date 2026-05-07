@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.core.designSystem.core.conditional
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.BackgroundColorSet
 
 enum class ScreenVariant {
@@ -29,7 +29,7 @@ enum class ScreenVariant {
 
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
-fun DesignSystemScreen(
+fun DSScreen(
     variant: ScreenVariant = ScreenVariant.COLUMN,
     topBar: @Composable () -> Unit = {},
     bottomBar: @Composable () -> Unit = {},
@@ -37,7 +37,7 @@ fun DesignSystemScreen(
     imePadding: Boolean = false,
     padding: Boolean = false,
     scrollState: ScrollState = rememberScrollState(),
-    color: BackgroundColorSet = DesignSystemTheme.color.background,
+    color: BackgroundColorSet = DSTheme.color.background,
     url: String? = null,
     content: @Composable () -> Unit,
 ) {
@@ -57,7 +57,7 @@ fun DesignSystemScreen(
                             imePadding()
                         }
                         .conditional(condition = padding) {
-                            padding(horizontal = DesignSystemTheme.space.space4)
+                            padding(horizontal = DSTheme.space.space4)
                         }
                 ) {
                     content()
@@ -74,7 +74,7 @@ fun DesignSystemScreen(
                             imePadding()
                         }
                         .conditional(condition = padding) {
-                            padding(horizontal = DesignSystemTheme.space.space4)
+                            padding(horizontal = DSTheme.space.space4)
                         }
                 ) {
                     content()

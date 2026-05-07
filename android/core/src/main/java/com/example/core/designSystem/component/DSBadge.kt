@@ -9,9 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.scheme.ColorSet
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DSTheme
 
 enum class BadgeVariant {
     FILL,
@@ -27,11 +27,11 @@ enum class BadgeSize {
 }
 
 @Composable
-fun DesignSystemBadge(
+fun DSBadge(
     text: String,
     variant: BadgeVariant = BadgeVariant.FILL,
     size: BadgeSize = BadgeSize.MEDIUM,
-    colorSet: ColorSet = DesignSystemTheme.color.blue
+    colorSet: ColorSet = DSTheme.color.blue
 ) {
     Box(
         modifier = Modifier
@@ -63,7 +63,7 @@ fun DesignSystemBadge(
             ),
         contentAlignment = Alignment.Center
     ) {
-        DesignSystemText(
+        DSText(
             text = text,
             modifier = Modifier
                 .padding(
@@ -86,22 +86,22 @@ fun DesignSystemBadge(
                 BadgeVariant.WEAK -> colorSet.subColor
             },
             style = when(size) {
-                BadgeSize.XSMALL -> DesignSystemTheme.typography.subTypography13.semiBold
-                BadgeSize.SMALL -> DesignSystemTheme.typography.subTypography12.bold
-                BadgeSize.MEDIUM -> DesignSystemTheme.typography.typography7.semiBold
-                BadgeSize.LARGE -> DesignSystemTheme.typography.subTypography11.bold
+                BadgeSize.XSMALL -> DSTheme.typography.subTypography13.semiBold
+                BadgeSize.SMALL -> DSTheme.typography.subTypography12.bold
+                BadgeSize.MEDIUM -> DSTheme.typography.typography7.semiBold
+                BadgeSize.LARGE -> DSTheme.typography.subTypography11.bold
             }
         )
     }
 }
 
-@DesignSystemPreview
+@DSPreview
 @Composable
 fun BadgePreview() {
-    DesignSystemTheme {
-        DesignSystemBadge(
+    DSTheme {
+        DSBadge(
             text = "Preview",
-            colorSet = DesignSystemTheme.color.blue
+            colorSet = DSTheme.color.blue
         )
     }
 }

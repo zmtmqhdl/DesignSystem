@@ -10,8 +10,8 @@ import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
-import com.example.core.designSystem.core.DesignSystemPreview
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.core.DSPreview
+import com.example.core.designSystem.theme.DSTheme
 
 val Home = ImageVector.Builder(
     defaultWidth = 24.0.dp,
@@ -55,10 +55,10 @@ val Home = ImageVector.Builder(
 }
     .build()
 
-@DesignSystemPreview
+@DSPreview
 @Composable
 private fun HomePreview() {
-    DesignSystemTheme {
+    DSTheme {
         Icon(
             imageVector = Home,
             contentDescription = null,

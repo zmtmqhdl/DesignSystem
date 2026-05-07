@@ -9,8 +9,8 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
-import com.example.core.designSystem.core.DesignSystemPreview
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.core.DSPreview
+import com.example.core.designSystem.theme.DSTheme
 
 val Visibility = ImageVector.Builder(
     defaultWidth = 16.dp,
@@ -77,10 +77,10 @@ val Visibility = ImageVector.Builder(
     }
 }.build()
 
-@DesignSystemPreview
+@DSPreview
 @Composable
 private fun VisibilityPreview() {
-    DesignSystemTheme {
+    DSTheme {
         Icon(
             imageVector = Visibility,
             contentDescription = null,

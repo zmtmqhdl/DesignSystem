@@ -37,10 +37,10 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextMotion
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.core.conditional
 import com.example.core.designSystem.theme.scheme.ColorSet
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DSTheme
 
 enum class ButtonVariant {
     FILL,
@@ -55,7 +55,7 @@ enum class ButtonSize {
 }
 
 @Composable
-fun DesignSystemButton(
+fun DSButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -138,7 +138,7 @@ fun DesignSystemButton(
             .semantics { role = Role.Button },
         contentAlignment = Alignment.Center
     ) {
-        DesignSystemText(
+        DSText(
             text = text,
             modifier = Modifier.padding(
                 horizontal = when (size) {
@@ -163,22 +163,22 @@ fun DesignSystemButton(
                         if (loading) colorSet.subBackgroundColor else colorSet.subColor
                 },
             style = when (size) {
-                ButtonSize.SMALL -> DesignSystemTheme.typography.typography7.medium.copy(
+                ButtonSize.SMALL -> DSTheme.typography.typography7.medium.copy(
                     fontSize = animatedFontSize.sp,
                     textMotion = TextMotion.Animated
                 )
 
-                ButtonSize.MEDIUM -> DesignSystemTheme.typography.typography6.medium.copy(
+                ButtonSize.MEDIUM -> DSTheme.typography.typography6.medium.copy(
                     fontSize = animatedFontSize.sp,
                     textMotion = TextMotion.Animated
                 )
 
-                ButtonSize.LARGE -> DesignSystemTheme.typography.typography5.medium.copy(
+                ButtonSize.LARGE -> DSTheme.typography.typography5.medium.copy(
                     fontSize = animatedFontSize.sp,
                     textMotion = TextMotion.Animated
                 )
 
-                ButtonSize.XLARGE -> DesignSystemTheme.typography.typography5.medium.copy(
+                ButtonSize.XLARGE -> DSTheme.typography.typography5.medium.copy(
                     fontSize = animatedFontSize.sp,
                     textMotion = TextMotion.Animated
                 )
@@ -197,7 +197,7 @@ fun DesignSystemButton(
 fun ButtonLoader(
     size: ButtonSize = ButtonSize.MEDIUM,
 ) {
-    val color = DesignSystemTheme.color.buttonLoader
+    val color = DSTheme.color.buttonLoader
     val infiniteTransition = rememberInfiniteTransition(label = "loader")
 
     val duration = 600
@@ -274,14 +274,14 @@ fun ButtonLoader(
     }
 }
 
-@DesignSystemPreview
+@DSPreview
 @Composable
 fun ButtonPreview() {
-    DesignSystemTheme {
-        DesignSystemButton(
+    DSTheme {
+        DSButton(
             text = "Preview",
             variant = ButtonVariant.WEAK,
-            colorSet = DesignSystemTheme.color.blue,
+            colorSet = DSTheme.color.blue,
             loading = true,
             onClick = {},
         )

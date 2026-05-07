@@ -1,10 +1,10 @@
 package com.example.presentation.splash
 
-import com.example.core.designSystem.core.DesignSystemViewModel
+import com.example.core.designSystem.core.DSViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-) : DesignSystemViewModel() {
+) : DSViewModel() {
 }

@@ -4,14 +4,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-
-    // ksp
     alias(libs.plugins.ksp)
-
-    // kotlinx
     alias(libs.plugins.kotlin.serialization)
-
-    // proto
     alias(libs.plugins.protobuf)
 }
 
@@ -67,38 +61,22 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.biometric)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    // data store
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.datastore)
     implementation(libs.protobuf.javalite)
     implementation(libs.protobuf.kotlin.lite)
-
-    // module
-    implementation(project(":domain"))
-    implementation(project(":core"))
-
-
-    // coroutines
     implementation(libs.kotlinx.coroutines.android)
-
-    // hilt
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
-
-    // retrofit
     implementation(libs.retrofit)
-
-    // room
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
-
-    // okhttp3
     implementation(libs.logging.interceptor)
-
-    // serialization
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
+
+    implementation(project(":domain"))
+    implementation(project(":core"))
 }
 
 protobuf {

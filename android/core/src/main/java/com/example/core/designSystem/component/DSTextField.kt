@@ -27,19 +27,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import com.example.core.R
-import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.icon.Cancel
 import com.example.core.designSystem.icon.Invisibility
 import com.example.core.designSystem.icon.Search
 import com.example.core.designSystem.icon.Visibility
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DSTheme
 
 enum class TextFieldVariant {
     TEXT, PASSWORD, NUMBER, SEARCH, EMAIL, PHONE_NUMBER
 }
 
 @Composable
-fun DesignSystemTextField(
+fun DSTextField(
     variant: TextFieldVariant = TextFieldVariant.TEXT,
     state: TextFieldState,
     onKeyboardActionClick: () -> Unit,
@@ -51,9 +51,9 @@ fun DesignSystemTextField(
     minHeightInLines: Int = 1,
     maxHeightInLines: Int = Int.MAX_VALUE,
 ) {
-    val color = DesignSystemTheme.color.textField
+    val color = DSTheme.color.textField
     val textColor = color.main
-    val textStyle = DesignSystemTheme.typography.subTypography10.medium
+    val textStyle = DSTheme.typography.subTypography10.medium
     var visibility by remember { mutableStateOf(value = false) }
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
@@ -64,11 +64,11 @@ fun DesignSystemTextField(
             .fillMaxWidth()
             .background(
                 color = color.container,
-                shape = DesignSystemTheme.shape.textField
+                shape = DSTheme.shape.textField
             )
             .padding(
-                horizontal = DesignSystemTheme.space.space2,
-                vertical = DesignSystemTheme.space.space1
+                horizontal = DSTheme.space.space2,
+                vertical = DSTheme.space.space1
             ),
         enabled = enabled,
         readOnly = readOnly,
@@ -163,7 +163,7 @@ fun DesignSystemTextField(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 when (variant) {
-                    TextFieldVariant.SEARCH -> DesignSystemIcon(
+                    TextFieldVariant.SEARCH -> DSIcon(
                         icon = Search,
                         ariaLabel = stringResource(id = R.string.aria_label_search),
                     )
@@ -173,7 +173,7 @@ fun DesignSystemTextField(
 
                 Box(modifier = Modifier.weight(1f)) {
                     if (placeholder != null && state.text.isEmpty() && !isFocused) {
-                        DesignSystemText(
+                        DSText(
                             text = placeholder,
                             style = textStyle,
                             color = color.placeholder
@@ -188,7 +188,7 @@ fun DesignSystemTextField(
                     TextFieldVariant.NUMBER,
                     TextFieldVariant.EMAIL,
                     TextFieldVariant.SEARCH,
-                    TextFieldVariant.PHONE_NUMBER -> DesignSystemIconButton(
+                    TextFieldVariant.PHONE_NUMBER -> DSIconButton(
                         icon = Cancel,
                         onClick = {
                             state.edit {
@@ -202,7 +202,7 @@ fun DesignSystemTextField(
                         ariaLabel = stringResource(id = R.string.aria_label_text_clear)
                     )
 
-                    TextFieldVariant.PASSWORD -> DesignSystemIconButton(
+                    TextFieldVariant.PASSWORD -> DSIconButton(
                         icon = if (visibility) Visibility else Invisibility,
                         onClick = { visibility = !visibility },
                         ariaLabel = stringResource(id = if (visibility) R.string.aria_label_hide_password else R.string.aria_label_show_password)
@@ -213,13 +213,13 @@ fun DesignSystemTextField(
     )
 }
 
-@DesignSystemPreview
+@DSPreview
 @Composable
-fun DesignSystemTextFieldPreview() {
+fun DSTextFieldPreview() {
     val state = rememberTextFieldState()
 
-    DesignSystemTheme {
-        DesignSystemTextField(
+    DSTheme {
+        DSTextField(
             state = state,
             placeholder = "placeholder",
             onKeyboardActionClick = {},

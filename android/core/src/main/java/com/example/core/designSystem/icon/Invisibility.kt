@@ -9,10 +9,9 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.core.designSystem.core.DesignSystemPreview
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.core.DSPreview
+import com.example.core.designSystem.theme.DSTheme
 
 val Invisibility = ImageVector.Builder(
     defaultWidth = 16.dp,
@@ -93,10 +92,10 @@ val Invisibility = ImageVector.Builder(
     }
 }.build()
 
-@DesignSystemPreview
+@DSPreview
 @Composable
 private fun InVisibilityPreview() {
-    DesignSystemTheme {
+    DSTheme {
         Icon(
             imageVector = Invisibility,
             contentDescription = null,

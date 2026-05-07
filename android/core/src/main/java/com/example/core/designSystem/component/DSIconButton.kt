@@ -19,11 +19,11 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.core.designSystem.core.DesignSystemPreview
+import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.core.conditional
 import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.theme.scheme.ColorSet
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DSTheme
 
 enum class IconButtonVariant {
     CLEAR,
@@ -32,18 +32,18 @@ enum class IconButtonVariant {
 }
 
 @Composable
-fun DesignSystemIconButton(
+fun DSIconButton(
     icon: ImageVector,
     onClick: () -> Unit,
-    boxSize: Dp = DesignSystemTheme.space.space12,
-    iconWidth: Dp = DesignSystemTheme.space.space6,
-    iconHeight: Dp = DesignSystemTheme.space.space6,
+    boxSize: Dp = DSTheme.space.space12,
+    iconWidth: Dp = DSTheme.space.space6,
+    iconHeight: Dp = DSTheme.space.space6,
     variant: IconButtonVariant = IconButtonVariant.CLEAR,
-    colorSet: ColorSet = DesignSystemTheme.color.grey,
+    colorSet: ColorSet = DSTheme.color.grey,
     interactionSource: MutableInteractionSource? = null,
     ariaLabel: String
 ) {
-    val shape = DesignSystemTheme.shape.iconButton
+    val shape = DSTheme.shape.iconButton
 
     Box(
         modifier = Modifier
@@ -86,13 +86,13 @@ fun DesignSystemIconButton(
     }
 }
 
-@DesignSystemPreview
+@DSPreview
 @Composable
 private fun IconButtonPreview() {
-    DesignSystemTheme {
-        DesignSystemIconButton(
+    DSTheme {
+        DSIconButton(
             icon = Close,
-            colorSet = DesignSystemTheme.color.grey,
+            colorSet = DSTheme.color.grey,
             variant = IconButtonVariant.BORDER,
             onClick = { },
             ariaLabel = "test"

@@ -14,19 +14,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.BackgroundColorSet
 
 @Composable
-fun DesignSystemContentLayout(
-    color: BackgroundColorSet = DesignSystemTheme.color.background,
+fun DSContentLayout(
+    color: BackgroundColorSet = DSTheme.color.background,
     loading: Boolean,
     content: @Composable () -> Unit
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .windowInsetsPadding(WindowInsets.systemBars)
+            .windowInsetsPadding(insets = WindowInsets.systemBars)
             .background(color = color.background)
     ) {
         content()

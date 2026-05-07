@@ -7,7 +7,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-abstract class DesignSystemViewModel : ViewModel() {
+abstract class DSViewModel : ViewModel() {
 
     protected open val tag: String by lazy { this::class.java.simpleName }
 
@@ -20,7 +20,6 @@ abstract class DesignSystemViewModel : ViewModel() {
         Log.e(tag, message)
 
     }
-
 
     protected fun launch(block: suspend CoroutineScope.() -> Unit) {
         viewModelScope.launch(block = block)

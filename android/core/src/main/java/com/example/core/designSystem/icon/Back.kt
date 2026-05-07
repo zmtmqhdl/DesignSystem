@@ -7,8 +7,8 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
-import com.example.core.designSystem.core.DesignSystemPreview
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.core.DSPreview
+import com.example.core.designSystem.theme.DSTheme
 
 val Back = ImageVector.Builder(
     defaultWidth = 16.dp,
@@ -33,10 +33,10 @@ val Back = ImageVector.Builder(
     }
 }.build()
 
-@DesignSystemPreview
+@DSPreview
 @Composable
 private fun BackPreview() {
-    DesignSystemTheme {
+    DSTheme {
         Icon(
             imageVector = Back,
             contentDescription = null,

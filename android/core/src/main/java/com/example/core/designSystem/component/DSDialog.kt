@@ -17,11 +17,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.example.core.designSystem.core.DesignSystemPreview
-import com.example.core.designSystem.theme.DesignSystemTheme
+import com.example.core.designSystem.core.DSPreview
+import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
 import kotlinx.coroutines.launch
 
@@ -31,7 +32,7 @@ enum class DialogVariant {
 }
 
 @Composable
-fun DesignSystemDialog(
+fun DSDialog(
     variant: DialogVariant = DialogVariant.ALERT,
     title: String,
     description: String? = null,
@@ -40,7 +41,7 @@ fun DesignSystemDialog(
     onConfirmClick: () -> Unit = {},
     cancelText: String = "",
     onCancelClick: () -> Unit = {},
-    cancelButtonColorSet: ColorSet = DesignSystemTheme.color.red,
+    cancelButtonColorSet: ColorSet = DSTheme.color.red,
     dismissOnBackPress: Boolean = false,
     dismissOnClickOutside: Boolean = false,
     animation: Boolean = true
@@ -84,28 +85,33 @@ fun DesignSystemDialog(
         content = {
             Column(
                 modifier = Modifier
-                    .offset(x = shakeOffset.value.dp)
+                    .offset {
+                        IntOffset(
+                            x = shakeOffset.value.dp.roundToPx(),
+                            y = 0
+                        )
+                    }
                     .background(
-                        color = DesignSystemTheme.color.background.background,
-                        shape = DesignSystemTheme.shape.dialog
+                        color = DSTheme.color.background.background,
+                        shape = DSTheme.shape.dialog
                     )
                     .padding(all = 16.dp)
             ) {
-                DesignSystemText(
+                DSText(
                     text = title,
-                    style = DesignSystemTheme.typography.typography4.bold,
+                    style = DSTheme.typography.typography4.bold,
                 )
 
                 description?.let {
-                    Spacer(modifier = Modifier.height(DesignSystemTheme.space.space2))
+                    Spacer(modifier = Modifier.height(DSTheme.space.space2))
 
-                    DesignSystemText(
+                    DSText(
                         text = it,
-                        style = DesignSystemTheme.typography.typography6.medium
+                        style = DSTheme.typography.typography6.medium
                     )
                 }
 
-                Spacer(modifier = Modifier.height(DesignSystemTheme.space.space8))
+                Spacer(modifier = Modifier.height(DSTheme.space.space8))
 
                 when (variant) {
                     DialogVariant.ALERT -> {
@@ -113,10 +119,10 @@ fun DesignSystemDialog(
                             modifier = Modifier.fillMaxWidth(),
                             contentAlignment = Alignment.BottomEnd
                         ) {
-                            DesignSystemButton(
+                            DSButton(
                                 text = confirmText,
                                 onClick = onConfirmClick,
-                                colorSet = DesignSystemTheme.color.blue
+                                colorSet = DSTheme.color.blue
                             )
                         }
                     }
@@ -125,7 +131,7 @@ fun DesignSystemDialog(
                         Row(
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            DesignSystemButton(
+                            DSButton(
                                 text = cancelText,
                                 onClick = onCancelClick,
                                 colorSet = cancelButtonColorSet,
@@ -134,12 +140,12 @@ fun DesignSystemDialog(
                                 modifier = Modifier.weight(1f)
                             )
 
-                            Spacer(modifier = Modifier.width(DesignSystemTheme.space.space2))
+                            Spacer(modifier = Modifier.width(DSTheme.space.space2))
 
-                            DesignSystemButton(
+                            DSButton(
                                 text = confirmText,
                                 onClick = onConfirmClick,
-                                colorSet = DesignSystemTheme.color.blue,
+                                colorSet = DSTheme.color.blue,
                                 size = ButtonSize.LARGE,
                                 modifier = Modifier.weight(1f)
                             )
@@ -151,11 +157,11 @@ fun DesignSystemDialog(
     )
 }
 
-@DesignSystemPreview
+@DSPreview
 @Composable
 fun DialogPreview() {
-    DesignSystemTheme {
-        DesignSystemDialog(
+    DSTheme {
+        DSDialog(
             variant = DialogVariant.ALERT,
             title = "title",
             description = "description",
