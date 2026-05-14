@@ -3,19 +3,18 @@ package com.example.core.designSystem.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.ReadOnlyComposable
 import com.example.core.designSystem.theme.scheme.ColorScheme
 import com.example.core.designSystem.theme.scheme.ColorSetSchemes
+import com.example.core.designSystem.theme.scheme.LocalColor
+import com.example.core.designSystem.theme.scheme.LocalShape
+import com.example.core.designSystem.theme.scheme.LocalSpacing
+import com.example.core.designSystem.theme.scheme.LocalTypography
 import com.example.core.designSystem.theme.scheme.ShapeScheme
 import com.example.core.designSystem.theme.scheme.ShapeToken
-import com.example.core.designSystem.theme.scheme.TypographyScheme
-import com.example.core.designSystem.theme.scheme.LocalColor
-import com.example.core.designSystem.theme.scheme.LocalSpacing
-import com.example.core.designSystem.theme.scheme.LocalShape
-import com.example.core.designSystem.theme.scheme.LocalTypography
 import com.example.core.designSystem.theme.scheme.SpacingScheme
 import com.example.core.designSystem.theme.scheme.SpacingToken
+import com.example.core.designSystem.theme.scheme.TypographyScheme
 import com.example.core.designSystem.theme.scheme.typography
 
 private val space = SpacingScheme(
@@ -56,24 +55,23 @@ private val shape = ShapeScheme(
     iconButton = ShapeToken.IconButton,
 )
 
-@Composable
-fun DSTheme(
-    isDarkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
-) {
-    val color = if (isDarkTheme) ColorSetSchemes.LightColor else ColorSetSchemes.DarkColor
-
-    CompositionLocalProvider(
-        LocalColor provides color,
-        LocalTypography provides typography(),
-        LocalSpacing provides space,
-        LocalShape provides shape,
-        content = content
-    )
-}
-
-@Immutable
 object DSTheme {
+    @Composable
+    operator fun invoke(
+        isDarkTheme: Boolean = isSystemInDarkTheme(),
+        content: @Composable () -> Unit
+    ) {
+        val color = if (isDarkTheme) ColorSetSchemes.DarkColor else ColorSetSchemes.LightColor
+
+        CompositionLocalProvider(
+            LocalColor provides color,
+            LocalTypography provides typography(),
+            LocalSpacing provides com.example.core.designSystem.theme.space,
+            LocalShape provides com.example.core.designSystem.theme.shape,
+            content = content
+        )
+    }
+
     val color: ColorScheme
         @Composable
         @ReadOnlyComposable

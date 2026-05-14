@@ -12,73 +12,78 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.example.core.designSystem.DS
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.core.conditional
 import com.example.core.designSystem.theme.DSTheme
 
-@Composable
-fun DSText(
-    text: String,
-    modifier: Modifier = Modifier,
-    color: Color = DSTheme.color.text.main,
-    marquee: Boolean = false,
-    overflow: TextOverflow = TextOverflow.Clip,
-    softWrap: Boolean = true,
-    maxLines: Int = Int.MAX_VALUE,
-    minLines: Int = 1,
-    style: TextStyle = DSTheme.typography.typography6.regular,
-    selectable: Boolean = false
-) {
-    val enableMarquee = marquee && !selectable
+object DSText {
+    @Composable
+    operator fun invoke(
+        text: String,
+        modifier: Modifier = Modifier,
+        color: Color = DSTheme.color.text.main,
+        marquee: Boolean = false,
+        overflow: TextOverflow = TextOverflow.Clip,
+        softWrap: Boolean = true,
+        maxLines: Int = Int.MAX_VALUE,
+        minLines: Int = 1,
+        style: TextStyle = DSTheme.typography.typography6.regular,
+        selectable: Boolean = false
+    ) {
+        val enableMarquee = marquee && !selectable
 
-    val content: @Composable () -> Unit = {
-        Text(
-            text = text,
-            modifier = modifier
-                .conditional(condition = marquee) {
-                    basicMarquee()
-                    drawWithContent {
-                        drawContent()
+        val content: @Composable () -> Unit = {
+            Text(
+                text = text,
+                modifier = modifier
+                    .conditional(condition = marquee) {
+                        basicMarquee()
+                        drawWithContent {
+                            drawContent()
 
-                        val edgeWidthPx = 24.dp.toPx()
-                        val width = size.width
+                            val edgeWidthPx = 24.dp.toPx()
+                            val width = size.width
 
-                        drawRect(
-                            brush = Brush.horizontalGradient(
-                                colorStops = arrayOf(
-                                    0f to Color.Transparent,
-                                    (edgeWidthPx / width) to Color.Black,
-                                    (1f - edgeWidthPx / width) to Color.Black,
-                                    1f to Color.Transparent
-                                )
-                            ),
-                            blendMode = BlendMode.DstIn
-                        )
-                    }
-                },
-            color = color,
-            overflow = if (enableMarquee) TextOverflow.Clip else overflow,
-            softWrap = if (enableMarquee) false else softWrap,
-            maxLines = if (enableMarquee) 1 else maxLines,
-            minLines = minLines,
-            style = style
-        )
-    }
+                            drawRect(
+                                brush = Brush.horizontalGradient(
+                                    colorStops = arrayOf(
+                                        0f to Color.Transparent,
+                                        (edgeWidthPx / width) to Color.Black,
+                                        (1f - edgeWidthPx / width) to Color.Black,
+                                        1f to Color.Transparent
+                                    )
+                                ),
+                                blendMode = BlendMode.DstIn
+                            )
+                        }
+                    },
+                color = color,
+                overflow = if (enableMarquee) TextOverflow.Clip else overflow,
+                softWrap = if (enableMarquee) false else softWrap,
+                maxLines = if (enableMarquee) 1 else maxLines,
+                minLines = minLines,
+                style = style
+            )
+        }
 
-    if (selectable && !marquee) {
-        SelectionContainer {
+        if (selectable && !marquee) {
+            SelectionContainer {
+                content()
+            }
+        } else {
             content()
         }
-    } else {
-        content()
     }
 }
+
+
 
 @DSPreview
 @Composable
 fun TextPreview() {
     DSTheme {
-        DSText(
+        DS.Text(
             text = "test",
             marquee = true
         )

@@ -17,42 +17,44 @@ import androidx.compose.ui.window.DialogProperties
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.BackgroundColorSet
 
-@Composable
-fun DSContentLayout(
-    color: BackgroundColorSet = DSTheme.color.background,
-    loading: Boolean,
-    content: @Composable () -> Unit
-) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .windowInsetsPadding(insets = WindowInsets.systemBars)
-            .background(color = color.background)
+object DSContentLayout {
+    @Composable
+    operator fun invoke(
+        color: BackgroundColorSet = DSTheme.color.background,
+        loading: Boolean,
+        content: @Composable () -> Unit
     ) {
-        content()
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .windowInsetsPadding(insets = WindowInsets.systemBars)
+                .background(color = color.background)
+        ) {
+            content()
 
-        if (loading) {
-            Dialog(
-                onDismissRequest = {},
-                properties = DialogProperties(
-                    dismissOnClickOutside = false,
-                    dismissOnBackPress = false,
-                    usePlatformDefaultWidth = false
-                )
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(
-                            color = color.loadingBackground.copy(alpha = 0.3f)
-                        ),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(size = 48.dp),
-                        color = color.loadingBackground,
-                        strokeWidth = 1.dp
+            if (loading) {
+                Dialog(
+                    onDismissRequest = {},
+                    properties = DialogProperties(
+                        dismissOnClickOutside = false,
+                        dismissOnBackPress = false,
+                        usePlatformDefaultWidth = false
                     )
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(
+                                color = color.loadingBackground.copy(alpha = 0.3f)
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator(
+                            modifier = Modifier.size(size = 48.dp),
+                            color = color.loadingBackground,
+                            strokeWidth = 1.dp
+                        )
+                    }
                 }
             }
         }

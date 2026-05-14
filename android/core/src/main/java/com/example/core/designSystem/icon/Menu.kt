@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
+import com.example.core.designSystem.DS
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 
@@ -54,10 +55,10 @@ val Menu = ImageVector.Builder(
 @DSPreview
 @Composable
 private fun MenuPreview() {
-    DSTheme {
-        Icon(
-            imageVector = Menu,
-            contentDescription = null,
+    DS.Theme {
+        DS.Icon(
+            icon = Menu,
+            ariaLabel = "Menu"
         )
     }
 }

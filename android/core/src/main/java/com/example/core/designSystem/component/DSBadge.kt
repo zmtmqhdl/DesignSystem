@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.core.designSystem.DS
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.scheme.ColorSet
 import com.example.core.designSystem.theme.DSTheme
@@ -18,7 +19,6 @@ enum class BadgeVariant {
     WEAK
 }
 
-
 enum class BadgeSize {
     XSMALL,
     SMALL,
@@ -26,80 +26,83 @@ enum class BadgeSize {
     LARGE
 }
 
-@Composable
-fun DSBadge(
-    text: String,
-    variant: BadgeVariant = BadgeVariant.FILL,
-    size: BadgeSize = BadgeSize.MEDIUM,
-    colorSet: ColorSet = DSTheme.color.blue
-) {
-    Box(
-        modifier = Modifier
-            .defaultMinSize(
-                minWidth = when (size) {
-                    BadgeSize.XSMALL -> 96.dp
-                    BadgeSize.SMALL -> 52.dp
-                    BadgeSize.MEDIUM -> 64.dp
-                    BadgeSize.LARGE -> 80.dp
-                },
-                minHeight = when (size) {
-                    BadgeSize.XSMALL -> 56.dp
-                    BadgeSize.SMALL -> 32.dp
-                    BadgeSize.MEDIUM -> 38.dp
-                    BadgeSize.LARGE -> 48.dp
-                }
-            )
-            .background(
-                color = when(variant) {
-                    BadgeVariant.FILL -> colorSet.mainBackgroundColor
-                    BadgeVariant.WEAK -> colorSet.subBackgroundColor
-                },
-                shape = when(size) {
-                    BadgeSize.XSMALL -> RoundedCornerShape(size = 9.dp)
-                    BadgeSize.SMALL -> RoundedCornerShape(size = 11.dp)
-                    BadgeSize.MEDIUM -> RoundedCornerShape(size = 12.dp)
-                    BadgeSize.LARGE -> RoundedCornerShape(size = 13.dp)
-                }
-            ),
-        contentAlignment = Alignment.Center
+object DSBadge {
+    @Composable
+    operator fun invoke(
+        text: String,
+        variant: BadgeVariant = BadgeVariant.FILL,
+        size: BadgeSize = BadgeSize.MEDIUM,
+        colorSet: ColorSet = DSTheme.color.blue
     ) {
-        DSText(
-            text = text,
+        Box(
             modifier = Modifier
-                .padding(
-                    horizontal = when (size) {
-                        BadgeSize.XSMALL -> 3.dp
-                        BadgeSize.SMALL -> 3.dp
-                        BadgeSize.MEDIUM -> 3.dp
-                        BadgeSize.LARGE -> 4.dp
-
+                .defaultMinSize(
+                    minWidth = when (size) {
+                        BadgeSize.XSMALL -> 96.dp
+                        BadgeSize.SMALL -> 52.dp
+                        BadgeSize.MEDIUM -> 64.dp
+                        BadgeSize.LARGE -> 80.dp
                     },
-                    vertical = when (size) {
-                        BadgeSize.XSMALL -> 7.dp
-                        BadgeSize.SMALL -> 7.dp
-                        BadgeSize.MEDIUM -> 7.dp
-                        BadgeSize.LARGE -> 8.dp
+                    minHeight = when (size) {
+                        BadgeSize.XSMALL -> 56.dp
+                        BadgeSize.SMALL -> 32.dp
+                        BadgeSize.MEDIUM -> 38.dp
+                        BadgeSize.LARGE -> 48.dp
+                    }
+                )
+                .background(
+                    color = when(variant) {
+                        BadgeVariant.FILL -> colorSet.mainBackgroundColor
+                        BadgeVariant.WEAK -> colorSet.subBackgroundColor
+                    },
+                    shape = when(size) {
+                        BadgeSize.XSMALL -> RoundedCornerShape(size = 9.dp)
+                        BadgeSize.SMALL -> RoundedCornerShape(size = 11.dp)
+                        BadgeSize.MEDIUM -> RoundedCornerShape(size = 12.dp)
+                        BadgeSize.LARGE -> RoundedCornerShape(size = 13.dp)
                     }
                 ),
-            color = when(variant) {
-                BadgeVariant.FILL -> colorSet.mainColor
-                BadgeVariant.WEAK -> colorSet.subColor
-            },
-            style = when(size) {
-                BadgeSize.XSMALL -> DSTheme.typography.subTypography13.semiBold
-                BadgeSize.SMALL -> DSTheme.typography.subTypography12.bold
-                BadgeSize.MEDIUM -> DSTheme.typography.typography7.semiBold
-                BadgeSize.LARGE -> DSTheme.typography.subTypography11.bold
-            }
-        )
+            contentAlignment = Alignment.Center
+        ) {
+            DS.Text(
+                text = text,
+                modifier = Modifier
+                    .padding(
+                        horizontal = when (size) {
+                            BadgeSize.XSMALL -> 3.dp
+                            BadgeSize.SMALL -> 3.dp
+                            BadgeSize.MEDIUM -> 3.dp
+                            BadgeSize.LARGE -> 4.dp
+
+                        },
+                        vertical = when (size) {
+                            BadgeSize.XSMALL -> 7.dp
+                            BadgeSize.SMALL -> 7.dp
+                            BadgeSize.MEDIUM -> 7.dp
+                            BadgeSize.LARGE -> 8.dp
+                        }
+                    ),
+                color = when(variant) {
+                    BadgeVariant.FILL -> colorSet.mainColor
+                    BadgeVariant.WEAK -> colorSet.subColor
+                },
+                style = when(size) {
+                    BadgeSize.XSMALL -> DSTheme.typography.subTypography13.semiBold
+                    BadgeSize.SMALL -> DSTheme.typography.subTypography12.bold
+                    BadgeSize.MEDIUM -> DSTheme.typography.typography7.semiBold
+                    BadgeSize.LARGE -> DSTheme.typography.subTypography11.bold
+                }
+            )
+        }
     }
 }
+
 
 @DSPreview
 @Composable
 fun BadgePreview() {
     DSTheme {
-        DSBadge(
+        DS.Badge(
             text = "Preview",
             colorSet = DSTheme.color.blue
         )

@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.rememberNavBackStack
+import com.example.core.designSystem.DS
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.theme.DSTheme
@@ -44,149 +45,153 @@ interface NavigationItem {
     val icon: ImageVector
 }
 
-@Composable
-fun DSNavigationBar(
-    variant: NavigationBarVariant = NavigationBarVariant.DEFAULT,
-    navigationItems: List<NavigationItem>,
-    backStack: NavBackStack<NavKey>,
-) {
-    val color = DSTheme.color.navigationBar
-    val currentKey = backStack.lastOrNull()
+object DSNavigationBar {
+    @Composable
+    operator fun invoke (
+        variant: NavigationBarVariant = NavigationBarVariant.DEFAULT,
+        navigationItems: List<NavigationItem>,
+        backStack: NavBackStack<NavKey>,
+    ) {
+        val color = DSTheme.color.navigationBar
+        val currentKey = backStack.lastOrNull()
 
-    val borderWidth = 1.dp
+        val borderWidth = 1.dp
 
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .then(
-                when (variant) {
-                    NavigationBarVariant.DEFAULT -> {
-                        Modifier
-                            .background(
-                                color = color.background,
-                            )
-                            .drawBehind {
-                                val strokeWidth = borderWidth.toPx()
-                                drawLine(
-                                    color = color.outline,
-                                    start = Offset(0f, 0f),
-                                    end = Offset(size.width, 0f),
-                                    strokeWidth = strokeWidth
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .then(
+                    when (variant) {
+                        NavigationBarVariant.DEFAULT -> {
+                            Modifier
+                                .background(
+                                    color = color.background,
                                 )
-                            }
-                    }
-
-                    NavigationBarVariant.ROUND -> {
-                        val shapeSize = DSTheme.space.space5
-
-                        Modifier
-                            .clip(RoundedCornerShape(topStart = shapeSize, topEnd = shapeSize))
-                            .background(color = color.background)
-                            .drawWithContent {
-                                drawContent()
-
-                                val strokeWidth = borderWidth.toPx()
-                                val cornerRadius = shapeSize.toPx()
-
-                                val topBorderPath = Path().apply {
-                                    moveTo(
-                                        x = 0f,
-                                        y = cornerRadius
-                                    )
-
-                                    arcTo(
-                                        rect = Rect(
-                                            left = 0f,
-                                            top = 0f,
-                                            right = cornerRadius * 2,
-                                            bottom = cornerRadius * 2
-                                        ),
-                                        startAngleDegrees = 180f,
-                                        sweepAngleDegrees = 90f,
-                                        forceMoveTo = false
-                                    )
-
-                                    lineTo(
-                                        x = size.width - cornerRadius,
-                                        y = 0f
-                                    )
-
-                                    arcTo(
-                                        rect = Rect(
-                                            left = size.width - cornerRadius * 2,
-                                            top = 0f,
-                                            right = size.width,
-                                            bottom = cornerRadius * 2
-                                        ),
-                                        startAngleDegrees = 270f,
-                                        sweepAngleDegrees = 90f,
-                                        forceMoveTo = false
+                                .drawBehind {
+                                    val strokeWidth = borderWidth.toPx()
+                                    drawLine(
+                                        color = color.outline,
+                                        start = Offset(0f, 0f),
+                                        end = Offset(size.width, 0f),
+                                        strokeWidth = strokeWidth
                                     )
                                 }
+                        }
 
-                                drawPath(
-                                    path = topBorderPath,
-                                    color = color.outline,
-                                    style = Stroke(
-                                        width = strokeWidth,
-                                        cap = StrokeCap.Round
+                        NavigationBarVariant.ROUND -> {
+                            val shapeSize = DSTheme.space.space5
+
+                            Modifier
+                                .clip(RoundedCornerShape(topStart = shapeSize, topEnd = shapeSize))
+                                .background(color = color.background)
+                                .drawWithContent {
+                                    drawContent()
+
+                                    val strokeWidth = borderWidth.toPx()
+                                    val cornerRadius = shapeSize.toPx()
+
+                                    val topBorderPath = Path().apply {
+                                        moveTo(
+                                            x = 0f,
+                                            y = cornerRadius
+                                        )
+
+                                        arcTo(
+                                            rect = Rect(
+                                                left = 0f,
+                                                top = 0f,
+                                                right = cornerRadius * 2,
+                                                bottom = cornerRadius * 2
+                                            ),
+                                            startAngleDegrees = 180f,
+                                            sweepAngleDegrees = 90f,
+                                            forceMoveTo = false
+                                        )
+
+                                        lineTo(
+                                            x = size.width - cornerRadius,
+                                            y = 0f
+                                        )
+
+                                        arcTo(
+                                            rect = Rect(
+                                                left = size.width - cornerRadius * 2,
+                                                top = 0f,
+                                                right = size.width,
+                                                bottom = cornerRadius * 2
+                                            ),
+                                            startAngleDegrees = 270f,
+                                            sweepAngleDegrees = 90f,
+                                            forceMoveTo = false
+                                        )
+                                    }
+
+                                    drawPath(
+                                        path = topBorderPath,
+                                        color = color.outline,
+                                        style = Stroke(
+                                            width = strokeWidth,
+                                            cap = StrokeCap.Round
+                                        )
                                     )
+                                }
+                        }
+                    }
+                ),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            navigationItems.forEach { item ->
+                val selected = currentKey == item.route
+                Column(
+                    modifier = Modifier
+                        .padding(
+                            vertical = DSTheme.space.space2
+                        )
+                        .clip(shape = DSTheme.shape.iconButton)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = ripple(),
+                            enabled = currentKey != item.route,
+                            role = Role.Button,
+                            onClick = {
+                                backStack.add(
+                                    element = item.route
                                 )
                             }
-                    }
-                }
-            ),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceEvenly
-    ) {
-        navigationItems.forEach { item ->
-            val selected = currentKey == item.route
-            Column(
-                modifier = Modifier
-                    .padding(
-                        vertical = DSTheme.space.space2
-                    )
-                    .clip(shape = DSTheme.shape.iconButton)
-                    .clickable(
-                        interactionSource = remember { MutableInteractionSource() },
-                        indication = ripple(),
-                        enabled = currentKey != item.route,
-                        role = Role.Button,
-                        onClick = {
-                            backStack.add(
-                                element = item.route
-                            )
-                        }
-                    ),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                Column(
-                    modifier = Modifier.padding(
-                        horizontal = DSTheme.space.space3,
-                        vertical = DSTheme.space.space1
-                    ),
+                        ),
                     verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    DSIcon(
-                        icon = item.icon,
-                        ariaLabel = item.label,
-                        color = if (selected) color.selectedIcon else color.unselectedIcon
-                    )
+                    Column(
+                        modifier = Modifier.padding(
+                            horizontal = DSTheme.space.space3,
+                            vertical = DSTheme.space.space1
+                        ),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        DS.Icon(
+                            icon = item.icon,
+                            ariaLabel = item.label,
+                            color = if (selected) color.selectedIcon else color.unselectedIcon
+                        )
 
-                    Spacer(modifier = Modifier.height(DSTheme.space.space0))
-                    
-                    DSText(
-                        text = item.label,
-                        color = if (selected) color.selectedText else color.unselectedText,
-                        style = DSTheme.typography.subTypography11.medium
-                    )
+                        Spacer(modifier = Modifier.height(DSTheme.space.space0))
+
+                        DS.Text(
+                            text = item.label,
+                            color = if (selected) color.selectedText else color.unselectedText,
+                            style = DSTheme.typography.subTypography11.medium
+                        )
+                    }
                 }
             }
         }
     }
 }
+
+
 
 sealed interface PreviewRoute : NavKey {
     data object First : PreviewRoute
@@ -233,7 +238,7 @@ fun NavigationBarPreview() {
     DSTheme {
         val backStack = rememberNavBackStack()
 
-        DSNavigationBar(
+        DS.NavigationBar(
             variant = NavigationBarVariant.ROUND,
             navigationItems = listOf(
                 PreviewNavigationItems.First,
