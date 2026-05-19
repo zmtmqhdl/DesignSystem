@@ -1,3 +1,5 @@
+package com.example.core.designSystem.component
+
 import androidx.compose.runtime.Composable
 import com.example.core.designSystem.DS
 

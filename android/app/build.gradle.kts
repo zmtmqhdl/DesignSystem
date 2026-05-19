@@ -40,7 +40,7 @@ android {
     buildTypes {
         getByName("debug") {
             isMinifyEnabled = false
-            isShrinkResources = false
+            isShrinkResources = true
         }
         getByName("release") {
             isMinifyEnabled = true
