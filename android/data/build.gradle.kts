@@ -57,6 +57,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
+    implementation(project(":core"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
     implementation(libs.androidx.biometric)
@@ -74,9 +77,6 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
-
-    implementation(project(":domain"))
-    implementation(project(":core"))
 }
 
 protobuf {

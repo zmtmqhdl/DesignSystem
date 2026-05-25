@@ -1,56 +1,53 @@
 package com.example.core.designSystem.component
 
+import androidx.annotation.DrawableRes
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.core.designSystem.DS
+import com.example.core.designSystem.core.DSPreview
+import com.example.core.designSystem.theme.DSTheme
 
-//
-//fun SnackBar(
-//    backgroundColor: Color?,
-//    duration: SnackbarDuration = SnackbarDuration.Short,
-//    icon: ImageVector?,
-//    iconColor: Color?,
-//    outlineColor: Color?,
-//    snackBarHostState: SnackbarHostState,
-//    text: String,
-//) {
-//    snackBarHostState.currentSnackbarData?.dismiss()
-//
-//    CoroutineScope(Dispatchers.Main).launch {
-//        snackBarHostState.showSnackbar(
-//            DesignSystemSnackBarVisuals(
-//                backgroundColor = backgroundColor,
-//                duration = duration,
-//                icon = icon,
-//                iconColor = iconColor,
-//                message = text,
-//                outlineColor = outlineColor
-//            )
-//        )
-//    }
-//}
-//
-//data class DesignSystemSnackBarVisuals(
-//    override val actionLabel: String? = null,
-//    val backgroundColor: Color? = null,
-//    override val duration: SnackbarDuration = SnackbarDuration.Short,
-//    val icon: ImageVector? = null,
-//    val iconColor: Color? = null,
-//    override val message: String,
-//    val outlineColor: Color? = null,
-//    override val withDismissAction: Boolean = false,
-//) : SnackbarVisuals
-//
-//@Composable
-//fun DesignSystemSnackBar(
-//    snackBarHostState: SnackbarHostState,
-//    icon: ImageVector? = null,
-//    iconColor: Color = DesignSystemTheme.color.black,
-//    containerColor: Color = DesignSystemTheme.color.white,
-//    color: DesignSystemColorSet = DesignSystemTheme.color.primary
-//) {
-//    SnackbarHost(
-//        hostState = snackBarHostState,
-//        snackbar = { snackBarData ->
+object DSSnackBar {
+    @Composable
+    operator fun invoke(
+        snackBarHostState: SnackbarHostState,
+        icon: ImageVector,
+        ariaLabel: String
+    ) {
+        SnackbarHost(
+            hostState = snackBarHostState
+        ) { snackBarData ->
+            Box(
+                modifier = Modifier
+
+            ) {
+                Row(
+                    modifier = Modifier
+                ) {
+                    DS.Icon(
+                        icon = icon,
+                        ariaLabel = ariaLabel
+                    )
+                }
+            }
+        }
+    }
+}
+
+@DSPreview
+@Composable
+fun DSSnackBarPreview() {
+    DSTheme {
+        val snackBarHostState = remember { SnackbarHostState() }
+    }
+}
+
 //            Box(
 //                modifier = Modifier
 //                    .fillMaxWidth()
@@ -101,7 +98,3 @@ import com.example.core.designSystem.DS
 //        )
 //    }
 //}
-
-
-@Composable
-fun DS.SSnackBar() {}

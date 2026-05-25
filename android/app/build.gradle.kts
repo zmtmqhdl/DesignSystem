@@ -40,7 +40,7 @@ android {
     buildTypes {
         getByName("debug") {
             isMinifyEnabled = false
-            isShrinkResources = true
+//            isShrinkResources = false
         }
         getByName("release") {
             isMinifyEnabled = true
@@ -69,6 +69,11 @@ android {
 }
 
 dependencies {
+    implementation(project(":data"))
+    implementation(project(":domain"))
+    implementation(project(":core"))
+    implementation(project(":presentation"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -83,12 +88,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.datastore.preferences)
-
-    implementation(project(":data"))
-    implementation(project(":domain"))
-    implementation(project(":core"))
-    implementation(project(":presentation"))
-
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
