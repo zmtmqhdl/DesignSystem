@@ -8,13 +8,13 @@ import androidx.compose.ui.graphics.Shape
 
 @Immutable
 object ShapeToken{
-    val BottomSheet = RoundedCornerShape(SpacingToken.Space7)
-    val IconButton = RoundedCornerShape(SpacingToken.Space2)
-    val Button = RoundedCornerShape(SpacingToken.Space4)
-    val Dialog = RoundedCornerShape(SpacingToken.Space2)
-    val SnackBar = RoundedCornerShape(SpacingToken.Space2)
-    val TextField = RoundedCornerShape(SpacingToken.Space4)
-    val Box = RoundedCornerShape(SpacingToken.Space2)
+    val BottomSheet = RoundedCornerShape(size = SpacingToken.Space7)
+    val IconButton = RoundedCornerShape(size = SpacingToken.Space2)
+    val Button = RoundedCornerShape(size = SpacingToken.Space4)
+    val Dialog = RoundedCornerShape(size = SpacingToken.Space2)
+    val SnackBar = RoundedCornerShape(size = SpacingToken.Space2)
+    val TextField = RoundedCornerShape(size = SpacingToken.Space4)
+    val Box = RoundedCornerShape(size = SpacingToken.Space2)
 }
 
 @Immutable

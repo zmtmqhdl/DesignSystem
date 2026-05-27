@@ -3,6 +3,8 @@ package com.example.core.designSystem.component
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
@@ -25,10 +27,16 @@ object DSSnackBar {
         ) { snackBarData ->
             Box(
                 modifier = Modifier
-
+                    .fillMaxWidth()
+                    .padding(
+                        start = DS.Theme.space.space4,
+                        end = DS.Theme.space.space4
+                    )
             ) {
                 Row(
                     modifier = Modifier
+                        .fillMaxWidth()
+
                 ) {
                     DS.Icon(
                         icon = icon,
