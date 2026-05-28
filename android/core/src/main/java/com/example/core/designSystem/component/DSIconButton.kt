@@ -19,12 +19,11 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.core.designSystem.DS
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.core.conditional
 import com.example.core.designSystem.icon.Close
-import com.example.core.designSystem.theme.scheme.ColorSet
 import com.example.core.designSystem.theme.DSTheme
+import com.example.core.designSystem.theme.scheme.ColorSet
 
 enum class IconButtonVariant {
     CLEAR,
@@ -32,70 +31,67 @@ enum class IconButtonVariant {
     BORDER
 }
 
-object DSIconButton {
-    @Composable
-    operator fun invoke(
-        icon: ImageVector,
-        onClick: () -> Unit,
-        boxSize: Dp = DSTheme.space.space12,
-        iconWidth: Dp = DSTheme.space.space6,
-        iconHeight: Dp = DSTheme.space.space6,
-        variant: IconButtonVariant = IconButtonVariant.CLEAR,
-        colorSet: ColorSet = DSTheme.color.grey,
-        interactionSource: MutableInteractionSource? = null,
-        ariaLabel: String
-    ) {
-        val shape = DSTheme.shape.iconButton
+@Composable
+fun DSIconButton(
+    icon: ImageVector,
+    onClick: () -> Unit,
+    boxSize: Dp = DSTheme.space.space12,
+    iconWidth: Dp = DSTheme.space.space6,
+    iconHeight: Dp = DSTheme.space.space6,
+    variant: IconButtonVariant = IconButtonVariant.CLEAR,
+    colorSet: ColorSet = DSTheme.color.grey,
+    interactionSource: MutableInteractionSource? = null,
+    ariaLabel: String
+) {
+    val shape = DSTheme.shape.iconButton
 
-        Box(
-            modifier = Modifier
-                .size(size = boxSize)
-                .clip(shape = shape)
-                .conditional(
-                    condition = variant == IconButtonVariant.FILL
-                ) {
-                    background(
-                        color = colorSet.subBackgroundColor,
-                        shape = shape
-                    )
-                }
-                .conditional(
-                    condition = variant == IconButtonVariant.BORDER
-                ) {
-                    border(
-                        width = 1.dp,
-                        color = colorSet.subBackgroundColor,
-                        shape = shape
-                    )
-                }
-                .clickable(
-                    onClick = onClick,
-                    role = Role.Button,
-                    interactionSource = interactionSource,
-                    indication = ripple(),
+    Box(
+        modifier = Modifier
+            .size(size = boxSize)
+            .clip(shape = shape)
+            .conditional(
+                condition = variant == IconButtonVariant.FILL
+            ) {
+                background(
+                    color = colorSet.subBackgroundColor,
+                    shape = shape
                 )
-                .semantics(mergeDescendants = true) { },
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = ariaLabel,
-                modifier = Modifier
-                    .width(width = iconWidth)
-                    .height(height = iconHeight),
-                tint = colorSet.subColor
+            }
+            .conditional(
+                condition = variant == IconButtonVariant.BORDER
+            ) {
+                border(
+                    width = 1.dp,
+                    color = colorSet.subBackgroundColor,
+                    shape = shape
+                )
+            }
+            .clickable(
+                onClick = onClick,
+                role = Role.Button,
+                interactionSource = interactionSource,
+                indication = ripple(),
             )
-        }
+            .semantics(mergeDescendants = true) { },
+        contentAlignment = Alignment.Center
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = ariaLabel,
+            modifier = Modifier
+                .width(width = iconWidth)
+                .height(height = iconHeight),
+            tint = colorSet.subColor
+        )
     }
 }
-
 
 
 @DSPreview
 @Composable
 private fun IconButtonPreview() {
     DSTheme {
-        DS.IconButton(
+        DSIconButton(
             icon = Close,
             colorSet = DSTheme.color.grey,
             variant = IconButtonVariant.BORDER,

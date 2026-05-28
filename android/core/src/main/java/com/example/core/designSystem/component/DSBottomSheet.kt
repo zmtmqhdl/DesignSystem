@@ -18,133 +18,131 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.core.designSystem.DS
+
 import com.example.core.designSystem.core.DSPreview
+import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.BackgroundColorSet
 import com.example.core.designSystem.theme.scheme.ColorSet
-import com.example.core.designSystem.theme.DSTheme
 import kotlinx.coroutines.launch
 
 enum class BottomSheetVariant {
     CTA, DOUBLE_CTA
 }
 
-object DSBottomSheet {
-    @OptIn(ExperimentalMaterial3Api::class)
-    @Composable
-    operator fun invoke(
-        variant: BottomSheetVariant = BottomSheetVariant.CTA,
-        title: String,
-        description: String? = null,
-        onDismissRequest: () -> Unit,
-        confirmText: String,
-        onConfirmClick: () -> Unit = {},
-        cancelText: String = "",
-        onCancelClick: () -> Unit = {},
-        cancelButtonColorSet: ColorSet = DSTheme.color.red,
-        isOpen: Boolean,
-        backgroundColorSet: BackgroundColorSet = DSTheme.color.background,
-    ) {
-        val sheetState = rememberModalBottomSheetState()
-        val scope = rememberCoroutineScope()
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DSBottomSheet(
+    variant: BottomSheetVariant = BottomSheetVariant.CTA,
+    title: String,
+    description: String? = null,
+    onDismissRequest: () -> Unit,
+    confirmText: String,
+    onConfirmClick: () -> Unit = {},
+    cancelText: String = "",
+    onCancelClick: () -> Unit = {},
+    cancelButtonColorSet: ColorSet = DSTheme.color.red,
+    isOpen: Boolean,
+    backgroundColorSet: BackgroundColorSet = DSTheme.color.background,
+) {
+    val sheetState = rememberModalBottomSheetState()
+    val scope = rememberCoroutineScope()
 
-        val onClickDismiss = remember(sheetState, scope, onDismissRequest) {
-            { onClick: () -> Unit ->
-                scope.launch {
-                    onClick()
-                    sheetState.hide()
-                    onDismissRequest()
-                }
+    val onClickDismiss = remember(sheetState, scope, onDismissRequest) {
+        { onClick: () -> Unit ->
+            scope.launch {
+                onClick()
+                sheetState.hide()
+                onDismissRequest()
             }
         }
+    }
 
-        LaunchedEffect(isOpen) {
-            if (isOpen) {
-                sheetState.show()
-            }
-        }
-
+    LaunchedEffect(isOpen) {
         if (isOpen) {
-            ModalBottomSheet(
-                onDismissRequest = onDismissRequest,
-                sheetState = sheetState,
+            sheetState.show()
+        }
+    }
+
+    if (isOpen) {
+        ModalBottomSheet(
+            onDismissRequest = onDismissRequest,
+            sheetState = sheetState,
+            modifier = Modifier
+                .padding(bottom = 8.dp)
+                .padding(horizontal = 8.dp),
+            shape = DSTheme.shape.bottomSheet,
+            containerColor = backgroundColorSet.background,
+        ) {
+            Column(
                 modifier = Modifier
-                    .padding(bottom = 8.dp)
-                    .padding(horizontal = 8.dp),
-                shape = DSTheme.shape.bottomSheet,
-                containerColor = backgroundColorSet.background,
+                    .fillMaxWidth()
+                    .padding(all = 16.dp)
             ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(all = 16.dp)
-                ) {
-                    DS.Text(
-                        text = title,
-                        style = DSTheme.typography.typography4.bold,
+                DSText(
+                    text = title,
+                    style = DSTheme.typography.typography4.bold,
+                )
+
+                description?.let {
+                    Spacer(modifier = Modifier.height(height = DSTheme.space.space2))
+
+                    DSText(
+                        text = it,
+                        style = DSTheme.typography.typography6.medium
                     )
+                }
 
-                    description?.let {
-                        Spacer(modifier = Modifier.height(height = DSTheme.space.space2))
+                Spacer(modifier = Modifier.height(height = DSTheme.space.space8))
 
-                        DS.Text(
-                            text = it,
-                            style = DSTheme.typography.typography6.medium
-                        )
+                when (variant) {
+                    BottomSheetVariant.CTA -> {
+                        Box(
+                            modifier = Modifier.fillMaxWidth(),
+                            contentAlignment = Alignment.BottomEnd
+                        ) {
+                            DSButton(
+                                text = confirmText,
+                                onClick = {
+                                    onClickDismiss {
+                                        onConfirmClick()
+                                    }
+                                },
+                                colorSet = DSTheme.color.blue,
+                                full = true
+                            )
+                        }
                     }
 
-                    Spacer(modifier = Modifier.height(height = DSTheme.space.space8))
+                    BottomSheetVariant.DOUBLE_CTA -> {
+                        Row(
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            DSButton(
+                                text = cancelText,
+                                onClick = {
+                                    onClickDismiss {
+                                        onCancelClick()
+                                    }
+                                },
+                                colorSet = cancelButtonColorSet,
+                                variant = ButtonVariant.WEAK,
+                                size = ButtonSize.LARGE,
+                                modifier = Modifier.weight(weight = 1f)
+                            )
 
-                    when (variant) {
-                        BottomSheetVariant.CTA -> {
-                            Box(
-                                modifier = Modifier.fillMaxWidth(),
-                                contentAlignment = Alignment.BottomEnd
-                            ) {
-                                DS.Button(
-                                    text = confirmText,
-                                    onClick = {
-                                        onClickDismiss {
-                                            onConfirmClick()
-                                        }
-                                    },
-                                    colorSet = DSTheme.color.blue,
-                                    full = true
-                                )
-                            }
-                        }
+                            Spacer(modifier = Modifier.width(width = DSTheme.space.space2))
 
-                        BottomSheetVariant.DOUBLE_CTA -> {
-                            Row(
-                                modifier = Modifier.fillMaxWidth()
-                            ) {
-                                DS.Button(
-                                    text = cancelText,
-                                    onClick = {
-                                        onClickDismiss {
-                                            onCancelClick()
-                                        }
-                                    },
-                                    colorSet = cancelButtonColorSet,
-                                    variant = ButtonVariant.WEAK,
-                                    size = ButtonSize.LARGE,
-                                    modifier = Modifier.weight(weight = 1f)
-                                )
-
-                                Spacer(modifier = Modifier.width(width = DSTheme.space.space2))
-
-                                DS.Button(
-                                    text = confirmText,
-                                    onClick = {
-                                        onClickDismiss {
-                                            onConfirmClick()
-                                        }
-                                    },
-                                    colorSet = DSTheme.color.blue,
-                                    size = ButtonSize.LARGE,
-                                    modifier = Modifier.weight(weight = 1f)
-                                )
-                            }
+                            DSButton(
+                                text = confirmText,
+                                onClick = {
+                                    onClickDismiss {
+                                        onConfirmClick()
+                                    }
+                                },
+                                colorSet = DSTheme.color.blue,
+                                size = ButtonSize.LARGE,
+                                modifier = Modifier.weight(weight = 1f)
+                            )
                         }
                     }
                 }
@@ -154,12 +152,11 @@ object DSBottomSheet {
 }
 
 
-
 @DSPreview
 @Composable
 fun BottomSheetPreview() {
     DSTheme {
-        DS.BottomSheet(
+        DSBottomSheet(
             variant = BottomSheetVariant.CTA,
             title = "title",
             description = "description",

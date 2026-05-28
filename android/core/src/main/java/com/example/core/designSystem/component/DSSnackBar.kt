@@ -1,47 +1,75 @@
 package com.example.core.designSystem.component
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.example.core.designSystem.DS
+import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 
-object DSSnackBar {
-    @Composable
-    operator fun invoke(
-        snackBarHostState: SnackbarHostState,
-        icon: ImageVector,
-        ariaLabel: String
+data class SnackBarIcon(
+    val icon: ImageVector,
+    val contentDescription: String
+)
+
+data class SnackBarAction(
+    val text: String,
+    val onClick: () -> Unit
+)
+
+@Composable
+fun DSSnackBar(
+    snackBarHostState: SnackbarHostState,
+    snackBarIcon: SnackBarIcon? = null,
+    text: String,
+    snackBarAction: SnackBarAction? = null
+) {
+    SnackbarHost(
+        hostState = snackBarHostState
     ) {
-        SnackbarHost(
-            hostState = snackBarHostState
-        ) { snackBarData ->
-            Box(
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = DSTheme.space.space4)
+        ) {
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(
-                        start = DS.Theme.space.space4,
-                        end = DS.Theme.space.space4
-                    )
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
 
-                ) {
-                    DS.Icon(
-                        icon = icon,
-                        ariaLabel = ariaLabel
+            ) {
+                snackBarIcon?.let {
+                    DSIcon(
+                        icon = it.icon,
+                        ariaLabel = it.contentDescription
                     )
+
+                    Spacer(modifier = Modifier.width(width = 4.dp))
+                }
+
+                DSText(
+                    text = text
+                )
+
+                snackBarAction?.let {
+                    Box(
+                        modifier = Modifier.weight(weight = 1f),
+                        contentAlignment = Alignment.CenterEnd
+                    ) {
+                        DSButton(
+                            text = it.text,
+                            onClick = it.onClick
+                        )
+                    }
                 }
             }
         }
@@ -53,56 +81,10 @@ object DSSnackBar {
 fun DSSnackBarPreview() {
     DSTheme {
         val snackBarHostState = remember { SnackbarHostState() }
+
+        DSSnackBar(
+            snackBarHostState = snackBarHostState,
+            text = "preview"
+        )
     }
 }
-
-//            Box(
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .border(
-//                        width = DesignSystemTheme.space.space0,
-//                        color = color.outline,
-//                        shape = DesignSystemTheme.shape.snackBar
-//                    )
-//                    .background(color = containerColor, shape = DesignSystemTheme.shape.snackBar)
-//            ) {
-//                Row(
-//                    modifier = Modifier.padding(DesignSystemTheme.space.space4),
-//                    verticalAlignment = Alignment.CenterVertically
-//                ) {
-//                    icon?.let {
-//                        DesignSystemIcon(
-//                            icon = icon,
-//                            color = iconColor,
-//                        )
-//                    }
-//                    Text(
-//                        text = snackBarData.visuals.message,
-//                        color = color.fontColor,
-//                        textAlign = TextAlign.Center,
-//                        style = DesignSystemTheme.typography.s.medium
-//                    )
-//                }
-//            }
-//        }
-//    )
-//}
-//
-//@DesignSystemPreview
-//@Composable
-//fun DesignSystemSnackBarPreview() {
-//
-//    val snackBarHostState = remember { SnackbarHostState() }
-//
-//    LaunchedEffect(Unit) {
-//        snackBarHostState.showSnackbar("message")
-//    }
-//
-//    DesignSystemTheme {
-//        DesignSystemSnackBar(
-//            snackBarHostState = snackBarHostState,
-//            icon = Person,
-//            iconColor = DesignSystemTheme.color.primary.fontColor
-//        )
-//    }
-//}

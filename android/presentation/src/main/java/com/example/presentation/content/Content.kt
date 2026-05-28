@@ -7,7 +7,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
-import com.example.core.designSystem.DS
+import com.example.core.designSystem.component.DSContentLayout
 import com.example.presentation.navigation.FirstEntry
 import com.example.presentation.navigation.Route
 import com.example.presentation.navigation.SecondEntry
@@ -25,7 +25,7 @@ fun Content() {
     val mainBackStack = rememberNavBackStack(Route.Main)
 
     // screen
-    DS.ContentLayout (
+    DSContentLayout (
         loading = loading,
         content = {
             NavDisplay(

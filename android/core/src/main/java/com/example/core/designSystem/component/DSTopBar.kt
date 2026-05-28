@@ -30,128 +30,88 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
-import com.example.core.designSystem.DS
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.icon.Back
 import com.example.core.designSystem.icon.Forward
 import com.example.core.designSystem.icon.Password
-import com.example.core.designSystem.theme.scheme.BackgroundColorSet
 import com.example.core.designSystem.theme.DSTheme
+import com.example.core.designSystem.theme.scheme.BackgroundColorSet
 
-object DSTopBar {
-    @OptIn(ExperimentalMaterial3Api::class)
-    @Composable
-    operator fun invoke(
-        title: String? = null,
-        titleContent: @Composable (() -> Unit)? = null,
-        centeredTitle: Boolean = false,
-        navigationIcon: @Composable (() -> Unit)? = null,
-        actions: @Composable (RowScope.() -> Unit)? = null,
-        height: Dp = DSTheme.space.space12,
-        backgroundColor: BackgroundColorSet = DSTheme.color.background,
-        scrollBehavior: TopAppBarScrollBehavior? = null
-    ) {
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DSTopBar(
+    title: String? = null,
+    titleContent: @Composable (() -> Unit)? = null,
+    centeredTitle: Boolean = false,
+    navigationIcon: @Composable (() -> Unit)? = null,
+    actions: @Composable (RowScope.() -> Unit)? = null,
+    height: Dp = DSTheme.space.space12,
+    backgroundColor: BackgroundColorSet = DSTheme.color.background,
+    scrollBehavior: TopAppBarScrollBehavior? = null
+) {
 
-        require(!(title != null && titleContent != null)) {
-            "You cannot provide both 'title' and 'titleContent' at the same time."
+    require(!(title != null && titleContent != null)) {
+        "You cannot provide both 'title' and 'titleContent' at the same time."
+    }
+
+    val expandedHeightPx =
+        with(LocalDensity.current) { height.toPx().coerceAtLeast(minimumValue = 0f) }
+    SideEffect {
+        if (scrollBehavior?.state?.heightOffsetLimit != -expandedHeightPx) {
+            scrollBehavior?.state?.heightOffsetLimit = -expandedHeightPx
         }
+    }
 
-        val expandedHeightPx = with(LocalDensity.current) { height.toPx().coerceAtLeast(minimumValue = 0f) }
-        SideEffect {
-            if (scrollBehavior?.state?.heightOffsetLimit != -expandedHeightPx) {
-                scrollBehavior?.state?.heightOffsetLimit = -expandedHeightPx
-            }
+    val colorTransitionFraction by remember(scrollBehavior) {
+        derivedStateOf {
+            val overlappingFraction = scrollBehavior?.state?.overlappedFraction ?: 0f
+            if (overlappingFraction > 0.01f) 1f else 0f
         }
+    }
 
-        val colorTransitionFraction by remember(scrollBehavior) {
-            derivedStateOf {
-                val overlappingFraction = scrollBehavior?.state?.overlappedFraction ?: 0f
-                if (overlappingFraction > 0.01f) 1f else 0f
-            }
+    val appBarContainerColor by animateColorAsState(
+        targetValue = lerp(
+            start = backgroundColor.background,
+            stop = backgroundColor.background,
+            fraction = FastOutLinearInEasing.transform(fraction = colorTransitionFraction)
+        ),
+        animationSpec = spring(stiffness = Spring.StiffnessMediumLow)
+    )
+
+    val offset by remember(scrollBehavior) {
+        derivedStateOf {
+            scrollBehavior?.state?.heightOffset ?: 0f
         }
+    }
 
-        val appBarContainerColor by animateColorAsState(
-            targetValue = lerp(
-                start = backgroundColor.background,
-                stop = backgroundColor.background,
-                fraction = FastOutLinearInEasing.transform(fraction = colorTransitionFraction)
-            ),
-            animationSpec = spring(stiffness = Spring.StiffnessMediumLow)
-        )
+    val heightOffsetDp = with(LocalDensity.current) { offset.toDp() }
 
-        val offset by remember(scrollBehavior) {
-            derivedStateOf {
-                scrollBehavior?.state?.heightOffset ?: 0f
+    if (centeredTitle) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(height = height + heightOffsetDp)
+                .background(color = appBarContainerColor)
+                .padding(horizontal = DSTheme.space.space4)
+                .offset(y = heightOffsetDp),
+            contentAlignment = Alignment.Center
+        ) {
+            title?.let {
+                DSText(
+                    text = it,
+                    style = DSTheme.typography.typography4.medium
+                )
             }
-        }
 
-        val heightOffsetDp = with(LocalDensity.current) { offset.toDp() }
-
-        if (centeredTitle) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(height = height + heightOffsetDp)
-                    .background(color = appBarContainerColor)
-                    .padding(horizontal = DSTheme.space.space4)
-                    .offset(y = heightOffsetDp),
-                contentAlignment = Alignment.Center
-            ) {
-                title?.let {
-                    DS.Text(
-                        text = it,
-                        style = DSTheme.typography.typography4.medium
-                    )
-                }
-
-                titleContent?.let {
-                    it()
-                }
-
-                Row(
-                    modifier = Modifier.fillMaxSize(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    navigationIcon?.let {
-                        it()
-                    }
-
-                    Spacer(modifier = Modifier.weight(weight = 1f))
-
-                    actions?.let {
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(space = DSTheme.space.space2),
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            it()
-                        }
-                    }
-
-                }
+            titleContent?.let {
+                it()
             }
-        } else {
+
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(height = height + heightOffsetDp)
-                    .background(color = appBarContainerColor)
-                    .padding(horizontal = DSTheme.space.space4)
-                    .offset(y = heightOffsetDp),
+                modifier = Modifier.fillMaxSize(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 navigationIcon?.let {
-                    it()
-                }
-                Spacer(modifier = Modifier.width(width = DSTheme.space.space3))
-
-                title?.let {
-                    DS.Text(
-                        text = it,
-                        style = DSTheme.typography.typography4.medium
-                    )
-                }
-
-                titleContent?.let {
                     it()
                 }
 
@@ -159,18 +119,55 @@ object DSTopBar {
 
                 actions?.let {
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(DSTheme.space.space2),
+                        horizontalArrangement = Arrangement.spacedBy(space = DSTheme.space.space2),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         it()
                     }
                 }
+
+            }
+        }
+    } else {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(height = height + heightOffsetDp)
+                .background(color = appBarContainerColor)
+                .padding(horizontal = DSTheme.space.space4)
+                .offset(y = heightOffsetDp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            navigationIcon?.let {
+                it()
+            }
+            Spacer(modifier = Modifier.width(width = DSTheme.space.space3))
+
+            title?.let {
+                DSText(
+                    text = it,
+                    style = DSTheme.typography.typography4.medium
+                )
             }
 
+            titleContent?.let {
+                it()
+            }
+
+            Spacer(modifier = Modifier.weight(weight = 1f))
+
+            actions?.let {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(DSTheme.space.space2),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    it()
+                }
+            }
         }
+
     }
 }
-
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -182,24 +179,24 @@ private fun TopBarPreview() {
 
         // .nestedScroll(scrollBehavior.nestedScrollConnection)를 LazyColumn의 modifier에 넣기
 
-        DS.TopBar(
+        DSTopBar(
             title = "preview",
             centeredTitle = false,
             navigationIcon = {
-                DS.IconButton(
+                DSIconButton(
                     icon = Back,
                     onClick = {},
                     ariaLabel = "뒤로가기"
                 )
             },
             actions = {
-                DS.IconButton(
+                DSIconButton(
                     icon = Password,
                     onClick = {},
                     ariaLabel = "비밀번호"
                 )
 
-                DS.IconButton(
+                DSIconButton(
                     icon = Forward,
                     onClick = {},
                     ariaLabel = "앞으로"

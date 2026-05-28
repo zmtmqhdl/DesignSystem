@@ -1,6 +1,5 @@
 package com.example.core.designSystem.icon
 
-import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
@@ -9,7 +8,7 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
-import com.example.core.designSystem.DS
+import com.example.core.designSystem.component.DSIcon
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 
@@ -81,8 +80,8 @@ val Visibility = ImageVector.Builder(
 @DSPreview
 @Composable
 private fun VisibilityPreview() {
-    DS.Theme {
-        DS.Icon(
+    DSTheme {
+        DSIcon(
             icon = Visibility,
             ariaLabel = "Visibility",
         )

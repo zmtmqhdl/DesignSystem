@@ -11,46 +11,40 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
-import com.example.core.designSystem.DS
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.icon.Search
 import com.example.core.designSystem.theme.DSTheme
 
-object DsIcon {
-    @Composable
-    operator fun invoke (
-        icon: ImageVector,
-        boxSize: Dp = DSTheme.space.space8,
-        iconWidth: Dp = DSTheme.space.space6,
-        iconHeight: Dp = DSTheme.space.space6,
-        color: Color = DSTheme.color.grey700,
-        ariaLabel: String
+@Composable
+fun DSIcon(
+    icon: ImageVector,
+    boxSize: Dp = DSTheme.space.space8,
+    iconWidth: Dp = DSTheme.space.space6,
+    iconHeight: Dp = DSTheme.space.space6,
+    color: Color = DSTheme.color.grey700,
+    ariaLabel: String
+) {
+    Box(
+        modifier = Modifier
+            .size(size = boxSize),
+        contentAlignment = Alignment.Center
     ) {
-        Box(
+        Icon(
+            imageVector = icon,
+            contentDescription = ariaLabel,
             modifier = Modifier
-                .size(size = boxSize),
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = ariaLabel,
-                modifier = Modifier
-                    .width(width = iconWidth)
-                    .height(height = iconHeight),
-                tint = color
-            )
-        }
-
+                .width(width = iconWidth)
+                .height(height = iconHeight),
+            tint = color
+        )
     }
 }
-
-
 
 @DSPreview
 @Composable
 fun DSIconPreview() {
     DSTheme {
-        DS.Icon(
+        DSIcon(
             icon = Search,
             ariaLabel = "Search"
         )
