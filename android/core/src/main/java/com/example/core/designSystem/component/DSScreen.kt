@@ -19,7 +19,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 
 import com.example.core.designSystem.core.DSPreview
-import com.example.core.designSystem.core.conditional
+import com.example.core.designSystem.modifier.conditional
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.BackgroundColorSet
 

@@ -13,7 +13,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.core.DSPreview
-import com.example.core.designSystem.core.conditional
+import com.example.core.designSystem.modifier.conditional
 import com.example.core.designSystem.theme.DSTheme
 
 @Composable

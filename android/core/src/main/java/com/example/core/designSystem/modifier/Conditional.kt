@@ -1,4 +1,4 @@
-package com.example.core.designSystem.core
+package com.example.core.designSystem.modifier
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -7,5 +7,6 @@ import androidx.compose.ui.Modifier
 fun Modifier.conditional(
     condition: Boolean,
     modifier: @Composable Modifier.() -> Modifier
-): Modifier =
-    if (condition) then(modifier(Modifier)) else this
+): Modifier {
+    return if (condition) then(modifier(Modifier)) else this
+}

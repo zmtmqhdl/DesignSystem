@@ -20,7 +20,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.core.DSPreview
-import com.example.core.designSystem.core.conditional
+import com.example.core.designSystem.modifier.conditional
 import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
