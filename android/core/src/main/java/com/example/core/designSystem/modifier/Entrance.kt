@@ -23,6 +23,8 @@ fun Modifier.entranceAnimation(
     visible: Boolean,
     delayMillis: Int = 0
 ): Modifier {
+    val entranceOffset = 12.dp
+    val density = LocalDensity.current
     val progress by animateFloatAsState(
         targetValue = if (visible) 1f else 0f,
         animationSpec = tween(
@@ -38,11 +40,9 @@ fun Modifier.entranceAnimation(
         label = "entranceAnimation"
     )
 
-    val density = LocalDensity.current
-
     return graphicsLayer {
         translationY = with(receiver = density) {
-            ((1f - progress) * 12.dp.toPx())
+            ((1f - progress) * entranceOffset.toPx())
         }
         alpha = progress
     }

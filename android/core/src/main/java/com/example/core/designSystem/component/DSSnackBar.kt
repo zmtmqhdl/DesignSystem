@@ -31,12 +31,11 @@ data class SnackBarAction(
 fun DSSnackBar(
     snackBarHostState: SnackbarHostState,
     snackBarIcon: SnackBarIcon? = null,
-    text: String,
     snackBarAction: SnackBarAction? = null
 ) {
     SnackbarHost(
         hostState = snackBarHostState
-    ) {
+    ) { snackBarData ->
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -57,7 +56,7 @@ fun DSSnackBar(
                 }
 
                 DSText(
-                    text = text
+                    text = snackBarData.visuals.message
                 )
 
                 snackBarAction?.let {
@@ -84,7 +83,6 @@ fun DSSnackBarPreview() {
 
         DSSnackBar(
             snackBarHostState = snackBarHostState,
-            text = "preview"
         )
     }
 }
