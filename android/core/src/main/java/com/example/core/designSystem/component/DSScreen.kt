@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
@@ -35,7 +36,7 @@ fun DSScreen(
     variant: ScreenVariant = ScreenVariant.COLUMN,
     topBar: @Composable () -> Unit = {},
     bottomBar: @Composable () -> Unit = {},
-    snackBarHost: @Composable () -> Unit = {},
+    snackBarState: DSSnackBarState? = null,
     imePadding: Boolean = false,
     padding: Boolean = false,
     scrollState: ScrollState = rememberScrollState(),
@@ -46,7 +47,13 @@ fun DSScreen(
     Scaffold(
         topBar = topBar,
         bottomBar = bottomBar,
-        snackbarHost = snackBarHost,
+        snackbarHost = {
+            snackBarState?.let {
+                DSSnackBar(
+                    snackBarState = snackBarState
+                )
+            }
+        },
         containerColor = color.background,
     ) { paddingValues ->
         when (variant) {

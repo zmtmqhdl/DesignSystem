@@ -1,4 +1,4 @@
-package com.example.core.designSystem.modifier
+package com.example.core.designSystem.modifier.animation
 
 import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -18,6 +18,7 @@ import com.example.core.designSystem.component.DSText
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 
+// animateTo 고려
 @Composable
 fun Modifier.entranceAnimation(
     visible: Boolean,

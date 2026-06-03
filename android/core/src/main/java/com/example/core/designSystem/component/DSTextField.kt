@@ -55,7 +55,7 @@ fun DSTextField(
     val color = DSTheme.color.textField
     val textColor = color.main
     val textStyle = DSTheme.typography.subTypography10.medium
-    var visibility by remember { mutableStateOf(value = false) }
+    var visibility by remember { mutableStateOf(false) }
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
 

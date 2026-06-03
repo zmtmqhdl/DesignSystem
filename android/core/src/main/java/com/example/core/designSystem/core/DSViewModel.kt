@@ -7,6 +7,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+// todo - 인터페이스가 맞을까?> 아니면 이게 맞을까?
 abstract class DSViewModel : ViewModel() {
 
     protected open val tag: String by lazy { this::class.java.simpleName }

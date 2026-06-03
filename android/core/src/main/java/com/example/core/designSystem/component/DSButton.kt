@@ -109,7 +109,8 @@ fun DSButton(
                 color = when (variant) {
                     ButtonVariant.FILL -> colorSet.mainBackgroundColor
                     ButtonVariant.WEAK -> colorSet.subBackgroundColor
-                }, shape = when (size) {
+                },
+                shape = when (size) {
                     ButtonSize.SMALL -> RoundedCornerShape(8.dp)
                     ButtonSize.MEDIUM -> RoundedCornerShape(10.dp)
                     ButtonSize.LARGE -> RoundedCornerShape(14.dp)
@@ -145,23 +146,21 @@ fun DSButton(
                     ButtonSize.LARGE -> 2.dp
                     ButtonSize.XLARGE -> 28.dp
                 }
-            ), color = when (variant) {
+            ),
+            color = when (variant) {
                 ButtonVariant.FILL -> if (loading) colorSet.mainBackgroundColor else colorSet.mainColor
-
                 ButtonVariant.WEAK -> if (loading) colorSet.subBackgroundColor else colorSet.subColor
-            }, style = when (size) {
+            },
+            style = when (size) {
                 ButtonSize.SMALL -> DSTheme.typography.typography7.medium.copy(
                     fontSize = animatedFontSize.sp, textMotion = TextMotion.Animated
                 )
-
                 ButtonSize.MEDIUM -> DSTheme.typography.typography6.medium.copy(
                     fontSize = animatedFontSize.sp, textMotion = TextMotion.Animated
                 )
-
                 ButtonSize.LARGE -> DSTheme.typography.typography5.medium.copy(
                     fontSize = animatedFontSize.sp, textMotion = TextMotion.Animated
                 )
-
                 ButtonSize.XLARGE -> DSTheme.typography.typography5.medium.copy(
                     fontSize = animatedFontSize.sp, textMotion = TextMotion.Animated
                 )
