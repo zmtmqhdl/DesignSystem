@@ -10,7 +10,7 @@ plugins {
 }
 
 extra.apply {
-    set("compileSdk", 36)
-    set("targetSdk", 36)
-    set("minSdk", 35)
+    set("compileSdk", 37)
+    set("targetSdk", 37)
+    set("minSdk", 37)
 }

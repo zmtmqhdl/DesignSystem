@@ -71,11 +71,13 @@ data class DSSnackBarData(
 )
 
 class DSSnackBarState {
-    var data by mutableStateOf<DSSnackBarData?>(null)
-        private set
+    private var _data by mutableStateOf<DSSnackBarData?>(null)
+    internal val data: DSSnackBarData?
+        get() = _data
 
-    var visible by mutableStateOf(false)
-        private set
+    private var _visible by mutableStateOf(false)
+    internal val visible: Boolean
+        get() = _visible
 
     fun show(
         text: String,
@@ -83,21 +85,21 @@ class DSSnackBarState {
         action: DSSnackBarAction? = null,
         duration: DSSnackBarDuration = DSSnackBarDuration.SHORT
     ) {
-        data = DSSnackBarData(
+        _data = DSSnackBarData(
             text = text,
             icon = icon,
             action = action,
             duration = duration
         )
-        visible = true
+        _visible = true
     }
 
     fun hide() {
-        visible = false
+        _visible = false
     }
 
-    fun remove() {
-        data = null
+    internal fun remove() {
+        _data = null
     }
 }
 

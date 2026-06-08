@@ -8,15 +8,17 @@ import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 object ApiModule {
     @Singleton
     @Provides
-    fun provideUserApi(@BasicRetrofit retrofit: Retrofit): UserApi =
-        provideApi(retrofit = retrofit)
+    fun provideUserApi(@BasicRetrofit retrofit: Retrofit): UserApi {
+        return provideApi(retrofit = retrofit)
+    }
 
 }
 
-inline fun <reified I> provideApi(retrofit: Retrofit): I = retrofit.create(I::class.java)
+inline fun <reified I> provideApi(retrofit: Retrofit): I {
+    return retrofit.create(I::class.java)
+}

@@ -18,25 +18,23 @@ import javax.inject.Singleton
 @Retention(AnnotationRetention.RUNTIME)
 annotation class BasicRetrofit
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
 
     const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
-
     @BasicRetrofit
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit {
 
+        // BODY 전체 다 보기
+        // HEADERS 헤더만 보기
+        // BASIC 기본 정보만 보기
+        // NONE 로그 끄기
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
-            // BODY 전체 다 보기
-            // HEADERS 헤더만 보기
-            // BASIC 기본 정보만 보기
-            // NONE 로그 끄기
         }
 
         val json = Json {

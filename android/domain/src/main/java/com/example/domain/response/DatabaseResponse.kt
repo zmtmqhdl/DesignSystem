@@ -1,4 +1,4 @@
-package com.example.domain.common
+package com.example.domain.response
 
 sealed class DatabaseResponse<out T> {
     data class Success<T>(val data: T): DatabaseResponse<T>()

@@ -22,13 +22,21 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
 
+    // api
+    @Binds
+    @Singleton
+    abstract fun bindAccountApiRepository(impl: AccountApiRepositoryImpl): AccountApiRepository
+
+    // database
+
+    // dataStore
+
+
     @Binds
     @Singleton
     abstract fun bindWebSocketRepository(impl: WebSocketRepositoryImpl): WebSocketRepository
 
-    @Binds
-    @Singleton
-    abstract fun bindAccountApiRepository(impl: AccountApiRepositoryImpl): AccountApiRepository
+
 
     @Binds
     @Singleton
