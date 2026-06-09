@@ -28,24 +28,25 @@ enum class BadgeSize {
 @Composable
 fun DSBadge(
     text: String,
+    modifier: Modifier = Modifier,
     variant: BadgeVariant = BadgeVariant.FILL,
     size: BadgeSize = BadgeSize.MEDIUM,
     colorSet: ColorSet = DSTheme.color.blue
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .defaultMinSize(
                 minWidth = when (size) {
-                    BadgeSize.XSMALL -> 96.dp
-                    BadgeSize.SMALL -> 52.dp
-                    BadgeSize.MEDIUM -> 64.dp
-                    BadgeSize.LARGE -> 80.dp
+                    BadgeSize.XSMALL -> 52.dp
+                    BadgeSize.SMALL -> 64.dp
+                    BadgeSize.MEDIUM -> 80.dp
+                    BadgeSize.LARGE -> 96.dp
                 },
                 minHeight = when (size) {
-                    BadgeSize.XSMALL -> 56.dp
-                    BadgeSize.SMALL -> 32.dp
-                    BadgeSize.MEDIUM -> 38.dp
-                    BadgeSize.LARGE -> 48.dp
+                    BadgeSize.XSMALL -> 32.dp
+                    BadgeSize.SMALL -> 38.dp
+                    BadgeSize.MEDIUM -> 48.dp
+                    BadgeSize.LARGE -> 56.dp
                 }
             )
             .background(
@@ -67,15 +68,15 @@ fun DSBadge(
             modifier = Modifier
                 .padding(
                     horizontal = when (size) {
-                        BadgeSize.XSMALL -> 3.dp
-                        BadgeSize.SMALL -> 3.dp
+                        BadgeSize.XSMALL,
+                        BadgeSize.SMALL,
                         BadgeSize.MEDIUM -> 3.dp
                         BadgeSize.LARGE -> 4.dp
 
                     },
                     vertical = when (size) {
-                        BadgeSize.XSMALL -> 7.dp
-                        BadgeSize.SMALL -> 7.dp
+                        BadgeSize.XSMALL,
+                        BadgeSize.SMALL,
                         BadgeSize.MEDIUM -> 7.dp
                         BadgeSize.LARGE -> 8.dp
                     }

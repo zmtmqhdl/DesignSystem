@@ -5,9 +5,14 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
+import com.example.core.designSystem.component.BottomSheetVariant
+import com.example.core.designSystem.component.DSBottomSheet
 import com.example.core.designSystem.component.DSIconButton
 import com.example.core.designSystem.component.DSNavigationBar
 import com.example.core.designSystem.component.DSScreen
@@ -27,24 +32,21 @@ import kotlinx.coroutines.delay
 fun MainScreen(
     backStack: NavBackStack<NavKey>
 ) {
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
+    val scrollBehavior =
+        TopAppBarDefaults.enterAlwaysScrollBehavior(
+            rememberTopAppBarState()
+        )
 
     val snackBarHostState = remember { DSSnackBarState() }
 
-    LaunchedEffect(Unit) {
-        delay(3000)
-        snackBarHostState.show(
-            text = "jj",
-            action = DSSnackBarAction(
-                buttonText = "버튼",
-                onClick = {
-                    snackBarHostState.hide()
-                }
-            ),
-            duration = DSSnackBarDuration.INFINITE
-        )
+    var isBottomSheetOpen by remember {
+        mutableStateOf(true)
     }
 
+    LaunchedEffect(Unit) {
+        delay(1000)
+        isBottomSheetOpen = true
+    }
 
     DSScreen(
         topBar = {
@@ -87,4 +89,22 @@ fun MainScreen(
         snackBarState = snackBarHostState
     ) {
     }
+
+    DSBottomSheet(
+        variant = BottomSheetVariant.DOUBLE_CTA,
+        title = "삭제하시겠어요?",
+        description = "삭제 후에는 복구할 수 없습니다.",
+        confirmText = "확인",
+        cancelText = "취소",
+        isOpen = isBottomSheetOpen,
+        onDismissRequest = {
+            isBottomSheetOpen = false
+        },
+        onConfirmClick = {
+            isBottomSheetOpen = false
+        },
+        onCancelClick = {
+            isBottomSheetOpen = false
+        }
+    )
 }
