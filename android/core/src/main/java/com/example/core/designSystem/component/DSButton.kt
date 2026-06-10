@@ -131,46 +131,56 @@ fun DSButton(
                 indication = null,
                 onClick = onClick
             )
-            .semantics { role = Role.Button }, contentAlignment = Alignment.Center
+            .semantics { role = Role.Button },
+        contentAlignment = Alignment.Center
     ) {
-        DSText(
-            text = text, modifier = Modifier.padding(
-                horizontal = when (size) {
-                    ButtonSize.SMALL -> 10.dp
-                    ButtonSize.MEDIUM -> 16.dp
-                    ButtonSize.LARGE -> 16.dp
-                    ButtonSize.XLARGE -> 15.dp
-                }, vertical = when (size) {
-                    ButtonSize.SMALL -> 2.dp
-                    ButtonSize.MEDIUM -> 2.dp
-                    ButtonSize.LARGE -> 2.dp
-                    ButtonSize.XLARGE -> 28.dp
-                }
-            ),
-            color = when (variant) {
-                ButtonVariant.FILL -> if (loading) colorSet.mainBackgroundColor else colorSet.mainColor
-                ButtonVariant.WEAK -> if (loading) colorSet.subBackgroundColor else colorSet.subColor
-            },
-            style = when (size) {
-                ButtonSize.SMALL -> DSTheme.typography.typography7.medium.copy(
-                    fontSize = animatedFontSize.sp, textMotion = TextMotion.Animated
-                )
-                ButtonSize.MEDIUM -> DSTheme.typography.typography6.medium.copy(
-                    fontSize = animatedFontSize.sp, textMotion = TextMotion.Animated
-                )
-                ButtonSize.LARGE -> DSTheme.typography.typography5.medium.copy(
-                    fontSize = animatedFontSize.sp, textMotion = TextMotion.Animated
-                )
-                ButtonSize.XLARGE -> DSTheme.typography.typography5.medium.copy(
-                    fontSize = animatedFontSize.sp, textMotion = TextMotion.Animated
-                )
-            }
-        )
-
         if (loading) {
             ButtonLoader(size = size)
-        }
+        } else {
+            DSText(
+                text = text,
+                modifier = Modifier.padding(
+                    horizontal = when (size) {
+                        ButtonSize.SMALL -> 10.dp
+                        ButtonSize.MEDIUM,
+                        ButtonSize.LARGE -> 16.dp
 
+                        ButtonSize.XLARGE -> 15.dp
+                    }, vertical = when (size) {
+                        ButtonSize.SMALL,
+                        ButtonSize.MEDIUM,
+                        ButtonSize.LARGE -> 2.dp
+
+                        ButtonSize.XLARGE -> 28.dp
+                    }
+                ),
+                color = when (variant) {
+                    ButtonVariant.FILL -> colorSet.mainColor
+                    ButtonVariant.WEAK -> colorSet.subColor
+                },
+                style = when (size) {
+                    ButtonSize.SMALL -> DSTheme.typography.typography7.medium.copy(
+                        fontSize = animatedFontSize.sp,
+                        textMotion = TextMotion.Animated
+                    )
+
+                    ButtonSize.MEDIUM -> DSTheme.typography.typography6.medium.copy(
+                        fontSize = animatedFontSize.sp,
+                        textMotion = TextMotion.Animated
+                    )
+
+                    ButtonSize.LARGE -> DSTheme.typography.typography5.medium.copy(
+                        fontSize = animatedFontSize.sp,
+                        textMotion = TextMotion.Animated
+                    )
+
+                    ButtonSize.XLARGE -> DSTheme.typography.typography5.medium.copy(
+                        fontSize = animatedFontSize.sp,
+                        textMotion = TextMotion.Animated
+                    )
+                }
+            )
+        }
     }
 }
 
@@ -180,33 +190,37 @@ fun ButtonLoader(
     size: ButtonSize = ButtonSize.MEDIUM,
 ) {
     val color = DSTheme.color.buttonLoader
-    val infiniteTransition = rememberInfiniteTransition(label = "loader")
-
+    val infiniteTransition = rememberInfiniteTransition()
     val duration = 600
     val animationDelay = 150
 
     Row(
         horizontalArrangement = Arrangement.spacedBy(
             space = when (size) {
-                ButtonSize.SMALL -> 2.dp
-                ButtonSize.MEDIUM -> 2.dp
+                ButtonSize.SMALL,
+                ButtonSize.MEDIUM,
                 ButtonSize.LARGE -> 2.dp
+
                 ButtonSize.XLARGE -> 28.dp
             }
-        ), verticalAlignment = Alignment.CenterVertically, modifier = Modifier.height(
+        ), verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.height(
             height = when (size) {
-                ButtonSize.SMALL -> 5.dp
+                ButtonSize.SMALL,
                 ButtonSize.MEDIUM -> 5.dp
-                ButtonSize.LARGE -> 8.dp
+
+                ButtonSize.LARGE,
                 ButtonSize.XLARGE -> 8.dp
             },
         )
     ) {
-        repeat(3) { index ->
+        repeat(times = 3) { index ->
             val delay = index * animationDelay
 
             val scale by infiniteTransition.animateFloat(
-                initialValue = 0.7f, targetValue = 1.1f, animationSpec = infiniteRepeatable(
+                initialValue = 0.7f,
+                targetValue = 1.1f,
+                animationSpec = infiniteRepeatable(
                     animation = keyframes {
                         durationMillis = duration
                         0.7f at (0 + delay)
@@ -214,11 +228,14 @@ fun ButtonLoader(
                         0.7f at (400 + delay)
                         0.7f at duration
                     }, repeatMode = RepeatMode.Restart
-                ), label = "scale$index"
+                ),
+                label = "scale$index"
             )
 
             val alpha by infiniteTransition.animateFloat(
-                initialValue = 0.2f, targetValue = 1f, animationSpec = infiniteRepeatable(
+                initialValue = 0.2f,
+                targetValue = 1f,
+                animationSpec = infiniteRepeatable(
                     animation = keyframes {
                         durationMillis = duration
                         0.2f at (0 + delay)
@@ -226,21 +243,26 @@ fun ButtonLoader(
                         0.2f at (400 + delay)
                         0.2f at duration
                     }, repeatMode = RepeatMode.Restart
-                ), label = "alpha$index"
+                ),
+                label = "alpha$index"
             )
 
             Box(
                 modifier = Modifier
                     .size(
                         size = when (size) {
-                            ButtonSize.SMALL -> 5.dp
+                            ButtonSize.SMALL,
                             ButtonSize.MEDIUM -> 5.dp
-                            ButtonSize.LARGE -> 8.dp
+
+                            ButtonSize.LARGE,
                             ButtonSize.XLARGE -> 8.dp
                         }
                     )
-                    .scale(scale)
-                    .background(color.copy(alpha = alpha), CircleShape)
+                    .scale(scale = scale)
+                    .background(
+                        color = color.copy(alpha = alpha),
+                        shape = CircleShape
+                    )
             )
         }
     }
