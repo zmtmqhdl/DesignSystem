@@ -5,8 +5,10 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.InputTransformation
@@ -19,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -53,9 +56,8 @@ fun DSTextField(
     maxHeightInLines: Int = Int.MAX_VALUE,
 ) {
     val color = DSTheme.color.textField
-    val textColor = color.main
     val textStyle = DSTheme.typography.subTypography10.medium
-    var visibility by remember { mutableStateOf(false) }
+    var visibility by rememberSaveable { mutableStateOf(false) }
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
 
@@ -77,32 +79,31 @@ fun DSTextField(
             when (variant) {
                 TextFieldVariant.TEXT,
                 TextFieldVariant.SEARCH -> null
-
                 TextFieldVariant.NUMBER,
                 TextFieldVariant.PHONE_NUMBER -> InputTransformation {
                     if (!asCharSequence().all { it.isDigit() }) {
                         revertAllChanges()
                     }
                 }
+                TextFieldVariant.EMAIL -> null
+//                    InputTransformation {
+//                    if (!asCharSequence().all {
+//                            it.isLetterOrDigit() || it == '@' || it == '.'
+//                        }
+//                    ) {
+//                        revertAllChanges()
+//                    }
+//                }
+                TextFieldVariant.PASSWORD -> null
+//                    InputTransformation {
+//                    if (!asCharSequence().all {
+//                            it.isLetterOrDigit() ||
+//                                    "!@#$%^&*()_+-=[]{}|;:'\",.<>?/".contains(it)
+//                        }
+//                    ) {
+//                        revertAllChanges()
+//                    }
 
-                TextFieldVariant.EMAIL -> InputTransformation {
-                    if (!asCharSequence().all {
-                            it.isLetterOrDigit() || it == '@' || it == '.'
-                        }
-                    ) {
-                        revertAllChanges()
-                    }
-                }
-
-                TextFieldVariant.PASSWORD -> InputTransformation {
-                    if (!asCharSequence().all {
-                            it.isLetterOrDigit() ||
-                                    "!@#$%^&*()_+-=[]{}|;:'\",.<>?/".contains(it)
-                        }
-                    ) {
-                        revertAllChanges()
-                    }
-                }
             },
         outputTransformation = when (variant) {
             TextFieldVariant.TEXT,
@@ -110,7 +111,6 @@ fun DSTextField(
             TextFieldVariant.NUMBER,
             TextFieldVariant.PHONE_NUMBER,
             TextFieldVariant.EMAIL -> null
-
             TextFieldVariant.PASSWORD -> {
                 if (visibility) {
                     null
@@ -127,29 +127,17 @@ fun DSTextField(
             }
         },
         textStyle = textStyle,
-        keyboardOptions = when (variant) {
-            TextFieldVariant.TEXT,
-            TextFieldVariant.SEARCH -> KeyboardOptions(
-                keyboardType = KeyboardType.Text,
-                imeAction = imeAction
-            )
-
-            TextFieldVariant.PASSWORD -> KeyboardOptions(
-                keyboardType = KeyboardType.Password,
-                imeAction = imeAction
-            )
-
-            TextFieldVariant.NUMBER,
-            TextFieldVariant.PHONE_NUMBER -> KeyboardOptions(
-                keyboardType = KeyboardType.Number,
-                imeAction = imeAction
-            )
-
-            TextFieldVariant.EMAIL -> KeyboardOptions(
-                keyboardType = KeyboardType.Email,
-                imeAction = imeAction
-            )
-        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = when (variant) {
+                TextFieldVariant.TEXT,
+                TextFieldVariant.SEARCH -> KeyboardType.Text
+                TextFieldVariant.PASSWORD -> KeyboardType.Password
+                TextFieldVariant.NUMBER -> KeyboardType.Number
+                TextFieldVariant.PHONE_NUMBER -> KeyboardType.Phone
+                TextFieldVariant.EMAIL -> KeyboardType.Email
+            },
+            imeAction = imeAction
+        ),
         onKeyboardAction = KeyboardActionHandler { onKeyboardActionClick() },
         lineLimits = if (singleLine) TextFieldLineLimits.SingleLine else TextFieldLineLimits.MultiLine(
             minHeightInLines = minHeightInLines,
@@ -157,7 +145,7 @@ fun DSTextField(
         ),
         interactionSource = interactionSource,
         cursorBrush = SolidColor(
-            value = textColor
+            value = color.main
         ),
         decorator = { innerTextField ->
             Row(
@@ -173,35 +161,40 @@ fun DSTextField(
                 }
 
                 Box(modifier = Modifier.weight(1f)) {
-                    if (placeholder != null && state.text.isEmpty() && !isFocused) {
+                    if (placeholder != null && state.text.isEmpty()) {
                         DSText(
                             text = placeholder,
+                            maxLines = 1,
                             style = textStyle,
                             color = color.placeholder
                         )
                     }
-
                     innerTextField()
                 }
+
+                Spacer(modifier = Modifier.width(width = DSTheme.space.space1))
 
                 when (variant) {
                     TextFieldVariant.TEXT,
                     TextFieldVariant.NUMBER,
                     TextFieldVariant.EMAIL,
                     TextFieldVariant.SEARCH,
-                    TextFieldVariant.PHONE_NUMBER -> DSIconButton(
-                        icon = Cancel,
-                        onClick = {
-                            state.edit {
-                                replace(
-                                    start = 0,
-                                    end = state.text.length,
-                                    text = ""
-                                )
-                            }
-                        },
-                        ariaLabel = stringResource(id = R.string.aria_label_text_clear)
-                    )
+                    TextFieldVariant.PHONE_NUMBER ->
+                        if (isFocused && state.text.isNotEmpty()) {
+                            DSIconButton(
+                                icon = Cancel,
+                                onClick = {
+                                    state.edit {
+                                        replace(
+                                            start = 0,
+                                            end = state.text.length,
+                                            text = ""
+                                        )
+                                    }
+                                },
+                                ariaLabel = stringResource(id = R.string.aria_label_text_clear)
+                            )
+                        }
 
                     TextFieldVariant.PASSWORD -> DSIconButton(
                         icon = if (visibility) Visibility else Invisibility,
