@@ -1,5 +1,8 @@
 package com.example.presentation.screen
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
@@ -9,6 +12,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 import com.example.core.designSystem.component.BottomSheetVariant
@@ -19,6 +25,7 @@ import com.example.core.designSystem.component.DSScreen
 import com.example.core.designSystem.component.DSSnackBarAction
 import com.example.core.designSystem.component.DSSnackBarDuration
 import com.example.core.designSystem.component.DSSnackBarState
+import com.example.core.designSystem.component.DSText
 import com.example.core.designSystem.component.DSTopBar
 import com.example.core.designSystem.component.NavigationBarVariant
 import com.example.core.designSystem.icon.Back
@@ -88,23 +95,18 @@ fun MainScreen(
         },
         snackBarState = snackBarHostState
     ) {
+
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ){
+            DSText(
+                text = "sldakfldjs;kffdljsk;alfsdj;kadfgdsfggdsfdgsafsadfsafdasdfgdfgasdsafddgfsadfdafgssadfsdafjlksdfa",
+                maxLines = 1,
+                marquee = true
+            )
+        }
+
     }
 
-    DSBottomSheet(
-        variant = BottomSheetVariant.DOUBLE_CTA,
-        title = "삭제하시겠어요?",
-        description = "삭제 후에는 복구할 수 없습니다.",
-        confirmText = "확인",
-        cancelText = "취소",
-        isOpen = isBottomSheetOpen,
-        onDismissRequest = {
-            isBottomSheetOpen = false
-        },
-        onConfirmClick = {
-            isBottomSheetOpen = false
-        },
-        onCancelClick = {
-            isBottomSheetOpen = false
-        }
-    )
 }

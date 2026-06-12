@@ -79,12 +79,14 @@ fun DSTextField(
             when (variant) {
                 TextFieldVariant.TEXT,
                 TextFieldVariant.SEARCH -> null
+
                 TextFieldVariant.NUMBER,
                 TextFieldVariant.PHONE_NUMBER -> InputTransformation {
                     if (!asCharSequence().all { it.isDigit() }) {
                         revertAllChanges()
                     }
                 }
+
                 TextFieldVariant.EMAIL -> null
 //                    InputTransformation {
 //                    if (!asCharSequence().all {
@@ -111,6 +113,7 @@ fun DSTextField(
             TextFieldVariant.NUMBER,
             TextFieldVariant.PHONE_NUMBER,
             TextFieldVariant.EMAIL -> null
+
             TextFieldVariant.PASSWORD -> {
                 if (visibility) {
                     null
@@ -131,6 +134,7 @@ fun DSTextField(
             keyboardType = when (variant) {
                 TextFieldVariant.TEXT,
                 TextFieldVariant.SEARCH -> KeyboardType.Text
+
                 TextFieldVariant.PASSWORD -> KeyboardType.Password
                 TextFieldVariant.NUMBER -> KeyboardType.Number
                 TextFieldVariant.PHONE_NUMBER -> KeyboardType.Phone
@@ -172,15 +176,14 @@ fun DSTextField(
                     innerTextField()
                 }
 
-                Spacer(modifier = Modifier.width(width = DSTheme.space.space1))
-
-                when (variant) {
-                    TextFieldVariant.TEXT,
-                    TextFieldVariant.NUMBER,
-                    TextFieldVariant.EMAIL,
-                    TextFieldVariant.SEARCH,
-                    TextFieldVariant.PHONE_NUMBER ->
-                        if (isFocused && state.text.isNotEmpty()) {
+                if (isFocused && state.text.isNotEmpty()) {
+                    Spacer(modifier = Modifier.width(width = DSTheme.space.space1))
+                    when (variant) {
+                        TextFieldVariant.TEXT,
+                        TextFieldVariant.NUMBER,
+                        TextFieldVariant.EMAIL,
+                        TextFieldVariant.SEARCH,
+                        TextFieldVariant.PHONE_NUMBER -> {
                             DSIconButton(
                                 icon = Cancel,
                                 onClick = {
@@ -195,13 +198,16 @@ fun DSTextField(
                                 ariaLabel = stringResource(id = R.string.aria_label_text_clear)
                             )
                         }
-
-                    TextFieldVariant.PASSWORD -> DSIconButton(
-                        icon = if (visibility) Visibility else Invisibility,
-                        onClick = { visibility = !visibility },
-                        ariaLabel = stringResource(id = if (visibility) R.string.aria_label_hide_password else R.string.aria_label_show_password)
-                    )
+                        TextFieldVariant.PASSWORD -> {
+                            DSIconButton(
+                                icon = if (visibility) Visibility else Invisibility,
+                                onClick = { visibility = !visibility },
+                                ariaLabel = stringResource(id = if (visibility) R.string.aria_label_hide_password else R.string.aria_label_show_password)
+                            )
+                        }
+                    }
                 }
+
             }
         }
     )
