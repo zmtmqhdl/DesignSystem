@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 
-// todo - marque랑 복붙 되는지 확인하고, ㅣ애니메이션이랑도 중첩 되는지도 확인해보시다잉
 @Composable
 fun DSText(
     text: String,

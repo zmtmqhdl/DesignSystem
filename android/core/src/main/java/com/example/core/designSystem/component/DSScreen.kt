@@ -11,29 +11,29 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
-
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.modifier.conditional
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.BackgroundColorSet
 
-enum class ScreenVariant {
-    COLUMN,
-    SCROLL_COLUMN,
-    WEB_VIEW
+sealed interface ScreenVariant {
+    data object Column : ScreenVariant
+    data object ScrollColumn : ScreenVariant
+    data class WebView(
+        val url: String
+    ) : ScreenVariant
 }
 
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
 fun DSScreen(
-    variant: ScreenVariant = ScreenVariant.COLUMN,
+    variant: ScreenVariant = ScreenVariant.Column,
     topBar: @Composable () -> Unit = {},
     bottomBar: @Composable () -> Unit = {},
     snackBarState: DSSnackBarState? = null,
@@ -41,9 +41,10 @@ fun DSScreen(
     padding: Boolean = false,
     scrollState: ScrollState = rememberScrollState(),
     color: BackgroundColorSet = DSTheme.color.background,
-    url: String? = null,
     content: @Composable () -> Unit,
 ) {
+
+
     Scaffold(
         topBar = topBar,
         bottomBar = bottomBar,
@@ -56,47 +57,39 @@ fun DSScreen(
         },
         containerColor = color.background,
     ) { paddingValues ->
+        val modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues)
+            .conditional(imePadding) {
+                imePadding()
+            }
+            .conditional(padding) {
+                padding(horizontal = DSTheme.space.space4)
+            }
+
         when (variant) {
-            ScreenVariant.COLUMN -> {
+            ScreenVariant.Column -> {
                 Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues)
-                        .conditional(condition = imePadding) {
-                            imePadding()
-                        }
-                        .conditional(condition = padding) {
-                            padding(horizontal = DSTheme.space.space4)
-                        }
+                    modifier = modifier
                 ) {
                     content()
                 }
             }
 
-            ScreenVariant.SCROLL_COLUMN -> {
+            ScreenVariant.ScrollColumn -> {
                 Column(
-                    modifier = Modifier
-                        .fillMaxSize()
+                    modifier = modifier
                         .verticalScroll(state = scrollState)
-                        .padding(paddingValues)
-                        .conditional(condition = imePadding) {
-                            imePadding()
-                        }
-                        .conditional(condition = padding) {
-                            padding(horizontal = DSTheme.space.space4)
-                        }
                 ) {
                     content()
                 }
             }
 
-            ScreenVariant.WEB_VIEW -> {
+            is ScreenVariant.WebView -> {
                 val context = LocalContext.current
-                val safeUrl = requireNotNull(url) {
-                    "WEB_VIEW variant requires non-null url"
-                }
+
                 val webView = remember {
-                    WebView(context).apply {
+                    WebView(context.applicationContext).apply {
                         settings.javaScriptEnabled = true
                         settings.domStorageEnabled = true
                     }
@@ -104,6 +97,9 @@ fun DSScreen(
 
                 DisposableEffect(webView) {
                     onDispose {
+                        webView.stopLoading()
+                        webView.clearHistory()
+                        webView.removeAllViews()
                         webView.destroy()
                     }
                 }
@@ -112,12 +108,10 @@ fun DSScreen(
                     modifier = Modifier.fillMaxSize()
                 ) {
                     AndroidView(
-                        modifier = Modifier.fillMaxSize(),
+                        modifier = modifier,
                         factory = { webView },
-                        update = { view ->
-                            if (view.url != safeUrl) {
-                                view.loadUrl(safeUrl)
-                            }
+                        update = {
+                            it.loadUrl(variant.url)
                         }
                     )
                 }
@@ -131,7 +125,7 @@ fun DSScreen(
 fun ScreenPreview() {
     DSTheme {
         DSScreen(
-            variant = ScreenVariant.SCROLL_COLUMN
+            variant = ScreenVariant.Column
         ) {
 
         }
