@@ -52,7 +52,6 @@ fun DSNavigationBar(
 ) {
     val color = DSTheme.color.navigationBar
     val currentKey = backStack.lastOrNull()
-
     val borderWidth = 1.dp
 
     Row(
@@ -69,8 +68,8 @@ fun DSNavigationBar(
                                 val strokeWidth = borderWidth.toPx()
                                 drawLine(
                                     color = color.outline,
-                                    start = Offset(0f, 0f),
-                                    end = Offset(size.width, 0f),
+                                    start = Offset(x = 0f, y = 0f),
+                                    end = Offset(x = size.width, y = 0f),
                                     strokeWidth = strokeWidth
                                 )
                             }
@@ -80,57 +79,50 @@ fun DSNavigationBar(
                         val shapeSize = DSTheme.space.space5
 
                         Modifier
-                            .clip(RoundedCornerShape(topStart = shapeSize, topEnd = shapeSize))
+                            .clip(
+                                shape = RoundedCornerShape(
+                                    topStart = shapeSize,
+                                    topEnd = shapeSize
+                                )
+                            )
                             .background(color = color.background)
                             .drawWithContent {
                                 drawContent()
-
                                 val strokeWidth = borderWidth.toPx()
-                                val cornerRadius = shapeSize.toPx()
-
+                                val radius = shapeSize.toPx()
+                                val halfStroke = strokeWidth / 2f
                                 val topBorderPath = Path().apply {
-                                    moveTo(
-                                        x = 0f,
-                                        y = cornerRadius
-                                    )
-
+                                    moveTo(x = halfStroke, y = size.height)
+                                    lineTo(x = halfStroke, y = radius)
                                     arcTo(
                                         rect = Rect(
-                                            left = 0f,
-                                            top = 0f,
-                                            right = cornerRadius * 2,
-                                            bottom = cornerRadius * 2
+                                            left = halfStroke,
+                                            top = halfStroke,
+                                            right = radius * 2f - halfStroke,
+                                            bottom = radius * 2f - halfStroke
                                         ),
                                         startAngleDegrees = 180f,
                                         sweepAngleDegrees = 90f,
                                         forceMoveTo = false
                                     )
-
-                                    lineTo(
-                                        x = size.width - cornerRadius,
-                                        y = 0f
-                                    )
-
+                                    lineTo(x = size.width - radius, y = halfStroke)
                                     arcTo(
                                         rect = Rect(
-                                            left = size.width - cornerRadius * 2,
-                                            top = 0f,
-                                            right = size.width,
-                                            bottom = cornerRadius * 2
+                                            left = size.width - (radius * 2f) + halfStroke,
+                                            top = halfStroke,
+                                            right = size.width - halfStroke,
+                                            bottom = radius * 2f - halfStroke
                                         ),
                                         startAngleDegrees = 270f,
                                         sweepAngleDegrees = 90f,
                                         forceMoveTo = false
                                     )
+                                    lineTo(x = size.width - halfStroke, y = size.height)
                                 }
-
                                 drawPath(
                                     path = topBorderPath,
                                     color = color.outline,
-                                    style = Stroke(
-                                        width = strokeWidth,
-                                        cap = StrokeCap.Round
-                                    )
+                                    style = Stroke(width = strokeWidth)
                                 )
                             }
                     }
