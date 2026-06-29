@@ -79,11 +79,6 @@ fun DSButton(
         animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
     )
 
-    val animatedFontSize by animateFloatAsState(
-        targetValue = if (isPressed) baseFontSize.value * pushedSize else baseFontSize.value,
-        animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
-    )
-
     Box(
         modifier = modifier
             .graphicsLayer {
@@ -97,7 +92,8 @@ fun DSButton(
                     ButtonSize.MEDIUM -> 64.dp
                     ButtonSize.LARGE -> 80.dp
                     ButtonSize.XLARGE -> 96.dp
-                }, minHeight = when (size) {
+                },
+                minHeight = when (size) {
                     ButtonSize.SMALL -> 32.dp
                     ButtonSize.MEDIUM -> 38.dp
                     ButtonSize.LARGE -> 48.dp
@@ -146,7 +142,8 @@ fun DSButton(
                         ButtonSize.LARGE -> 16.dp
 
                         ButtonSize.XLARGE -> 15.dp
-                    }, vertical = when (size) {
+                    },
+                    vertical = when (size) {
                         ButtonSize.SMALL,
                         ButtonSize.MEDIUM,
                         ButtonSize.LARGE -> 2.dp
@@ -160,22 +157,22 @@ fun DSButton(
                 },
                 style = when (size) {
                     ButtonSize.SMALL -> DSTheme.typography.typography7.medium.copy(
-                        fontSize = animatedFontSize.sp,
+                        fontSize = baseFontSize,
                         textMotion = TextMotion.Animated
                     )
 
                     ButtonSize.MEDIUM -> DSTheme.typography.typography6.medium.copy(
-                        fontSize = animatedFontSize.sp,
+                        fontSize = baseFontSize,
                         textMotion = TextMotion.Animated
                     )
 
                     ButtonSize.LARGE -> DSTheme.typography.typography5.medium.copy(
-                        fontSize = animatedFontSize.sp,
+                        fontSize = baseFontSize,
                         textMotion = TextMotion.Animated
                     )
 
                     ButtonSize.XLARGE -> DSTheme.typography.typography5.medium.copy(
-                        fontSize = animatedFontSize.sp,
+                        fontSize = baseFontSize,
                         textMotion = TextMotion.Animated
                     )
                 }

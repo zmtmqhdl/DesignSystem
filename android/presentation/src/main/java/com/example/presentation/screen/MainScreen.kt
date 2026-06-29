@@ -19,6 +19,7 @@ import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 import com.example.core.designSystem.component.BottomSheetVariant
 import com.example.core.designSystem.component.DSBottomSheet
+import com.example.core.designSystem.component.DSButton
 import com.example.core.designSystem.component.DSIconButton
 import com.example.core.designSystem.component.DSNavigationBar
 import com.example.core.designSystem.component.DSScreen
@@ -29,6 +30,7 @@ import com.example.core.designSystem.component.DSText
 import com.example.core.designSystem.component.DSTopBar
 import com.example.core.designSystem.component.NavigationBarVariant
 import com.example.core.designSystem.icon.Back
+import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.icon.Forward
 import com.example.core.designSystem.icon.Password
 import com.example.presentation.navigation.NavigationItems
@@ -96,16 +98,24 @@ fun MainScreen(
         snackBarState = snackBarHostState
     ) {
 
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ){
+
             DSText(
                 text = "sldakfldjs;kffdljsk;alfsdj;kadfgdsfggdsfdgsafsadfsafdasdfgdfgasdsafddgfsadfdafgssadfsdafjlksdfa",
                 maxLines = 1,
                 marquee = true
             )
-        }
+
+            DSButton(
+                text = "이것은 버튼",
+                onClick = {},
+                loading = true
+            )
+
+            DSIconButton(
+                icon = Close,
+                onClick = {},
+                ariaLabel = ""
+            )
 
     }
 
