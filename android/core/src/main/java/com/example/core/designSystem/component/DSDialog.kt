@@ -40,36 +40,37 @@ fun DSDialog(
     onDismissRequest: (() -> Unit) = {},
     confirmText: String,
     onConfirmClick: () -> Unit = {},
-    cancelText: String = "",
+    cancelText: String? = null,
     onCancelClick: () -> Unit = {},
     cancelButtonColorSet: ColorSet = DSTheme.color.red,
     dismissOnBackPress: Boolean = false,
     dismissOnClickOutside: Boolean = false,
-    animation: Boolean = true
+    preventDismiss: Boolean = true
 ) {
     val coroutineScope = rememberCoroutineScope()
     val shakeOffset = remember { Animatable(0f) }
+    val shakeAnimation = remember {
+        keyframes {
+            durationMillis = 1000
+            0f at 0
+            10f at 100
+            (-8f) at 200
+            6f at 300
+            (-4f) at 400
+            3f at 500
+            (-2f) at 600
+            1f at 700
+            (-0.5f) at 800
+            0f at 1000
+        }
+    }
 
     val handleDismiss: () -> Unit = {
-        if (animation) {
+        if (preventDismiss) {
             coroutineScope.launch {
-                val duration = 1000
-                val keyframes = keyframes {
-                    durationMillis = duration
-                    0f at 0
-                    10f at 100
-                    (-8f) at 200
-                    6f at 300
-                    (-4f) at 400
-                    3f at 500
-                    (-2f) at 600
-                    1f at 700
-                    (-0.5f) at 800
-                    0f at 1000
-                }
                 shakeOffset.animateTo(
                     targetValue = 0f,
-                    animationSpec = keyframes
+                    animationSpec = shakeAnimation
                 )
             }
         } else {
@@ -129,6 +130,10 @@ fun DSDialog(
                     }
 
                     DialogVariant.CONFIRM -> {
+                        require(value = !cancelText.isNullOrBlank()) {
+                            "cancelText must be provided when variant is CONFIRM."
+                        }
+
                         Row(
                             modifier = Modifier.fillMaxWidth()
                         ) {
