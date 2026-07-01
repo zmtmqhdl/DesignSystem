@@ -9,7 +9,7 @@ plugins {
     alias(libs.plugins.protobuf)
 }
 
-android {
+extensions.configure<com.android.build.api.dsl.LibraryExtension> {
     namespace = "com.example.data"
     compileSdk = rootProject.extra["compileSdk"] as Int
 
@@ -45,15 +45,19 @@ android {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlin {
-        compilerOptions {
-            jvmTarget = JvmTarget.JVM_21
-        }
-    }
+
     buildFeatures {
         buildConfig = true
     }
+}
 
+plugins.withId("org.jetbrains.kotlin.android") {
+    extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension> {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+            freeCompilerArgs.add("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
+        }
+    }
 }
 
 dependencies {

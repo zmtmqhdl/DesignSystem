@@ -9,7 +9,7 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
-android {
+extensions.configure<com.android.build.api.dsl.LibraryExtension> {
     namespace = "com.example.presentation"
     compileSdk = rootProject.extra["compileSdk"] as Int
 
@@ -46,11 +46,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlin {
-        compilerOptions {
-            jvmTarget = JvmTarget.JVM_21
-        }
-    }
 
     buildFeatures {
         compose = true
@@ -59,6 +54,14 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.4"
+    }
+}
+
+plugins.withId("org.jetbrains.kotlin.android") {
+    extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension> {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+        }
     }
 }
 

@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
-android {
+extensions.configure<com.android.build.api.dsl.ApplicationExtension> {
     namespace = "com.example.designsystem"
     compileSdk = rootProject.extra["compileSdk"] as Int
 
@@ -56,15 +56,18 @@ android {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlin {
-        compilerOptions {
-            jvmTarget = JvmTarget.JVM_21
-        }
-    }
 
     buildFeatures {
         compose = true
         buildConfig = true
+    }
+}
+
+plugins.withId("org.jetbrains.kotlin.android") {
+    extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension> {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+        }
     }
 }
 

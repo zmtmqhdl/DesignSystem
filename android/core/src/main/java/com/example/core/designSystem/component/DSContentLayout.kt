@@ -17,6 +17,7 @@ import androidx.compose.ui.window.DialogProperties
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.BackgroundColorSet
 
+// todo - 개편 생각 필요
 @Composable
 fun DSContentLayout(
     color: BackgroundColorSet = DSTheme.color.background,
