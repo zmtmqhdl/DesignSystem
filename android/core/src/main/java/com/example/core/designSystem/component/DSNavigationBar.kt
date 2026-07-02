@@ -22,7 +22,6 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
@@ -76,7 +75,7 @@ fun DSNavigationBar(
                     }
 
                     NavigationBarVariant.ROUND -> {
-                        val shapeSize = DSTheme.space.space5
+                        val shapeSize = DSTheme.space.space8
 
                         Modifier
                             .clip(

@@ -43,8 +43,6 @@ fun DSScreen(
     color: BackgroundColorSet = DSTheme.color.background,
     content: @Composable () -> Unit,
 ) {
-
-
     Scaffold(
         topBar = topBar,
         bottomBar = bottomBar,
