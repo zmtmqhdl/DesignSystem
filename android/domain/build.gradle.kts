@@ -60,10 +60,8 @@ plugins.withId("org.jetbrains.kotlin.android") {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.paging.common)
-    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.androidx.runtime)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)

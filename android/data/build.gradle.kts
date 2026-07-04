@@ -65,7 +65,6 @@ dependencies {
     implementation(project(":core"))
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.material)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.datastore)
