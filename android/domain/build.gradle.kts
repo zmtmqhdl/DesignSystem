@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
 }
 
@@ -60,6 +59,7 @@ plugins.withId("org.jetbrains.kotlin.android") {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.paging.common)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,6 +67,5 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
+
 }
