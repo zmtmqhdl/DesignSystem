@@ -39,7 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import com.example.core.designSystem.core.DSPreview
-import com.example.core.designSystem.modifier.conditional
+import com.example.core.util.extension.conditional
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
 

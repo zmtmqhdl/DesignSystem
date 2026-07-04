@@ -21,7 +21,7 @@ import androidx.compose.ui.platform.AccessibilityManager
 import androidx.compose.ui.platform.LocalAccessibilityManager
 import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.core.DSPreview
-import com.example.core.designSystem.modifier.animation.snackBarAnimation
+import com.example.core.designSystem.animation.snackBarAnimation
 import com.example.core.designSystem.theme.DSTheme
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.milliseconds

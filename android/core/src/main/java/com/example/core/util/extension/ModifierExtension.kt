@@ -1,4 +1,4 @@
-package com.example.core.designSystem.modifier
+package com.example.core.util.extension
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

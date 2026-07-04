@@ -1,4 +1,4 @@
-package com.example.core.designSystem.modifier.animation
+package com.example.core.designSystem.animation
 
 import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.animateFloatAsState
