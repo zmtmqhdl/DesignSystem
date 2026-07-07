@@ -1,6 +1,6 @@
 package com.example.data.di
 
-import com.example.data.api.UserApi
+import com.example.data.api.AccountApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +13,7 @@ import javax.inject.Singleton
 object ApiModule {
     @Singleton
     @Provides
-    fun provideUserApi(@BasicRetrofit retrofit: Retrofit): UserApi {
+    fun provideUserApi(@BasicRetrofit retrofit: Retrofit): AccountApi {
         return provideApi(retrofit = retrofit)
     }
 

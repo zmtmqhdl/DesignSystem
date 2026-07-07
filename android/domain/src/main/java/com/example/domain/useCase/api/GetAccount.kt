@@ -18,9 +18,7 @@ class GetAccount @Inject constructor(
     suspend operator fun invoke(
         accountDomain: AccountDomain
     ): Result<AccountDomain> {
-        return accountApiRepository.getAccount(
-            accountDomain = accountDomain
-        ).onSuccess {
+        return accountApiRepository.getAccount().onSuccess {
 
         }.onFailure { e ->
 

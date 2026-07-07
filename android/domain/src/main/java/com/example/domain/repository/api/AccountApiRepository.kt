@@ -12,9 +12,7 @@ interface AccountApiRepository {
 //
 //    suspend fun deleteAccount(accountDomain: AccountDomain): ApiResponse<Unit>
 
-    suspend fun getAccount(
-        accountDomain: AccountDomain
-    ): Result<AccountDomain>
+    suspend fun getAccount(): Result<AccountDomain>
 
     suspend fun postAccount(
         accountDomain: AccountDomain

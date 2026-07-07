@@ -1,6 +1,6 @@
 package com.example.data.repositoryImpl.api
 
-import com.example.data.api.UserApi
+import com.example.data.api.AccountApi
 import com.example.data.model.mapper.toDomain
 import com.example.data.model.mapper.toDto
 import com.example.domain.model.AccountDomain
@@ -8,7 +8,7 @@ import com.example.domain.repository.api.AccountApiRepository
 import javax.inject.Inject
 
 class AccountApiRepositoryImpl @Inject constructor(
-    private val userApi: UserApi
+    private val accountApi: AccountApi
 ) : AccountApiRepository {
 //    override suspend fun getAccount(accountDomain: AccountDomain): ApiResponse<AccountDomain> {
 //        return request {
@@ -34,13 +34,9 @@ class AccountApiRepositoryImpl @Inject constructor(
 //        }
 //    }
 
-    override suspend fun getAccount(
-        accountDomain: AccountDomain
-    ): Result<AccountDomain> {
+    override suspend fun getAccount(): Result<AccountDomain> {
         return runCatching {
-            userApi.getAccount(
-                accountDto = accountDomain.toDto()
-            ).toDomain()
+            accountApi.getAccount().toDomain()
         }
     }
 
@@ -48,7 +44,7 @@ class AccountApiRepositoryImpl @Inject constructor(
         accountDomain: AccountDomain
     ): Result<AccountDomain> {
         return runCatching {
-            userApi.createRoom(
+            accountApi.createRoom(
                 accountDto = accountDomain.toDto()
             ).toDomain()
         }
@@ -58,7 +54,7 @@ class AccountApiRepositoryImpl @Inject constructor(
         accountDomain: AccountDomain
     ): Result<AccountDomain> {
         return runCatching {
-            userApi.putAccount(
+            accountApi.putAccount(
                 accountDto = accountDomain.toDto()
             ).toDomain()
         }
@@ -68,7 +64,7 @@ class AccountApiRepositoryImpl @Inject constructor(
         accountDomain: AccountDomain
     ): Result<Unit> {
         return runCatching {
-            userApi.deleteAccount(
+            accountApi.deleteAccount(
                 accountDto = accountDomain.toDto()
             )
         }

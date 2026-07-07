@@ -7,11 +7,9 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
 
-interface UserApi {
+interface AccountApi {
     @GET("/get")
-    suspend fun getAccount(
-        @Body accountDto: AccountDto
-    ): AccountDto
+    suspend fun getAccount(): AccountDto
 
     @POST("/post")
     suspend fun createRoom(
