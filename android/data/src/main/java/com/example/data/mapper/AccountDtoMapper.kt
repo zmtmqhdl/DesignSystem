@@ -1,4 +1,4 @@
-package com.example.data.model.mapper
+package com.example.data.mapper
 
 import com.example.data.model.dto.AccountDto
 import com.example.data.model.entity.AccountEntity

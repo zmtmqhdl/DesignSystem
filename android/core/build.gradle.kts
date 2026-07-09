@@ -45,6 +45,7 @@ extensions.configure<com.android.build.api.dsl.LibraryExtension> {
 
     buildFeatures {
         buildConfig = true
+        compose = true
     }
 }
 
@@ -71,4 +72,5 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.biometric)
+    implementation(libs.androidx.activity.compose)
 }

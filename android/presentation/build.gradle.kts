@@ -83,7 +83,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
-    implementation(libs.androidx.activity.compose)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)

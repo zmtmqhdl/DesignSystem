@@ -9,23 +9,24 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.example.core.util.extension.findFragmentActivity
 
-sealed class DeviceAuthResult {
-    object Success : DeviceAuthResult()
-    sealed class Failure : DeviceAuthResult() {
-        object Canceled : Failure()
-        object Locked : Failure()
-        object HardwareUnavailable : Failure()
-        data class Unknown(val message: String) : Failure()
+@Composable
+fun rememberBiometricAuthManager(): (title: String, subtitle: String, onResult: (BiometricAuthResult) -> Unit) -> Unit {
+    val context = LocalContext.current
+    val biometricAuthManager = remember { BiometricAuthManager() }
+
+    return { title, subtitle, onResult ->
+        context.findFragmentActivity()?.let { activity ->
+            biometricAuthManager.authenticate(activity, title, subtitle, onResult)
+        }
     }
 }
-
 
 class BiometricAuthManager {
     fun authenticate(
         activity: FragmentActivity,
         title: String,
         subtitle: String,
-        onResult: (DeviceAuthResult) -> Unit
+        onResult: (BiometricAuthResult) -> Unit
     ) {
         val executor = ContextCompat.getMainExecutor(activity)
 
@@ -34,7 +35,7 @@ class BiometricAuthManager {
             executor,
             object : BiometricPrompt.AuthenticationCallback() {
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                    onResult(DeviceAuthResult.Success)
+                    onResult(BiometricAuthResult.Success)
                 }
 
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
@@ -42,7 +43,7 @@ class BiometricAuthManager {
                 }
 
                 override fun onAuthenticationFailed() {
-                    onResult(DeviceAuthResult.Failure.Unknown(message = "fail"))
+                    onResult(BiometricAuthResult.Failure.Unknown(message = "fail"))
                 }
             }
         )
@@ -62,23 +63,20 @@ class BiometricAuthManager {
     private fun mapDeviceAuthResult(
         errorCode: Int,
         errString: CharSequence
-    ): DeviceAuthResult.Failure {
+    ): BiometricAuthResult.Failure {
         return when (errorCode) {
-            // 취소
             BiometricPrompt.ERROR_NEGATIVE_BUTTON,
             BiometricPrompt.ERROR_USER_CANCELED,
-            BiometricPrompt.ERROR_CANCELED -> DeviceAuthResult.Failure.Canceled
+            BiometricPrompt.ERROR_CANCELED -> BiometricAuthResult.Failure.Canceled
 
-            // 잠김
             BiometricPrompt.ERROR_LOCKOUT,
-            BiometricPrompt.ERROR_LOCKOUT_PERMANENT -> DeviceAuthResult.Failure.Locked
+            BiometricPrompt.ERROR_LOCKOUT_PERMANENT -> BiometricAuthResult.Failure.Locked
 
-            // 기기 문제
             BiometricPrompt.ERROR_HW_UNAVAILABLE,
             BiometricPrompt.ERROR_NO_BIOMETRICS,
-            BiometricPrompt.ERROR_NO_DEVICE_CREDENTIAL -> DeviceAuthResult.Failure.HardwareUnavailable
+            BiometricPrompt.ERROR_NO_DEVICE_CREDENTIAL -> BiometricAuthResult.Failure.HardwareUnavailable
 
-            else -> DeviceAuthResult.Failure.Unknown(errString.toString())
+            else -> BiometricAuthResult.Failure.Unknown(errString.toString())
         }
     }
 }
