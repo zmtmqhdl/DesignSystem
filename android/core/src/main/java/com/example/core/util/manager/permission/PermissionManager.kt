@@ -1,4 +1,4 @@
-package com.example.core.permission
+package com.example.core.util.manager.permission
 
 import android.app.Activity
 import androidx.activity.compose.rememberLauncherForActivityResult

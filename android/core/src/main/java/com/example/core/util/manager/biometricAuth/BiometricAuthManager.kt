@@ -9,6 +9,16 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.example.core.util.extension.findFragmentActivity
 
+sealed class BiometricAuthResult {
+    object Success : BiometricAuthResult()
+    sealed class Failure : BiometricAuthResult() {
+        object Canceled : Failure()
+        object Locked : Failure()
+        object HardwareUnavailable : Failure()
+        data class Unknown(val message: String) : Failure()
+    }
+}
+
 @Composable
 fun rememberBiometricAuthManager(): (title: String, subtitle: String, onResult: (BiometricAuthResult) -> Unit) -> Unit {
     val context = LocalContext.current
