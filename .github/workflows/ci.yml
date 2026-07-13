@@ -22,13 +22,13 @@ jobs:
           cache: 'gradle'
 
       - name: Grant execute permission for gradlew
-        run: chmod +x ./gradlew
+        run: cd android && chmod +x ./gradlew
 
       - name: Run Code Style Check
-        run: ./gradlew lintDevDebug
+        run: cd android && ./gradlew lintDevDebug
 
       - name: Run Local Unit Tests
-        run: ./gradlew testDevDebugUnitTest
+        run: cd android && ./gradlew testDevDebugUnitTest
 
       - name: Build Debug APK
-        run: ./gradlew assembleDevDebug
+        run: cd android && ./gradlew assembleDevDebug
