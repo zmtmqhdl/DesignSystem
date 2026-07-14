@@ -8,13 +8,13 @@ plugins {
 
 extensions.configure<com.android.build.api.dsl.LibraryExtension> {
     namespace = "com.example.domain"
-    compileSdk = rootProject.extra["compileSdk"] as Int
+    compileSdk = AndroidConfig.compileSdk
 
     defaultConfig {
-        minSdk = rootProject.extra["minSdk"] as Int
+        minSdk = AndroidConfig.minSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        proguardFiles("proguard-rules.pro")
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     flavorDimensions += "env"
@@ -30,12 +30,8 @@ extensions.configure<com.android.build.api.dsl.LibraryExtension> {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
     }
 

@@ -8,9 +8,3 @@ plugins {
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.ksp) apply false
 }
-
-extra.apply {
-    set("compileSdk", 37)
-    set("targetSdk", 37)
-    set("minSdk", 37)
-}

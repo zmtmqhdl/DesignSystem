@@ -1,4 +1,3 @@
-import com.google.protobuf.gradle.proto
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -11,10 +10,10 @@ plugins {
 
 extensions.configure<com.android.build.api.dsl.LibraryExtension> {
     namespace = "com.example.data"
-    compileSdk = rootProject.extra["compileSdk"] as Int
+    compileSdk = AndroidConfig.compileSdk
 
     defaultConfig {
-        minSdk = rootProject.extra["minSdk"] as Int
+        minSdk = AndroidConfig.minSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -33,12 +32,8 @@ extensions.configure<com.android.build.api.dsl.LibraryExtension> {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
     }
     compileOptions {
@@ -84,7 +79,7 @@ dependencies {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.25.1"
+        artifact = "com.google.protobuf:protoc:${libs.versions.protobuf.get()}"
     }
     generateProtoTasks {
         all().forEach { task ->

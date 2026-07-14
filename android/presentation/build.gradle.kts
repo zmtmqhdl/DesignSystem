@@ -5,19 +5,19 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt)
-    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 extensions.configure<com.android.build.api.dsl.LibraryExtension> {
     namespace = "com.example.presentation"
-    compileSdk = rootProject.extra["compileSdk"] as Int
+    compileSdk = AndroidConfig.compileSdk
 
     defaultConfig {
-        minSdk = rootProject.extra["minSdk"] as Int
+        minSdk = AndroidConfig.minSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        proguardFiles("proguard-rules.pro")
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     flavorDimensions += "env"
@@ -33,12 +33,8 @@ extensions.configure<com.android.build.api.dsl.LibraryExtension> {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
     }
 
@@ -50,10 +46,6 @@ extensions.configure<com.android.build.api.dsl.LibraryExtension> {
     buildFeatures {
         compose = true
         buildConfig = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.4"
     }
 }
 
@@ -67,7 +59,6 @@ plugins.withId("org.jetbrains.kotlin.android") {
 
 dependencies {
     implementation(project(":domain"))
-    implementation(project(":data"))
     implementation(project(":core"))
 
     implementation(libs.androidx.core.ktx)
