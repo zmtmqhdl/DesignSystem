@@ -1,8 +1,9 @@
+@Suppress("UNUSED")
 object AndroidConfig {
-    const val versionCode = 1
-    const val versionName = "1.0.0"
+    const val VERSION_CODE = 1
+    const val VERSION_NAME = "1.0.0"
 
-    const val compileSdk = 37
-    const val targetSdk = 37
-    const val minSdk = 37
+    const val COMPILE_SDK = 37
+    const val TARGET_SDK = 37
+    const val MIN_SDK = 37
 }
