@@ -27,6 +27,7 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.core.designSystem.animation.skeletonAnimation
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.util.extension.conditional
 import com.example.core.designSystem.icon.Close
@@ -48,17 +49,20 @@ fun DSIconButton(
     iconHeight: Dp = DSTheme.space.space6,
     variant: IconButtonVariant = IconButtonVariant.CLEAR,
     colorSet: ColorSet = DSTheme.color.grey,
-    ariaLabel: String
+    ariaLabel: String,
+    isLoading: Boolean = false
 ) {
     val shape = DSTheme.shape.iconButton
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
+    val pressedAlpha = 0.3f
     val pushedSize = 0.9f
 
     val scale by animateFloatAsState(
-        targetValue = if (isPressed) pushedSize else 1f,
+        targetValue = if (isPressed && !isLoading) pushedSize else 1f,
         animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
     )
+
 
     Box(
         modifier = Modifier
@@ -71,8 +75,9 @@ fun DSIconButton(
                 minHeight = boxSize
             )
             .clip(shape = shape)
+            .skeletonAnimation(isLoading = isLoading)
             .conditional(
-                condition = variant == IconButtonVariant.FILL
+                condition = variant == IconButtonVariant.FILL && !isLoading
             ) {
                 background(
                     color = colorSet.subBackgroundColor,
@@ -80,7 +85,7 @@ fun DSIconButton(
                 )
             }
             .conditional(
-                condition = variant == IconButtonVariant.BORDER
+                condition = variant == IconButtonVariant.BORDER && !isLoading
             ) {
                 border(
                     width = 1.dp,
@@ -89,22 +94,25 @@ fun DSIconButton(
                 )
             }
             .clickable(
-                onClick = onClick,
+                enabled = !isLoading,
                 role = Role.Button,
                 interactionSource = interactionSource,
-                indication = ripple(),
+                indication = null,
+                onClick = onClick,
             )
             .semantics(mergeDescendants = true) { role = Role.Button},
         contentAlignment = Alignment.Center
     ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = ariaLabel,
-            modifier = Modifier
-                .width(width = iconWidth)
-                .height(height = iconHeight),
-            tint = colorSet.subColor
-        )
+        if (!isLoading) {
+            Icon(
+                imageVector = icon,
+                contentDescription = ariaLabel,
+                modifier = Modifier
+                    .width(width = iconWidth)
+                    .height(height = iconHeight),
+                tint = colorSet.subColor
+            )
+        }
     }
 }
 

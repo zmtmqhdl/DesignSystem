@@ -68,6 +68,7 @@ fun DSButton(
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
+    val pressedAlpha = 0.3f
     val pushedSize = 0.9f
     val baseFontSize = when (size) {
         ButtonSize.SMALL -> 14.sp
@@ -110,7 +111,7 @@ fun DSButton(
                 }
             )
             .conditional(condition = !isLoading) {
-                alpha(if (enabled) 1f else 0.3f)
+                alpha(if (enabled) 1f else pressedAlpha)
                 background(
                     color = when (variant) {
                         ButtonVariant.FILL -> colorSet.mainBackgroundColor
@@ -177,10 +178,7 @@ fun DSButton(
                     }
                 )
             }
-        } else {
-
         }
-
     }
 }
 
