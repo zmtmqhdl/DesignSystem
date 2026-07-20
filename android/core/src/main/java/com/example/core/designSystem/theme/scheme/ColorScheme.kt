@@ -264,6 +264,12 @@ data class TextFieldColorSet(
 )
 
 @Immutable
+data class SkeletonColorSet(
+    val background: Color,
+    val highlight: Color
+)
+
+@Immutable
 object ColorSetSchemes {
     val LightColor = ColorScheme(
         grey = ColorSet(
@@ -340,6 +346,11 @@ object ColorSetSchemes {
             icon = lightGrey600,
             placeholder = lightGrey600
         ),
+        skeleton = SkeletonColorSet(
+            background = lightGrey200,
+            highlight = lightGrey100
+        ),
+
 
         grey50 = lightGrey50,
         grey100 = lightGrey100,
@@ -516,6 +527,10 @@ object ColorSetSchemes {
             icon = darkGrey600,
             placeholder = darkGrey600
         ),
+        skeleton = SkeletonColorSet(
+            background = darkGrey800,
+            highlight = darkGrey700
+        ),
 
         grey50 = darkGrey50,
         grey100 = darkGrey100,
@@ -633,6 +648,7 @@ class ColorScheme(
     val background: BackgroundColorSet,
     val navigationBar: NavigationBarColorSet,
     val textField: TextFieldColorSet,
+    val skeleton: SkeletonColorSet,
 
     val grey50: Color,
     val grey100: Color,

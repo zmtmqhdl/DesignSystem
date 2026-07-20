@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
+import com.example.core.designSystem.animation.skeletonAnimation
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.icon.Search
 import com.example.core.designSystem.theme.DSTheme
@@ -22,21 +23,25 @@ fun DSIcon(
     iconWidth: Dp = DSTheme.space.space6,
     iconHeight: Dp = DSTheme.space.space6,
     color: Color = DSTheme.color.grey700,
-    ariaLabel: String
+    ariaLabel: String,
+    isLoading: Boolean = false
 ) {
     Box(
         modifier = Modifier
-            .size(size = boxSize),
+            .size(size = boxSize)
+            .skeletonAnimation(isLoading = isLoading),
         contentAlignment = Alignment.Center
     ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = ariaLabel,
-            modifier = Modifier
-                .width(width = iconWidth)
-                .height(height = iconHeight),
-            tint = color
-        )
+        if (!isLoading) {
+            Icon(
+                imageVector = icon,
+                contentDescription = ariaLabel,
+                modifier = Modifier
+                    .width(width = iconWidth)
+                    .height(height = iconHeight),
+                tint = color
+            )
+        }
     }
 }
 

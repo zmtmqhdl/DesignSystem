@@ -8,10 +8,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import com.example.core.designSystem.animation.skeletonAnimation
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
+import com.example.core.util.extension.conditional
 
 enum class BadgeVariant {
     FILL,
@@ -31,8 +35,16 @@ fun DSBadge(
     modifier: Modifier = Modifier,
     variant: BadgeVariant = BadgeVariant.FILL,
     size: BadgeSize = BadgeSize.MEDIUM,
-    colorSet: ColorSet = DSTheme.color.blue
+    colorSet: ColorSet = DSTheme.color.blue,
+    isLoading: Boolean = false
 ) {
+    val badgeShape = when (size) {
+        BadgeSize.XSMALL -> RoundedCornerShape(size = 9.dp)
+        BadgeSize.SMALL -> RoundedCornerShape(size = 11.dp)
+        BadgeSize.MEDIUM -> RoundedCornerShape(size = 12.dp)
+        BadgeSize.LARGE -> RoundedCornerShape(size = 13.dp)
+    }
+
     Box(
         modifier = modifier
             .defaultMinSize(
@@ -49,30 +61,29 @@ fun DSBadge(
                     BadgeSize.LARGE -> 56.dp
                 }
             )
-            .background(
-                color = when (variant) {
-                    BadgeVariant.FILL -> colorSet.mainBackgroundColor
-                    BadgeVariant.WEAK -> colorSet.subBackgroundColor
-                },
-                shape = when (size) {
-                    BadgeSize.XSMALL -> RoundedCornerShape(size = 9.dp)
-                    BadgeSize.SMALL -> RoundedCornerShape(size = 11.dp)
-                    BadgeSize.MEDIUM -> RoundedCornerShape(size = 12.dp)
-                    BadgeSize.LARGE -> RoundedCornerShape(size = 13.dp)
-                }
-            ),
+            .conditional(condition = !isLoading) {
+                background(
+                    color = when (variant) {
+                        BadgeVariant.FILL -> colorSet.mainBackgroundColor
+                        BadgeVariant.WEAK -> colorSet.subBackgroundColor
+                    },
+                    shape = badgeShape
+                )
+            }
+            .clip(shape = badgeShape)
+            .skeletonAnimation(isLoading = isLoading),
         contentAlignment = Alignment.Center
     ) {
         DSText(
             text = text,
             modifier = Modifier
+                .conditional(condition = isLoading) { alpha(alpha = 0f) }
                 .padding(
                     horizontal = when (size) {
                         BadgeSize.XSMALL,
                         BadgeSize.SMALL,
                         BadgeSize.MEDIUM -> 3.dp
                         BadgeSize.LARGE -> 4.dp
-
                     },
                     vertical = when (size) {
                         BadgeSize.XSMALL,
@@ -95,14 +106,14 @@ fun DSBadge(
     }
 }
 
-
 @DSPreview
 @Composable
 fun BadgePreview() {
     DSTheme {
         DSBadge(
             text = "Preview",
-            colorSet = DSTheme.color.blue
+            colorSet = DSTheme.color.blue,
+            isLoading = true
         )
     }
 }
