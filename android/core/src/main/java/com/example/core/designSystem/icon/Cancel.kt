@@ -14,8 +14,10 @@ import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 
 val Cancel = Builder(
-    defaultWidth = 24.0.dp, defaultHeight =
-        24.0.dp, viewportWidth = 960.0f, viewportHeight = 960.0f
+    defaultWidth = 24.0.dp,
+    defaultHeight = 24.0.dp,
+    viewportWidth = 960.0f,
+    viewportHeight = 960.0f
 ).apply {
     path(
         fill = SolidColor(Color(0xFFe8eaed)), stroke = null, strokeLineWidth = 0.0f,
