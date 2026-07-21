@@ -10,12 +10,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
+import com.example.core.designSystem.component.ButtonVariant
+import com.example.core.designSystem.component.DSButton
+import com.example.core.designSystem.component.DSIconButton
 import com.example.core.designSystem.component.DSNavigationBar
 import com.example.core.designSystem.component.DSScreen
 import com.example.core.designSystem.component.DSSnackBarState
 import com.example.core.designSystem.component.DSTextField
+import com.example.core.designSystem.component.IconButtonVariant
 import com.example.core.designSystem.component.NavigationBarVariant
 import com.example.core.designSystem.component.TextFieldVariant
+import com.example.core.designSystem.icon.Close
+import com.example.core.designSystem.theme.DSTheme
 import com.example.presentation.navigation.NavigationItems
 import kotlinx.coroutines.delay
 
@@ -55,6 +61,22 @@ fun MainScreen(
             onKeyboardActionClick = {},
             variant = TextFieldVariant.PASSWORD,
             isLoading = isLoading
+        )
+
+        DSButton(
+            text = "Preview",
+            variant = ButtonVariant.WEAK,
+            colorSet = DSTheme.color.blue,
+            showLoader = false,
+            onClick = {},
+        )
+
+        DSIconButton(
+            icon = Close,
+            colorSet = DSTheme.color.grey,
+            variant = IconButtonVariant.BORDER,
+            onClick = { },
+            ariaLabel = "test"
         )
     }
 

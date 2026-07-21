@@ -12,14 +12,16 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
-import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
@@ -29,10 +31,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.animation.skeletonAnimation
 import com.example.core.designSystem.core.DSPreview
-import com.example.core.util.extension.conditional
 import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
+import com.example.core.util.extension.conditional
 
 enum class IconButtonVariant {
     CLEAR,
@@ -52,15 +54,23 @@ fun DSIconButton(
     ariaLabel: String,
     isLoading: Boolean = false
 ) {
-    val shape = DSTheme.shape.iconButton
+    val corner = DSTheme.space.space2
+    val iconButtonShape = RoundedCornerShape(corner)
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
-    val pressedAlpha = 0.3f
-    val pushedSize = 0.9f
+    val pushedSize = 0.95f
+    val dimColor = DSTheme.color.greyOpacity900
+
 
     val scale by animateFloatAsState(
         targetValue = if (isPressed && !isLoading) pushedSize else 1f,
         animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
+    )
+
+    val overlayAlpha by animateFloatAsState(
+        targetValue = if (isPressed && !isLoading) 0.12f else 0f,
+        animationSpec = tween(durationMillis = 80, easing = FastOutSlowInEasing),
+        label = "buttonOverlayAlpha"
     )
 
 
@@ -74,14 +84,14 @@ fun DSIconButton(
                 minWidth = boxSize,
                 minHeight = boxSize
             )
-            .clip(shape = shape)
+            .clip(shape = iconButtonShape)
             .skeletonAnimation(isLoading = isLoading)
             .conditional(
                 condition = variant == IconButtonVariant.FILL && !isLoading
             ) {
                 background(
                     color = colorSet.subBackgroundColor,
-                    shape = shape
+                    shape = iconButtonShape
                 )
             }
             .conditional(
@@ -90,8 +100,19 @@ fun DSIconButton(
                 border(
                     width = 1.dp,
                     color = colorSet.subBackgroundColor,
-                    shape = shape
+                    shape = iconButtonShape
                 )
+            }
+            .drawWithContent {
+                drawContent()
+                if (overlayAlpha > 0f) {
+                    drawRoundRect(
+                        color = dimColor.copy(alpha = overlayAlpha),
+                        cornerRadius = CornerRadius(
+                            x = corner.toPx()
+                        )
+                    )
+                }
             }
             .clickable(
                 enabled = !isLoading,

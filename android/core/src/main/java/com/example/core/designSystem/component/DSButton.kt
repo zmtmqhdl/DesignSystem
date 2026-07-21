@@ -29,7 +29,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
@@ -38,11 +40,10 @@ import androidx.compose.ui.text.style.TextMotion
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.core.designSystem.animation.skeletonAnimation
-
 import com.example.core.designSystem.core.DSPreview
-import com.example.core.util.extension.conditional
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
+import com.example.core.util.extension.conditional
 
 enum class ButtonVariant {
     FILL, WEAK
@@ -69,24 +70,38 @@ fun DSButton(
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
     val pressedAlpha = 0.3f
-    val pushedSize = 0.9f
+    val pushedSize = 0.95f
     val baseFontSize = when (size) {
         ButtonSize.SMALL -> 14.sp
         ButtonSize.MEDIUM -> 16.sp
         ButtonSize.LARGE -> 18.sp
         ButtonSize.XLARGE -> 20.sp
     }
+    val dimColor = DSTheme.color.greyOpacity900
 
     val scale by animateFloatAsState(
         targetValue = if (isPressed && !isLoading) pushedSize else 1f,
         animationSpec = tween(durationMillis = 100, easing = FastOutSlowInEasing)
     )
 
+    val overlayAlpha by animateFloatAsState(
+        targetValue = if (isPressed && enabled && !isLoading && !showLoader) 0.12f else 0f,
+        animationSpec = tween(durationMillis = 80, easing = FastOutSlowInEasing),
+        label = "buttonOverlayAlpha"
+    )
+
+    val corner = when (size) {
+        ButtonSize.SMALL -> 8.dp
+        ButtonSize.MEDIUM -> 10.dp
+        ButtonSize.LARGE -> 14.dp
+        ButtonSize.XLARGE -> 16.dp
+    }
+
     val buttonShape = when (size) {
-        ButtonSize.SMALL -> RoundedCornerShape(8.dp)
-        ButtonSize.MEDIUM -> RoundedCornerShape(10.dp)
-        ButtonSize.LARGE -> RoundedCornerShape(14.dp)
-        ButtonSize.XLARGE -> RoundedCornerShape(16.dp)
+        ButtonSize.SMALL -> RoundedCornerShape(corner)
+        ButtonSize.MEDIUM -> RoundedCornerShape(corner)
+        ButtonSize.LARGE -> RoundedCornerShape(corner)
+        ButtonSize.XLARGE -> RoundedCornerShape(corner)
     }
 
     Box(
@@ -119,6 +134,17 @@ fun DSButton(
                     },
                     shape = buttonShape
                 )
+            }
+            .drawWithContent {
+                drawContent()
+                if (overlayAlpha > 0f) {
+                    drawRoundRect(
+                        color = dimColor.copy(alpha = overlayAlpha),
+                        cornerRadius = CornerRadius(
+                            x = corner.toPx()
+                        )
+                    )
+                }
             }
             .clip(shape = buttonShape)
             .skeletonAnimation(isLoading = isLoading)
