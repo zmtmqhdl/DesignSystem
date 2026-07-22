@@ -17,24 +17,6 @@ extensions.configure<com.android.build.api.dsl.LibraryExtension> {
         consumerProguardFiles("consumer-rules.pro")
     }
 
-    flavorDimensions += "env"
-    productFlavors {
-        create("dev") {
-            dimension = "env"
-            buildConfigField("Boolean", "IS_DEV", "true")
-        }
-        create("prod") {
-            dimension = "env"
-            buildConfigField("Boolean", "IS_DEV", "false")
-        }
-    }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-        }
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21

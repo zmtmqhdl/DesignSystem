@@ -28,12 +28,10 @@ extensions.configure<com.android.build.api.dsl.ApplicationExtension> {
             applicationIdSuffix = ".dev"
             versionNameSuffix = "-dev"
             resValue("string", "app_name", "DesignSystem (Dev)")
-            buildConfigField("Boolean", "IS_DEV", "true")
         }
         create("prod") {
             dimension = "env"
             resValue("string", "app_name", "DesignSystem")
-            buildConfigField("Boolean", "IS_DEV", "false")
         }
     }
 
