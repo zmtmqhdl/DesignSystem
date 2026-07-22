@@ -62,7 +62,7 @@ fun DSScreen(
                 imePadding()
             }
             .conditional(padding) {
-                padding(horizontal = DSTheme.space.space4)
+                padding(horizontal = DSTheme.space.dimension4)
             }
 
         when (variant) {

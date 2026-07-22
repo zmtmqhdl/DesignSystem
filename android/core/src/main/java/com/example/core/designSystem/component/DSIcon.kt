@@ -19,9 +19,9 @@ import com.example.core.designSystem.theme.DSTheme
 @Composable
 fun DSIcon(
     icon: ImageVector,
-    boxSize: Dp = DSTheme.space.space8,
-    iconWidth: Dp = DSTheme.space.space6,
-    iconHeight: Dp = DSTheme.space.space6,
+    boxSize: Dp = DSTheme.space.dimension8,
+    iconWidth: Dp = DSTheme.space.dimension6,
+    iconHeight: Dp = DSTheme.space.dimension6,
     color: Color = DSTheme.color.grey700,
     ariaLabel: String,
     isLoading: Boolean = false

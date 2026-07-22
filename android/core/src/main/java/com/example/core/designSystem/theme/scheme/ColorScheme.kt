@@ -750,6 +750,6 @@ class ColorScheme(
     val purple900: Color,
 )
 
-val LocalColor: ProvidableCompositionLocal<ColorScheme> = staticCompositionLocalOf {
+val LocalColors: ProvidableCompositionLocal<ColorScheme> = staticCompositionLocalOf {
     error("LocalColor not provided")
 }

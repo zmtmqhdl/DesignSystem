@@ -26,7 +26,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
@@ -34,7 +33,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import com.example.core.R
 import com.example.core.designSystem.animation.skeletonAnimation
-
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.icon.Cancel
 import com.example.core.designSystem.icon.Invisibility
@@ -62,28 +60,28 @@ fun DSTextField(
     isLoading: Boolean = false
 ) {
     val color = DSTheme.color.textField
+    val shape = DSTheme.shape.textField
     val textStyle = DSTheme.typography.subTypography10.medium
     var visibility by rememberSaveable { mutableStateOf(false) }
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
-    val textFieldShape = DSTheme.shape.textField
 
     BasicTextField(
         state = state,
         modifier = Modifier
             .fillMaxWidth()
-            .height(DSTheme.space.space12)
-            .clip(textFieldShape)
+            .height(DSTheme.space.dimension12)
+            .clip(shape)
             .conditional(condition = !isLoading) {
                 background(
                     color = color.container,
-                    shape = textFieldShape
+                    shape = shape
                 )
             }
             .skeletonAnimation(isLoading = isLoading)
             .padding(
-                horizontal = DSTheme.space.space2,
-                vertical = DSTheme.space.space1
+                horizontal = DSTheme.space.dimension2,
+                vertical = DSTheme.space.dimension1
             ),
         enabled = enabled && !isLoading,
         readOnly = readOnly,
@@ -177,7 +175,7 @@ fun DSTextField(
                         }
 
                         else -> {
-                            Spacer(modifier = Modifier.width(width = DSTheme.space.space4))
+                            Spacer(modifier = Modifier.width(width = DSTheme.space.dimension4))
                         }
                     }
 
@@ -197,7 +195,7 @@ fun DSTextField(
                     }
 
                     if (isFocused && state.text.isNotEmpty()) {
-                        Spacer(modifier = Modifier.width(width = DSTheme.space.space1))
+                        Spacer(modifier = Modifier.width(width = DSTheme.space.dimension1))
 
                         when (variant) {
                             TextFieldVariant.TEXT,

@@ -75,7 +75,7 @@ fun DSNavigationBar(
                     }
 
                     NavigationBarVariant.ROUND -> {
-                        val shapeSize = DSTheme.space.space8
+                        val shapeSize = DSTheme.space.dimension8
 
                         Modifier
                             .clip(
@@ -135,9 +135,9 @@ fun DSNavigationBar(
             Column(
                 modifier = Modifier
                     .padding(
-                        vertical = DSTheme.space.space2
+                        vertical = DSTheme.space.dimension2
                     )
-                    .clip(shape = DSTheme.shape.iconButton)
+                    .clip(DSTheme.shape.box)
                     .clickable(
                         interactionSource = remember { MutableInteractionSource() },
                         indication = ripple(),
@@ -154,8 +154,8 @@ fun DSNavigationBar(
             ) {
                 Column(
                     modifier = Modifier.padding(
-                        horizontal = DSTheme.space.space3,
-                        vertical = DSTheme.space.space1
+                        horizontal = DSTheme.space.dimension3,
+                        vertical = DSTheme.space.dimension1
                     ),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -166,7 +166,7 @@ fun DSNavigationBar(
                         color = if (selected) color.selectedIcon else color.unselectedIcon
                     )
 
-                    Spacer(modifier = Modifier.height(DSTheme.space.space0))
+                    Spacer(modifier = Modifier.height(DSTheme.space.dimension0))
 
                     DSText(
                         text = item.label,

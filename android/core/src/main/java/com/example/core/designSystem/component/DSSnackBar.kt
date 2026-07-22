@@ -20,8 +20,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.AccessibilityManager
 import androidx.compose.ui.platform.LocalAccessibilityManager
 import androidx.compose.ui.unit.dp
-import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.animation.snackBarAnimation
+import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.milliseconds
@@ -110,6 +110,7 @@ fun DSSnackBar(
 ) {
     val currentData = snackBarState.data
     val accessibilityManager = LocalAccessibilityManager.current
+    val shape = DSTheme.shape.snackBar
 
     LaunchedEffect(currentData) {
         currentData?.let {
@@ -126,13 +127,13 @@ fun DSSnackBar(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = DSTheme.space.space10)
-                .padding(bottom = DSTheme.space.space4)
+                .padding(horizontal = DSTheme.space.dimension10)
+                .padding(bottom = DSTheme.space.dimension4)
                 .background(
                     color = DSTheme.color.background.background,
-                    shape = DSTheme.shape.snackBar
+                    shape = shape
                 )
-                .clip(shape = DSTheme.shape.snackBar)
+                .clip(shape = shape)
                 .snackBarAnimation(
                     visible = snackBarState.visible,
                     onFinished = {
@@ -145,7 +146,7 @@ fun DSSnackBar(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(all = DSTheme.space.space2),
+                    .padding(all = DSTheme.space.dimension2),
                 verticalAlignment = Alignment.CenterVertically
 
             ) {

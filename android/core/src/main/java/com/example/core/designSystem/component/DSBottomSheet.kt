@@ -55,6 +55,7 @@ fun DSBottomSheet(
             onDismissRequest()
         }
     }
+    val shape = DSTheme.shape.bottomSheet
 
     if (isOpen) {
         ModalBottomSheet(
@@ -63,7 +64,7 @@ fun DSBottomSheet(
             modifier = Modifier
                 .padding(horizontal = 8.dp)
                 .padding(bottom = 8.dp + navigationBarPadding),
-            shape = DSTheme.shape.bottomSheet,
+            shape = shape,
             containerColor = backgroundColorSet.background,
         ) {
             Column(
@@ -77,14 +78,14 @@ fun DSBottomSheet(
                 )
 
                 description?.let {
-                    Spacer(modifier = Modifier.height(height = DSTheme.space.space2))
+                    Spacer(modifier = Modifier.height(height = DSTheme.space.dimension2))
                     DSText(
                         text = it,
                         style = DSTheme.typography.typography6.medium
                     )
                 }
 
-                Spacer(modifier = Modifier.height(height = DSTheme.space.space8))
+                Spacer(modifier = Modifier.height(height = DSTheme.space.dimension8))
 
                 when (variant) {
                     BottomSheetVariant.CTA -> {
@@ -114,7 +115,7 @@ fun DSBottomSheet(
                                 modifier = Modifier.weight(weight = 1f)
                             )
 
-                            Spacer(modifier = Modifier.width(width = DSTheme.space.space2))
+                            Spacer(modifier = Modifier.width(width = DSTheme.space.dimension2))
 
                             DSButton(
                                 text = confirmText,

@@ -7,27 +7,31 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Shape
 
 @Immutable
-object ShapeToken{
-    val BottomSheet = RoundedCornerShape(size = SpacingToken.Space7)
-    val IconButton = RoundedCornerShape(size = SpacingToken.Space2)
-    val Button = RoundedCornerShape(size = SpacingToken.Space4)
-    val Dialog = RoundedCornerShape(size = SpacingToken.Space2)
-    val SnackBar = RoundedCornerShape(size = SpacingToken.Space2)
-    val TextField = RoundedCornerShape(size = SpacingToken.Space4)
-    val Box = RoundedCornerShape(size = SpacingToken.Space2)
+object ShapeToken {
+    val BottomSheet = RoundedCornerShape(size = DimensionToken.Dimension7)
+    val Box = RoundedCornerShape(size = DimensionToken.Dimension2)
+    val Dialog = RoundedCornerShape(size = DimensionToken.Dimension2)
+    val SnackBar = RoundedCornerShape(size = DimensionToken.Dimension2)
+    val TextField = RoundedCornerShape(size = DimensionToken.Dimension4)
 }
 
 @Immutable
 class ShapeScheme(
-    val button: Shape,
-    val iconButton: Shape,
     val bottomSheet: Shape,
+    val box: Shape,
     val dialog: Shape,
     val snackBar: Shape,
     val textField: Shape,
-    val box: Shape,
 )
 
-val LocalShape: ProvidableCompositionLocal<ShapeScheme> = staticCompositionLocalOf {
+val LocalShapes: ProvidableCompositionLocal<ShapeScheme> = staticCompositionLocalOf {
     error("LocalShape not provided")
 }
+
+val shapeScheme = ShapeScheme(
+    bottomSheet = ShapeToken.BottomSheet,
+    box = ShapeToken.Box,
+    dialog = ShapeToken.Dialog,
+    snackBar = ShapeToken.SnackBar,
+    textField = ShapeToken.TextField,
+)

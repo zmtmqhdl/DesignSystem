@@ -46,15 +46,15 @@ enum class IconButtonVariant {
 fun DSIconButton(
     icon: ImageVector,
     onClick: () -> Unit,
-    boxSize: Dp = DSTheme.space.space12,
-    iconWidth: Dp = DSTheme.space.space6,
-    iconHeight: Dp = DSTheme.space.space6,
+    boxSize: Dp = DSTheme.space.dimension12,
+    iconWidth: Dp = DSTheme.space.dimension6,
+    iconHeight: Dp = DSTheme.space.dimension6,
     variant: IconButtonVariant = IconButtonVariant.CLEAR,
     colorSet: ColorSet = DSTheme.color.grey,
     ariaLabel: String,
     isLoading: Boolean = false
 ) {
-    val corner = DSTheme.space.space2
+    val corner = DSTheme.space.dimension2
     val iconButtonShape = RoundedCornerShape(corner)
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()

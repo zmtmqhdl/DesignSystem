@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
@@ -47,6 +46,7 @@ fun DSDialog(
     dismissOnClickOutside: Boolean = false,
     preventDismiss: Boolean = true
 ) {
+    val shape = DSTheme.shape.dialog
     val coroutineScope = rememberCoroutineScope()
     val shakeOffset = remember { Animatable(0f) }
     val shakeAnimation = remember {
@@ -95,7 +95,7 @@ fun DSDialog(
                     }
                     .background(
                         color = DSTheme.color.background.background,
-                        shape = DSTheme.shape.dialog
+                        shape = shape
                     )
                     .padding(all = 16.dp)
             ) {
@@ -105,7 +105,7 @@ fun DSDialog(
                 )
 
                 description?.let {
-                    Spacer(modifier = Modifier.height(DSTheme.space.space2))
+                    Spacer(modifier = Modifier.height(DSTheme.space.dimension2))
 
                     DSText(
                         text = it,
@@ -113,7 +113,7 @@ fun DSDialog(
                     )
                 }
 
-                Spacer(modifier = Modifier.height(DSTheme.space.space8))
+                Spacer(modifier = Modifier.height(DSTheme.space.dimension8))
 
                 when (variant) {
                     DialogVariant.ALERT -> {
@@ -146,7 +146,7 @@ fun DSDialog(
                                 modifier = Modifier.weight(1f)
                             )
 
-                            Spacer(modifier = Modifier.width(DSTheme.space.space2))
+                            Spacer(modifier = Modifier.width(DSTheme.space.dimension2))
 
                             DSButton(
                                 text = confirmText,

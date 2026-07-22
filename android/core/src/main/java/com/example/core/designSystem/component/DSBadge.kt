@@ -77,7 +77,7 @@ fun DSBadge(
         DSText(
             text = text,
             modifier = Modifier
-                .conditional(condition = isLoading) { alpha(alpha = 0f) }
+                .conditional(condition = isLoading) { alpha(0f) }
                 .padding(
                     horizontal = when (size) {
                         BadgeSize.XSMALL,
