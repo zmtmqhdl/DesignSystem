@@ -1,12 +1,11 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
 }
 
 extensions.configure<com.android.build.api.dsl.LibraryExtension> {
-    namespace = "com.example.domain"
+    namespace = "com.example.common"
     compileSdk = AndroidConfig.COMPILE_SDK
 
     defaultConfig {
@@ -23,24 +22,21 @@ extensions.configure<com.android.build.api.dsl.LibraryExtension> {
 
     buildFeatures {
         buildConfig = true
-    }
-}
-
-plugins.withId("org.jetbrains.kotlin.android") {
-    extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension> {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_21)
-        }
+        compose = true
     }
 }
 
 dependencies {
+    implementation(project(":domain"))
+
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.paging.common)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.kotlinx.coroutines.android)
+    androidTestImplementation(libs.androidx.junit)
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
-
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(platform(libs.androidx.compose.bom))
 }

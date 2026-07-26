@@ -29,3 +29,4 @@ include(":presentation")
 include(":domain")
 include(":core")
 
+include(":common")

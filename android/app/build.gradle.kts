@@ -2,7 +2,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
@@ -38,7 +37,6 @@ extensions.configure<com.android.build.api.dsl.ApplicationExtension> {
     buildTypes {
         getByName("debug") {
             isMinifyEnabled = false
-//            isShrinkResources = false
         }
         getByName("release") {
             isMinifyEnabled = true
@@ -74,6 +72,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":core"))
     implementation(project(":presentation"))
+    implementation(project(":common"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

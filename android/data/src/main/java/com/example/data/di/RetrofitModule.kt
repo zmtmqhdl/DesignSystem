@@ -1,5 +1,6 @@
 package com.example.data.di
 
+import com.example.domain.model.AppConfig
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -22,25 +23,20 @@ annotation class BasicRetrofit
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
 
-    const val BASE_URL = "https://jsonplaceholder.typicode.com/"
-
     @BasicRetrofit
     @Singleton
     @Provides
-    fun provideRetrofit(): Retrofit {
-
-        // BODY 전체 다 보기
-        // HEADERS 헤더만 보기
-        // BASIC 기본 정보만 보기
-        // NONE 로그 끄기
+    fun provideRetrofit(
+        appConfig: AppConfig
+    ): Retrofit {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
+            level = if (appConfig.enableLogging) {
+                HttpLoggingInterceptor.Level.BODY
+            } else {
+                HttpLoggingInterceptor.Level.NONE
+            }
         }
-
-        val json = Json {
-            ignoreUnknownKeys = true
-        }
-
+        val json = Json { ignoreUnknownKeys = true }
         val client = OkHttpClient.Builder()
             .connectTimeout(
                 timeout = 10,
@@ -54,11 +50,11 @@ object RetrofitModule {
                 timeout = 10,
                 unit = TimeUnit.SECONDS
             )
-            .addInterceptor(loggingInterceptor)
+            .addInterceptor(interceptor = loggingInterceptor)
             .build()
 
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(appConfig.baseUrl)
             .client(client)
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()

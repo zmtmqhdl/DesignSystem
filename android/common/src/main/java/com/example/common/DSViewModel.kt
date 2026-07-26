@@ -1,25 +1,30 @@
-package com.example.core.designSystem.core
+package com.example.common
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.common.logger.Logger
+import jakarta.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-// todo - 인터페이스가 맞을까?> 아니면 이게 맞을까?
-abstract class DSViewModel : ViewModel() {
+abstract class DSViewModel() : ViewModel() {
+
+    @Inject
+    lateinit var logger: Logger
 
     protected open val tag: String by lazy { this::class.java.simpleName }
 
     protected fun logD(message: String) {
-        Log.d(tag, message)
-
+        if (::logger.isInitialized) {
+            logger.d(tag, message)
+        }
     }
 
-    protected fun logE(message: String) {
-        Log.e(tag, message)
-
+    protected fun logE(message: String, throwable: Throwable? = null) {
+        if (::logger.isInitialized) {
+            logger.e(tag, message, throwable)
+        }
     }
 
     protected fun launch(block: suspend CoroutineScope.() -> Unit) {
