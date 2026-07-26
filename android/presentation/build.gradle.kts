@@ -1,4 +1,6 @@
+import com.android.build.api.dsl.LibraryExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 
 plugins {
     alias(libs.plugins.android.library)
@@ -8,7 +10,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 
-extensions.configure<com.android.build.api.dsl.LibraryExtension> {
+extensions.configure<LibraryExtension> {
     namespace = "com.example.presentation"
     compileSdk = AndroidConfig.COMPILE_SDK
 
@@ -31,7 +33,7 @@ extensions.configure<com.android.build.api.dsl.LibraryExtension> {
 }
 
 plugins.withId("org.jetbrains.kotlin.android") {
-    extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension> {
+    extensions.configure<KotlinAndroidProjectExtension> {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_21)
         }
@@ -39,6 +41,7 @@ plugins.withId("org.jetbrains.kotlin.android") {
 }
 
 dependencies {
+    implementation(project(":common"))
     implementation(project(":domain"))
     implementation(project(":core"))
 

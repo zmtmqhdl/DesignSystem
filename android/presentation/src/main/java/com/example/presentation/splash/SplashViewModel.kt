@@ -1,6 +1,6 @@
 package com.example.presentation.splash
 
-import com.example.core.designSystem.core.DSViewModel
+import com.example.common.DSViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

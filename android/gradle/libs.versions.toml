@@ -30,7 +30,6 @@ foundationAndroid = "1.11.4"
 lifecycleViewmodelNav3 = "2.11.0"
 biometric = "1.1.0"
 paging = "3.5.0"
-androidBuiltInKotlin = "9.3.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -85,4 +84,3 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version = "2.4.10" }
 protobuf = { id = "com.google.protobuf", version = "0.10.0" }
-android-built-in1-kotlin = { id = "com.android.built-in-kotlin", version.ref = "androidBuiltInKotlin" }

@@ -1,4 +1,6 @@
+import com.android.build.api.dsl.ApplicationExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 
 plugins {
     alias(libs.plugins.android.application)
@@ -7,7 +9,7 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
-extensions.configure<com.android.build.api.dsl.ApplicationExtension> {
+extensions.configure<ApplicationExtension> {
     namespace = "com.example.designsystem"
     compileSdk = AndroidConfig.COMPILE_SDK
 
@@ -56,11 +58,12 @@ extensions.configure<com.android.build.api.dsl.ApplicationExtension> {
     buildFeatures {
         compose = true
         buildConfig = true
+        resValues = true
     }
 }
 
 plugins.withId("org.jetbrains.kotlin.android") {
-    extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension> {
+    extensions.configure<KotlinAndroidProjectExtension> {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_21)
         }

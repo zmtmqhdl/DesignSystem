@@ -1,10 +1,14 @@
+import com.android.build.api.dsl.LibraryExtension
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
 }
 
-extensions.configure<com.android.build.api.dsl.LibraryExtension> {
+extensions.configure<LibraryExtension> {
     namespace = "com.example.common"
     compileSdk = AndroidConfig.COMPILE_SDK
 
@@ -22,7 +26,15 @@ extensions.configure<com.android.build.api.dsl.LibraryExtension> {
 
     buildFeatures {
         buildConfig = true
-        compose = true
+    }
+}
+
+plugins.withId("org.jetbrains.kotlin.android") {
+    extensions.configure<KotlinAndroidProjectExtension> {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+            freeCompilerArgs.add("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
+        }
     }
 }
 

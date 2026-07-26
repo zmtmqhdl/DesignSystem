@@ -1,6 +1,6 @@
 package com.example.presentation.content
 
-import com.example.core.designSystem.core.DSViewModel
+import com.example.common.DSViewModel
 import com.example.presentation.manager.LoadingManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
