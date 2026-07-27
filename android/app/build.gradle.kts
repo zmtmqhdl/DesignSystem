@@ -39,6 +39,8 @@ extensions.configure<ApplicationExtension> {
     buildTypes {
         getByName("debug") {
             isMinifyEnabled = false
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
         }
         getByName("release") {
             isMinifyEnabled = true
