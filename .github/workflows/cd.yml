@@ -19,13 +19,15 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      # 실행 권한 부여
+      # 실행 권한 부여 (working-directory 추가)
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+        working-directory: ./android
 
-      # 디버그 APK 빌드
+      # 디버그 APK 빌드 (working-directory 추가)
       - name: Build Debug APK
         run: ./gradlew assembleDebug
+        working-directory: ./android
 
       # Firebase App Distribution 업로드
       - name: Upload to Firebase App Distribution
