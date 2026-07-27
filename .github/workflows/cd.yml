@@ -24,15 +24,12 @@ jobs:
         working-directory: ./android
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDevDebug
         working-directory: ./android
-
-      - name: Check APK File Location
-        run: ls -R android/app/build/outputs/apk/
 
       - name: Upload to Firebase App Distribution
         uses: w9jds/firebase-action@v11.16.0
         with:
-          args: appdistribution:distribute android/app/build/outputs/apk/debug/app-debug.apk --app ${{ secrets.FIREBASE_APP_ID }}
+          args: appdistribution:distribute android/app/build/outputs/apk/dev/debug/app-dev-debug.apk --app ${{ secrets.FIREBASE_APP_ID }}
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
