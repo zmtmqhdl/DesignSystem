@@ -19,20 +19,20 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      # 실행 권한 부여 (working-directory 추가)
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
         working-directory: ./android
 
-      # 디버그 APK 빌드 (working-directory 추가)
       - name: Build Debug APK
         run: ./gradlew assembleDebug
         working-directory: ./android
 
-      # Firebase App Distribution 업로드
+      - name: Check APK File Location
+        run: ls -R android/app/build/outputs/apk/
+
       - name: Upload to Firebase App Distribution
         uses: w9jds/firebase-action@v11.16.0
         with:
-          args: appdistribution:distribute app/build/outputs/apk/debug/app-debug.apk --app ${{ secrets.FIREBASE_APP_ID }}
+          args: appdistribution:distribute android/app/build/outputs/apk/debug/app-debug.apk --app ${{ secrets.FIREBASE_APP_ID }}
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
