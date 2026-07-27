@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  deploy-firebase:
+  CD:
     runs-on: ubuntu-latest
 
     steps:
