@@ -33,6 +33,6 @@ jobs:
       - name: Upload to Firebase App Distribution
         uses: w9jds/firebase-action@v11.16.0
         with:
-          args: appdistribution:distribute android/app/build/outputs/apk/debug/app-debug.apk --app ${{ secrets.FIREBASE_APP_ID }}
+          args: appdistribution:distribute app/build/outputs/apk/debug/app-debug.apk --app ${{ secrets.FIREBASE_APP_ID }}
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
