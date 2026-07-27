@@ -4,9 +4,28 @@ on:
   push:
     branches: [ "main" ]
 
+  workflow_dispatch:
+    inputs:
+      target_env:
+        description: 'Select deployment environment and build type'
+        required: true
+        default: 'dev_debug'
+        type: choice
+        options:
+          - DEV_DEBUG
+          - DEV_RELEASE
+          - PROD_DEBUG
+          - PROD_RELEASE
+          - ALL
+
 jobs:
-  CD_DEV:
+  CD_DEV_DEBUG:
+    if: >-
+      inputs.target_env == 'DEV_DEBUG' ||
+      inputs.target_env == 'ALL' ||
+      contains(github.event.head_commit.message, '[DEV_DEBUG]')
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -23,15 +42,50 @@ jobs:
         run: ./gradlew assembleDevDebug
         working-directory: ./android
 
-      - name: Upload DEV to Firebase
+      - name: Upload DEV Debug to Firebase
         uses: w9jds/firebase-action@v11.16.0
         with:
-          args: appdistribution:distribute android/app/build/outputs/apk/dev/debug/app-dev-debug.apk --app ${{ secrets.FIREBASE_DISTRIBUTION_DEV }}
+          args: appdistribution:distribute android/app/build/outputs/apk/dev/debug/app-dev-debug.apk --app ${{ secrets.FIREBASE_DISTRIBUTION_DEV_DEBUG }}
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
 
-  CD_PROD:
+  CD_DEV_RELEASE:
+    if: >-
+      inputs.target_env == 'DEV_RELEASE' ||
+      inputs.target_env == 'ALL' ||
+      contains(github.event.head_commit.message, '[DEV_RELEASE]')
     runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        working-directory: ./android
+
+      - name: Build DEV Release APK
+        run: ./gradlew assembleDevRelease
+        working-directory: ./android
+
+      - name: Upload DEV Release to Firebase
+        uses: w9jds/firebase-action@v11.16.0
+        with:
+          args: appdistribution:distribute android/app/build/outputs/apk/dev/release/app-dev-release.apk --app ${{ secrets.FIREBASE_DISTRIBUTION_DEV_RELEASE }}
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+
+  CD_PROD_DEBUG:
+    if: >-
+      inputs.target_env == 'PROD_DEBUG' ||
+      inputs.target_env == 'ALL' ||
+      contains(github.event.head_commit.message, '[PROD_DEBUG]')
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -48,9 +102,39 @@ jobs:
         run: ./gradlew assembleProdDebug
         working-directory: ./android
 
-      - name: Upload PROD to Firebase
+      - name: Upload PROD Debug to Firebase
         uses: w9jds/firebase-action@v11.16.0
         with:
-          args: appdistribution:distribute android/app/build/outputs/apk/prod/debug/app-prod-debug.apk --app ${{ secrets.FIREBASE_DISTRIBUTION_PROD }}
+          args: appdistribution:distribute android/app/build/outputs/apk/prod/debug/app-prod-debug.apk --app ${{ secrets.FIREBASE_DISTRIBUTION_PROD_DEBUG }}
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+
+  CD_PROD_RELEASE:
+    if: >-
+      inputs.target_env == 'PROD_RELEASE' ||
+      inputs.target_env == 'ALL' ||
+      contains(github.event.head_commit.message, '[PROD_RELEASE]')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        working-directory: ./android
+
+      - name: Build PROD Release APK
+        run: ./gradlew assembleProdRelease
+        working-directory: ./android
+
+      - name: Upload PROD Release to Firebase
+        uses: w9jds/firebase-action@v11.16.0
+        with:
+          args: appdistribution:distribute android/app/build/outputs/apk/prod/release/app-prod-release.apk --app ${{ secrets.FIREBASE_DISTRIBUTION_PROD_RELEASE }}
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
