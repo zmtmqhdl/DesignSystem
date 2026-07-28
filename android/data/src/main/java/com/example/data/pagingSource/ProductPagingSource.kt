@@ -5,7 +5,7 @@ import androidx.paging.PagingState
 import com.example.data.api.ProductApi
 import com.example.data.model.constant.PagingDirection
 import com.example.data.mapper.toDomain
-import com.example.domain.model.ProductDomain
+import com.example.domain.model.domain.ProductDomain
 
 class ProductPagingSource (
     private val productApi: ProductApi

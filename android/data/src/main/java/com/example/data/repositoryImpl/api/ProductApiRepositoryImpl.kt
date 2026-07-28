@@ -5,7 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.data.api.ProductApi
 import com.example.data.pagingSource.ProductPagingSource
-import com.example.domain.model.ProductDomain
+import com.example.domain.model.domain.ProductDomain
 import com.example.domain.repository.api.ProductApiRepository
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.Flow

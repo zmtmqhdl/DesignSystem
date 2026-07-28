@@ -1,7 +1,7 @@
 package com.example.data.mapper
 
 import com.example.data.model.dto.ProductDto
-import com.example.domain.model.ProductDomain
+import com.example.domain.model.domain.ProductDomain
 
 fun ProductDto.toDomain(): ProductDomain {
     return ProductDomain(

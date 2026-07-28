@@ -1,6 +1,6 @@
 package com.example.domain.useCase.api
 
-import com.example.domain.model.AccountDomain
+import com.example.domain.model.domain.AccountDomain
 import com.example.domain.repository.api.AccountApiRepository
 import jakarta.inject.Inject
 

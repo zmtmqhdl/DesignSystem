@@ -1,4 +1,4 @@
-package com.example.domain.model
+package com.example.domain.model.domain
 
 data class ProductDomain(
     val id: Int,

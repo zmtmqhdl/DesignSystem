@@ -1,7 +1,6 @@
 package com.example.domain.repository.api
 
-import com.example.domain.model.AccountDomain
-import com.example.domain.response.ApiResponse
+import com.example.domain.model.domain.AccountDomain
 
 interface AccountApiRepository {
 //    suspend fun getAccount(accountDomain: AccountDomain): ApiResponse<AccountDomain>

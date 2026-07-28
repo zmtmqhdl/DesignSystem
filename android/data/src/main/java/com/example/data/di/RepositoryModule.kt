@@ -2,6 +2,7 @@ package com.example.data.di
 
 import com.example.data.repositoryImpl.DataStoreRepositoryImpl
 import com.example.data.repositoryImpl.DeviceAuthRepositoryImpl
+import com.example.data.repositoryImpl.NetworkRepositoryImpl
 import com.example.data.repositoryImpl.api.AccountApiRepositoryImpl
 import com.example.data.repositoryImpl.WebSocketRepositoryImpl
 import com.example.data.repositoryImpl.api.ProductApiRepositoryImpl
@@ -9,6 +10,7 @@ import com.example.data.repositoryImpl.dataStore.AccountDataStoreRepositoryImpl
 import com.example.data.repositoryImpl.database.AccountDatabaseRepositoryImpl
 import com.example.domain.repository.DataStoreRepository
 import com.example.domain.repository.DeviceAuthRepository
+import com.example.domain.repository.NetworkRepository
 import com.example.domain.repository.api.AccountApiRepository
 import com.example.domain.repository.WebSocketRepository
 import com.example.domain.repository.api.ProductApiRepository
@@ -55,6 +57,12 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindAccountDataStoreRepository(impl: AccountDataStoreRepositoryImpl): AccountDataStoreRepository
+
+
+    @Binds
+    @Singleton
+    abstract fun bindNetworkRepository(impl: NetworkRepositoryImpl): NetworkRepository
+
 
     @Binds
     @Singleton

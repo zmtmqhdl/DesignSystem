@@ -3,7 +3,7 @@ package com.example.data.repositoryImpl.api
 import com.example.data.api.AccountApi
 import com.example.data.mapper.toDomain
 import com.example.data.mapper.toDto
-import com.example.domain.model.AccountDomain
+import com.example.domain.model.domain.AccountDomain
 import com.example.domain.repository.api.AccountApiRepository
 import javax.inject.Inject
 
