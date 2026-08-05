@@ -1,5 +1,7 @@
 package com.example.presentation.screen
 
+import android.util.Log
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
@@ -8,11 +10,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 import com.example.core.designSystem.component.ButtonVariant
 import com.example.core.designSystem.component.DSButton
 import com.example.core.designSystem.component.DSIconButton
+import com.example.core.designSystem.component.DSImage
 import com.example.core.designSystem.component.DSNavigationBar
 import com.example.core.designSystem.component.DSScreen
 import com.example.core.designSystem.component.DSSnackBarState
@@ -77,6 +81,13 @@ fun MainScreen(
             variant = IconButtonVariant.BORDER,
             onClick = { },
             ariaLabel = "test"
+        )
+
+        DSImage(
+            url = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500",
+            modifier = Modifier.fillMaxSize(),
+            onError = { Log.e("dd", "DDD") },
+            contentDescription = ""
         )
     }
 

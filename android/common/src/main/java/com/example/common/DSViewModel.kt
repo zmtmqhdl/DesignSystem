@@ -9,7 +9,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 abstract class DSViewModel() : ViewModel() {
-
     @Inject
     lateinit var logger: Logger
 

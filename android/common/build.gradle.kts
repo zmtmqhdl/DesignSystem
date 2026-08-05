@@ -1,6 +1,5 @@
 import com.android.build.api.dsl.LibraryExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 
 plugins {
     alias(libs.plugins.android.library)
@@ -29,12 +28,10 @@ extensions.configure<LibraryExtension> {
     }
 }
 
-plugins.withId("org.jetbrains.kotlin.android") {
-    extensions.configure<KotlinAndroidProjectExtension> {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_21)
-            freeCompilerArgs.add("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
-        }
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_21)
+        freeCompilerArgs.add("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
     }
 }
 
