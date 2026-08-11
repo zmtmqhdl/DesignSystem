@@ -1,5 +1,6 @@
 package com.example.core.designSystem.component
 
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -21,15 +22,27 @@ fun DSImage(
     height: Dp = DSTheme.space.dimension8,
     contentDescription: String,
     contentScale: ContentScale = ContentScale.Crop,
+    onClick: (() -> Unit)? = null,
+    onLongClick: (() -> Unit)? = null,
     onSuccess: () -> Unit = {},
     onLoading: () -> Unit = {},
     onError: () -> Unit = {}
 ) {
+    val clickModifier = if (onClick != null || onLongClick != null) {
+        Modifier.combinedClickable(
+            onClick = onClick ?: {},
+            onLongClick = onLongClick
+        )
+    } else {
+        Modifier
+    }
+
     SubcomposeAsyncImage(
         model = url,
         modifier = modifier
             .width(width)
-            .height(height),
+            .height(height)
+            .then(clickModifier),
         contentDescription = contentDescription,
         contentScale = contentScale,
         loading = {
