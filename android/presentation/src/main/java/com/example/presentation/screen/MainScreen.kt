@@ -84,7 +84,7 @@ fun MainScreen(
         )
 
         DSImage(
-            url = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500",
+            model = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500",
             modifier = Modifier.fillMaxSize(),
             onError = { Log.e("dd", "DDD") },
             contentDescription = ""

@@ -16,7 +16,7 @@ import com.example.core.designSystem.theme.DSTheme
 
 @Composable
 fun DSImage(
-    url: String,
+    model: Any,
     modifier: Modifier = Modifier,
     width: Dp = DSTheme.space.dimension8,
     height: Dp = DSTheme.space.dimension8,
@@ -38,7 +38,7 @@ fun DSImage(
     }
 
     SubcomposeAsyncImage(
-        model = url,
+        model = model,
         modifier = modifier
             .width(width)
             .height(height)
@@ -66,7 +66,7 @@ fun DSImage(
 fun DSImagePreview() {
     DSTheme {
         DSImage(
-            url  = "https://picsum.photos/id/237/200/200",
+            model  = "https://picsum.photos/id/237/200/200",
             contentDescription = "contentDescription"
         )
     }
