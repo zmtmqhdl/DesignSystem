@@ -6,18 +6,18 @@ import jakarta.inject.Inject
 import jakarta.inject.Singleton
 
 @Singleton
-class AppLogger @Inject constructor(
+class DSLogger @Inject constructor(
     private val appConfig: AppConfig
 ) : Logger {
 
     override fun d(tag: String, message: String) {
-        if (appConfig.enableLogging) {
+        if (appConfig.isProd) {
             Log.d(tag, message)
         }
     }
 
     override fun e(tag: String, message: String, throwable: Throwable?) {
-        if (appConfig.enableLogging) {
+        if (appConfig.isProd) {
             Log.e(tag, message, throwable)
         }
     }

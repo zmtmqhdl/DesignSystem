@@ -1,6 +1,6 @@
 package com.example.common.di
 
-import com.example.common.util.logger.AppLogger
+import com.example.common.util.logger.DSLogger
 import com.example.common.util.logger.Logger
 import dagger.Binds
 import dagger.Module
@@ -14,5 +14,5 @@ abstract class LoggerModule {
 
     @Binds
     @Singleton
-    abstract fun bindLogger(impl: AppLogger): Logger
+    abstract fun bindLogger(impl: DSLogger): Logger
 }
