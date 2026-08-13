@@ -1,4 +1,4 @@
-package com.example.common.logger
+package com.example.common.util.logger
 
 import android.util.Log
 import com.example.domain.model.AppConfig

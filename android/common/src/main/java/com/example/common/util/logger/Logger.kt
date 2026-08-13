@@ -1,4 +1,4 @@
-package com.example.common.logger
+package com.example.common.util.logger
 
 interface Logger {
     fun d(tag: String, message: String)
