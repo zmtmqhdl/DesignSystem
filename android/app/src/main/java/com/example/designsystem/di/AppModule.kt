@@ -17,15 +17,13 @@ object AppModule {
     fun provideAppConfig(): AppConfig {
         return if (BuildConfig.FLAVOR == "dev") {
             AppConfig(
-                isDev = true,
+                isProd = false,
                 baseUrl = "https://dev-api.com",
-                enableLogging = true,
             )
         } else {
             AppConfig(
-                isDev = false,
+                isProd = false,
                 baseUrl = "https://api.com",
-                enableLogging = false,
             )
         }
     }
