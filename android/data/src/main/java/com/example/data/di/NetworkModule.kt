@@ -34,10 +34,10 @@ object RetrofitModule {
         appConfig: AppConfig
     ): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
-            level = if (appConfig.enableLogging) {
-                HttpLoggingInterceptor.Level.BODY
-            } else {
+            level = if (appConfig.isProd) {
                 HttpLoggingInterceptor.Level.NONE
+            } else {
+                HttpLoggingInterceptor.Level.BODY
             }
         }
         return OkHttpClient.Builder()
