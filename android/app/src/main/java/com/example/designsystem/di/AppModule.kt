@@ -15,15 +15,15 @@ object AppModule {
     @Provides
     @Singleton
     fun provideAppConfig(): AppConfig {
-        return if (BuildConfig.FLAVOR == "dev") {
+        return if (BuildConfig.FLAVOR == "prod") {
             AppConfig(
-                isProd = false,
-                baseUrl = "https://dev-api.com",
+                isProd = true,
+                baseUrl = "https://api.com",
             )
         } else {
             AppConfig(
                 isProd = false,
-                baseUrl = "https://api.com",
+                baseUrl = "https://dev-api.com",
             )
         }
     }
