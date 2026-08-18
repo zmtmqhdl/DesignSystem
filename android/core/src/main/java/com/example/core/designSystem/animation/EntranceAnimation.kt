@@ -7,9 +7,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
@@ -18,7 +15,6 @@ import com.example.core.designSystem.component.DSText
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 
-// animateTo 고려
 @Composable
 fun Modifier.entranceAnimation(
     visible: Boolean,
@@ -53,8 +49,6 @@ fun Modifier.entranceAnimation(
 @Composable
 private fun EntranceAnimationPreview() {
     DSTheme {
-        var visible by remember { mutableStateOf(false) }
-
         Column(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
@@ -62,7 +56,7 @@ private fun EntranceAnimationPreview() {
                 text = "Preview1",
                 style = DSTheme.typography.typography1.bold,
                 modifier = Modifier.entranceAnimation(
-                    visible = visible
+                    visible = true
                 )
             )
 
@@ -70,7 +64,7 @@ private fun EntranceAnimationPreview() {
                 text = "Preview2",
                 style = DSTheme.typography.typography4.regular,
                 modifier = Modifier.entranceAnimation(
-                    visible = visible,
+                    visible = true,
                     delayMillis = 80
                 )
             )
@@ -79,7 +73,7 @@ private fun EntranceAnimationPreview() {
                 text = "Preview3",
                 style = DSTheme.typography.typography5.regular,
                 modifier = Modifier.entranceAnimation(
-                    visible = visible,
+                    visible = true,
                     delayMillis = 160
                 )
             )

@@ -13,19 +13,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
-import com.example.core.designSystem.component.ButtonVariant
-import com.example.core.designSystem.component.DSButton
-import com.example.core.designSystem.component.DSIconButton
 import com.example.core.designSystem.component.DSImage
 import com.example.core.designSystem.component.DSNavigationBar
 import com.example.core.designSystem.component.DSScreen
 import com.example.core.designSystem.component.DSSnackBarState
+import com.example.core.designSystem.component.DSText
 import com.example.core.designSystem.component.DSTextField
-import com.example.core.designSystem.component.IconButtonVariant
 import com.example.core.designSystem.component.NavigationBarVariant
 import com.example.core.designSystem.component.TextFieldVariant
-import com.example.core.designSystem.icon.Close
-import com.example.core.designSystem.theme.DSTheme
 import com.example.presentation.navigation.NavigationItems
 import kotlinx.coroutines.delay
 
@@ -67,28 +62,17 @@ fun MainScreen(
             isLoading = isLoading
         )
 
-        DSButton(
-            text = "Preview",
-            variant = ButtonVariant.WEAK,
-            colorSet = DSTheme.color.blue,
-            showLoader = false,
-            onClick = {},
+        DSText(
+            text = "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest",
+            marquee = true
         )
 
-        DSIconButton(
-            icon = Close,
-            colorSet = DSTheme.color.grey,
-            variant = IconButtonVariant.BORDER,
-            onClick = { },
-            ariaLabel = "test"
-        )
-
-        DSImage(
-            model = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500",
-            modifier = Modifier.fillMaxSize(),
-            onError = { Log.e("dd", "DDD") },
-            contentDescription = ""
-        )
+//        DSImage(
+//            model = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500",
+//            modifier = Modifier.fillMaxSize(),
+//            onError = { Log.e("dd", "DDD") },
+//            contentDescription = "",
+//        )
     }
 
 }

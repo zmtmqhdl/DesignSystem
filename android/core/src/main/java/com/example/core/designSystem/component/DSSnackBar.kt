@@ -127,8 +127,8 @@ fun DSSnackBar(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = DSTheme.space.dimension10)
-                .padding(bottom = DSTheme.space.dimension4)
+                .padding(horizontal = DSTheme.dimension.dimension10)
+                .padding(bottom = DSTheme.dimension.dimension4)
                 .background(
                     color = DSTheme.color.background.background,
                     shape = shape
@@ -146,7 +146,7 @@ fun DSSnackBar(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(all = DSTheme.space.dimension2),
+                    .padding(all = DSTheme.dimension.dimension2),
                 verticalAlignment = Alignment.CenterVertically
 
             ) {

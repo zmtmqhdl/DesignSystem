@@ -70,7 +70,7 @@ fun DSTextField(
         state = state,
         modifier = Modifier
             .fillMaxWidth()
-            .height(DSTheme.space.dimension12)
+            .height(DSTheme.dimension.dimension12)
             .clip(shape)
             .conditional(condition = !isLoading) {
                 background(
@@ -80,8 +80,8 @@ fun DSTextField(
             }
             .skeletonAnimation(isLoading = isLoading)
             .padding(
-                horizontal = DSTheme.space.dimension2,
-                vertical = DSTheme.space.dimension1
+                horizontal = DSTheme.dimension.dimension2,
+                vertical = DSTheme.dimension.dimension1
             ),
         enabled = enabled && !isLoading,
         readOnly = readOnly,
@@ -175,7 +175,7 @@ fun DSTextField(
                         }
 
                         else -> {
-                            Spacer(modifier = Modifier.width(width = DSTheme.space.dimension4))
+                            Spacer(modifier = Modifier.width(width = DSTheme.dimension.dimension4))
                         }
                     }
 
@@ -195,7 +195,7 @@ fun DSTextField(
                     }
 
                     if (isFocused && state.text.isNotEmpty()) {
-                        Spacer(modifier = Modifier.width(width = DSTheme.space.dimension1))
+                        Spacer(modifier = Modifier.width(width = DSTheme.dimension.dimension1))
 
                         when (variant) {
                             TextFieldVariant.TEXT,

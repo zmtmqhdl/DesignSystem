@@ -48,7 +48,7 @@ object DSTheme {
         @ReadOnlyComposable
         get() = LocalShapes.current
 
-    val space: DimensionScheme
+    val dimension: DimensionScheme
         @Composable
         @ReadOnlyComposable
         get() = LocalDimensions.current

@@ -2,8 +2,8 @@ package com.example.core.designSystem.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -47,14 +47,14 @@ fun DSBadge(
 
     Box(
         modifier = modifier
-            .defaultMinSize(
-                minWidth = when (size) {
+            .requiredSize(
+                width = when (size) {
                     BadgeSize.XSMALL -> 52.dp
                     BadgeSize.SMALL -> 64.dp
                     BadgeSize.MEDIUM -> 80.dp
                     BadgeSize.LARGE -> 96.dp
                 },
-                minHeight = when (size) {
+                height = when (size) {
                     BadgeSize.XSMALL -> 32.dp
                     BadgeSize.SMALL -> 38.dp
                     BadgeSize.MEDIUM -> 48.dp

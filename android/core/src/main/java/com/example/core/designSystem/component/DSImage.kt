@@ -18,8 +18,8 @@ import com.example.core.designSystem.theme.DSTheme
 fun DSImage(
     model: Any,
     modifier: Modifier = Modifier,
-    width: Dp = DSTheme.space.dimension8,
-    height: Dp = DSTheme.space.dimension8,
+    width: Dp = DSTheme.dimension.dimension8,
+    height: Dp = DSTheme.dimension.dimension8,
     contentDescription: String,
     contentScale: ContentScale = ContentScale.Crop,
     onClick: (() -> Unit)? = null,

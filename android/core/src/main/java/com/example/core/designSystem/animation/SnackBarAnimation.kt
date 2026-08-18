@@ -8,10 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
@@ -85,8 +82,6 @@ fun Modifier.snackBarAnimation(
 @Composable
 private fun SnackBarAnimationPreview() {
     DSTheme {
-        var visible by remember { mutableStateOf(false) }
-
         Column(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
@@ -94,7 +89,7 @@ private fun SnackBarAnimationPreview() {
                 text = "Preview1",
                 style = DSTheme.typography.typography1.bold,
                 modifier = Modifier.entranceAnimation(
-                    visible = visible
+                    visible = true
                 )
             )
 
@@ -102,7 +97,7 @@ private fun SnackBarAnimationPreview() {
                 text = "Preview2",
                 style = DSTheme.typography.typography4.regular,
                 modifier = Modifier.entranceAnimation(
-                    visible = visible,
+                    visible = true,
                     delayMillis = 80
                 )
             )
@@ -111,7 +106,7 @@ private fun SnackBarAnimationPreview() {
                 text = "Preview3",
                 style = DSTheme.typography.typography5.regular,
                 modifier = Modifier.entranceAnimation(
-                    visible = visible,
+                    visible = true,
                     delayMillis = 160
                 )
             )

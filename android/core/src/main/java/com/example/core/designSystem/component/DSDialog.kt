@@ -105,7 +105,7 @@ fun DSDialog(
                 )
 
                 description?.let {
-                    Spacer(modifier = Modifier.height(DSTheme.space.dimension2))
+                    Spacer(modifier = Modifier.height(DSTheme.dimension.dimension2))
 
                     DSText(
                         text = it,
@@ -113,7 +113,7 @@ fun DSDialog(
                     )
                 }
 
-                Spacer(modifier = Modifier.height(DSTheme.space.dimension8))
+                Spacer(modifier = Modifier.height(DSTheme.dimension.dimension8))
 
                 when (variant) {
                     DialogVariant.ALERT -> {
@@ -146,7 +146,7 @@ fun DSDialog(
                                 modifier = Modifier.weight(1f)
                             )
 
-                            Spacer(modifier = Modifier.width(DSTheme.space.dimension2))
+                            Spacer(modifier = Modifier.width(DSTheme.dimension.dimension2))
 
                             DSButton(
                                 text = confirmText,

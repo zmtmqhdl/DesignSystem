@@ -15,10 +15,10 @@ import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -110,21 +110,21 @@ fun DSButton(
                 scaleX = scale
                 scaleY = scale
             }
-            .conditional(condition = full) { fillMaxWidth(fraction = fraction) }
-            .defaultMinSize(
-                minWidth = when (size) {
+            .requiredSize(
+                width = when (size) {
                     ButtonSize.SMALL -> 52.dp
                     ButtonSize.MEDIUM -> 64.dp
                     ButtonSize.LARGE -> 80.dp
                     ButtonSize.XLARGE -> 96.dp
                 },
-                minHeight = when (size) {
+                height = when (size) {
                     ButtonSize.SMALL -> 32.dp
                     ButtonSize.MEDIUM -> 38.dp
                     ButtonSize.LARGE -> 48.dp
                     ButtonSize.XLARGE -> 56.dp
                 }
             )
+            .conditional(condition = full) { fillMaxWidth(fraction = fraction) }
             .conditional(condition = !isLoading) {
                 alpha(if (enabled) 1f else pressedAlpha)
                 background(

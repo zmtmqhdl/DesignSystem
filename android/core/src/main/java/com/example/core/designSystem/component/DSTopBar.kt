@@ -45,7 +45,7 @@ fun DSTopBar(
     centeredTitle: Boolean = false,
     navigationIcon: @Composable (() -> Unit)? = null,
     actions: @Composable (RowScope.() -> Unit)? = null,
-    height: Dp = DSTheme.space.dimension12,
+    height: Dp = DSTheme.dimension.dimension12,
     backgroundColor: BackgroundColorSet = DSTheme.color.background,
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
@@ -92,7 +92,7 @@ fun DSTopBar(
                 .fillMaxWidth()
                 .height(height = height + heightOffsetDp)
                 .background(color = appBarContainerColor)
-                .padding(horizontal = DSTheme.space.dimension4)
+                .padding(horizontal = DSTheme.dimension.dimension4)
                 .offset(y = heightOffsetDp),
             contentAlignment = Alignment.Center
         ) {
@@ -119,7 +119,7 @@ fun DSTopBar(
 
                 actions?.let {
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(space = DSTheme.space.dimension2),
+                        horizontalArrangement = Arrangement.spacedBy(space = DSTheme.dimension.dimension2),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         it()
@@ -134,14 +134,14 @@ fun DSTopBar(
                 .fillMaxWidth()
                 .height(height = height + heightOffsetDp)
                 .background(color = appBarContainerColor)
-                .padding(horizontal = DSTheme.space.dimension4)
+                .padding(horizontal = DSTheme.dimension.dimension4)
                 .offset(y = heightOffsetDp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             navigationIcon?.let {
                 it()
             }
-            Spacer(modifier = Modifier.width(width = DSTheme.space.dimension3))
+            Spacer(modifier = Modifier.width(width = DSTheme.dimension.dimension3))
 
             title?.let {
                 DSText(
@@ -158,7 +158,7 @@ fun DSTopBar(
 
             actions?.let {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(DSTheme.space.dimension2),
+                    horizontalArrangement = Arrangement.spacedBy(DSTheme.dimension.dimension2),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     it()

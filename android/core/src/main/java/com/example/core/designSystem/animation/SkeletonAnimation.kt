@@ -7,23 +7,29 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntSize
+import androidx.compose.ui.unit.dp
+import com.example.core.designSystem.component.DSText
 import com.example.core.designSystem.theme.DSTheme
 
+@Composable
 fun Modifier.skeletonAnimation(
     isLoading: Boolean
-): Modifier = composed {
+): Modifier {
     if (!isLoading) {
-        return@composed this
+        return this
     }
 
     val colorSet = DSTheme.color.skeleton
@@ -37,7 +43,10 @@ fun Modifier.skeletonAnimation(
         initialValue = -2f * size.width,
         targetValue = 2f * size.width,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 1200, easing = LinearEasing),
+            animation = tween(
+                durationMillis = 1200,
+                easing = LinearEasing
+            ),
             repeatMode = RepeatMode.Restart
         ),
         label = "skeletonAnimation"
@@ -52,7 +61,23 @@ fun Modifier.skeletonAnimation(
         )
     )
 
-    this
+    return this
         .onGloballyPositioned { size = it.size }
         .background(brush = shimmerBrush)
+}
+
+@Preview
+@Composable
+private fun SnackBarAnimationPreview() {
+    DSTheme {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            DSText(
+                text = "Preview1",
+                style = DSTheme.typography.typography1.bold,
+                modifier = Modifier.skeletonAnimation(isLoading = true)
+            )
+        }
+    }
 }

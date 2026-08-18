@@ -19,29 +19,28 @@ import com.example.core.designSystem.theme.DSTheme
 @Composable
 fun DSIcon(
     icon: ImageVector,
-    boxSize: Dp = DSTheme.space.dimension8,
-    iconWidth: Dp = DSTheme.space.dimension6,
-    iconHeight: Dp = DSTheme.space.dimension6,
+    modifier: Modifier = Modifier,
+    boxSize: Dp = DSTheme.dimension.dimension8,
+    iconWidth: Dp = DSTheme.dimension.dimension6,
+    iconHeight: Dp = DSTheme.dimension.dimension6,
     color: Color = DSTheme.color.grey700,
     ariaLabel: String,
     isLoading: Boolean = false
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .size(size = boxSize)
             .skeletonAnimation(isLoading = isLoading),
         contentAlignment = Alignment.Center
     ) {
-        if (!isLoading) {
-            Icon(
-                imageVector = icon,
-                contentDescription = ariaLabel,
-                modifier = Modifier
-                    .width(width = iconWidth)
-                    .height(height = iconHeight),
-                tint = color
-            )
-        }
+        Icon(
+            imageVector = icon,
+            contentDescription = ariaLabel,
+            modifier = Modifier
+                .width(width = iconWidth)
+                .height(height = iconHeight),
+            tint = color
+        )
     }
 }
 

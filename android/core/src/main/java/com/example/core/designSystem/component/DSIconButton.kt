@@ -11,6 +11,7 @@ import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -46,15 +47,15 @@ enum class IconButtonVariant {
 fun DSIconButton(
     icon: ImageVector,
     onClick: () -> Unit,
-    boxSize: Dp = DSTheme.space.dimension12,
-    iconWidth: Dp = DSTheme.space.dimension6,
-    iconHeight: Dp = DSTheme.space.dimension6,
+    boxSize: Dp = DSTheme.dimension.dimension12,
+    iconWidth: Dp = DSTheme.dimension.dimension6,
+    iconHeight: Dp = DSTheme.dimension.dimension6,
     variant: IconButtonVariant = IconButtonVariant.CLEAR,
     colorSet: ColorSet = DSTheme.color.grey,
     ariaLabel: String,
     isLoading: Boolean = false
 ) {
-    val corner = DSTheme.space.dimension2
+    val corner = DSTheme.dimension.dimension2
     val iconButtonShape = RoundedCornerShape(corner)
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
@@ -80,12 +81,7 @@ fun DSIconButton(
                 scaleX = scale
                 scaleY = scale
             }
-            .defaultMinSize(
-                minWidth = boxSize,
-                minHeight = boxSize
-            )
-            .clip(shape = iconButtonShape)
-            .skeletonAnimation(isLoading = isLoading)
+            .requiredSize(boxSize)
             .conditional(
                 condition = variant == IconButtonVariant.FILL && !isLoading
             ) {
@@ -114,6 +110,8 @@ fun DSIconButton(
                     )
                 }
             }
+            .clip(shape = iconButtonShape)
+            .skeletonAnimation(isLoading = isLoading)
             .clickable(
                 enabled = !isLoading,
                 role = Role.Button,
@@ -121,7 +119,7 @@ fun DSIconButton(
                 indication = null,
                 onClick = onClick,
             )
-            .semantics(mergeDescendants = true) { role = Role.Button},
+            .semantics(mergeDescendants = true) { role = Role.Button },
         contentAlignment = Alignment.Center
     ) {
         if (!isLoading) {
@@ -146,6 +144,7 @@ private fun IconButtonPreview() {
             icon = Close,
             colorSet = DSTheme.color.grey,
             variant = IconButtonVariant.BORDER,
+            isLoading = true,
             onClick = { },
             ariaLabel = "test"
         )
