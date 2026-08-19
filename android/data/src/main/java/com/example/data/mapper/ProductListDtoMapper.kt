@@ -6,7 +6,7 @@ import com.example.domain.model.domain.ProductListDomain
 fun ProductListDto.toDomain(): ProductListDomain {
     return ProductListDomain(
         productList = productList.map { it.toDomain() },
-        prevCursor = prevCursor,
+        updatedProductList = updatedProductList.map { it.toDomain() },
         nextCursor = nextCursor
     )
 }

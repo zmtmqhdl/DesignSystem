@@ -26,4 +26,8 @@ class ProductApiRepositoryImpl @Inject constructor(
             pagingSourceFactory = { ProductPagingSource(productApi = productApi) }
         ).flow
     }
+
+    override fun getProductListFromServer() {
+
+    }
 }

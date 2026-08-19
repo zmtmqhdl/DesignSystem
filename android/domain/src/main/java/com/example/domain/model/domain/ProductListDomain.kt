@@ -2,6 +2,6 @@ package com.example.domain.model.domain
 
 data class ProductListDomain(
     val productList: List<ProductDomain>,
-    val prevCursor: Int?,
+    val updatedProductList: List<ProductDomain>,
     val nextCursor: Int?
 )

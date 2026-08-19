@@ -6,4 +6,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface ProductApiRepository {
     fun getProductList(): Flow<PagingData<ProductDomain>>
+
+    fun getProductListFromServer()
+
+
 }
