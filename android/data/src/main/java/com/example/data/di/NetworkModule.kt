@@ -5,6 +5,7 @@ import coil3.ImageLoader
 import coil3.SingletonImageLoader
 import coil3.network.okhttp.OkHttpNetworkFetcherFactory
 import com.example.domain.model.AppConfig
+import com.example.domain.model.Environment
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -34,7 +35,7 @@ object RetrofitModule {
         appConfig: AppConfig
     ): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
-            level = if (appConfig.isProd) {
+            level = if (appConfig.environment == Environment.PROD) {
                 HttpLoggingInterceptor.Level.NONE
             } else {
                 HttpLoggingInterceptor.Level.BODY

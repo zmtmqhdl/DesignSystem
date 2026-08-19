@@ -2,6 +2,7 @@ package com.example.designsystem.di
 
 import com.example.designsystem.BuildConfig
 import com.example.domain.model.AppConfig
+import com.example.domain.model.Environment
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,12 +18,12 @@ object AppModule {
     fun provideAppConfig(): AppConfig {
         return if (BuildConfig.FLAVOR == "prod") {
             AppConfig(
-                isProd = true,
+                environment = Environment.PROD,
                 baseUrl = "https://api.com",
             )
         } else {
             AppConfig(
-                isProd = false,
+                environment = Environment.DEV,
                 baseUrl = "https://dev-api.com",
             )
         }

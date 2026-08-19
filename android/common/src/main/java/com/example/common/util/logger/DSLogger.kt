@@ -2,6 +2,7 @@ package com.example.common.util.logger
 
 import android.util.Log
 import com.example.domain.model.AppConfig
+import com.example.domain.model.Environment
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
 
@@ -11,13 +12,13 @@ class DSLogger @Inject constructor(
 ) : Logger {
 
     override fun d(tag: String, message: String) {
-        if (appConfig.isProd) {
+        if (appConfig.environment == Environment.DEV) {
             Log.d(tag, message)
         }
     }
 
     override fun e(tag: String, message: String, throwable: Throwable?) {
-        if (appConfig.isProd) {
+        if (appConfig.environment == Environment.DEV) {
             Log.e(tag, message, throwable)
         }
     }
