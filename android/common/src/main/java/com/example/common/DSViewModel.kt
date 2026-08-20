@@ -2,28 +2,20 @@ package com.example.common
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.common.util.logger.Logger
-import jakarta.inject.Inject
+import com.example.common.util.logger.DSLogger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-abstract class DSViewModel() : ViewModel() {
-    @Inject
-    lateinit var logger: Logger
-
-    protected open val tag: String by lazy { this::class.java.simpleName }
+abstract class DSViewModel : ViewModel() {
+    protected val tag: String by lazy { this::class.java.simpleName }
 
     protected fun logD(message: String) {
-        if (::logger.isInitialized) {
-            logger.d(tag, message)
-        }
+        DSLogger.d(tag, message)
     }
 
     protected fun logE(message: String, throwable: Throwable? = null) {
-        if (::logger.isInitialized) {
-            logger.e(tag, message, throwable)
-        }
+        DSLogger.e(tag, message, throwable)
     }
 
     protected fun launch(block: suspend CoroutineScope.() -> Unit) {
