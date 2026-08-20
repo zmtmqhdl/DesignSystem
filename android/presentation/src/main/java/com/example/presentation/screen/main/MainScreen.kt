@@ -1,7 +1,5 @@
-package com.example.presentation.screen
+package com.example.presentation.screen.main
 
-import android.util.Log
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
@@ -10,10 +8,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
-import com.example.core.designSystem.component.DSImage
 import com.example.core.designSystem.component.DSNavigationBar
 import com.example.core.designSystem.component.DSScreen
 import com.example.core.designSystem.component.DSSnackBarState
@@ -21,6 +18,7 @@ import com.example.core.designSystem.component.DSText
 import com.example.core.designSystem.component.DSTextField
 import com.example.core.designSystem.component.NavigationBarVariant
 import com.example.core.designSystem.component.TextFieldVariant
+import com.example.presentation.content.ContentViewModel
 import com.example.presentation.navigation.NavigationItems
 import kotlinx.coroutines.delay
 
@@ -32,7 +30,10 @@ fun MainScreen(
     val snackBarHostState = remember { DSSnackBarState() }
     var isLoading by remember { mutableStateOf(true) }
 
+    val viewModel: MainViewModel = hiltViewModel()
+
     LaunchedEffect(Unit) {
+        viewModel.test()
         delay(2000)
         isLoading = false
     }

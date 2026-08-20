@@ -8,7 +8,7 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.example.presentation.screen.FirstScreen
-import com.example.presentation.screen.MainScreen
+import com.example.presentation.screen.main.MainScreen
 
 @Composable
 fun MainEntry(
