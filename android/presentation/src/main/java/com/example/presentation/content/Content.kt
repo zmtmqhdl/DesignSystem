@@ -11,7 +11,7 @@ import com.example.core.designSystem.component.DSContentLayout
 import com.example.presentation.navigation.FirstEntry
 import com.example.presentation.navigation.Route
 import com.example.presentation.navigation.SecondEntry
-import com.example.presentation.screen.MainScreen
+import com.example.presentation.screen.main.MainScreen
 
 @Composable
 fun Content() {
