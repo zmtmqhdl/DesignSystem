@@ -38,7 +38,7 @@ class ProductPagingSource (
             LoadResult.Page(
                 data = products,
                 prevKey = response.prevCursor,
-                nextKey = if (products.isEmpty()) null else response.nextCursor
+                nextKey = if (products.isEmpty()) null else response.lastCursor
             )
         } catch (e: Exception) {
             LoadResult.Error(e)

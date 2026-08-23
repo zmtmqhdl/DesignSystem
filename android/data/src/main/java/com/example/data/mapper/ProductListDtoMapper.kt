@@ -7,6 +7,6 @@ fun ProductListDto.toDomain(): ProductListDomain {
     return ProductListDomain(
         productList = productList.map { it.toDomain() },
         updatedProductList = updatedProductList.map { it.toDomain() },
-        nextCursor = nextCursor
+        lastCursor = lastCursor
     )
 }
