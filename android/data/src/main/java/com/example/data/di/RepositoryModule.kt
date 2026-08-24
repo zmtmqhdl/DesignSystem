@@ -8,6 +8,7 @@ import com.example.data.repositoryImpl.WebSocketRepositoryImpl
 import com.example.data.repositoryImpl.api.ProductApiRepositoryImpl
 import com.example.data.repositoryImpl.dataStore.AccountDataStoreRepositoryImpl
 import com.example.data.repositoryImpl.database.AccountDatabaseRepositoryImpl
+import com.example.data.repositoryImpl.database.ProductDatabaseRepositoryImpl
 import com.example.domain.repository.DataStoreRepository
 import com.example.domain.repository.DeviceAuthRepository
 import com.example.domain.repository.NetworkRepository
@@ -16,6 +17,7 @@ import com.example.domain.repository.WebSocketRepository
 import com.example.domain.repository.api.ProductApiRepository
 import com.example.domain.repository.dataStore.AccountDataStoreRepository
 import com.example.domain.repository.database.AccountDatabaseRepository
+import com.example.domain.repository.database.ProductDatabaseRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -36,6 +38,13 @@ abstract class RepositoryModule {
     abstract fun bindProductApiRepository(impl: ProductApiRepositoryImpl): ProductApiRepository
 
     // database
+
+    @Binds
+    abstract fun bindProductDatabaseRepository(impl: ProductDatabaseRepositoryImpl): ProductDatabaseRepository
+
+
+
+
 
     // dataStore
 

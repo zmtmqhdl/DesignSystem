@@ -3,8 +3,8 @@ package com.example.data.model.dto
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ProductListDto(
-    val productList: List<ProductDto>,
-    val updatedProductList: List<ProductDto>,
+data class ProductsDto(
+    val products: List<ProductDto>,
+    val updatedProducts: List<ProductDto>,
     val lastCursor: Int?
 )

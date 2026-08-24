@@ -1,4 +1,4 @@
-package com.example.domain.model.state
+package com.example.domain.model.state.account
 
 import com.example.domain.model.domain.AccountDomain
 

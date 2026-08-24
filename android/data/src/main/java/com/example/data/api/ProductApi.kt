@@ -1,13 +1,14 @@
 package com.example.data.api
 
-import com.example.data.model.dto.ProductListDto
+import com.example.data.model.dto.ProductsDto
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface ProductApi {
-    @GET("/get/product")
+    @GET("/get/product/{cursor}/{direction}/{size}")
     suspend fun getProductList(
-        @Query("cursor") cursor: Int?,
-        @Query("size") size: Int
-    ): ProductListDto
+        @Path("cursor") cursor: Int,
+        @Path("direction") direction: String,
+        @Path("size") size: Int
+    ): ProductsDto
 }

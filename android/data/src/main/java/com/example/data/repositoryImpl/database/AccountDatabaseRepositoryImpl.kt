@@ -2,8 +2,8 @@ package com.example.data.repositoryImpl.database
 
 import com.example.data.database.DatabaseProvider
 import com.example.data.mapper.toDomain
-import com.example.domain.model.state.AccountListState
-import com.example.domain.model.state.AccountState
+import com.example.domain.model.state.account.AccountListState
+import com.example.domain.model.state.account.AccountState
 import com.example.domain.repository.dataStore.AccountDataStoreRepository
 import com.example.domain.repository.database.AccountDatabaseRepository
 import jakarta.inject.Inject

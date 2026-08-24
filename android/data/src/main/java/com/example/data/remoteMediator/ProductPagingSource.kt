@@ -1,4 +1,4 @@
-package com.example.data.pagingSource
+package com.example.data.remoteMediator
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -29,8 +29,8 @@ class ProductPagingSource (
         return try {
             val response = productApi.getProductList(
                 cursor = currentCursor,
+                direction = direction,
                 size = params.loadSize,
-                direction = direction
             ).toDomain()
 
             val products = response.productList

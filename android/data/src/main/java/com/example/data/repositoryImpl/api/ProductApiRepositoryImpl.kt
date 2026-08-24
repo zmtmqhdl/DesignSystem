@@ -4,7 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.data.api.ProductApi
-import com.example.data.pagingSource.ProductPagingSource
+import com.example.data.remoteMediator.ProductPagingSource
 import com.example.domain.model.domain.ProductDomain
 import com.example.domain.repository.api.ProductApiRepository
 import jakarta.inject.Inject

@@ -1,12 +1,12 @@
 package com.example.data.mapper
 
-import com.example.data.model.dto.ProductListDto
+import com.example.data.model.dto.ProductsDto
 import com.example.domain.model.domain.ProductListDomain
 
-fun ProductListDto.toDomain(): ProductListDomain {
+fun ProductsDto.toDomain(): ProductListDomain {
     return ProductListDomain(
-        productList = productList.map { it.toDomain() },
-        updatedProductList = updatedProductList.map { it.toDomain() },
+        productList = products.map { it.toDomain() },
+        updatedProductList = updatedProducts.map { it.toDomain() },
         lastCursor = lastCursor
     )
 }
