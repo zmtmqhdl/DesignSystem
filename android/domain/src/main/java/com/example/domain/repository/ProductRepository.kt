@@ -1,11 +1,11 @@
-package com.example.domain.repository.database
+package com.example.domain.repository
 
 import androidx.paging.PagingData
 import com.example.domain.model.domain.ProductDomain
 import kotlinx.coroutines.flow.Flow
 
-interface ProductDatabaseRepository {
-    val products: Flow<PagingData<ProductDomain>>
+interface ProductRepository {
+    fun getProducts(): Flow<PagingData<ProductDomain>>
 
     suspend fun insertProducts(products: List<ProductDomain>)
     suspend fun updateProduct(product: ProductDomain)

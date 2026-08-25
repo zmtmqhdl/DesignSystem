@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.data.model.entity.ProductEntity
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProductDao {
@@ -21,4 +20,7 @@ interface ProductDao {
     suspend fun updateProduct(product: ProductEntity)
     @Update
     suspend fun updateProducts(products: List<ProductEntity>)
+
+    @Query("DELETE FROM product_database")
+    suspend fun clearAll()
 }

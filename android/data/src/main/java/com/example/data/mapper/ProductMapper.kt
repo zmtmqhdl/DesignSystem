@@ -22,6 +22,15 @@ fun ProductDto.toDomain(): ProductDomain {
     )
 }
 
+fun ProductDto.toEntity(): ProductEntity {
+    return ProductEntity(
+        id = id,
+        name = name,
+        price = price,
+        imageUrl = imageUrl
+    )
+}
+
 fun ProductDomain.toEntity(): ProductEntity {
     return ProductEntity(
         id = id,
@@ -30,3 +39,4 @@ fun ProductDomain.toEntity(): ProductEntity {
         imageUrl = imageUrl
     )
 }
+

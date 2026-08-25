@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.androidx.paging.runtime)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
+    implementation(libs.androidx.room.paging)
 }
 
 protobuf {

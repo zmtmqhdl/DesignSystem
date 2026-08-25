@@ -3,15 +3,15 @@ package com.example.data.di
 import com.example.data.repositoryImpl.DataStoreRepositoryImpl
 import com.example.data.repositoryImpl.DeviceAuthRepositoryImpl
 import com.example.data.repositoryImpl.NetworkRepositoryImpl
+import com.example.data.repositoryImpl.ProductRepositoryImpl
 import com.example.data.repositoryImpl.api.AccountApiRepositoryImpl
 import com.example.data.repositoryImpl.WebSocketRepositoryImpl
-import com.example.data.repositoryImpl.api.ProductApiRepositoryImpl
 import com.example.data.repositoryImpl.dataStore.AccountDataStoreRepositoryImpl
 import com.example.data.repositoryImpl.database.AccountDatabaseRepositoryImpl
-import com.example.data.repositoryImpl.database.ProductDatabaseRepositoryImpl
 import com.example.domain.repository.DataStoreRepository
 import com.example.domain.repository.DeviceAuthRepository
 import com.example.domain.repository.NetworkRepository
+import com.example.domain.repository.ProductRepository
 import com.example.domain.repository.api.AccountApiRepository
 import com.example.domain.repository.WebSocketRepository
 import com.example.domain.repository.api.ProductApiRepository
@@ -32,19 +32,6 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindAccountApiRepository(impl: AccountApiRepositoryImpl): AccountApiRepository
-
-    @Binds
-    @Singleton
-    abstract fun bindProductApiRepository(impl: ProductApiRepositoryImpl): ProductApiRepository
-
-    // database
-
-    @Binds
-    abstract fun bindProductDatabaseRepository(impl: ProductDatabaseRepositoryImpl): ProductDatabaseRepository
-
-
-
-
 
     // dataStore
 
@@ -76,4 +63,18 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindDeviceAuthRepository(impl: DeviceAuthRepositoryImpl): DeviceAuthRepository
+
+
+
+
+
+
+    @Binds
+    abstract fun bindProductRepository(
+        productRepositoryImpl: ProductRepositoryImpl
+    ): ProductRepository
+
+
+
+
 }
