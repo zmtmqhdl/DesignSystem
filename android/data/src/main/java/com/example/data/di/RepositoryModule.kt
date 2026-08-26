@@ -1,23 +1,17 @@
 package com.example.data.di
 
+import com.example.data.repositoryImpl.AccountRepositoryImpl
 import com.example.data.repositoryImpl.DataStoreRepositoryImpl
 import com.example.data.repositoryImpl.DeviceAuthRepositoryImpl
 import com.example.data.repositoryImpl.NetworkRepositoryImpl
 import com.example.data.repositoryImpl.ProductRepositoryImpl
-import com.example.data.repositoryImpl.api.AccountApiRepositoryImpl
 import com.example.data.repositoryImpl.WebSocketRepositoryImpl
-import com.example.data.repositoryImpl.dataStore.AccountDataStoreRepositoryImpl
-import com.example.data.repositoryImpl.database.AccountDatabaseRepositoryImpl
+import com.example.domain.repository.AccountRepository
 import com.example.domain.repository.DataStoreRepository
 import com.example.domain.repository.DeviceAuthRepository
 import com.example.domain.repository.NetworkRepository
 import com.example.domain.repository.ProductRepository
-import com.example.domain.repository.api.AccountApiRepository
 import com.example.domain.repository.WebSocketRepository
-import com.example.domain.repository.api.ProductApiRepository
-import com.example.domain.repository.dataStore.AccountDataStoreRepository
-import com.example.domain.repository.database.AccountDatabaseRepository
-import com.example.domain.repository.database.ProductDatabaseRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -28,11 +22,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
 
-    // api
-    @Binds
-    @Singleton
-    abstract fun bindAccountApiRepository(impl: AccountApiRepositoryImpl): AccountApiRepository
-
     // dataStore
 
 
@@ -40,19 +29,9 @@ abstract class RepositoryModule {
     @Singleton
     abstract fun bindWebSocketRepository(impl: WebSocketRepositoryImpl): WebSocketRepository
 
-
-
-    @Binds
-    @Singleton
-    abstract fun bindAccountDatabaseRepository(impl: AccountDatabaseRepositoryImpl): AccountDatabaseRepository
-
     @Binds
     @Singleton
     abstract fun bindDataStoreRepository(impl: DataStoreRepositoryImpl): DataStoreRepository
-
-    @Binds
-    @Singleton
-    abstract fun bindAccountDataStoreRepository(impl: AccountDataStoreRepositoryImpl): AccountDataStoreRepository
 
 
     @Binds
@@ -65,16 +44,15 @@ abstract class RepositoryModule {
     abstract fun bindDeviceAuthRepository(impl: DeviceAuthRepositoryImpl): DeviceAuthRepository
 
 
-
-
-
-
     @Binds
+    @Singleton
     abstract fun bindProductRepository(
         productRepositoryImpl: ProductRepositoryImpl
     ): ProductRepository
 
-
-
-
+    @Binds
+    @Singleton
+    abstract fun bindAccountRepository(
+        accountRepositoryImpl: AccountRepositoryImpl
+    ): AccountRepository
 }

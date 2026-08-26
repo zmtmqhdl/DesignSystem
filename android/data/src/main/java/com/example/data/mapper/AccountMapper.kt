@@ -4,14 +4,23 @@ import com.example.data.model.dto.AccountDto
 import com.example.data.model.entity.AccountEntity
 import com.example.domain.model.domain.AccountDomain
 
-fun AccountDto.toDomain() =
-    AccountDomain(
+fun AccountEntity.toDomain(): AccountDomain {
+    return AccountDomain(
         id = id,
         name = name
     )
+}
 
-fun AccountDto.toEntity() =
-    AccountEntity(
+fun AccountDto.toDomain(): AccountDomain {
+    return AccountDomain(
         id = id,
         name = name
     )
+}
+
+fun AccountDomain.toDto(): AccountDto {
+    return AccountDto(
+        id = id,
+        name = name
+    )
+}
