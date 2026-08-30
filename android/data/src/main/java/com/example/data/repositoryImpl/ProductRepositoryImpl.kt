@@ -31,7 +31,7 @@ class ProductRepositoryImpl @Inject constructor(
                 pageSize = 20,
                 prefetchDistance = 5,
                 maxSize = PagingConfig.MAX_SIZE_UNBOUNDED,
-                enablePlaceholders = false
+                enablePlaceholders = true
             ),
             remoteMediator = ProductRemoteMediator(
                 productApi = productApi,
