@@ -19,6 +19,7 @@ interface ProductDao {
 
     @Update
     suspend fun updateProduct(product: ProductEntity)
+
     @Update
     suspend fun updateProducts(products: List<ProductEntity>)
 

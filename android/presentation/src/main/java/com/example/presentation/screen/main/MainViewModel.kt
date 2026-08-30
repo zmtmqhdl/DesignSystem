@@ -17,7 +17,5 @@ class MainViewModel @Inject constructor(
     fun test() {
         logD("logger test")
     }
-    val products: Flow<PagingData<ProductDomain>> = productRepository
-        .getProducts()
-        .cachedIn(viewModelScope)
+
 }

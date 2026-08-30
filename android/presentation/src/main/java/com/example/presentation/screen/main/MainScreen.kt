@@ -44,25 +44,10 @@ fun MainScreen(
     backStack: NavBackStack<NavKey>
 ) {
     val snackBarHostState = remember { DSSnackBarState() }
-    var isLoading by remember { mutableStateOf(true) }
-
 
 
     val viewModel: MainViewModel = hiltViewModel()
 
-    val pagingItems = viewModel.products.collectAsLazyPagingItems()
-
-    LaunchedEffect(Unit) {
-        viewModel.test()
-        delay(2000)
-        isLoading = false
-    }
-    val isRefreshing = pagingItems.loadState.refresh is LoadState.Loading
-
-    LaunchedEffect(pagingItems.loadState) {
-        Log.d("PagingDebug", "Mediator Refresh: ${pagingItems.loadState.mediator?.refresh}")
-        Log.d("PagingDebug", "Source Refresh: ${pagingItems.loadState.source.refresh}")
-    }
 
     DSScreen(
         bottomBar = {
@@ -79,52 +64,6 @@ fun MainScreen(
         snackBarState = snackBarHostState
     ) {
 
-        val state = rememberTextFieldState()
-
-        DSTextField(
-            state = state,
-            placeholder = "placeholder",
-            onKeyboardActionClick = {},
-            variant = TextFieldVariant.PASSWORD,
-            isLoading = isLoading
-        )
-
-        DSText(
-            text = "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest",
-            marquee = true
-        )
-
-        PullToRefreshBox(
-            isRefreshing = isRefreshing,
-            onRefresh = {
-                // 🌟 당겼을 때 RemoteMediator의 REFRESH를 구동합니다.
-                pagingItems.refresh()
-            },
-            modifier = Modifier.fillMaxSize()
-        ) {
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
-                // 1. Paging 아이템 리스트
-                items(
-                    count = pagingItems.itemCount,
-                    key = pagingItems.itemKey { it.id }
-                ) { index ->
-                    val product = pagingItems[index]
-                    if (product != null) {
-                        ProductItem(product = product)
-                        HorizontalDivider()
-                    }
-                }
-
-
-            }
-        }
-
-//        DSImage(
-//            model = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500",
-//            modifier = Modifier.fillMaxSize(),
-//            onError = { Log.e("dd", "DDD") },
-//            contentDescription = "",
-//        )
     }
 
 }

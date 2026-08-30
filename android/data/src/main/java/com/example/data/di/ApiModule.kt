@@ -1,7 +1,6 @@
 package com.example.data.di
 
 import com.example.data.api.AccountApi
-import com.example.data.api.FakeProductApi
 import com.example.data.api.ProductApi
 import dagger.Module
 import dagger.Provides
@@ -19,20 +18,11 @@ object ApiModule {
         return provideApi(retrofit = retrofit)
     }
 
-//    @Singleton
-//    @Provides
-//    fun provideProductApi(@BasicRetrofit retrofit: Retrofit): ProductApi {
-//        return provideApi(retrofit = retrofit)
-//    }
-
     @Singleton
     @Provides
-    fun provideProductApi(
-        fakeProductApi: FakeProductApi
-    ): ProductApi {
-        return fakeProductApi
+    fun provideProductApi(@BasicRetrofit retrofit: Retrofit): ProductApi {
+        return provideApi(retrofit = retrofit)
     }
-
 }
 
 inline fun <reified I> provideApi(retrofit: Retrofit): I {
