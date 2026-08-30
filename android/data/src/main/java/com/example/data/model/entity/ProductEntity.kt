@@ -4,9 +4,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.data.model.entity.key.DatabaseNames
 
-@Entity(tableName = DatabaseNames.ACCOUNT)
-data class AccountEntity(
+@Entity(tableName = DatabaseNames.PRODUCT)
+data class ProductEntity (
     @PrimaryKey(autoGenerate = true)
     val id: Long,
     val name: String,
+    val price: Long,
+    val imageUrl: String
 )

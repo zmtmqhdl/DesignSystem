@@ -1,9 +1,9 @@
 package com.example.domain.model.domain
 
 data class ProductDomain(
-    val id: Int,
+    val id: Long,
     val name: String,
-    val price: Int,
+    val price: Long,
     val imageUrl: String
 )
 

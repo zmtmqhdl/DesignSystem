@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.protobuf)
+    alias(libs.plugins.room)
 }
 
 extensions.configure<LibraryExtension> {
@@ -32,6 +33,10 @@ extensions.configure<LibraryExtension> {
     buildFeatures {
         buildConfig = true
     }
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
 
 kotlin {
@@ -63,6 +68,7 @@ dependencies {
     implementation(libs.androidx.paging.runtime)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
+    implementation(libs.androidx.room.paging)
 }
 
 protobuf {
