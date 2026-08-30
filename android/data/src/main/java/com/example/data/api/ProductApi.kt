@@ -7,7 +7,7 @@ import retrofit2.http.Query
 interface ProductApi {
     @GET("/get/product")
     suspend fun getProducts(
-        @Query("cursor") cursor: Int?,
+        @Query("cursor") cursor: Long?,
         @Query("direction") direction: String?,
         @Query("size") size: Int?
     ): ProductsDto

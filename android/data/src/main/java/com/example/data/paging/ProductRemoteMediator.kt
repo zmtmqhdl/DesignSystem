@@ -1,81 +1,99 @@
 package com.example.data.paging
 
+import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
+import androidx.room.withTransaction
 import com.example.data.api.ProductApi
-import com.example.data.database.dao.ProductDao
+import com.example.data.database.CommonDatabase
 import com.example.data.mapper.toEntity
-import com.example.data.model.constant.PagingDirection
+import com.example.data.model.enum.PagingDirection
 import com.example.data.model.entity.ProductEntity
+import com.example.data.model.entity.key.DatabaseNames
+import com.example.domain.model.domain.PagingKeyDomain
 import java.io.IOException
+import retrofit2.HttpException
 
 @OptIn(ExperimentalPagingApi::class)
 class ProductRemoteMediator(
+    private val commonDatabase: CommonDatabase,
     private val productApi: ProductApi,
-    private val productDao: ProductDao
 ) : RemoteMediator<Int, ProductEntity>() {
 
-    private var topCursor: Int? = null
-    private var bottomCursor: Int? = null
+    private val productDao = commonDatabase.productDao()
+    private val pagingKeyDao = commonDatabase.pagingKeyDao()
 
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, ProductEntity>
     ): MediatorResult {
         return try {
-            val direction = when (loadType) {
-                LoadType.REFRESH -> {
-                    topCursor = null
-                    bottomCursor = null
-                    PagingDirection.NEXT
-                }
-                // 손가락 아래로 (위쪽/최신 스크롤)
-                LoadType.PREPEND -> {
-//                    state.firstItemOrNull()
-//                        ?: return MediatorResult.Success(endOfPaginationReached = true)
-//                    PagingDirection.NEXT
+            val pagingKeyName = DatabaseNames.PRODUCT
+            val pagingKey = pagingKeyDao.getPagingKey(pagingKeyName)
 
-                    return MediatorResult.Success(endOfPaginationReached = true)
+            val (cursor, direction) = when (loadType) {
+                LoadType.REFRESH -> {
+                    null to PagingDirection.PREVIOUS
                 }
-                // 손가락 위로 (아래쪽/과거 스크롤)
+                LoadType.PREPEND -> {
+                    return MediatorResult.Success(
+                        endOfPaginationReached = true
+                    )
+                }
                 LoadType.APPEND -> {
-                    state.lastItemOrNull()
+                    val prevCursor = pagingKey?.previousCursor
                         ?: return MediatorResult.Success(endOfPaginationReached = true)
-                    PagingDirection.PREVIOUS
+
+                    prevCursor to PagingDirection.PREVIOUS
                 }
             }
 
             val response = productApi.getProducts(
-                cursor = if (direction == PagingDirection.NEXT) topCursor else bottomCursor,
+                cursor = cursor,
                 direction = direction.value,
                 size = state.config.pageSize
             )
             val products = response.products.map { it.toEntity() }
-            when (loadType) {
-                LoadType.REFRESH -> {
-                    productDao.clearAll()
-                    topCursor = response.topCursor
-                    bottomCursor = response.bottomCursor
-                }
-//                LoadType.PREPEND -> {
-//                    topCursor = response.topCursor
-//                }
-                LoadType.APPEND -> {
-                    bottomCursor = response.bottomCursor
+
+            commonDatabase.withTransaction {
+                when (loadType) {
+                    LoadType.REFRESH -> {
+                        pagingKeyDao.insertPagingKey(
+                            pagingKey = PagingKeyDomain(
+                                name = pagingKeyName,
+                                nextCursor = response.nextCursor,
+                                previousCursor = response.previousCursor
+                            ).toEntity()
+                        )
+                        productDao.clearAll()
+                        productDao.insertProducts(products)
+                    }
+                    LoadType.APPEND -> {
+                        pagingKeyDao.updatePagingKey(
+                            pagingKey = PagingKeyDomain(
+                                name = pagingKeyName,
+                                nextCursor = response.nextCursor,
+                                previousCursor = response.previousCursor
+                            ).toEntity()
+                        )
+                        productDao.insertProducts(products)
+                    }
+                    LoadType.PREPEND -> {
+                    }
                 }
             }
 
-            productDao.insertProducts(products)
             val endOfPaginationReached = when (loadType) {
-//                LoadType.PREPEND -> true
-                LoadType.APPEND -> products.isEmpty()
-                LoadType.REFRESH -> false
+                LoadType.APPEND,
+                LoadType.REFRESH -> products.isEmpty()
             }
 
             MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
         } catch (e: IOException) {
+            MediatorResult.Error(e)
+        } catch (e: HttpException) {
             MediatorResult.Error(e)
         }
     }

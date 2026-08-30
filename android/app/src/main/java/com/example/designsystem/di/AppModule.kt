@@ -19,12 +19,12 @@ object AppModule {
         return if (BuildConfig.FLAVOR == "prod") {
             AppConfig(
                 environment = Environment.PROD,
-                baseUrl = "https://api.com",
+                baseUrl = "https://api.com/",
             )
         } else {
             AppConfig(
                 environment = Environment.DEV,
-                baseUrl = "https://dev-api.com",
+                baseUrl = "https://dev-api.com/",
             )
         }
     }

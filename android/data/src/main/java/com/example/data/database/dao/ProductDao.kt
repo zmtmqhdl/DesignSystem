@@ -7,10 +7,11 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.data.model.entity.ProductEntity
+import com.example.data.model.entity.key.DatabaseNames
 
 @Dao
 interface ProductDao {
-    @Query("SELECT * FROM product_database")
+    @Query("SELECT * FROM ${DatabaseNames.PRODUCT}")
     fun getProductList(): PagingSource<Int, ProductEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -21,6 +22,6 @@ interface ProductDao {
     @Update
     suspend fun updateProducts(products: List<ProductEntity>)
 
-    @Query("DELETE FROM product_database")
+    @Query("DELETE FROM ${DatabaseNames.PRODUCT}")
     suspend fun clearAll()
 }

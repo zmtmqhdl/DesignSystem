@@ -1,6 +1,8 @@
 package com.example.data.di
 
 import com.example.data.api.AccountApi
+import com.example.data.api.FakeProductApi
+import com.example.data.api.ProductApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,6 +17,20 @@ object ApiModule {
     @Provides
     fun provideUserApi(@BasicRetrofit retrofit: Retrofit): AccountApi {
         return provideApi(retrofit = retrofit)
+    }
+
+//    @Singleton
+//    @Provides
+//    fun provideProductApi(@BasicRetrofit retrofit: Retrofit): ProductApi {
+//        return provideApi(retrofit = retrofit)
+//    }
+
+    @Singleton
+    @Provides
+    fun provideProductApi(
+        fakeProductApi: FakeProductApi
+    ): ProductApi {
+        return fakeProductApi
     }
 
 }

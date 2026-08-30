@@ -14,6 +14,7 @@ import com.example.domain.repository.ProductRepository
 import com.example.domain.repository.WebSocketRepository
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
@@ -42,7 +43,6 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindDeviceAuthRepository(impl: DeviceAuthRepositoryImpl): DeviceAuthRepository
-
 
     @Binds
     @Singleton

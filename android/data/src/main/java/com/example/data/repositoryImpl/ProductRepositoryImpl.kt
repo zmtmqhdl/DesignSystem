@@ -6,6 +6,8 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.example.data.api.ProductApi
+import com.example.data.database.CommonDatabase
+import com.example.data.database.dao.PagingKeyDao
 import com.example.data.database.dao.ProductDao
 import com.example.data.mapper.toDomain
 import com.example.data.mapper.toEntity
@@ -18,19 +20,22 @@ import kotlinx.coroutines.flow.map
 
 @OptIn(ExperimentalPagingApi::class)
 class ProductRepositoryImpl @Inject constructor(
+    private val commonDatabase: CommonDatabase,
     private val productDao: ProductDao,
-    private val productApi: ProductApi
+    private val productApi: ProductApi,
 ) : ProductRepository {
 
     override fun getProducts(): Flow<PagingData<ProductDomain>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 20,
+                prefetchDistance = 5,
+                maxSize = PagingConfig.MAX_SIZE_UNBOUNDED,
                 enablePlaceholders = false
             ),
             remoteMediator = ProductRemoteMediator(
                 productApi = productApi,
-                productDao = productDao
+                commonDatabase = commonDatabase
             ),
             pagingSourceFactory = { productDao.getProductList() }
         ).flow

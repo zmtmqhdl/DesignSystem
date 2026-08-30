@@ -30,15 +30,15 @@ class DatabaseProvider @Inject constructor(
     }
 
 
-    private val commonDatabase: CommonDatabase by lazy {
-        Room.databaseBuilder(
-            context = context,
-            klass = CommonDatabase::class.java,
-            name = "common_database"
-        ).build()
-    }
-
-    fun productDao(): ProductDao {
-        return commonDatabase.productDao()
-    }
+//    private val commonDatabase: CommonDatabase by lazy {
+//        Room.databaseBuilder(
+//            context = context,
+//            klass = CommonDatabase::class.java,
+//            name = "common_database"
+//        ).build()
+//    }
+//
+//    fun productDao(): ProductDao {
+//        return commonDatabase.productDao()
+//    }
 }

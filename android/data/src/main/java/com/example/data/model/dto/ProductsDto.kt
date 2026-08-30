@@ -6,6 +6,6 @@ import kotlinx.serialization.Serializable
 data class ProductsDto(
     val products: List<ProductDto>,
     val updatedProducts: List<ProductDto>,
-    val topCursor: Int?,
-    val bottomCursor: Int?
+    val nextCursor: Long?,
+    val previousCursor: Long?
 )

@@ -2,10 +2,10 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "f4efc95f3ff83918c8b597f83a1ce85d",
+    "identityHash": "92cf13d232da01e756b17ced2cd4a343",
     "entities": [
       {
-        "tableName": "product_database",
+        "tableName": "product",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `price` INTEGER NOT NULL, `imageUrl` TEXT NOT NULL)",
         "fields": [
           {
@@ -39,11 +39,39 @@
             "id"
           ]
         }
+      },
+      {
+        "tableName": "paging_key",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, `nextCursor` INTEGER, `previousCursor` INTEGER, PRIMARY KEY(`name`))",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nextCursor",
+            "columnName": "nextCursor",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "previousCursor",
+            "columnName": "previousCursor",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "name"
+          ]
+        }
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f4efc95f3ff83918c8b597f83a1ce85d')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '92cf13d232da01e756b17ced2cd4a343')"
     ]
   }
 }
