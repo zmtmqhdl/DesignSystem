@@ -18,9 +18,6 @@ interface ProductDao {
     suspend fun insertProducts(products: List<ProductEntity>)
 
     @Update
-    suspend fun updateProduct(product: ProductEntity)
-
-    @Update
     suspend fun updateProducts(products: List<ProductEntity>)
 
     @Query("DELETE FROM ${DatabaseNames.PRODUCT}")

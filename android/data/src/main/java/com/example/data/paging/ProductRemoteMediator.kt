@@ -55,6 +55,7 @@ class ProductRemoteMediator(
                 size = state.config.pageSize
             )
             val products = response.products.map { it.toEntity() }
+            val updatedProducts = response.products.map { it.toEntity() }
 
             commonDatabase.withTransaction {
                 when (loadType) {
@@ -78,6 +79,7 @@ class ProductRemoteMediator(
                             ).toEntity()
                         )
                         productDao.insertProducts(products)
+                        productDao.updateProducts(updatedProducts)
                     }
                     LoadType.PREPEND -> {
                     }
