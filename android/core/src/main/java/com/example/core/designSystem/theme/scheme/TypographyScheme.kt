@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.sp
 import com.example.core.R
 
 /**
- * Light랑 SemiBold 추가 필요
+ * Light랑 SemiBold 추가 필요 (글씨체 자체)
  *
  * 기본 : Typography6Regular
  *
@@ -55,59 +55,59 @@ object DSFontSize {
 
 @Immutable
 object DSLineHeight {
-    val Typography1 = 40.sp
-    val SubTypography1 = 38.sp
-    val SubTypography2 = 37.sp
-    val SubTypography3 = 36.sp
-    val Typography2 = 35.sp
-    val SubTypography4 = 34.sp
-    val SubTypography5 = 33.sp
-    val SubTypography6 = 32.sp
-    val Typography3 = 31.sp
-    val SubTypography7 = 30.sp
-    val Typography4 = 29.sp
-    val SubTypography8 = 28.sp
-    val SubTypography9 = 27.sp
-    val Typography5 = 25.5.sp
-    val SubTypography10 = 24.sp
-    val Typography6 = 22.5.sp
-    val SubTypography11 = 21.sp
-    val Typography7 = 19.5.sp
-    val SubTypography12 = 18.sp
-    val SubTypography13 = 16.5.sp
+    val typography1 = 40.sp
+    val subTypography1 = 38.sp
+    val subTypography2 = 37.sp
+    val subTypography3 = 36.sp
+    val typography2 = 35.sp
+    val subTypography4 = 34.sp
+    val subTypography5 = 33.sp
+    val subTypography6 = 32.sp
+    val typography3 = 31.sp
+    val subTypography7 = 30.sp
+    val typography4 = 29.sp
+    val subTypography8 = 28.sp
+    val subTypography9 = 27.sp
+    val typography5 = 25.5.sp
+    val subTypography10 = 24.sp
+    val typography6 = 22.5.sp
+    val subTypography11 = 21.sp
+    val typography7 = 19.5.sp
+    val subTypography12 = 18.sp
+    val subTypography13 = 16.5.sp
 }
 
 @Immutable
 object DSMaxFontSize {
-    val Typography1 = 42.sp
-    val SubTypography1 = 42.sp
-    val SubTypography2 = 41.sp
-    val SubTypography3 = 41.sp
-    val Typography2 = 41.sp
-    val SubTypography4 = 41.sp
-    val SubTypography5 = 40.sp
-    val SubTypography6 = 40.sp
-    val Typography3 = 40.sp
-    val SubTypography7 = 40.sp
-    val Typography4 = 40.sp
-    val SubTypography8 = 40.sp
-    val SubTypography9 = 39.sp
-    val Typography5 = 39.sp
-    val SubTypography10 = 39.sp
-    val Typography6 = 37.sp
-    val SubTypography11 = 36.sp
-    val Typography7 = 34.sp
-    val SubTypography12 = 32.sp
-    val SubTypography13 = 31.sp
+    val typography1 = 42.sp
+    val subTypography1 = 42.sp
+    val subTypography2 = 41.sp
+    val subTypography3 = 41.sp
+    val typography2 = 41.sp
+    val subTypography4 = 41.sp
+    val subTypography5 = 40.sp
+    val subTypography6 = 40.sp
+    val typography3 = 40.sp
+    val subTypography7 = 40.sp
+    val typography4 = 40.sp
+    val subTypography8 = 40.sp
+    val subTypography9 = 39.sp
+    val typography5 = 39.sp
+    val subTypography10 = 39.sp
+    val typography6 = 37.sp
+    val subTypography11 = 36.sp
+    val typography7 = 34.sp
+    val subTypography12 = 32.sp
+    val subTypography13 = 31.sp
 }
 
 @Immutable
 object DSFontWeight {
-    val Light = FontWeight(weight = 1)
-    val Regular = FontWeight(weight = 400)
-    val Medium = FontWeight(weight = 500)
-    val SemiBold = FontWeight(weight = 600)
-    val Bold = FontWeight(weight = 700)
+    val light = FontWeight(weight = 100)
+    val regular = FontWeight(weight = 400)
+    val medium = FontWeight(weight = 500)
+    val semiBold = FontWeight(weight = 600)
+    val bold = FontWeight(weight = 700)
 }
 
 private fun textStyle(
@@ -163,41 +163,41 @@ fun typography(): TypographyScheme {
             typography1 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.typography1,
-                    maxFontSize = DSMaxFontSize.Typography1,
-                    lineHeight = DSLineHeight.Typography1,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.typography1,
+                    lineHeight = DSLineHeight.typography1,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.typography1,
-                    maxFontSize = DSMaxFontSize.Typography1,
-                    lineHeight = DSLineHeight.Typography1,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.typography1,
+                    lineHeight = DSLineHeight.typography1,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.typography1,
-                    maxFontSize = DSMaxFontSize.Typography1,
-                    lineHeight = DSLineHeight.Typography1,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.typography1,
+                    lineHeight = DSLineHeight.typography1,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.typography1,
-                    maxFontSize = DSMaxFontSize.Typography1,
-                    lineHeight = DSLineHeight.Typography1,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.typography1,
+                    lineHeight = DSLineHeight.typography1,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.typography1,
-                    maxFontSize = DSMaxFontSize.Typography1,
-                    lineHeight = DSLineHeight.Typography1,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.typography1,
+                    lineHeight = DSLineHeight.typography1,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -206,41 +206,41 @@ fun typography(): TypographyScheme {
             subTypography1 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.subTypography1,
-                    maxFontSize = DSMaxFontSize.SubTypography1,
-                    lineHeight = DSLineHeight.SubTypography1,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.subTypography1,
+                    lineHeight = DSLineHeight.subTypography1,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.subTypography1,
-                    maxFontSize = DSMaxFontSize.SubTypography1,
-                    lineHeight = DSLineHeight.SubTypography1,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.subTypography1,
+                    lineHeight = DSLineHeight.subTypography1,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.subTypography1,
-                    maxFontSize = DSMaxFontSize.SubTypography1,
-                    lineHeight = DSLineHeight.SubTypography1,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.subTypography1,
+                    lineHeight = DSLineHeight.subTypography1,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.subTypography1,
-                    maxFontSize = DSMaxFontSize.SubTypography1,
-                    lineHeight = DSLineHeight.SubTypography1,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.subTypography1,
+                    lineHeight = DSLineHeight.subTypography1,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.subTypography1,
-                    maxFontSize = DSMaxFontSize.SubTypography1,
-                    lineHeight = DSLineHeight.SubTypography1,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.subTypography1,
+                    lineHeight = DSLineHeight.subTypography1,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -249,41 +249,41 @@ fun typography(): TypographyScheme {
             subTypography2 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.subTypography2,
-                    maxFontSize = DSMaxFontSize.SubTypography2,
-                    lineHeight = DSLineHeight.SubTypography2,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.subTypography2,
+                    lineHeight = DSLineHeight.subTypography2,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.subTypography2,
-                    maxFontSize = DSMaxFontSize.SubTypography2,
-                    lineHeight = DSLineHeight.SubTypography2,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.subTypography2,
+                    lineHeight = DSLineHeight.subTypography2,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.subTypography2,
-                    maxFontSize = DSMaxFontSize.SubTypography2,
-                    lineHeight = DSLineHeight.SubTypography2,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.subTypography2,
+                    lineHeight = DSLineHeight.subTypography2,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.subTypography2,
-                    maxFontSize = DSMaxFontSize.SubTypography2,
-                    lineHeight = DSLineHeight.SubTypography2,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.subTypography2,
+                    lineHeight = DSLineHeight.subTypography2,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.subTypography2,
-                    maxFontSize = DSMaxFontSize.SubTypography2,
-                    lineHeight = DSLineHeight.SubTypography2,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.subTypography2,
+                    lineHeight = DSLineHeight.subTypography2,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -292,41 +292,41 @@ fun typography(): TypographyScheme {
             subTypography3 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.subTypography3,
-                    maxFontSize = DSMaxFontSize.SubTypography3,
-                    lineHeight = DSLineHeight.SubTypography3,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.subTypography3,
+                    lineHeight = DSLineHeight.subTypography3,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.subTypography3,
-                    maxFontSize = DSMaxFontSize.SubTypography3,
-                    lineHeight = DSLineHeight.SubTypography3,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.subTypography3,
+                    lineHeight = DSLineHeight.subTypography3,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.subTypography3,
-                    maxFontSize = DSMaxFontSize.SubTypography3,
-                    lineHeight = DSLineHeight.SubTypography3,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.subTypography3,
+                    lineHeight = DSLineHeight.subTypography3,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.subTypography3,
-                    maxFontSize = DSMaxFontSize.SubTypography3,
-                    lineHeight = DSLineHeight.SubTypography3,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.subTypography3,
+                    lineHeight = DSLineHeight.subTypography3,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.subTypography3,
-                    maxFontSize = DSMaxFontSize.SubTypography3,
-                    lineHeight = DSLineHeight.SubTypography3,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.subTypography3,
+                    lineHeight = DSLineHeight.subTypography3,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -334,41 +334,41 @@ fun typography(): TypographyScheme {
             typography2 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.typography2,
-                    maxFontSize = DSMaxFontSize.Typography2,
-                    lineHeight = DSLineHeight.Typography2,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.typography2,
+                    lineHeight = DSLineHeight.typography2,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.typography2,
-                    maxFontSize = DSMaxFontSize.Typography2,
-                    lineHeight = DSLineHeight.Typography2,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.typography2,
+                    lineHeight = DSLineHeight.typography2,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.typography2,
-                    maxFontSize = DSMaxFontSize.Typography2,
-                    lineHeight = DSLineHeight.Typography2,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.typography2,
+                    lineHeight = DSLineHeight.typography2,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.typography2,
-                    maxFontSize = DSMaxFontSize.Typography2,
-                    lineHeight = DSLineHeight.Typography2,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.typography2,
+                    lineHeight = DSLineHeight.typography2,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.typography2,
-                    maxFontSize = DSMaxFontSize.Typography2,
-                    lineHeight = DSLineHeight.Typography2,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.typography2,
+                    lineHeight = DSLineHeight.typography2,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -377,41 +377,41 @@ fun typography(): TypographyScheme {
             subTypography4 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.subTypography4,
-                    maxFontSize = DSMaxFontSize.SubTypography4,
-                    lineHeight = DSLineHeight.SubTypography4,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.subTypography4,
+                    lineHeight = DSLineHeight.subTypography4,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.subTypography4,
-                    maxFontSize = DSMaxFontSize.SubTypography4,
-                    lineHeight = DSLineHeight.SubTypography4,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.subTypography4,
+                    lineHeight = DSLineHeight.subTypography4,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.subTypography4,
-                    maxFontSize = DSMaxFontSize.SubTypography4,
-                    lineHeight = DSLineHeight.SubTypography4,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.subTypography4,
+                    lineHeight = DSLineHeight.subTypography4,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.subTypography4,
-                    maxFontSize = DSMaxFontSize.SubTypography4,
-                    lineHeight = DSLineHeight.SubTypography4,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.subTypography4,
+                    lineHeight = DSLineHeight.subTypography4,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.subTypography4,
-                    maxFontSize = DSMaxFontSize.SubTypography4,
-                    lineHeight = DSLineHeight.SubTypography4,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.subTypography4,
+                    lineHeight = DSLineHeight.subTypography4,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -420,41 +420,41 @@ fun typography(): TypographyScheme {
             subTypography5 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.subTypography5,
-                    maxFontSize = DSMaxFontSize.SubTypography5,
-                    lineHeight = DSLineHeight.SubTypography5,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.subTypography5,
+                    lineHeight = DSLineHeight.subTypography5,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.subTypography5,
-                    maxFontSize = DSMaxFontSize.SubTypography5,
-                    lineHeight = DSLineHeight.SubTypography5,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.subTypography5,
+                    lineHeight = DSLineHeight.subTypography5,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.subTypography5,
-                    maxFontSize = DSMaxFontSize.SubTypography5,
-                    lineHeight = DSLineHeight.SubTypography5,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.subTypography5,
+                    lineHeight = DSLineHeight.subTypography5,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.subTypography5,
-                    maxFontSize = DSMaxFontSize.SubTypography5,
-                    lineHeight = DSLineHeight.SubTypography5,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.subTypography5,
+                    lineHeight = DSLineHeight.subTypography5,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.subTypography5,
-                    maxFontSize = DSMaxFontSize.SubTypography5,
-                    lineHeight = DSLineHeight.SubTypography5,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.subTypography5,
+                    lineHeight = DSLineHeight.subTypography5,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -463,41 +463,41 @@ fun typography(): TypographyScheme {
             subTypography6 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.subTypography6,
-                    maxFontSize = DSMaxFontSize.SubTypography6,
-                    lineHeight = DSLineHeight.SubTypography6,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.subTypography6,
+                    lineHeight = DSLineHeight.subTypography6,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.subTypography6,
-                    maxFontSize = DSMaxFontSize.SubTypography6,
-                    lineHeight = DSLineHeight.SubTypography6,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.subTypography6,
+                    lineHeight = DSLineHeight.subTypography6,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.subTypography6,
-                    maxFontSize = DSMaxFontSize.SubTypography6,
-                    lineHeight = DSLineHeight.SubTypography6,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.subTypography6,
+                    lineHeight = DSLineHeight.subTypography6,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.subTypography6,
-                    maxFontSize = DSMaxFontSize.SubTypography6,
-                    lineHeight = DSLineHeight.SubTypography6,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.subTypography6,
+                    lineHeight = DSLineHeight.subTypography6,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.subTypography6,
-                    maxFontSize = DSMaxFontSize.SubTypography6,
-                    lineHeight = DSLineHeight.SubTypography6,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.subTypography6,
+                    lineHeight = DSLineHeight.subTypography6,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -505,41 +505,41 @@ fun typography(): TypographyScheme {
             typography3 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.typography3,
-                    maxFontSize = DSMaxFontSize.Typography3,
-                    lineHeight = DSLineHeight.Typography3,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.typography3,
+                    lineHeight = DSLineHeight.typography3,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.typography3,
-                    maxFontSize = DSMaxFontSize.Typography3,
-                    lineHeight = DSLineHeight.Typography3,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.typography3,
+                    lineHeight = DSLineHeight.typography3,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.typography3,
-                    maxFontSize = DSMaxFontSize.Typography3,
-                    lineHeight = DSLineHeight.Typography3,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.typography3,
+                    lineHeight = DSLineHeight.typography3,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.typography3,
-                    maxFontSize = DSMaxFontSize.Typography3,
-                    lineHeight = DSLineHeight.Typography3,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.typography3,
+                    lineHeight = DSLineHeight.typography3,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.typography3,
-                    maxFontSize = DSMaxFontSize.Typography3,
-                    lineHeight = DSLineHeight.Typography3,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.typography3,
+                    lineHeight = DSLineHeight.typography3,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -548,41 +548,41 @@ fun typography(): TypographyScheme {
             subTypography7 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.subTypography7,
-                    maxFontSize = DSMaxFontSize.SubTypography7,
-                    lineHeight = DSLineHeight.SubTypography7,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.subTypography7,
+                    lineHeight = DSLineHeight.subTypography7,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.subTypography7,
-                    maxFontSize = DSMaxFontSize.SubTypography7,
-                    lineHeight = DSLineHeight.SubTypography7,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.subTypography7,
+                    lineHeight = DSLineHeight.subTypography7,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.subTypography7,
-                    maxFontSize = DSMaxFontSize.SubTypography7,
-                    lineHeight = DSLineHeight.SubTypography7,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.subTypography7,
+                    lineHeight = DSLineHeight.subTypography7,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.subTypography7,
-                    maxFontSize = DSMaxFontSize.SubTypography7,
-                    lineHeight = DSLineHeight.SubTypography7,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.subTypography7,
+                    lineHeight = DSLineHeight.subTypography7,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.subTypography7,
-                    maxFontSize = DSMaxFontSize.SubTypography7,
-                    lineHeight = DSLineHeight.SubTypography7,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.subTypography7,
+                    lineHeight = DSLineHeight.subTypography7,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -591,41 +591,41 @@ fun typography(): TypographyScheme {
             typography4 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.typography4,
-                    maxFontSize = DSMaxFontSize.Typography4,
-                    lineHeight = DSLineHeight.Typography4,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.typography4,
+                    lineHeight = DSLineHeight.typography4,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.typography4,
-                    maxFontSize = DSMaxFontSize.Typography4,
-                    lineHeight = DSLineHeight.Typography4,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.typography4,
+                    lineHeight = DSLineHeight.typography4,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.typography4,
-                    maxFontSize = DSMaxFontSize.Typography4,
-                    lineHeight = DSLineHeight.Typography4,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.typography4,
+                    lineHeight = DSLineHeight.typography4,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.typography4,
-                    maxFontSize = DSMaxFontSize.Typography4,
-                    lineHeight = DSLineHeight.Typography4,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.typography4,
+                    lineHeight = DSLineHeight.typography4,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.typography4,
-                    maxFontSize = DSMaxFontSize.Typography4,
-                    lineHeight = DSLineHeight.Typography4,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.typography4,
+                    lineHeight = DSLineHeight.typography4,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -634,41 +634,41 @@ fun typography(): TypographyScheme {
             subTypography8 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.subTypography8,
-                    maxFontSize = DSMaxFontSize.SubTypography8,
-                    lineHeight = DSLineHeight.SubTypography8,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.subTypography8,
+                    lineHeight = DSLineHeight.subTypography8,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.subTypography8,
-                    maxFontSize = DSMaxFontSize.SubTypography8,
-                    lineHeight = DSLineHeight.SubTypography8,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.subTypography8,
+                    lineHeight = DSLineHeight.subTypography8,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.subTypography8,
-                    maxFontSize = DSMaxFontSize.SubTypography8,
-                    lineHeight = DSLineHeight.SubTypography8,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.subTypography8,
+                    lineHeight = DSLineHeight.subTypography8,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.subTypography8,
-                    maxFontSize = DSMaxFontSize.SubTypography8,
-                    lineHeight = DSLineHeight.SubTypography8,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.subTypography8,
+                    lineHeight = DSLineHeight.subTypography8,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.subTypography8,
-                    maxFontSize = DSMaxFontSize.SubTypography8,
-                    lineHeight = DSLineHeight.SubTypography8,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.subTypography8,
+                    lineHeight = DSLineHeight.subTypography8,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -677,41 +677,41 @@ fun typography(): TypographyScheme {
             subTypography9 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.subTypography9,
-                    maxFontSize = DSMaxFontSize.SubTypography9,
-                    lineHeight = DSLineHeight.SubTypography9,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.subTypography9,
+                    lineHeight = DSLineHeight.subTypography9,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.subTypography9,
-                    maxFontSize = DSMaxFontSize.SubTypography9,
-                    lineHeight = DSLineHeight.SubTypography9,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.subTypography9,
+                    lineHeight = DSLineHeight.subTypography9,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.subTypography9,
-                    maxFontSize = DSMaxFontSize.SubTypography9,
-                    lineHeight = DSLineHeight.SubTypography9,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.subTypography9,
+                    lineHeight = DSLineHeight.subTypography9,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.subTypography9,
-                    maxFontSize = DSMaxFontSize.SubTypography9,
-                    lineHeight = DSLineHeight.SubTypography9,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.subTypography9,
+                    lineHeight = DSLineHeight.subTypography9,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.subTypography9,
-                    maxFontSize = DSMaxFontSize.SubTypography9,
-                    lineHeight = DSLineHeight.SubTypography9,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.subTypography9,
+                    lineHeight = DSLineHeight.subTypography9,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -719,41 +719,41 @@ fun typography(): TypographyScheme {
             typography5 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.typography5,
-                    maxFontSize = DSMaxFontSize.Typography5,
-                    lineHeight = DSLineHeight.Typography5,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.typography5,
+                    lineHeight = DSLineHeight.typography5,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.typography5,
-                    maxFontSize = DSMaxFontSize.Typography5,
-                    lineHeight = DSLineHeight.Typography5,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.typography5,
+                    lineHeight = DSLineHeight.typography5,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.typography5,
-                    maxFontSize = DSMaxFontSize.Typography5,
-                    lineHeight = DSLineHeight.Typography5,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.typography5,
+                    lineHeight = DSLineHeight.typography5,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.typography5,
-                    maxFontSize = DSMaxFontSize.Typography5,
-                    lineHeight = DSLineHeight.Typography5,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.typography5,
+                    lineHeight = DSLineHeight.typography5,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.typography5,
-                    maxFontSize = DSMaxFontSize.Typography5,
-                    lineHeight = DSLineHeight.Typography5,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.typography5,
+                    lineHeight = DSLineHeight.typography5,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -762,41 +762,41 @@ fun typography(): TypographyScheme {
             subTypography10 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.subTypography10,
-                    maxFontSize = DSMaxFontSize.SubTypography10,
-                    lineHeight = DSLineHeight.SubTypography10,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.subTypography10,
+                    lineHeight = DSLineHeight.subTypography10,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.subTypography10,
-                    maxFontSize = DSMaxFontSize.SubTypography10,
-                    lineHeight = DSLineHeight.SubTypography10,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.subTypography10,
+                    lineHeight = DSLineHeight.subTypography10,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.subTypography10,
-                    maxFontSize = DSMaxFontSize.SubTypography10,
-                    lineHeight = DSLineHeight.SubTypography10,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.subTypography10,
+                    lineHeight = DSLineHeight.subTypography10,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.subTypography10,
-                    maxFontSize = DSMaxFontSize.SubTypography10,
-                    lineHeight = DSLineHeight.SubTypography10,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.subTypography10,
+                    lineHeight = DSLineHeight.subTypography10,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.subTypography10,
-                    maxFontSize = DSMaxFontSize.SubTypography10,
-                    lineHeight = DSLineHeight.SubTypography10,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.subTypography10,
+                    lineHeight = DSLineHeight.subTypography10,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -805,41 +805,41 @@ fun typography(): TypographyScheme {
             typography6 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.typography6,
-                    maxFontSize = DSMaxFontSize.Typography6,
-                    lineHeight = DSLineHeight.Typography6,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.typography6,
+                    lineHeight = DSLineHeight.typography6,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.typography6,
-                    maxFontSize = DSMaxFontSize.Typography6,
-                    lineHeight = DSLineHeight.Typography6,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.typography6,
+                    lineHeight = DSLineHeight.typography6,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.typography6,
-                    maxFontSize = DSMaxFontSize.Typography6,
-                    lineHeight = DSLineHeight.Typography6,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.typography6,
+                    lineHeight = DSLineHeight.typography6,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.typography6,
-                    maxFontSize = DSMaxFontSize.Typography6,
-                    lineHeight = DSLineHeight.Typography6,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.typography6,
+                    lineHeight = DSLineHeight.typography6,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.typography6,
-                    maxFontSize = DSMaxFontSize.Typography6,
-                    lineHeight = DSLineHeight.Typography6,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.typography6,
+                    lineHeight = DSLineHeight.typography6,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -848,41 +848,41 @@ fun typography(): TypographyScheme {
             subTypography11 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.subTypography11,
-                    maxFontSize = DSMaxFontSize.SubTypography11,
-                    lineHeight = DSLineHeight.SubTypography11,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.subTypography11,
+                    lineHeight = DSLineHeight.subTypography11,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.subTypography11,
-                    maxFontSize = DSMaxFontSize.SubTypography11,
-                    lineHeight = DSLineHeight.SubTypography11,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.subTypography11,
+                    lineHeight = DSLineHeight.subTypography11,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.subTypography11,
-                    maxFontSize = DSMaxFontSize.SubTypography11,
-                    lineHeight = DSLineHeight.SubTypography11,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.subTypography11,
+                    lineHeight = DSLineHeight.subTypography11,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.subTypography11,
-                    maxFontSize = DSMaxFontSize.SubTypography11,
-                    lineHeight = DSLineHeight.SubTypography11,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.subTypography11,
+                    lineHeight = DSLineHeight.subTypography11,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.subTypography11,
-                    maxFontSize = DSMaxFontSize.SubTypography11,
-                    lineHeight = DSLineHeight.SubTypography11,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.subTypography11,
+                    lineHeight = DSLineHeight.subTypography11,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -891,41 +891,41 @@ fun typography(): TypographyScheme {
             typography7 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.typography7,
-                    maxFontSize = DSMaxFontSize.Typography7,
-                    lineHeight = DSLineHeight.Typography7,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.typography7,
+                    lineHeight = DSLineHeight.typography7,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.typography7,
-                    maxFontSize = DSMaxFontSize.Typography7,
-                    lineHeight = DSLineHeight.Typography7,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.typography7,
+                    lineHeight = DSLineHeight.typography7,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.typography7,
-                    maxFontSize = DSMaxFontSize.Typography7,
-                    lineHeight = DSLineHeight.Typography7,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.typography7,
+                    lineHeight = DSLineHeight.typography7,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.typography7,
-                    maxFontSize = DSMaxFontSize.Typography7,
-                    lineHeight = DSLineHeight.Typography7,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.typography7,
+                    lineHeight = DSLineHeight.typography7,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.typography7,
-                    maxFontSize = DSMaxFontSize.Typography7,
-                    lineHeight = DSLineHeight.Typography7,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.typography7,
+                    lineHeight = DSLineHeight.typography7,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -934,41 +934,41 @@ fun typography(): TypographyScheme {
             subTypography12 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.subTypography12,
-                    maxFontSize = DSMaxFontSize.SubTypography12,
-                    lineHeight = DSLineHeight.SubTypography12,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.subTypography12,
+                    lineHeight = DSLineHeight.subTypography12,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.subTypography12,
-                    maxFontSize = DSMaxFontSize.SubTypography12,
-                    lineHeight = DSLineHeight.SubTypography12,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.subTypography12,
+                    lineHeight = DSLineHeight.subTypography12,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.subTypography12,
-                    maxFontSize = DSMaxFontSize.SubTypography12,
-                    lineHeight = DSLineHeight.SubTypography12,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.subTypography12,
+                    lineHeight = DSLineHeight.subTypography12,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.subTypography12,
-                    maxFontSize = DSMaxFontSize.SubTypography12,
-                    lineHeight = DSLineHeight.SubTypography12,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.subTypography12,
+                    lineHeight = DSLineHeight.subTypography12,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.subTypography12,
-                    maxFontSize = DSMaxFontSize.SubTypography12,
-                    lineHeight = DSLineHeight.SubTypography12,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.subTypography12,
+                    lineHeight = DSLineHeight.subTypography12,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
@@ -977,41 +977,41 @@ fun typography(): TypographyScheme {
             subTypography13 = FontStyleSet(
                 light = textStyle(
                     fontSize = DSFontSize.subTypography13,
-                    maxFontSize = DSMaxFontSize.SubTypography13,
-                    lineHeight = DSLineHeight.SubTypography13,
-                    weight = DSFontWeight.Light,
+                    maxFontSize = DSMaxFontSize.subTypography13,
+                    lineHeight = DSLineHeight.subTypography13,
+                    weight = DSFontWeight.light,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 regular = textStyle(
                     fontSize = DSFontSize.subTypography13,
-                    maxFontSize = DSMaxFontSize.SubTypography13,
-                    lineHeight = DSLineHeight.SubTypography13,
-                    weight = DSFontWeight.Regular,
+                    maxFontSize = DSMaxFontSize.subTypography13,
+                    lineHeight = DSLineHeight.subTypography13,
+                    weight = DSFontWeight.regular,
                     fontRes = R.font.regular,
                     fontScale = fontScale
                 ),
                 medium = textStyle(
                     fontSize = DSFontSize.subTypography13,
-                    maxFontSize = DSMaxFontSize.SubTypography13,
-                    lineHeight = DSLineHeight.SubTypography13,
-                    weight = DSFontWeight.Medium,
+                    maxFontSize = DSMaxFontSize.subTypography13,
+                    lineHeight = DSLineHeight.subTypography13,
+                    weight = DSFontWeight.medium,
                     fontRes = R.font.medium,
                     fontScale = fontScale
                 ),
                 semiBold = textStyle(
                     fontSize = DSFontSize.subTypography13,
-                    maxFontSize = DSMaxFontSize.SubTypography13,
-                    lineHeight = DSLineHeight.SubTypography13,
-                    weight = DSFontWeight.SemiBold,
+                    maxFontSize = DSMaxFontSize.subTypography13,
+                    lineHeight = DSLineHeight.subTypography13,
+                    weight = DSFontWeight.semiBold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
                 bold = textStyle(
                     fontSize = DSFontSize.subTypography13,
-                    maxFontSize = DSMaxFontSize.SubTypography13,
-                    lineHeight = DSLineHeight.SubTypography13,
-                    weight = DSFontWeight.Bold,
+                    maxFontSize = DSMaxFontSize.subTypography13,
+                    lineHeight = DSLineHeight.subTypography13,
+                    weight = DSFontWeight.bold,
                     fontRes = R.font.bold,
                     fontScale = fontScale
                 ),
