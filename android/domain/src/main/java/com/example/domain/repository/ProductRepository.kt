@@ -8,7 +8,6 @@ interface ProductRepository {
     fun getProducts(): Flow<PagingData<ProductDomain>>
 
     suspend fun insertProducts(products: List<ProductDomain>)
-    suspend fun updateProduct(product: ProductDomain)
     suspend fun updateProducts(products: List<ProductDomain>)
     suspend fun deleteAllProducts()
 }

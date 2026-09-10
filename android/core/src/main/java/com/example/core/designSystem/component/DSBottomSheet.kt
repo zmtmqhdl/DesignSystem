@@ -78,14 +78,14 @@ fun DSBottomSheet(
                 )
 
                 description?.let {
-                    Spacer(modifier = Modifier.height(height = DSTheme.dimension.dimension2))
+                    Spacer(modifier = Modifier.height(height = DSTheme.dimension.dimension8))
                     DSText(
                         text = it,
                         style = DSTheme.typography.typography6.medium
                     )
                 }
 
-                Spacer(modifier = Modifier.height(height = DSTheme.dimension.dimension8))
+                Spacer(modifier = Modifier.height(height = DSTheme.dimension.dimension32))
 
                 when (variant) {
                     BottomSheetVariant.CTA -> {
@@ -115,7 +115,7 @@ fun DSBottomSheet(
                                 modifier = Modifier.weight(weight = 1f)
                             )
 
-                            Spacer(modifier = Modifier.width(width = DSTheme.dimension.dimension2))
+                            Spacer(modifier = Modifier.width(width = DSTheme.dimension.dimension8))
 
                             DSButton(
                                 text = confirmText,

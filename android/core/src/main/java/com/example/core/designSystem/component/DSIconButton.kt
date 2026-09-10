@@ -9,7 +9,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.width
@@ -47,15 +46,15 @@ enum class IconButtonVariant {
 fun DSIconButton(
     icon: ImageVector,
     onClick: () -> Unit,
-    boxSize: Dp = DSTheme.dimension.dimension12,
-    iconWidth: Dp = DSTheme.dimension.dimension6,
-    iconHeight: Dp = DSTheme.dimension.dimension6,
+    boxSize: Dp = DSTheme.dimension.dimension48,
+    iconWidth: Dp = DSTheme.dimension.dimension24,
+    iconHeight: Dp = DSTheme.dimension.dimension24,
     variant: IconButtonVariant = IconButtonVariant.CLEAR,
     colorSet: ColorSet = DSTheme.color.grey,
     ariaLabel: String,
     isLoading: Boolean = false
 ) {
-    val corner = DSTheme.dimension.dimension2
+    val corner = DSTheme.dimension.dimension8
     val iconButtonShape = RoundedCornerShape(corner)
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()

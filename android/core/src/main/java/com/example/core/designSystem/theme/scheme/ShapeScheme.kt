@@ -8,11 +8,11 @@ import androidx.compose.ui.graphics.Shape
 
 @Immutable
 object ShapeToken {
-    val BottomSheet = RoundedCornerShape(size = DimensionToken.Dimension7)
-    val Box = RoundedCornerShape(size = DimensionToken.Dimension2)
-    val Dialog = RoundedCornerShape(size = DimensionToken.Dimension2)
-    val SnackBar = RoundedCornerShape(size = DimensionToken.Dimension2)
-    val TextField = RoundedCornerShape(size = DimensionToken.Dimension4)
+    val bottomSheet = RoundedCornerShape(size = DimensionToken.dimension28)
+    val box = RoundedCornerShape(size = DimensionToken.dimension8)
+    val dialog = RoundedCornerShape(size = DimensionToken.dimension8)
+    val snackBar = RoundedCornerShape(size = DimensionToken.dimension8)
+    val textField = RoundedCornerShape(size = DimensionToken.dimension16)
 }
 
 @Immutable
@@ -29,9 +29,9 @@ val LocalShapes: ProvidableCompositionLocal<ShapeScheme> = staticCompositionLoca
 }
 
 val shapeScheme = ShapeScheme(
-    bottomSheet = ShapeToken.BottomSheet,
-    box = ShapeToken.Box,
-    dialog = ShapeToken.Dialog,
-    snackBar = ShapeToken.SnackBar,
-    textField = ShapeToken.TextField,
+    bottomSheet = ShapeToken.bottomSheet,
+    box = ShapeToken.box,
+    dialog = ShapeToken.dialog,
+    snackBar = ShapeToken.snackBar,
+    textField = ShapeToken.textField,
 )

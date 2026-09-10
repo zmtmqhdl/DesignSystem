@@ -20,9 +20,9 @@ import com.example.core.designSystem.theme.DSTheme
 fun DSIcon(
     icon: ImageVector,
     modifier: Modifier = Modifier,
-    boxSize: Dp = DSTheme.dimension.dimension8,
-    iconWidth: Dp = DSTheme.dimension.dimension6,
-    iconHeight: Dp = DSTheme.dimension.dimension6,
+    boxSize: Dp = DSTheme.dimension.dimension32,
+    iconWidth: Dp = DSTheme.dimension.dimension24,
+    iconHeight: Dp = DSTheme.dimension.dimension24,
     color: Color = DSTheme.color.grey700,
     ariaLabel: String,
     isLoading: Boolean = false
