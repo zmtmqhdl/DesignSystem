@@ -17,9 +17,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.derivedStateOf
@@ -30,37 +28,45 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntOffset
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.icon.Back
 import com.example.core.designSystem.icon.Forward
 import com.example.core.designSystem.icon.Password
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.BackgroundColorSet
+import kotlin.math.roundToInt
+
+enum class TopBarVariant {
+    LEFT, CENTER
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DSTopBar(
+    variant: TopBarVariant = TopBarVariant.CENTER,
     title: String? = null,
     titleContent: @Composable (() -> Unit)? = null,
-    centeredTitle: Boolean = false,
     navigationIcon: @Composable (() -> Unit)? = null,
     actions: @Composable (RowScope.() -> Unit)? = null,
     height: Dp = DSTheme.dimension.dimension48,
     backgroundColor: BackgroundColorSet = DSTheme.color.background,
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
-
     require(!(title != null && titleContent != null)) {
         "You cannot provide both 'title' and 'titleContent' at the same time."
     }
 
-    val expandedHeightPx =
-        with(LocalDensity.current) { height.toPx().coerceAtLeast(minimumValue = 0f) }
+    val density = LocalDensity.current
+    val heightPx = with(density) { height.toPx() }
+
     SideEffect {
-        if (scrollBehavior?.state?.heightOffsetLimit != -expandedHeightPx) {
-            scrollBehavior?.state?.heightOffsetLimit = -expandedHeightPx
+        if (scrollBehavior?.state?.heightOffsetLimit != -heightPx) {
+            scrollBehavior?.state?.heightOffsetLimit = -heightPx
         }
     }
+
+    val heightOffsetPx = scrollBehavior?.state?.heightOffset ?: 0f
 
     val colorTransitionFraction by remember(scrollBehavior) {
         derivedStateOf {
@@ -78,40 +84,32 @@ fun DSTopBar(
         animationSpec = spring(stiffness = Spring.StiffnessMediumLow)
     )
 
-    val offset by remember(scrollBehavior) {
-        derivedStateOf {
-            scrollBehavior?.state?.heightOffset ?: 0f
-        }
-    }
+    val topBarModifier = Modifier
+        .fillMaxWidth()
+        .height(height = height)
+        .offset { IntOffset(x = 0, y = heightOffsetPx.roundToInt()) }
+        .background(color = appBarContainerColor)
+        .padding(horizontal = DSTheme.dimension.dimension16)
 
-    val heightOffsetDp = with(LocalDensity.current) { offset.toDp() }
-
-    if (centeredTitle) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(height = height + heightOffsetDp)
-                .background(color = appBarContainerColor)
-                .padding(horizontal = DSTheme.dimension.dimension16)
-                .offset(y = heightOffsetDp),
-            contentAlignment = Alignment.Center
-        ) {
-            title?.let {
-                DSText(
-                    text = it,
-                    style = DSTheme.typography.typography4.medium
-                )
-            }
-
-            titleContent?.let {
-                it()
-            }
-
+    when (variant) {
+        TopBarVariant.LEFT -> {
             Row(
-                modifier = Modifier.fillMaxSize(),
+                modifier = topBarModifier,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 navigationIcon?.let {
+                    it()
+                }
+                Spacer(modifier = Modifier.width(width = DSTheme.dimension.dimension12))
+
+                title?.let {
+                    DSText(
+                        text = it,
+                        style = DSTheme.typography.typography4.medium
+                    )
+                }
+
+                titleContent?.let {
                     it()
                 }
 
@@ -119,53 +117,52 @@ fun DSTopBar(
 
                 actions?.let {
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(space = DSTheme.dimension.dimension8),
+                        horizontalArrangement = Arrangement.spacedBy(DSTheme.dimension.dimension8),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         it()
                     }
                 }
-
             }
         }
-    } else {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(height = height + heightOffsetDp)
-                .background(color = appBarContainerColor)
-                .padding(horizontal = DSTheme.dimension.dimension16)
-                .offset(y = heightOffsetDp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            navigationIcon?.let {
-                it()
-            }
-            Spacer(modifier = Modifier.width(width = DSTheme.dimension.dimension12))
+        TopBarVariant.CENTER -> {
+            Box(
+                modifier = topBarModifier,
+                contentAlignment = Alignment.Center
+            ) {
+                title?.let {
+                    DSText(
+                        text = it,
+                        style = DSTheme.typography.typography4.medium
+                    )
+                }
 
-            title?.let {
-                DSText(
-                    text = it,
-                    style = DSTheme.typography.typography4.medium
-                )
-            }
-
-            titleContent?.let {
-                it()
-            }
-
-            Spacer(modifier = Modifier.weight(weight = 1f))
-
-            actions?.let {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(DSTheme.dimension.dimension8),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
+                titleContent?.let {
                     it()
+                }
+
+                Row(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    navigationIcon?.let {
+                        it()
+                    }
+
+                    Spacer(modifier = Modifier.weight(weight = 1f))
+
+                    actions?.let {
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(space = DSTheme.dimension.dimension8),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            it()
+                        }
+                    }
+
                 }
             }
         }
-
     }
 }
 
@@ -175,13 +172,8 @@ fun DSTopBar(
 @Composable
 private fun TopBarPreview() {
     DSTheme {
-        val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
-
-        // .nestedScroll(scrollBehavior.nestedScrollConnection)를 LazyColumn의 modifier에 넣기
-
         DSTopBar(
             title = "preview",
-            centeredTitle = false,
             navigationIcon = {
                 DSIconButton(
                     icon = Back,

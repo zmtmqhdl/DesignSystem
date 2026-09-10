@@ -198,7 +198,6 @@ sealed class PreviewNavigationItems(
     }
 
     data object Second : PreviewNavigationItems(
-
         label = "second"
     ) {
         override val route: NavKey = PreviewRoute.Second

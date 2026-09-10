@@ -47,9 +47,7 @@ class ProductRepositoryImpl @Inject constructor(
     override suspend fun insertProducts(products: List<ProductDomain>) {
         productDao.insertProducts(products.map { it.toEntity() })
     }
-    override suspend fun updateProduct(product: ProductDomain) {
-        productDao.updateProduct(product.toEntity())
-    }
+
     override suspend fun updateProducts(products: List<ProductDomain>) {
         productDao.updateProducts(products.map { it.toEntity() })
     }
