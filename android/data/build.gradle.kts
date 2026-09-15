@@ -64,7 +64,7 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     implementation(libs.logging.interceptor)
     implementation(libs.kotlinx.serialization.json)
-    implementation(libs.retrofit2.kotlinx.serialization.converter)
+    implementation(libs.retrofit.converter.kotlinx.serialization)
     implementation(libs.androidx.paging.runtime)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)

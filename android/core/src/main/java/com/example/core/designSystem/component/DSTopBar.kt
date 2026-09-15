@@ -86,9 +86,9 @@ fun DSTopBar(
 
     val topBarModifier = Modifier
         .fillMaxWidth()
-        .height(height = height)
+        .height(height)
         .offset { IntOffset(x = 0, y = heightOffsetPx.roundToInt()) }
-        .background(color = appBarContainerColor)
+        .background(appBarContainerColor)
         .padding(horizontal = DSTheme.dimension.dimension16)
 
     when (variant) {
