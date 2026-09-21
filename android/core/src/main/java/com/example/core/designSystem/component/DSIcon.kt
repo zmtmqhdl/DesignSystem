@@ -29,16 +29,16 @@ fun DSIcon(
 ) {
     Box(
         modifier = modifier
-            .size(size = boxSize)
-            .skeletonAnimation(isLoading = isLoading),
+            .size(boxSize)
+            .skeletonAnimation(isLoading),
         contentAlignment = Alignment.Center
     ) {
         Icon(
             imageVector = icon,
             contentDescription = ariaLabel,
             modifier = Modifier
-                .width(width = iconWidth)
-                .height(height = iconHeight),
+                .width(iconWidth)
+                .height(iconHeight),
             tint = color
         )
     }

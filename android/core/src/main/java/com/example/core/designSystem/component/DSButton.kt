@@ -91,10 +91,10 @@ fun DSButton(
     )
 
     val corner = when (size) {
-        ButtonSize.SMALL -> 8.dp
-        ButtonSize.MEDIUM -> 10.dp
-        ButtonSize.LARGE -> 14.dp
-        ButtonSize.XLARGE -> 16.dp
+        ButtonSize.SMALL -> DSTheme.dimension.dimension8
+        ButtonSize.MEDIUM -> DSTheme.dimension.dimension10
+        ButtonSize.LARGE -> DSTheme.dimension.dimension14
+        ButtonSize.XLARGE -> DSTheme.dimension.dimension16
     }
 
     val buttonShape = when (size) {
@@ -112,19 +112,19 @@ fun DSButton(
             }
             .requiredSize(
                 width = when (size) {
-                    ButtonSize.SMALL -> 52.dp
-                    ButtonSize.MEDIUM -> 64.dp
-                    ButtonSize.LARGE -> 80.dp
-                    ButtonSize.XLARGE -> 96.dp
+                    ButtonSize.SMALL -> DSTheme.dimension.dimension52
+                    ButtonSize.MEDIUM -> DSTheme.dimension.dimension64
+                    ButtonSize.LARGE -> DSTheme.dimension.dimension80
+                    ButtonSize.XLARGE -> DSTheme.dimension.dimension96
                 },
                 height = when (size) {
-                    ButtonSize.SMALL -> 32.dp
-                    ButtonSize.MEDIUM -> 38.dp
-                    ButtonSize.LARGE -> 48.dp
-                    ButtonSize.XLARGE -> 56.dp
+                    ButtonSize.SMALL -> DSTheme.dimension.dimension32
+                    ButtonSize.MEDIUM -> DSTheme.dimension.dimension38
+                    ButtonSize.LARGE -> DSTheme.dimension.dimension48
+                    ButtonSize.XLARGE -> DSTheme.dimension.dimension56
                 }
             )
-            .conditional(condition = full) { fillMaxWidth(fraction = fraction) }
+            .conditional(full) { fillMaxWidth(fraction) }
             .conditional(condition = !isLoading) {
                 alpha(if (enabled) 1f else pressedAlpha)
                 background(
@@ -165,16 +165,16 @@ fun DSButton(
                     text = text,
                     modifier = Modifier.padding(
                         horizontal = when (size) {
-                            ButtonSize.SMALL -> 10.dp
+                            ButtonSize.SMALL -> DSTheme.dimension.dimension10
                             ButtonSize.MEDIUM,
-                            ButtonSize.LARGE -> 16.dp
-                            ButtonSize.XLARGE -> 15.dp
+                            ButtonSize.LARGE -> DSTheme.dimension.dimension16
+                            ButtonSize.XLARGE -> DSTheme.dimension.dimension15
                         },
                         vertical = when (size) {
                             ButtonSize.SMALL,
                             ButtonSize.MEDIUM,
-                            ButtonSize.LARGE -> 2.dp
-                            ButtonSize.XLARGE -> 28.dp
+                            ButtonSize.LARGE -> DSTheme.dimension.dimension2
+                            ButtonSize.XLARGE -> DSTheme.dimension.dimension28
                         }
                     ),
                     color = when (variant) {
