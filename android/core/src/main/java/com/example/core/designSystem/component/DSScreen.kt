@@ -49,7 +49,7 @@ enum class ScrollVariant {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun rememberTopBarScrollBehavior(
+private fun rememberTopBarScrollBehavior(
     variant: ScreenVariant
 ): TopAppBarScrollBehavior? {
     val scrollVariant = when (variant) {

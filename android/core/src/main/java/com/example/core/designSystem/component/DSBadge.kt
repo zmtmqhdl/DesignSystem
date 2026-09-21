@@ -39,29 +39,29 @@ fun DSBadge(
     isLoading: Boolean = false
 ) {
     val badgeShape = when (size) {
-        BadgeSize.XSMALL -> RoundedCornerShape(size = 9.dp)
-        BadgeSize.SMALL -> RoundedCornerShape(size = 11.dp)
-        BadgeSize.MEDIUM -> RoundedCornerShape(size = 12.dp)
-        BadgeSize.LARGE -> RoundedCornerShape(size = 13.dp)
+        BadgeSize.XSMALL -> RoundedCornerShape(DSTheme.dimension.dimension9)
+        BadgeSize.SMALL -> RoundedCornerShape(DSTheme.dimension.dimension11)
+        BadgeSize.MEDIUM -> RoundedCornerShape(DSTheme.dimension.dimension12)
+        BadgeSize.LARGE -> RoundedCornerShape(DSTheme.dimension.dimension13)
     }
 
     Box(
         modifier = modifier
             .requiredSize(
                 width = when (size) {
-                    BadgeSize.XSMALL -> 52.dp
-                    BadgeSize.SMALL -> 64.dp
-                    BadgeSize.MEDIUM -> 80.dp
-                    BadgeSize.LARGE -> 96.dp
+                    BadgeSize.XSMALL -> DSTheme.dimension.dimension52
+                    BadgeSize.SMALL -> DSTheme.dimension.dimension64
+                    BadgeSize.MEDIUM -> DSTheme.dimension.dimension80
+                    BadgeSize.LARGE -> DSTheme.dimension.dimension96
                 },
                 height = when (size) {
-                    BadgeSize.XSMALL -> 32.dp
-                    BadgeSize.SMALL -> 38.dp
-                    BadgeSize.MEDIUM -> 48.dp
-                    BadgeSize.LARGE -> 56.dp
+                    BadgeSize.XSMALL -> DSTheme.dimension.dimension32
+                    BadgeSize.SMALL -> DSTheme.dimension.dimension38
+                    BadgeSize.MEDIUM -> DSTheme.dimension.dimension48
+                    BadgeSize.LARGE -> DSTheme.dimension.dimension56
                 }
             )
-            .conditional(condition = !isLoading) {
+            .conditional(!isLoading) {
                 background(
                     color = when (variant) {
                         BadgeVariant.FILL -> colorSet.mainBackgroundColor
@@ -70,26 +70,26 @@ fun DSBadge(
                     shape = badgeShape
                 )
             }
-            .clip(shape = badgeShape)
-            .skeletonAnimation(isLoading = isLoading),
+            .clip(badgeShape)
+            .skeletonAnimation(isLoading),
         contentAlignment = Alignment.Center
     ) {
         DSText(
             text = text,
             modifier = Modifier
-                .conditional(condition = isLoading) { alpha(0f) }
+                .conditional(isLoading) { alpha(0f) }
                 .padding(
                     horizontal = when (size) {
                         BadgeSize.XSMALL,
                         BadgeSize.SMALL,
-                        BadgeSize.MEDIUM -> 3.dp
-                        BadgeSize.LARGE -> 4.dp
+                        BadgeSize.MEDIUM -> DSTheme.dimension.dimension3
+                        BadgeSize.LARGE -> DSTheme.dimension.dimension4
                     },
                     vertical = when (size) {
                         BadgeSize.XSMALL,
                         BadgeSize.SMALL,
-                        BadgeSize.MEDIUM -> 7.dp
-                        BadgeSize.LARGE -> 8.dp
+                        BadgeSize.MEDIUM -> DSTheme.dimension.dimension7
+                        BadgeSize.LARGE -> DSTheme.dimension.dimension8
                     }
                 ),
             color = when (variant) {

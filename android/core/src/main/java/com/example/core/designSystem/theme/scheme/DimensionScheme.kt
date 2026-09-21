@@ -61,6 +61,58 @@ object DimensionToken {
     val dimension46 = get(46)
     val dimension47 = get(47)
     val dimension48 = get(48)
+    val dimension49 = get(49)
+    val dimension50 = get(50)
+    val dimension51 = get(51)
+    val dimension52 = get(52)
+    val dimension53 = get(53)
+    val dimension54 = get(54)
+    val dimension55 = get(55)
+    val dimension56 = get(56)
+    val dimension57 = get(57)
+    val dimension58 = get(58)
+    val dimension59 = get(59)
+    val dimension60 = get(60)
+    val dimension61 = get(61)
+    val dimension62 = get(62)
+    val dimension63 = get(63)
+    val dimension64 = get(64)
+    val dimension65 = get(65)
+    val dimension66 = get(66)
+    val dimension67 = get(67)
+    val dimension68 = get(68)
+    val dimension69 = get(69)
+    val dimension70 = get(70)
+    val dimension71 = get(71)
+    val dimension72 = get(72)
+    val dimension73 = get(73)
+    val dimension74 = get(74)
+    val dimension75 = get(75)
+    val dimension76 = get(76)
+    val dimension77 = get(77)
+    val dimension78 = get(78)
+    val dimension79 = get(79)
+    val dimension80 = get(80)
+    val dimension81 = get(81)
+    val dimension82 = get(82)
+    val dimension83 = get(83)
+    val dimension84 = get(84)
+    val dimension85 = get(85)
+    val dimension86 = get(86)
+    val dimension87 = get(87)
+    val dimension88 = get(88)
+    val dimension89 = get(89)
+    val dimension90 = get(90)
+    val dimension91 = get(91)
+    val dimension92 = get(92)
+    val dimension93 = get(93)
+    val dimension94 = get(94)
+    val dimension95 = get(95)
+    val dimension96 = get(96)
+    val dimension97 = get(97)
+    val dimension98 = get(98)
+    val dimension99 = get(99)
+    val dimension100 = get(100)
 }
 
 @Immutable
@@ -112,7 +164,59 @@ class DimensionScheme(
     val dimension45: Dp,
     val dimension46: Dp,
     val dimension47: Dp,
-    val dimension48: Dp
+    val dimension48: Dp,
+    val dimension49: Dp,
+    val dimension50: Dp,
+    val dimension51: Dp,
+    val dimension52: Dp,
+    val dimension53: Dp,
+    val dimension54: Dp,
+    val dimension55: Dp,
+    val dimension56: Dp,
+    val dimension57: Dp,
+    val dimension58: Dp,
+    val dimension59: Dp,
+    val dimension60: Dp,
+    val dimension61: Dp,
+    val dimension62: Dp,
+    val dimension63: Dp,
+    val dimension64: Dp,
+    val dimension65: Dp,
+    val dimension66: Dp,
+    val dimension67: Dp,
+    val dimension68: Dp,
+    val dimension69: Dp,
+    val dimension70: Dp,
+    val dimension71: Dp,
+    val dimension72: Dp,
+    val dimension73: Dp,
+    val dimension74: Dp,
+    val dimension75: Dp,
+    val dimension76: Dp,
+    val dimension77: Dp,
+    val dimension78: Dp,
+    val dimension79: Dp,
+    val dimension80: Dp,
+    val dimension81: Dp,
+    val dimension82: Dp,
+    val dimension83: Dp,
+    val dimension84: Dp,
+    val dimension85: Dp,
+    val dimension86: Dp,
+    val dimension87: Dp,
+    val dimension88: Dp,
+    val dimension89: Dp,
+    val dimension90: Dp,
+    val dimension91: Dp,
+    val dimension92: Dp,
+    val dimension93: Dp,
+    val dimension94: Dp,
+    val dimension95: Dp,
+    val dimension96: Dp,
+    val dimension97: Dp,
+    val dimension98: Dp,
+    val dimension99: Dp,
+    val dimension100: Dp
 )
 
 val LocalDimensions: ProvidableCompositionLocal<DimensionScheme> = staticCompositionLocalOf {
@@ -167,5 +271,57 @@ val dimensionScheme = DimensionScheme(
     dimension45 = DimensionToken.dimension45,
     dimension46 = DimensionToken.dimension46,
     dimension47 = DimensionToken.dimension47,
-    dimension48 = DimensionToken.dimension48
+    dimension48 = DimensionToken.dimension48,
+    dimension49 = DimensionToken.dimension49,
+    dimension50 = DimensionToken.dimension50,
+    dimension51 = DimensionToken.dimension51,
+    dimension52 = DimensionToken.dimension52,
+    dimension53 = DimensionToken.dimension53,
+    dimension54 = DimensionToken.dimension54,
+    dimension55 = DimensionToken.dimension55,
+    dimension56 = DimensionToken.dimension56,
+    dimension57 = DimensionToken.dimension57,
+    dimension58 = DimensionToken.dimension58,
+    dimension59 = DimensionToken.dimension59,
+    dimension60 = DimensionToken.dimension60,
+    dimension61 = DimensionToken.dimension61,
+    dimension62 = DimensionToken.dimension62,
+    dimension63 = DimensionToken.dimension63,
+    dimension64 = DimensionToken.dimension64,
+    dimension65 = DimensionToken.dimension65,
+    dimension66 = DimensionToken.dimension66,
+    dimension67 = DimensionToken.dimension67,
+    dimension68 = DimensionToken.dimension68,
+    dimension69 = DimensionToken.dimension69,
+    dimension70 = DimensionToken.dimension70,
+    dimension71 = DimensionToken.dimension71,
+    dimension72 = DimensionToken.dimension72,
+    dimension73 = DimensionToken.dimension73,
+    dimension74 = DimensionToken.dimension74,
+    dimension75 = DimensionToken.dimension75,
+    dimension76 = DimensionToken.dimension76,
+    dimension77 = DimensionToken.dimension77,
+    dimension78 = DimensionToken.dimension78,
+    dimension79 = DimensionToken.dimension79,
+    dimension80 = DimensionToken.dimension80,
+    dimension81 = DimensionToken.dimension81,
+    dimension82 = DimensionToken.dimension82,
+    dimension83 = DimensionToken.dimension83,
+    dimension84 = DimensionToken.dimension84,
+    dimension85 = DimensionToken.dimension85,
+    dimension86 = DimensionToken.dimension86,
+    dimension87 = DimensionToken.dimension87,
+    dimension88 = DimensionToken.dimension88,
+    dimension89 = DimensionToken.dimension89,
+    dimension90 = DimensionToken.dimension90,
+    dimension91 = DimensionToken.dimension91,
+    dimension92 = DimensionToken.dimension92,
+    dimension93 = DimensionToken.dimension93,
+    dimension94 = DimensionToken.dimension94,
+    dimension95 = DimensionToken.dimension95,
+    dimension96 = DimensionToken.dimension96,
+    dimension97 = DimensionToken.dimension97,
+    dimension98 = DimensionToken.dimension98,
+    dimension99 = DimensionToken.dimension99,
+    dimension100 = DimensionToken.dimension100
 )
