@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
@@ -25,6 +24,7 @@ fun DSText(
     modifier: Modifier = Modifier,
     color: Color = DSTheme.color.text.main,
     marquee: Boolean = false,
+    marqueeDelayMillis: Int = 0,
     overflow: TextOverflow = TextOverflow.Clip,
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
@@ -33,19 +33,8 @@ fun DSText(
     selectable: Boolean = false
 ) {
     val enableMarquee = marquee && !selectable
-    val fadeWidth = 24.dp
-    val textContent: @Composable (Modifier) -> Unit = { modifier ->
-        Text(
-            text = text,
-            modifier = modifier,
-            color = color,
-            overflow = if (enableMarquee) TextOverflow.Clip else overflow,
-            softWrap = if (enableMarquee) false else softWrap,
-            maxLines = if (enableMarquee) 1 else maxLines,
-            minLines = minLines,
-            style = style
-        )
-    }
+    val fadeWidth = 12.dp
+
     val content: @Composable () -> Unit = {
         if (enableMarquee) {
             Box(
@@ -56,8 +45,8 @@ fun DSText(
                         val edgeWidthPx = fadeWidth.toPx()
                         val contentWidth = size.width
                         if (contentWidth > 0f) {
-                            val startAlphaStop = edgeWidthPx / contentWidth
-                            val endAlphaStop = 1f - (edgeWidthPx / contentWidth)
+                            val startAlphaStop = (edgeWidthPx / contentWidth).coerceAtMost(0.5f)
+                            val endAlphaStop = (1f - (edgeWidthPx / contentWidth)).coerceAtLeast(0.5f)
                             drawRect(
                                 brush = Brush.horizontalGradient(
                                     colorStops = arrayOf(
@@ -72,16 +61,32 @@ fun DSText(
                         }
                     }
             ) {
-                textContent(
-                    Modifier.basicMarquee(
-                        iterations = Int.MAX_VALUE
-                    )
+                Text(
+                    text = text,
+                    modifier = Modifier.basicMarquee(
+                        iterations = Int.MAX_VALUE,
+                        initialDelayMillis = marqueeDelayMillis
+                    ),
+                    color = color,
+                    overflow = TextOverflow.Clip,
+                    softWrap = false,
+                    maxLines = 1,
+                    minLines = 1,
+                    style = style
                 )
             }
         } else {
-            textContent(modifier)
+            Text(
+                text = text,
+                modifier = modifier,
+                color = color,
+                overflow = overflow,
+                softWrap = softWrap,
+                maxLines = maxLines,
+                minLines = minLines,
+                style = style
+            )
         }
-
     }
 
     if (selectable) {

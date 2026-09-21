@@ -41,8 +41,8 @@ fun DSBottomSheet(
     cancelText: String = "",
     onCancelClick: () -> Unit = {},
     cancelButtonColorSet: ColorSet = DSTheme.color.red,
-    isOpen: Boolean,
     backgroundColorSet: BackgroundColorSet = DSTheme.color.background,
+    isOpen: Boolean
 ) {
     val sheetState = rememberModalBottomSheetState()
     val scope = rememberCoroutineScope()
@@ -70,7 +70,7 @@ fun DSBottomSheet(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(all = 16.dp)
+                    .padding(16.dp)
             ) {
                 DSText(
                     text = title,
@@ -78,14 +78,14 @@ fun DSBottomSheet(
                 )
 
                 description?.let {
-                    Spacer(modifier = Modifier.height(height = DSTheme.dimension.dimension8))
+                    Spacer(modifier = Modifier.height(DSTheme.dimension.dimension8))
                     DSText(
                         text = it,
                         style = DSTheme.typography.typography6.medium
                     )
                 }
 
-                Spacer(modifier = Modifier.height(height = DSTheme.dimension.dimension32))
+                Spacer(modifier = Modifier.height(DSTheme.dimension.dimension32))
 
                 when (variant) {
                     BottomSheetVariant.CTA -> {
@@ -112,17 +112,17 @@ fun DSBottomSheet(
                                 colorSet = cancelButtonColorSet,
                                 variant = ButtonVariant.WEAK,
                                 size = ButtonSize.LARGE,
-                                modifier = Modifier.weight(weight = 1f)
+                                modifier = Modifier.weight(1f)
                             )
 
-                            Spacer(modifier = Modifier.width(width = DSTheme.dimension.dimension8))
+                            Spacer(modifier = Modifier.width(DSTheme.dimension.dimension8))
 
                             DSButton(
                                 text = confirmText,
                                 onClick = { dismissWithAction(onConfirmClick) },
                                 colorSet = DSTheme.color.blue,
                                 size = ButtonSize.LARGE,
-                                modifier = Modifier.weight(weight = 1f)
+                                modifier = Modifier.weight(1f)
                             )
                         }
                     }
