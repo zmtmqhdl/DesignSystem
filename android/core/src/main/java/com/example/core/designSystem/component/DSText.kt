@@ -28,7 +28,6 @@ fun DSText(
     overflow: TextOverflow = TextOverflow.Clip,
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
-    minLines: Int = 1,
     style: TextStyle = DSTheme.typography.typography6.regular,
     selectable: Boolean = false
 ) {
@@ -71,7 +70,6 @@ fun DSText(
                     overflow = TextOverflow.Clip,
                     softWrap = false,
                     maxLines = 1,
-                    minLines = 1,
                     style = style
                 )
             }
@@ -83,7 +81,6 @@ fun DSText(
                 overflow = overflow,
                 softWrap = softWrap,
                 maxLines = maxLines,
-                minLines = minLines,
                 style = style
             )
         }

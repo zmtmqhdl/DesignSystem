@@ -6,11 +6,12 @@ import androidx.compose.runtime.remember
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
+import com.example.core.designSystem.component.DSIconButton
 import com.example.core.designSystem.component.DSScreen
 import com.example.core.designSystem.component.DSSnackBarState
-import com.example.core.designSystem.component.DSText
 import com.example.core.designSystem.component.ScreenVariant
 import com.example.core.designSystem.component.ScrollVariant
+import com.example.core.designSystem.icon.Search
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,9 +39,10 @@ fun MainScreen(
         padding = true
     ) {
 
-        DSText(
-            text = "tefdsaafsafsafsafsafsdasdasdfadsafsttestestestest",
-            marquee = true
+        DSIconButton(
+            icon = Search,
+            onClick = {},
+            ariaLabel = ""
         )
 
     }

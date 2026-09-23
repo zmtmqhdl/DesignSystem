@@ -58,9 +58,8 @@ fun DSIconButton(
     val iconButtonShape = RoundedCornerShape(corner)
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
-    val pushedSize = 0.95f
+    val pushedSize = 0.9f
     val dimColor = DSTheme.color.greyOpacity900
-
 
     val scale by animateFloatAsState(
         targetValue = if (isPressed && !isLoading) pushedSize else 1f,
@@ -72,7 +71,6 @@ fun DSIconButton(
         animationSpec = tween(durationMillis = 80, easing = FastOutSlowInEasing),
         label = "buttonOverlayAlpha"
     )
-
 
     Box(
         modifier = Modifier
