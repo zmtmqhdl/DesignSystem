@@ -45,6 +45,7 @@ enum class IconButtonVariant {
 @Composable
 fun DSIconButton(
     icon: ImageVector,
+    modifier: Modifier = Modifier,
     onClick: () -> Unit,
     boxSize: Dp = DSTheme.dimension.dimension48,
     iconWidth: Dp = DSTheme.dimension.dimension24,
@@ -73,7 +74,7 @@ fun DSIconButton(
     )
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .graphicsLayer {
                 scaleX = scale
                 scaleY = scale

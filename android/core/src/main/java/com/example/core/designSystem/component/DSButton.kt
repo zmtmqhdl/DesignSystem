@@ -18,7 +18,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -33,9 +34,6 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.role
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextMotion
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -97,12 +95,7 @@ fun DSButton(
         ButtonSize.XLARGE -> DSTheme.dimension.dimension16
     }
 
-    val buttonShape = when (size) {
-        ButtonSize.SMALL -> RoundedCornerShape(corner)
-        ButtonSize.MEDIUM -> RoundedCornerShape(corner)
-        ButtonSize.LARGE -> RoundedCornerShape(corner)
-        ButtonSize.XLARGE -> RoundedCornerShape(corner)
-    }
+    val buttonShape = RoundedCornerShape(corner)
 
     Box(
         modifier = modifier
@@ -110,13 +103,7 @@ fun DSButton(
                 scaleX = scale
                 scaleY = scale
             }
-            .requiredSize(
-                width = when (size) {
-                    ButtonSize.SMALL -> DSTheme.dimension.dimension52
-                    ButtonSize.MEDIUM -> DSTheme.dimension.dimension64
-                    ButtonSize.LARGE -> DSTheme.dimension.dimension80
-                    ButtonSize.XLARGE -> DSTheme.dimension.dimension96
-                },
+            .requiredHeight(
                 height = when (size) {
                     ButtonSize.SMALL -> DSTheme.dimension.dimension32
                     ButtonSize.MEDIUM -> DSTheme.dimension.dimension38
@@ -124,8 +111,20 @@ fun DSButton(
                     ButtonSize.XLARGE -> DSTheme.dimension.dimension56
                 }
             )
-            .conditional(full) { fillMaxWidth(fraction) }
-            .conditional(condition = !isLoading) {
+            .conditional(full) {
+                fillMaxWidth(fraction)
+            }
+            .conditional(!full) {
+                requiredWidth(
+                    width = when (size) {
+                        ButtonSize.SMALL -> DSTheme.dimension.dimension52
+                        ButtonSize.MEDIUM -> DSTheme.dimension.dimension64
+                        ButtonSize.LARGE -> DSTheme.dimension.dimension80
+                        ButtonSize.XLARGE -> DSTheme.dimension.dimension96
+                    }
+                )
+            }
+            .conditional(!isLoading) {
                 alpha(if (enabled) 1f else pressedAlpha)
                 background(
                     color = when (variant) {
@@ -140,9 +139,7 @@ fun DSButton(
                 if (overlayAlpha > 0f) {
                     drawRoundRect(
                         color = dimColor.copy(alpha = overlayAlpha),
-                        cornerRadius = CornerRadius(
-                            x = corner.toPx()
-                        )
+                        cornerRadius = CornerRadius(corner.toPx())
                     )
                 }
             }
@@ -153,8 +150,7 @@ fun DSButton(
                 interactionSource = interactionSource,
                 indication = null,
                 onClick = onClick
-            )
-            .semantics { role = Role.Button },
+            ),
         contentAlignment = Alignment.Center
     ) {
         if (!isLoading) {
