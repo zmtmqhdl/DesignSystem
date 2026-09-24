@@ -2,20 +2,21 @@ package com.example.core.designSystem.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.animation.skeletonAnimation
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
 import com.example.core.util.extension.conditional
+import com.example.core.util.extension.onlyLayoutModifier
 
 enum class BadgeVariant {
     FILL,
@@ -47,13 +48,16 @@ fun DSBadge(
 
     Box(
         modifier = modifier
-            .requiredSize(
+            .onlyLayoutModifier()
+            .width(
                 width = when (size) {
                     BadgeSize.XSMALL -> DSTheme.dimension.dimension52
                     BadgeSize.SMALL -> DSTheme.dimension.dimension64
                     BadgeSize.MEDIUM -> DSTheme.dimension.dimension80
                     BadgeSize.LARGE -> DSTheme.dimension.dimension96
-                },
+                }
+            )
+            .height(
                 height = when (size) {
                     BadgeSize.XSMALL -> DSTheme.dimension.dimension32
                     BadgeSize.SMALL -> DSTheme.dimension.dimension38

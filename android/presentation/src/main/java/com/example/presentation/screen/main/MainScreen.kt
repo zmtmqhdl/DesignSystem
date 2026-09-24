@@ -1,14 +1,21 @@
 package com.example.presentation.screen.main
 
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
+import com.example.core.designSystem.component.BadgeSize
+import com.example.core.designSystem.component.DSBadge
 import com.example.core.designSystem.component.DSIconButton
 import com.example.core.designSystem.component.DSScreen
 import com.example.core.designSystem.component.DSSnackBarState
+import com.example.core.designSystem.component.DSText
 import com.example.core.designSystem.component.ScreenVariant
 import com.example.core.designSystem.component.ScrollVariant
 import com.example.core.designSystem.icon.Search
@@ -39,10 +46,15 @@ fun MainScreen(
         padding = true
     ) {
 
-        DSIconButton(
-            icon = Search,
-            onClick = {},
-            ariaLabel = ""
+        DSBadge(
+            text = "dddd",
+            size = BadgeSize.LARGE,
+            modifier = Modifier.width(3.dp).height(3.dp)
+        )
+
+        DSText(
+            text = "DDDsadffsdasadfsadfasfdsafdsdafsadfsadfadsfasdfasdfasfdasfdasdfD",
+            marquee = true
         )
 
     }
