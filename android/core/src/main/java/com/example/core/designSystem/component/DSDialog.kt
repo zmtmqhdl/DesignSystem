@@ -49,20 +49,18 @@ fun DSDialog(
     val shape = DSTheme.shape.dialog
     val coroutineScope = rememberCoroutineScope()
     val shakeOffset = remember { Animatable(0f) }
-    val shakeAnimation = remember {
-        keyframes {
-            durationMillis = 1000
-            0f at 0
-            10f at 100
-            (-8f) at 200
-            6f at 300
-            (-4f) at 400
-            3f at 500
-            (-2f) at 600
-            1f at 700
-            (-0.5f) at 800
-            0f at 1000
-        }
+    val shakeAnimation = keyframes {
+        durationMillis = 1000
+        0f at 0
+        10f at 100
+        (-8f) at 200
+        6f at 300
+        (-4f) at 400
+        3f at 500
+        (-2f) at 600
+        1f at 700
+        (-0.5f) at 800
+        0f at 1000
     }
 
     val handleDismiss: () -> Unit = {

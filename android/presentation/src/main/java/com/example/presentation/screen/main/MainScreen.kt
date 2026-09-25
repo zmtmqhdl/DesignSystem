@@ -15,11 +15,13 @@ import com.example.core.designSystem.component.BadgeSize
 import com.example.core.designSystem.component.BottomSheetVariant
 import com.example.core.designSystem.component.DSBadge
 import com.example.core.designSystem.component.DSBottomSheet
+import com.example.core.designSystem.component.DSDialog
 import com.example.core.designSystem.component.DSIconButton
 import com.example.core.designSystem.component.DSScreen
 import com.example.core.designSystem.component.DSSnackBarState
 import com.example.core.designSystem.component.DSText
 import com.example.core.designSystem.component.DSTextField
+import com.example.core.designSystem.component.DialogVariant
 import com.example.core.designSystem.component.ScreenVariant
 import com.example.core.designSystem.component.ScrollVariant
 import com.example.core.designSystem.component.TextFieldVariant
@@ -35,14 +37,13 @@ fun MainScreen(
     val snackBarHostState = remember { DSSnackBarState() }
     val viewModel: MainViewModel = hiltViewModel()
 
-    DSBottomSheet(
-        variant = BottomSheetVariant.CTA,
+    DSDialog(
+        variant = DialogVariant.ALERT,
         title = "title",
         description = "description",
         confirmText = "confirm",
         cancelText = "cancel",
-        onDismissRequest = {},
-        isOpen = true
+        dismissOnClickOutside = true
     )
 
     DSScreen(
