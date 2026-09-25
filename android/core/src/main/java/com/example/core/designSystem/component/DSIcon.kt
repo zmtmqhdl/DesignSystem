@@ -15,6 +15,7 @@ import com.example.core.designSystem.animation.skeletonAnimation
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.icon.Search
 import com.example.core.designSystem.theme.DSTheme
+import com.example.core.util.extension.onlyLayoutModifier
 
 @Composable
 fun DSIcon(
@@ -29,6 +30,7 @@ fun DSIcon(
 ) {
     Box(
         modifier = modifier
+            .onlyLayoutModifier()
             .size(boxSize)
             .skeletonAnimation(isLoading),
         contentAlignment = Alignment.Center

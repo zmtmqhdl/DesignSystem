@@ -2,6 +2,7 @@ package com.example.presentation.screen.main
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -16,9 +17,13 @@ import com.example.core.designSystem.component.DSIconButton
 import com.example.core.designSystem.component.DSScreen
 import com.example.core.designSystem.component.DSSnackBarState
 import com.example.core.designSystem.component.DSText
+import com.example.core.designSystem.component.DSTextField
 import com.example.core.designSystem.component.ScreenVariant
 import com.example.core.designSystem.component.ScrollVariant
+import com.example.core.designSystem.component.TextFieldVariant
 import com.example.core.designSystem.icon.Search
+import com.example.core.designSystem.theme.DSTheme
+import com.example.core.designSystem.theme.DSTheme.invoke
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -46,15 +51,13 @@ fun MainScreen(
         padding = true
     ) {
 
-        DSBadge(
-            text = "dddd",
-            size = BadgeSize.LARGE,
-            modifier = Modifier.width(3.dp).height(3.dp)
-        )
+        val state = rememberTextFieldState()
 
-        DSText(
-            text = "DDDsadffsdasadfsadfasfdsafdsdafsadfsadfadsfasdfasdfasfdasfdasdfD",
-            marquee = true
+        DSTextField(
+            state = state,
+            placeholder = "placeholder",
+            onKeyboardActionClick = {},
+            variant = TextFieldVariant.PASSWORD
         )
 
     }

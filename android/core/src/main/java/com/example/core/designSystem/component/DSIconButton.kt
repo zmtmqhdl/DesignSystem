@@ -10,7 +10,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -35,6 +35,7 @@ import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
 import com.example.core.util.extension.conditional
+import com.example.core.util.extension.onlyLayoutModifier
 
 enum class IconButtonVariant {
     CLEAR,
@@ -75,11 +76,12 @@ fun DSIconButton(
 
     Box(
         modifier = modifier
+            .onlyLayoutModifier()
             .graphicsLayer {
                 scaleX = scale
                 scaleY = scale
             }
-            .requiredSize(boxSize)
+            .size(boxSize)
             .conditional(
                 condition = variant == IconButtonVariant.FILL && !isLoading
             ) {

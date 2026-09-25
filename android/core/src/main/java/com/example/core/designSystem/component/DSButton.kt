@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -42,6 +43,7 @@ import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
 import com.example.core.util.extension.conditional
+import com.example.core.util.extension.onlyLayoutModifier
 
 enum class ButtonVariant {
     FILL, WEAK
@@ -99,12 +101,13 @@ fun DSButton(
 
     Box(
         modifier = modifier
+            .onlyLayoutModifier()
             .graphicsLayer {
                 scaleX = scale
                 scaleY = scale
             }
-            .requiredHeight(
-                height = when (size) {
+            .height(
+                when (size) {
                     ButtonSize.SMALL -> DSTheme.dimension.dimension32
                     ButtonSize.MEDIUM -> DSTheme.dimension.dimension38
                     ButtonSize.LARGE -> DSTheme.dimension.dimension48
@@ -115,8 +118,8 @@ fun DSButton(
                 fillMaxWidth(fraction)
             }
             .conditional(!full) {
-                requiredWidth(
-                    width = when (size) {
+                width(
+                    when (size) {
                         ButtonSize.SMALL -> DSTheme.dimension.dimension52
                         ButtonSize.MEDIUM -> DSTheme.dimension.dimension64
                         ButtonSize.LARGE -> DSTheme.dimension.dimension80
@@ -164,12 +167,14 @@ fun DSButton(
                             ButtonSize.SMALL -> DSTheme.dimension.dimension10
                             ButtonSize.MEDIUM,
                             ButtonSize.LARGE -> DSTheme.dimension.dimension16
+
                             ButtonSize.XLARGE -> DSTheme.dimension.dimension15
                         },
                         vertical = when (size) {
                             ButtonSize.SMALL,
                             ButtonSize.MEDIUM,
                             ButtonSize.LARGE -> DSTheme.dimension.dimension2
+
                             ButtonSize.XLARGE -> DSTheme.dimension.dimension28
                         }
                     ),
@@ -220,6 +225,7 @@ private fun ButtonLoader(
                 ButtonSize.SMALL,
                 ButtonSize.MEDIUM,
                 ButtonSize.LARGE -> 2.dp
+
                 ButtonSize.XLARGE -> 28.dp
             }
         ), verticalAlignment = Alignment.CenterVertically,
@@ -227,6 +233,7 @@ private fun ButtonLoader(
             height = when (size) {
                 ButtonSize.SMALL,
                 ButtonSize.MEDIUM -> 5.dp
+
                 ButtonSize.LARGE,
                 ButtonSize.XLARGE -> 8.dp
             },
@@ -271,6 +278,7 @@ private fun ButtonLoader(
                         size = when (size) {
                             ButtonSize.SMALL,
                             ButtonSize.MEDIUM -> 5.dp
+
                             ButtonSize.LARGE,
                             ButtonSize.XLARGE -> 8.dp
                         }

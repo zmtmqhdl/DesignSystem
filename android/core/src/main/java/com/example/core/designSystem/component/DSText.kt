@@ -1,7 +1,6 @@
 package com.example.core.designSystem.component
 
 import androidx.compose.foundation.basicMarquee
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -40,19 +39,16 @@ fun DSText(
         Text(
             text = text,
             modifier = modifier
+                .onlyLayoutModifier()
                 .conditional(enableMarquee) {
-                    // 1. Marquee 페이드 효과를 위한 Offscreen 레이어 생성
                     graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
                         .drawWithContent {
-                            drawContent() // 텍스트를 먼저 그리고
+                            drawContent()
                             val edgeWidthPx = fadeWidth.toPx()
                             val contentWidth = size.width
-
                             if (contentWidth > 0f) {
                                 val startAlphaStop = (edgeWidthPx / contentWidth).coerceAtMost(0.5f)
                                 val endAlphaStop = (1f - (edgeWidthPx / contentWidth)).coerceAtLeast(0.5f)
-
-                                // 2. BlendMode.DstIn으로 알파 채널 마스킹 (양 끝 투명화)
                                 drawRect(
                                     brush = Brush.horizontalGradient(
                                         colorStops = arrayOf(
@@ -66,7 +62,6 @@ fun DSText(
                                 )
                             }
                         }
-                        // 3. basicMarquee를 그리기 및 레이어 설정 후에 연결
                         .basicMarquee(
                             iterations = Int.MAX_VALUE,
                             initialDelayMillis = marqueeDelayMillis
