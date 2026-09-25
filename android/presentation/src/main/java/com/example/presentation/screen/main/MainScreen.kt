@@ -12,7 +12,9 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 import com.example.core.designSystem.component.BadgeSize
+import com.example.core.designSystem.component.BottomSheetVariant
 import com.example.core.designSystem.component.DSBadge
+import com.example.core.designSystem.component.DSBottomSheet
 import com.example.core.designSystem.component.DSIconButton
 import com.example.core.designSystem.component.DSScreen
 import com.example.core.designSystem.component.DSSnackBarState
@@ -33,15 +35,15 @@ fun MainScreen(
     val snackBarHostState = remember { DSSnackBarState() }
     val viewModel: MainViewModel = hiltViewModel()
 
-//    DSBottomSheet(
-//        variant = BottomSheetVariant.CTA,
-//        title = "title",
-//        description = "description",
-//        confirmText = "confirm",
-//        cancelText = "cancel",
-//        onDismissRequest = {},
-//        isOpen = true
-//    )
+    DSBottomSheet(
+        variant = BottomSheetVariant.CTA,
+        title = "title",
+        description = "description",
+        confirmText = "confirm",
+        cancelText = "cancel",
+        onDismissRequest = {},
+        isOpen = true
+    )
 
     DSScreen(
         variant = ScreenVariant.ScrollColumn(

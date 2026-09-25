@@ -31,7 +31,6 @@ fun DSContentLayout(
     ) {
         content()
 
-        // 전체 다이얼로그
         if (loading) {
             Dialog(
                 onDismissRequest = {},

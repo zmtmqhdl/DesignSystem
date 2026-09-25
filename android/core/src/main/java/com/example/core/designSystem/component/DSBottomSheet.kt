@@ -50,7 +50,6 @@ fun DSBottomSheet(
     val dismissWithAction = { action: () -> Unit ->
         scope.launch {
             sheetState.hide()
-        }.invokeOnCompletion {
             action()
             onDismissRequest()
         }
