@@ -3,10 +3,13 @@ package com.example.core.designSystem.component
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.keyframes
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -44,115 +47,130 @@ fun DSDialog(
     cancelButtonColorSet: ColorSet = DSTheme.color.red,
     dismissOnBackPress: Boolean = false,
     dismissOnClickOutside: Boolean = false,
-    preventDismiss: Boolean = true
 ) {
     val shape = DSTheme.shape.dialog
     val coroutineScope = rememberCoroutineScope()
     val shakeOffset = remember { Animatable(0f) }
     val shakeAnimation = keyframes {
-        durationMillis = 1000
+        durationMillis = 350
         0f at 0
-        10f at 100
-        (-8f) at 200
-        6f at 300
-        (-4f) at 400
-        3f at 500
-        (-2f) at 600
-        1f at 700
-        (-0.5f) at 800
-        0f at 1000
+        (-3f) at 70
+        3f at 140
+        (-2f) at 210
+        1f at 280
+        0f at 350
     }
 
-    val handleDismiss: () -> Unit = {
-        if (preventDismiss) {
-            coroutineScope.launch {
-                shakeOffset.animateTo(
-                    targetValue = 0f,
-                    animationSpec = shakeAnimation
-                )
-            }
-        } else {
-            onDismissRequest()
+    val triggerShake = {
+        coroutineScope.launch {
+            shakeOffset.animateTo(
+                targetValue = 0f,
+                animationSpec = shakeAnimation
+            )
         }
     }
 
     Dialog(
-        onDismissRequest = handleDismiss,
+        onDismissRequest = {
+            if (dismissOnBackPress) {
+                onDismissRequest()
+            }
+        },
         properties = DialogProperties(
             dismissOnBackPress = dismissOnBackPress,
-            dismissOnClickOutside = dismissOnClickOutside
+            dismissOnClickOutside = false,
         ),
         content = {
-            Column(
+            Box(
                 modifier = Modifier
-                    .offset {
-                        IntOffset(
-                            x = shakeOffset.value.dp.roundToPx(),
-                            y = 0
+                    .fillMaxSize()
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null
+                    ) {
+                        if (dismissOnClickOutside) {
+                            onDismissRequest()
+                        } else {
+                            triggerShake()
+                        }
+                    },
+                contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    modifier = Modifier
+                        .offset {
+                            IntOffset(
+                                x = shakeOffset.value.dp.roundToPx(),
+                                y = 0
+                            )
+                        }
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null
+                        ) {}
+                        .background(
+                            color = DSTheme.color.background.background,
+                            shape = shape
+                        )
+                        .padding(all = 16.dp)
+                ) {
+                    DSText(
+                        text = title,
+                        style = DSTheme.typography.typography4.bold,
+                    )
+
+                    description?.let {
+                        Spacer(modifier = Modifier.height(DSTheme.dimension.dimension8))
+
+                        DSText(
+                            text = it,
+                            style = DSTheme.typography.typography6.medium
                         )
                     }
-                    .background(
-                        color = DSTheme.color.background.background,
-                        shape = shape
-                    )
-                    .padding(all = 16.dp)
-            ) {
-                DSText(
-                    text = title,
-                    style = DSTheme.typography.typography4.bold,
-                )
 
-                description?.let {
-                    Spacer(modifier = Modifier.height(DSTheme.dimension.dimension8))
+                    Spacer(modifier = Modifier.height(DSTheme.dimension.dimension32))
 
-                    DSText(
-                        text = it,
-                        style = DSTheme.typography.typography6.medium
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(DSTheme.dimension.dimension32))
-
-                when (variant) {
-                    DialogVariant.ALERT -> {
-                        Box(
-                            modifier = Modifier.fillMaxWidth(),
-                            contentAlignment = Alignment.BottomEnd
-                        ) {
-                            DSButton(
-                                text = confirmText,
-                                onClick = onConfirmClick,
-                                colorSet = DSTheme.color.blue
-                            )
-                        }
-                    }
-
-                    DialogVariant.CONFIRM -> {
-                        require(value = !cancelText.isNullOrBlank()) {
-                            "cancelText must be provided when variant is CONFIRM."
+                    when (variant) {
+                        DialogVariant.ALERT -> {
+                            Box(
+                                modifier = Modifier.fillMaxWidth(),
+                                contentAlignment = Alignment.BottomEnd
+                            ) {
+                                DSButton(
+                                    text = confirmText,
+                                    onClick = onConfirmClick,
+                                    colorSet = DSTheme.color.blue
+                                )
+                            }
                         }
 
-                        Row(
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            DSButton(
-                                text = cancelText,
-                                onClick = onCancelClick,
-                                colorSet = cancelButtonColorSet,
-                                variant = ButtonVariant.WEAK,
-                                size = ButtonSize.LARGE,
-                                modifier = Modifier.weight(1f)
-                            )
+                        DialogVariant.CONFIRM -> {
+                            require(value = !cancelText.isNullOrBlank()) {
+                                "cancelText must be provided when variant is CONFIRM."
+                            }
 
-                            Spacer(modifier = Modifier.width(DSTheme.dimension.dimension8))
+                            Row(
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                DSButton(
+                                    text = cancelText,
+                                    onClick = onCancelClick,
+                                    colorSet = cancelButtonColorSet,
+                                    variant = ButtonVariant.WEAK,
+                                    size = ButtonSize.LARGE,
+                                    modifier = Modifier.weight(1f)
+                                )
 
-                            DSButton(
-                                text = confirmText,
-                                onClick = onConfirmClick,
-                                colorSet = DSTheme.color.blue,
-                                size = ButtonSize.LARGE,
-                                modifier = Modifier.weight(1f)
-                            )
+                                Spacer(modifier = Modifier.width(DSTheme.dimension.dimension8))
+
+                                DSButton(
+                                    text = confirmText,
+                                    onClick = onConfirmClick,
+                                    colorSet = DSTheme.color.blue,
+                                    size = ButtonSize.LARGE,
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
                         }
                     }
                 }
