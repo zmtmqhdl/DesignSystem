@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -25,16 +26,6 @@ import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.milliseconds
-
-data class DSSnackBarIcon(
-    val icon: ImageVector,
-    val ariaLabel: String
-)
-
-data class DSSnackBarAction(
-    val buttonText: String,
-    val onClick: () -> Unit
-)
 
 enum class DSSnackBarDuration {
     INFINITE,
@@ -65,12 +56,16 @@ internal fun DSSnackBarDuration.toMillis(
 
 data class DSSnackBarData(
     val text: String,
-    val icon: DSSnackBarIcon?,
-    val action: DSSnackBarAction?,
+    val icon: ImageVector?,
+    val ariaLabel: String?,
+    val buttonText: String?,
+    val onActionClick: (() -> Unit)?,
     val duration: DSSnackBarDuration
 )
 
 class DSSnackBarState {
+    private val queue = mutableStateListOf<DSSnackBarData>()
+
     private var _data by mutableStateOf<DSSnackBarData?>(null)
     internal val data: DSSnackBarData?
         get() = _data
@@ -81,28 +76,66 @@ class DSSnackBarState {
 
     fun show(
         text: String,
-        icon: DSSnackBarIcon? = null,
-        action: DSSnackBarAction? = null,
+        icon: ImageVector? = null,
+        ariaLabel: String? = null,
+        buttonText: String? = null,
+        onActionClick: (() -> Unit)? = null,
         duration: DSSnackBarDuration = DSSnackBarDuration.SHORT
     ) {
-        _data = DSSnackBarData(
+        require((icon == null && ariaLabel.isNullOrBlank()) || (icon != null && !ariaLabel.isNullOrBlank())) {
+            "icon and ariaLabel must both be provided together or both be null/blank"
+        }
+
+        require((buttonText == null && onActionClick == null) || (!buttonText.isNullOrBlank() && onActionClick != null)) {
+            "buttonText and onActionClick must both be provided together or both be null"
+        }
+
+        val newData = DSSnackBarData(
             text = text,
             icon = icon,
-            action = action,
+            ariaLabel = ariaLabel,
+            buttonText = buttonText,
+            onActionClick = onActionClick,
             duration = duration
         )
-        _visible = true
+
+        if (_data == newData) return
+
+        if (_visible || _data != null) {
+            queue.add(newData)
+            hide()
+        } else {
+            _data = newData
+            _visible = true
+        }
     }
 
     fun hide() {
         _visible = false
     }
 
-    internal fun remove() {
+    fun clear() {
+        queue.clear()
+        _visible = false
         _data = null
+    }
+
+    internal fun onAnimationFinished() {
+        if (!_visible) {
+            if (queue.isNotEmpty()) {
+                _data = queue.removeAt(0)
+                _visible = true
+            } else {
+                _data = null
+            }
+        }
     }
 }
 
+@Composable
+fun rememberDSSnackBarState(): DSSnackBarState {
+    return remember { DSSnackBarState() }
+}
 
 @Composable
 fun DSSnackBar(
@@ -112,14 +145,16 @@ fun DSSnackBar(
     val accessibilityManager = LocalAccessibilityManager.current
     val shape = DSTheme.shape.snackBar
 
-    LaunchedEffect(currentData) {
-        currentData?.let {
-            val duration = it.duration.toMillis(
-                hasAction = it.action != null,
+    LaunchedEffect(currentData, snackBarState.visible) {
+        if (currentData != null && snackBarState.visible) {
+            val duration = currentData.duration.toMillis(
+                hasAction = currentData.buttonText != null && currentData.onActionClick != null,
                 accessibilityManager = accessibilityManager
             )
-            delay(duration = duration.milliseconds)
-            snackBarState.hide()
+            if (duration < Long.MAX_VALUE) {
+                delay(duration.milliseconds)
+                snackBarState.hide()
+            }
         }
     }
 
@@ -129,17 +164,15 @@ fun DSSnackBar(
                 .fillMaxWidth()
                 .padding(horizontal = DSTheme.dimension.dimension40)
                 .padding(bottom = DSTheme.dimension.dimension16)
+                .clip(shape)
                 .background(
                     color = DSTheme.color.background.background,
                     shape = shape
                 )
-                .clip(shape = shape)
                 .snackBarAnimation(
                     visible = snackBarState.visible,
                     onFinished = {
-                        if (!snackBarState.visible) {
-                            snackBarState.remove()
-                        }
+                        snackBarState.onAnimationFinished()
                     }
                 )
         ) {
@@ -150,28 +183,34 @@ fun DSSnackBar(
                 verticalAlignment = Alignment.CenterVertically
 
             ) {
-                data.icon?.let {
+                val icon = data.icon
+                val ariaLabel = data.ariaLabel
+
+                if (icon != null && ariaLabel != null) {
                     DSIcon(
-                        icon = it.icon,
-                        ariaLabel = it.ariaLabel
+                        icon = icon,
+                        ariaLabel = ariaLabel
                     )
 
-                    Spacer(modifier = Modifier.width(width = 4.dp))
+                    Spacer(modifier = Modifier.width(4.dp))
                 }
 
                 DSText(
                     text = data.text
                 )
 
-                data.action?.let {
+                val buttonText = data.buttonText
+                val onActionClick = data.onActionClick
+
+                if (buttonText != null && onActionClick != null) {
                     Box(
-                        modifier = Modifier.weight(weight = 1f),
+                        modifier = Modifier.weight(1f),
                         contentAlignment = Alignment.CenterEnd
                     ) {
                         DSButton(
-                            text = it.buttonText,
+                            text = buttonText,
                             onClick = {
-                                it.onClick()
+                                onActionClick.invoke()
                                 snackBarState.hide()
                             }
                         )
@@ -186,17 +225,15 @@ fun DSSnackBar(
 @Composable
 fun DSSnackBarPreview() {
     DSTheme {
-        val snackBarState = remember { DSSnackBarState() }
+        val snackBarState = rememberDSSnackBarState()
 
         LaunchedEffect(Unit) {
             snackBarState.show(
                 text = "Preview",
-                action = DSSnackBarAction(
-                    buttonText = "Action",
-                    onClick = {
-                        snackBarState.hide()
-                    }
-                ),
+                buttonText = "Action",
+                onActionClick = {
+                    snackBarState.hide()
+                },
                 duration = DSSnackBarDuration.INFINITE
             )
         }
