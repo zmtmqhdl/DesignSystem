@@ -1,5 +1,6 @@
 package com.example.core.designSystem.component
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -192,29 +193,28 @@ fun DSSnackBar(
                         ariaLabel = ariaLabel
                     )
 
-                    Spacer(modifier = Modifier.width(4.dp))
+                    Spacer(modifier = Modifier.width(DSTheme.dimension.dimension4))
                 }
 
-                DSText(
-                    text = data.text
-                )
+                Box(
+                    modifier = Modifier.weight(1f)
+                ) {
+                    DSText( text = data.text )
+                }
 
                 val buttonText = data.buttonText
                 val onActionClick = data.onActionClick
 
                 if (buttonText != null && onActionClick != null) {
-                    Box(
-                        modifier = Modifier.weight(1f),
-                        contentAlignment = Alignment.CenterEnd
-                    ) {
-                        DSButton(
-                            text = buttonText,
-                            onClick = {
-                                onActionClick.invoke()
-                                snackBarState.hide()
-                            }
-                        )
-                    }
+                    Spacer(modifier = Modifier.width(DSTheme.dimension.dimension8))
+
+                    DSButton(
+                        text = buttonText,
+                        onClick = {
+                            onActionClick.invoke()
+                            snackBarState.hide()
+                        }
+                    )
                 }
             }
         }

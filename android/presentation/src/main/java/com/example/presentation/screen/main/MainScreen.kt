@@ -8,7 +8,6 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 import com.example.core.designSystem.component.DSScreen
-import com.example.core.designSystem.component.DSSnackBarAction
 import com.example.core.designSystem.component.DSSnackBarDuration
 import com.example.core.designSystem.component.DSTextField
 import com.example.core.designSystem.component.ScreenVariant
@@ -29,35 +28,11 @@ fun MainScreen(
     LaunchedEffect(Unit) {
         delay(1000)
         snackBarState.show(
-            text = "Preview1",
-            action = DSSnackBarAction(
-                buttonText = "Action",
-                onClick = {
-                    snackBarState.hide()
-                }
-            ),
-            duration = DSSnackBarDuration.SHORT
-        )
-        delay(1000)
-        snackBarState.show(
-            text = "Preview2",
-            action = DSSnackBarAction(
-                buttonText = "Action",
-                onClick = {
-                    snackBarState.hide()
-                }
-            ),
-            duration = DSSnackBarDuration.SHORT
-        )
-        delay(1000)
-        snackBarState.show(
-            text = "Preview3",
-            action = DSSnackBarAction(
-                buttonText = "Action",
-                onClick = {
-                    snackBarState.hide()
-                }
-            ),
+            text = "aaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbcccccccccccccccc",
+            buttonText = "Action",
+            onActionClick = {
+                snackBarState.hide()
+            },
             duration = DSSnackBarDuration.SHORT
         )
     }
