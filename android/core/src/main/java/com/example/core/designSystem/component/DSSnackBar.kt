@@ -1,6 +1,5 @@
 package com.example.core.designSystem.component
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -21,7 +20,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.AccessibilityManager
 import androidx.compose.ui.platform.LocalAccessibilityManager
-import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.animation.snackBarAnimation
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
