@@ -10,7 +10,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -35,6 +35,7 @@ import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
 import com.example.core.util.extension.conditional
+import com.example.core.util.extension.onlyLayoutModifier
 
 enum class IconButtonVariant {
     CLEAR,
@@ -45,6 +46,7 @@ enum class IconButtonVariant {
 @Composable
 fun DSIconButton(
     icon: ImageVector,
+    modifier: Modifier = Modifier,
     onClick: () -> Unit,
     boxSize: Dp = DSTheme.dimension.dimension48,
     iconWidth: Dp = DSTheme.dimension.dimension24,
@@ -58,9 +60,8 @@ fun DSIconButton(
     val iconButtonShape = RoundedCornerShape(corner)
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
-    val pushedSize = 0.95f
+    val pushedSize = 0.9f
     val dimColor = DSTheme.color.greyOpacity900
-
 
     val scale by animateFloatAsState(
         targetValue = if (isPressed && !isLoading) pushedSize else 1f,
@@ -73,14 +74,14 @@ fun DSIconButton(
         label = "buttonOverlayAlpha"
     )
 
-
     Box(
-        modifier = Modifier
+        modifier = modifier
+            .onlyLayoutModifier()
             .graphicsLayer {
                 scaleX = scale
                 scaleY = scale
             }
-            .requiredSize(boxSize)
+            .size(boxSize)
             .conditional(
                 condition = variant == IconButtonVariant.FILL && !isLoading
             ) {

@@ -15,6 +15,7 @@ import com.example.core.designSystem.animation.skeletonAnimation
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.icon.Search
 import com.example.core.designSystem.theme.DSTheme
+import com.example.core.util.extension.onlyLayoutModifier
 
 @Composable
 fun DSIcon(
@@ -29,16 +30,17 @@ fun DSIcon(
 ) {
     Box(
         modifier = modifier
-            .size(size = boxSize)
-            .skeletonAnimation(isLoading = isLoading),
+            .onlyLayoutModifier()
+            .size(boxSize)
+            .skeletonAnimation(isLoading),
         contentAlignment = Alignment.Center
     ) {
         Icon(
             imageVector = icon,
             contentDescription = ariaLabel,
             modifier = Modifier
-                .width(width = iconWidth)
-                .height(height = iconHeight),
+                .width(iconWidth)
+                .height(iconHeight),
             tint = color
         )
     }

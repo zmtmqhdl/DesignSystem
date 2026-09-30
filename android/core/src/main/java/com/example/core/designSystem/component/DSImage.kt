@@ -13,6 +13,7 @@ import coil3.compose.SubcomposeAsyncImage
 import com.example.core.designSystem.animation.skeletonAnimation
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
+import com.example.core.util.extension.onlyLayoutModifier
 
 @Composable
 fun DSImage(
@@ -40,6 +41,7 @@ fun DSImage(
     SubcomposeAsyncImage(
         model = model,
         modifier = modifier
+            .onlyLayoutModifier()
             .width(width)
             .height(height)
             .then(clickModifier),

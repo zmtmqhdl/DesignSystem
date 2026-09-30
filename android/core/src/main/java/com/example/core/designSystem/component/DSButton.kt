@@ -18,8 +18,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -33,9 +35,6 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.role
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextMotion
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -44,6 +43,7 @@ import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
 import com.example.core.util.extension.conditional
+import com.example.core.util.extension.onlyLayoutModifier
 
 enum class ButtonVariant {
     FILL, WEAK
@@ -70,7 +70,7 @@ fun DSButton(
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
     val pressedAlpha = 0.3f
-    val pushedSize = 0.95f
+    val pushedSize = 0.99f
     val baseFontSize = when (size) {
         ButtonSize.SMALL -> 14.sp
         ButtonSize.MEDIUM -> 16.sp
@@ -91,41 +91,43 @@ fun DSButton(
     )
 
     val corner = when (size) {
-        ButtonSize.SMALL -> 8.dp
-        ButtonSize.MEDIUM -> 10.dp
-        ButtonSize.LARGE -> 14.dp
-        ButtonSize.XLARGE -> 16.dp
+        ButtonSize.SMALL -> DSTheme.dimension.dimension8
+        ButtonSize.MEDIUM -> DSTheme.dimension.dimension10
+        ButtonSize.LARGE -> DSTheme.dimension.dimension14
+        ButtonSize.XLARGE -> DSTheme.dimension.dimension16
     }
 
-    val buttonShape = when (size) {
-        ButtonSize.SMALL -> RoundedCornerShape(corner)
-        ButtonSize.MEDIUM -> RoundedCornerShape(corner)
-        ButtonSize.LARGE -> RoundedCornerShape(corner)
-        ButtonSize.XLARGE -> RoundedCornerShape(corner)
-    }
+    val buttonShape = RoundedCornerShape(corner)
 
     Box(
         modifier = modifier
+            .onlyLayoutModifier()
             .graphicsLayer {
                 scaleX = scale
                 scaleY = scale
             }
-            .requiredSize(
-                width = when (size) {
-                    ButtonSize.SMALL -> 52.dp
-                    ButtonSize.MEDIUM -> 64.dp
-                    ButtonSize.LARGE -> 80.dp
-                    ButtonSize.XLARGE -> 96.dp
-                },
-                height = when (size) {
-                    ButtonSize.SMALL -> 32.dp
-                    ButtonSize.MEDIUM -> 38.dp
-                    ButtonSize.LARGE -> 48.dp
-                    ButtonSize.XLARGE -> 56.dp
+            .height(
+                when (size) {
+                    ButtonSize.SMALL -> DSTheme.dimension.dimension32
+                    ButtonSize.MEDIUM -> DSTheme.dimension.dimension38
+                    ButtonSize.LARGE -> DSTheme.dimension.dimension48
+                    ButtonSize.XLARGE -> DSTheme.dimension.dimension56
                 }
             )
-            .conditional(condition = full) { fillMaxWidth(fraction = fraction) }
-            .conditional(condition = !isLoading) {
+            .conditional(full) {
+                fillMaxWidth(fraction)
+            }
+            .conditional(!full) {
+                width(
+                    when (size) {
+                        ButtonSize.SMALL -> DSTheme.dimension.dimension52
+                        ButtonSize.MEDIUM -> DSTheme.dimension.dimension64
+                        ButtonSize.LARGE -> DSTheme.dimension.dimension80
+                        ButtonSize.XLARGE -> DSTheme.dimension.dimension96
+                    }
+                )
+            }
+            .conditional(!isLoading) {
                 alpha(if (enabled) 1f else pressedAlpha)
                 background(
                     color = when (variant) {
@@ -140,9 +142,7 @@ fun DSButton(
                 if (overlayAlpha > 0f) {
                     drawRoundRect(
                         color = dimColor.copy(alpha = overlayAlpha),
-                        cornerRadius = CornerRadius(
-                            x = corner.toPx()
-                        )
+                        cornerRadius = CornerRadius(corner.toPx())
                     )
                 }
             }
@@ -153,8 +153,7 @@ fun DSButton(
                 interactionSource = interactionSource,
                 indication = null,
                 onClick = onClick
-            )
-            .semantics { role = Role.Button },
+            ),
         contentAlignment = Alignment.Center
     ) {
         if (!isLoading) {
@@ -165,16 +164,18 @@ fun DSButton(
                     text = text,
                     modifier = Modifier.padding(
                         horizontal = when (size) {
-                            ButtonSize.SMALL -> 10.dp
+                            ButtonSize.SMALL -> DSTheme.dimension.dimension10
                             ButtonSize.MEDIUM,
-                            ButtonSize.LARGE -> 16.dp
-                            ButtonSize.XLARGE -> 15.dp
+                            ButtonSize.LARGE -> DSTheme.dimension.dimension16
+
+                            ButtonSize.XLARGE -> DSTheme.dimension.dimension15
                         },
                         vertical = when (size) {
                             ButtonSize.SMALL,
                             ButtonSize.MEDIUM,
-                            ButtonSize.LARGE -> 2.dp
-                            ButtonSize.XLARGE -> 28.dp
+                            ButtonSize.LARGE -> DSTheme.dimension.dimension2
+
+                            ButtonSize.XLARGE -> DSTheme.dimension.dimension28
                         }
                     ),
                     color = when (variant) {
@@ -224,6 +225,7 @@ private fun ButtonLoader(
                 ButtonSize.SMALL,
                 ButtonSize.MEDIUM,
                 ButtonSize.LARGE -> 2.dp
+
                 ButtonSize.XLARGE -> 28.dp
             }
         ), verticalAlignment = Alignment.CenterVertically,
@@ -231,6 +233,7 @@ private fun ButtonLoader(
             height = when (size) {
                 ButtonSize.SMALL,
                 ButtonSize.MEDIUM -> 5.dp
+
                 ButtonSize.LARGE,
                 ButtonSize.XLARGE -> 8.dp
             },
@@ -275,6 +278,7 @@ private fun ButtonLoader(
                         size = when (size) {
                             ButtonSize.SMALL,
                             ButtonSize.MEDIUM -> 5.dp
+
                             ButtonSize.LARGE,
                             ButtonSize.XLARGE -> 8.dp
                         }

@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
@@ -17,6 +17,7 @@ import androidx.compose.foundation.text.input.KeyboardActionHandler
 import androidx.compose.foundation.text.input.OutputTransformation
 import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.clearText
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -40,6 +41,7 @@ import com.example.core.designSystem.icon.Search
 import com.example.core.designSystem.icon.Visibility
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.util.extension.conditional
+import com.example.core.util.extension.onlyLayoutModifier
 
 enum class TextFieldVariant {
     TEXT, PASSWORD, NUMBER, SEARCH, EMAIL, PHONE_NUMBER
@@ -47,6 +49,7 @@ enum class TextFieldVariant {
 
 @Composable
 fun DSTextField(
+    modifier: Modifier = Modifier,
     variant: TextFieldVariant = TextFieldVariant.TEXT,
     state: TextFieldState,
     onKeyboardActionClick: () -> Unit,
@@ -55,7 +58,6 @@ fun DSTextField(
     imeAction: ImeAction = ImeAction.Default,
     placeholder: String? = null,
     singleLine: Boolean = true,
-    minHeightInLines: Int = 1,
     maxHeightInLines: Int = Int.MAX_VALUE,
     isLoading: Boolean = false
 ) {
@@ -65,39 +67,19 @@ fun DSTextField(
     var visibility by rememberSaveable { mutableStateOf(false) }
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
+    val inputTransformation = remember(variant) {
+        when (variant) {
+            TextFieldVariant.TEXT,
+            TextFieldVariant.SEARCH -> null
 
-    BasicTextField(
-        state = state,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(DSTheme.dimension.dimension48)
-            .clip(shape)
-            .conditional(condition = !isLoading) {
-                background(
-                    color = color.container,
-                    shape = shape
-                )
-            }
-            .skeletonAnimation(isLoading = isLoading)
-            .padding(
-                horizontal = DSTheme.dimension.dimension8,
-                vertical = DSTheme.dimension.dimension4
-            ),
-        enabled = enabled && !isLoading,
-        readOnly = readOnly,
-        inputTransformation =
-            when (variant) {
-                TextFieldVariant.TEXT,
-                TextFieldVariant.SEARCH -> null
-
-                TextFieldVariant.NUMBER,
-                TextFieldVariant.PHONE_NUMBER -> InputTransformation {
-                    if (!asCharSequence().all { it.isDigit() }) {
-                        revertAllChanges()
-                    }
+            TextFieldVariant.NUMBER,
+            TextFieldVariant.PHONE_NUMBER -> InputTransformation {
+                if (!asCharSequence().all { it.isDigit() }) {
+                    revertAllChanges()
                 }
+            }
 
-                TextFieldVariant.EMAIL -> null
+            TextFieldVariant.EMAIL -> null
 //                    InputTransformation {
 //                    if (!asCharSequence().all {
 //                            it.isLetterOrDigit() || it == '@' || it == '.'
@@ -106,7 +88,7 @@ fun DSTextField(
 //                        revertAllChanges()
 //                    }
 //                }
-                TextFieldVariant.PASSWORD -> null
+            TextFieldVariant.PASSWORD -> null
 //                    InputTransformation {
 //                    if (!asCharSequence().all {
 //                            it.isLetterOrDigit() ||
@@ -116,14 +98,17 @@ fun DSTextField(
 //                        revertAllChanges()
 //                    }
 
-            },
-        outputTransformation = when (variant) {
+        }
+    }
+
+    // 2. 기존 OutputTransformation when 구조 유지 + remember 적용 (visibility 키 추가)
+    val outputTransformation = remember(variant, visibility) {
+        when (variant) {
             TextFieldVariant.TEXT,
             TextFieldVariant.SEARCH,
             TextFieldVariant.NUMBER,
             TextFieldVariant.PHONE_NUMBER,
             TextFieldVariant.EMAIL -> null
-
             TextFieldVariant.PASSWORD -> {
                 if (visibility) {
                     null
@@ -138,13 +123,36 @@ fun DSTextField(
                     }
                 }
             }
-        },
+        }
+    }
+
+    BasicTextField(
+        state = state,
+        modifier = modifier
+            .onlyLayoutModifier()
+            .fillMaxWidth()
+            .heightIn(min = DSTheme.dimension.dimension48)
+            .clip(shape)
+            .conditional(condition = !isLoading) {
+                background(
+                    color = color.container,
+                    shape = shape
+                )
+            }
+            .skeletonAnimation(isLoading = isLoading)
+            .padding(
+                horizontal = DSTheme.dimension.dimension8,
+                vertical = DSTheme.dimension.dimension4
+            ),
+        enabled = enabled && !isLoading,
+        readOnly = readOnly,
+        inputTransformation = inputTransformation,
+        outputTransformation = outputTransformation,
         textStyle = textStyle,
         keyboardOptions = KeyboardOptions(
             keyboardType = when (variant) {
                 TextFieldVariant.TEXT,
                 TextFieldVariant.SEARCH -> KeyboardType.Text
-
                 TextFieldVariant.PASSWORD -> KeyboardType.Password
                 TextFieldVariant.NUMBER -> KeyboardType.Number
                 TextFieldVariant.PHONE_NUMBER -> KeyboardType.Phone
@@ -154,12 +162,11 @@ fun DSTextField(
         ),
         onKeyboardAction = KeyboardActionHandler { onKeyboardActionClick() },
         lineLimits = if (singleLine) TextFieldLineLimits.SingleLine else TextFieldLineLimits.MultiLine(
-            minHeightInLines = minHeightInLines,
             maxHeightInLines = maxHeightInLines
         ),
         interactionSource = interactionSource,
         cursorBrush = SolidColor(
-            value = color.main
+            value = if (enabled && !readOnly) color.main else androidx.compose.ui.graphics.Color.Transparent
         ),
         decorator = { innerTextField ->
             if (!isLoading) {
@@ -197,34 +204,24 @@ fun DSTextField(
                     if (isFocused && state.text.isNotEmpty()) {
                         Spacer(modifier = Modifier.width(width = DSTheme.dimension.dimension4))
 
-                        when (variant) {
-                            TextFieldVariant.TEXT,
-                            TextFieldVariant.NUMBER,
-                            TextFieldVariant.EMAIL,
-                            TextFieldVariant.SEARCH,
-                            TextFieldVariant.PHONE_NUMBER -> {
-                                DSIconButton(
-                                    icon = Cancel,
-                                    onClick = {
-                                        state.edit {
-                                            replace(
-                                                start = 0,
-                                                end = state.text.length,
-                                                text = ""
-                                            )
-                                        }
-                                    },
-                                    ariaLabel = stringResource(id = R.string.aria_label_text_clear)
-                                )
-                            }
-
-                            TextFieldVariant.PASSWORD -> {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            if (variant == TextFieldVariant.PASSWORD) {
                                 DSIconButton(
                                     icon = if (visibility) Visibility else Invisibility,
+                                    iconWidth = DSTheme.dimension.dimension18,
+                                    iconHeight = DSTheme.dimension.dimension18,
                                     onClick = { visibility = !visibility },
                                     ariaLabel = stringResource(id = if (visibility) R.string.aria_label_hide_password else R.string.aria_label_show_password)
                                 )
                             }
+
+                            DSIconButton(
+                                icon = Cancel,
+                                iconWidth = DSTheme.dimension.dimension18,
+                                iconHeight = DSTheme.dimension.dimension18,
+                                onClick = { state.clearText() },
+                                ariaLabel = stringResource(id = R.string.aria_label_text_clear)
+                            )
                         }
                     }
                 }

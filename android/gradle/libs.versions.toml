@@ -1,5 +1,5 @@
 [versions]
-agp = "9.4.0"
+agp = "9.4.1"
 coreSplashscreen = "1.2.0"
 datastorePreferences = "1.2.1"
 hiltNavigationCompose = "1.4.0"
@@ -11,7 +11,7 @@ espressoCore = "3.7.0"
 kotlinxCoroutinesAndroid = "1.11.0"
 kotlinxSerializationJson = "1.11.0"
 navigation3Runtime = "1.1.7"
-protobuf = "4.36.1"
+protobuf = "4.36.2"
 lifecycleRuntimeKtx = "2.11.0"
 activityCompose = "1.13.0"
 composeBom = "2026.09.00"
@@ -29,7 +29,7 @@ foundationAndroid = "1.12.1"
 lifecycleViewmodelNav3 = "2.11.0"
 biometric = "1.1.0"
 paging = "3.5.1"
-coil = "3.6.2"
+coil = "3.6.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
