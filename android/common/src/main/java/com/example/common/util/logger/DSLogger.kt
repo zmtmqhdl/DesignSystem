@@ -13,15 +13,15 @@ object DSLogger {
     }
 
     fun d(tag: String, message: String) {
-        if (::appConfig.isInitialized && appConfig.environment == Environment.DEV) {
-            log(Log.DEBUG, tag, message)
-        }
+        if (isLoggingEnabled()) log(Log.DEBUG, tag, message)
     }
 
     fun e(tag: String, message: String, throwable: Throwable? = null) {
-        if (::appConfig.isInitialized && appConfig.environment == Environment.DEV) {
-            log(Log.ERROR, tag, message, throwable)
-        }
+        if (isLoggingEnabled()) log(Log.ERROR, tag, message, throwable)
+    }
+
+    private fun isLoggingEnabled(): Boolean {
+        return ::appConfig.isInitialized && appConfig.environment == Environment.DEV
     }
 
     private fun log(
