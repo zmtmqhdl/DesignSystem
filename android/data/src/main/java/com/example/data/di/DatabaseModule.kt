@@ -26,7 +26,7 @@ object DatabaseModule {
             CommonDatabase::class.java,
             "common_database.db"
         )
-            .fallbackToDestructiveMigration()
+            .fallbackToDestructiveMigration(false)
             .build()
     }
 

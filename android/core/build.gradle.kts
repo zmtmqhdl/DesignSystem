@@ -1,37 +1,16 @@
-import com.android.build.api.dsl.LibraryExtension
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
+    id("android.library.convention.plugin")
+
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
 }
 
-extensions.configure<LibraryExtension> {
+android {
     namespace = "com.example.core"
-    compileSdk = AndroidConfig.COMPILE_SDK
-
-    defaultConfig {
-        minSdk = AndroidConfig.MIN_SDK
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
 
     buildFeatures {
         buildConfig = true
         compose = true
-    }
-}
-
-kotlin {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_21)
-        freeCompilerArgs.add("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
     }
 }
 

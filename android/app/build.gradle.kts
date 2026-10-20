@@ -10,14 +10,14 @@ plugins {
 
 extensions.configure<ApplicationExtension> {
     namespace = "com.example.designsystem"
-    compileSdk = AndroidConfig.COMPILE_SDK
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.example.designsystem"
-        minSdk = AndroidConfig.MIN_SDK
-        targetSdk = AndroidConfig.TARGET_SDK
-        versionCode = AndroidConfig.VERSION_CODE
-        versionName = AndroidConfig.VERSION_NAME
+        minSdk = 37
+        targetSdk =37
+        versionCode = 1
+        versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
