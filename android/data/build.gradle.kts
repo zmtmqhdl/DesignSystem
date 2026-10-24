@@ -1,7 +1,6 @@
 plugins {
     id("android.library.convention.plugin")
 
-    alias(libs.plugins.android.library)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.protobuf)

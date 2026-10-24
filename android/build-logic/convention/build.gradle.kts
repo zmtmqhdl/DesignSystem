@@ -16,10 +16,8 @@ java {
 kotlin {
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_21)
-        freeCompilerArgs.add("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
     }
 }
-
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)
@@ -31,6 +29,10 @@ gradlePlugin {
         create("androidLibrary") {
             id = "android.library.convention.plugin"
             implementationClass = "AndroidLibraryConventionPlugin"
+        }
+        create("androidLibraryCompose") {
+            id = "android.library.compose.convention.plugin"
+            implementationClass = "AndroidLibraryComposeConventionPlugin"
         }
     }
 }
