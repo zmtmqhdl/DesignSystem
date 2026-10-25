@@ -1,13 +1,9 @@
 import com.android.build.api.dsl.ApplicationExtension
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("android.application.convention.plugin")
     id("android.application.compose.convention.plugin")
-
-    alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.hilt)
-    alias(libs.plugins.ksp)
+    id("android.application.hilt.convention.plugin")
 }
 
 extensions.configure<ApplicationExtension> {
@@ -71,7 +67,5 @@ dependencies {
     implementation(libs.androidx.appcompat)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.hilt)
-    ksp(libs.hilt.compiler)
     implementation(libs.androidx.core.splashscreen)
 }

@@ -35,6 +35,10 @@ gradlePlugin {
             id = "android.application.compose.convention.plugin"
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
+        create("androidApplicationHilt") {
+            id = "android.application.hilt.convention.plugin"
+            implementationClass = "AndroidApplicationHiltConventionPlugin"
+        }
 
         // library
         create("androidLibrary") {
@@ -44,6 +48,10 @@ gradlePlugin {
         create("androidLibraryCompose") {
             id = "android.library.compose.convention.plugin"
             implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
+        create("androidLibraryHilt") {
+            id = "android.library.hilt.convention.plugin"
+            implementationClass = "AndroidLibraryHiltConventionPlugin"
         }
     }
 }

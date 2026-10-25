@@ -4,9 +4,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     id("android.library.convention.plugin")
     id("android.library.compose.convention.plugin")
+    id("android.library.hilt.convention.plugin")
 
-    alias(libs.plugins.hilt)
-    alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.serialization)
 }
 
@@ -34,8 +33,6 @@ dependencies {
     implementation(libs.androidx.material3)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.hilt)
-    ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.navigation3.runtime)

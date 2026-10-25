@@ -1,8 +1,6 @@
 plugins {
     id("android.library.convention.plugin")
-
-    alias(libs.plugins.hilt)
-    alias(libs.plugins.ksp)
+    id("android.library.hilt.convention.plugin")
 }
 
 android {
@@ -22,8 +20,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
-    implementation(libs.hilt)
-    ksp(libs.hilt.compiler)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.coil.compose)

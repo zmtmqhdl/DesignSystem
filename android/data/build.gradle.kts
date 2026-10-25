@@ -1,7 +1,7 @@
 plugins {
     id("android.library.convention.plugin")
+    id("android.library.hilt.convention.plugin")
 
-    alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.protobuf)
     alias(libs.plugins.room)
@@ -30,8 +30,6 @@ dependencies {
     implementation(libs.protobuf.javalite)
     implementation(libs.protobuf.kotlin.lite)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.hilt)
-    ksp(libs.hilt.compiler)
     implementation(libs.retrofit)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
