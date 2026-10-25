@@ -1,5 +1,3 @@
-package com.example.buildLogic.conventionPlugin.app
-
 import com.android.build.api.dsl.ApplicationExtension
 import com.example.buildLogic.configureAndroidCompose
 import org.gradle.api.Plugin
@@ -11,7 +9,6 @@ class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             apply(plugin = "com.android.application")
-            apply(plugin = "org.jetbrains.kotlin.plugin.compose")
 
             val extension = extensions.getByType<ApplicationExtension>()
             configureAndroidCompose(extension)

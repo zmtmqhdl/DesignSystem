@@ -26,6 +26,17 @@ dependencies {
 
 gradlePlugin {
     plugins {
+        // app
+        create("androidApplication") {
+            id = "android.application.convention.plugin"
+            implementationClass = "AndroidApplicationConventionPlugin"
+        }
+        create("androidApplicationCompose") {
+            id = "android.application.compose.convention.plugin"
+            implementationClass = "AndroidApplicationComposeConventionPlugin"
+        }
+
+        // library
         create("androidLibrary") {
             id = "android.library.convention.plugin"
             implementationClass = "AndroidLibraryConventionPlugin"

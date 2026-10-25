@@ -3,7 +3,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("android.library.convention.plugin")
-    alias(libs.plugins.kotlin.compose)
+    id("android.library.compose.convention.plugin")
+
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.serialization)
@@ -13,7 +14,6 @@ android {
     namespace = "com.example.presentation"
 
     buildFeatures {
-        compose = true
         buildConfig = true
     }
 }
@@ -30,12 +30,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.ui.tooling.preview)
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
