@@ -21,6 +21,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.coil.compose)
 }
