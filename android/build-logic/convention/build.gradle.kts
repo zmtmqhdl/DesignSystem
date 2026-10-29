@@ -21,9 +21,10 @@ kotlin {
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
-//    compileOnly(libs.room.gradlePlugin)
-//    compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.room.gradlePlugin)
+    compileOnly(libs.ksp.gradlePlugin)
 }
 
 gradlePlugin {

@@ -24,22 +24,22 @@ dependencies {
     implementation(project(":core"))
 
     implementation(libs.androidx.core.ktx)
-    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.test.espresso.core)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.datastore)
     implementation(libs.protobuf.javalite)
     implementation(libs.protobuf.kotlin.lite)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.retrofit)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
+    implementation(libs.retrofit.core)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
     implementation(libs.logging.interceptor)
     implementation(libs.kotlinx.serialization.json)
-    implementation(libs.retrofit.converter.kotlinx.serialization)
+    implementation(libs.retrofit.kotlin.serialization)
     implementation(libs.androidx.paging.runtime)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
-    implementation(libs.androidx.room.paging)
+    implementation(libs.room.paging)
 }
 
 protobuf {
