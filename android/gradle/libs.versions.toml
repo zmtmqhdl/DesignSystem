@@ -97,6 +97,7 @@ android-application-hilt = { id = "android.application.hilt.convention.plugin" }
 # Library
 android-library-convention = { id = "android.library.convention.plugin" }
 android-library-compose = { id = "android.library.compose.convention.plugin" }
+android-library-datastore = { id = "android.library.datastore.convention.plugin" }
 android-library-hilt = { id = "android.library.hilt.convention.plugin" }
 android-library-protobuf = { id = "android.library.protobuf.convention.plugin" }
 android-library-room = { id = "android.library.room.convention.plugin" }

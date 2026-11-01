@@ -51,6 +51,10 @@ gradlePlugin {
             id = libs.plugins.android.library.compose.get().pluginId
             implementationClass = "AndroidLibraryComposeConventionPlugin"
         }
+        register("androidLibraryDataStore") {
+            id = libs.plugins.android.library.datastore.get().pluginId
+            implementationClass = "AndroidLibraryDataStoreConventionPlugin"
+        }
         register("androidLibraryHilt") {
             id = libs.plugins.android.library.hilt.get().pluginId
             implementationClass = "AndroidLibraryHiltConventionPlugin"

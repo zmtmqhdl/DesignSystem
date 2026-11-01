@@ -1,5 +1,6 @@
 plugins {
     id("android.library.convention.plugin")
+    id("android.library.datastore.convention.plugin")
     id("android.library.hilt.convention.plugin")
     id("android.library.protobuf.convention.plugin")
     id("android.library.room.convention.plugin")
@@ -21,8 +22,6 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     androidTestImplementation(libs.androidx.test.espresso.core)
-    implementation(libs.androidx.datastore.preferences)
-    implementation(libs.androidx.datastore)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.retrofit.core)
     implementation(libs.logging.interceptor)
