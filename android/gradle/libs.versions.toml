@@ -22,6 +22,7 @@ ksp = "2.3.6"
 loggingInterceptor = "5.5.1"
 paging = "3.5.3"
 protobuf = "4.36.2"
+protobufPlugin = "0.10.0"
 retrofit = "3.0.0"
 room = "2.8.5"
 
@@ -74,6 +75,7 @@ android-gradlePlugin = { group = "com.android.tools.build", name = "gradle-api",
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 compose-gradlePlugin = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+protobuf-gradlePlugin = { group = "com.google.protobuf", name = "protobuf-gradle-plugin", version.ref = "protobufPlugin" }
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
 
 [plugins]
@@ -84,7 +86,7 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-protobuf = { id = "com.google.protobuf", version = "0.10.0" }
+protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 room = { id = "androidx.room", version.ref = "room" }
 
 # App
@@ -96,4 +98,5 @@ android-application-hilt = { id = "android.application.hilt.convention.plugin" }
 android-library-convention = { id = "android.library.convention.plugin" }
 android-library-compose = { id = "android.library.compose.convention.plugin" }
 android-library-hilt = { id = "android.library.hilt.convention.plugin" }
+android-library-protobuf = { id = "android.library.protobuf.convention.plugin" }
 android-library-room = { id = "android.library.room.convention.plugin" }

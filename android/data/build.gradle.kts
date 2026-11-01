@@ -1,11 +1,10 @@
 plugins {
     id("android.library.convention.plugin")
     id("android.library.hilt.convention.plugin")
+    id("android.library.protobuf.convention.plugin")
     id("android.library.room.convention.plugin")
 
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.protobuf)
-//    alias(libs.plugins.room)
 }
 
 android {
@@ -16,10 +15,6 @@ android {
     }
 }
 
-//room {
-//    schemaDirectory("$projectDir/schemas")
-//}
-
 dependencies {
     implementation(project(":domain"))
     implementation(project(":core"))
@@ -28,37 +23,13 @@ dependencies {
     androidTestImplementation(libs.androidx.test.espresso.core)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.datastore)
-    implementation(libs.protobuf.javalite)
-    implementation(libs.protobuf.kotlin.lite)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.retrofit.core)
-//    implementation(libs.room.ktx)
-//    ksp(libs.room.compiler)
     implementation(libs.logging.interceptor)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit.kotlin.serialization)
     implementation(libs.androidx.paging.runtime)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
-//    implementation(libs.room.paging)
-}
-
-protobuf {
-    protoc {
-        artifact = "com.google.protobuf:protoc:${libs.versions.protobuf.get()}"
-    }
-    generateProtoTasks {
-        all().forEach { task ->
-            task.builtins {
-                create("java") {
-                    option("lite")
-                }
-
-                create("kotlin") {
-                    option("lite")
-                }
-            }
-        }
-    }
 }
 

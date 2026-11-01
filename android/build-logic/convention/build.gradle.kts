@@ -19,9 +19,10 @@ kotlin {
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)
-    compileOnly(libs.ksp.gradlePlugin)
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.protobuf.gradlePlugin)
     compileOnly(libs.room.gradlePlugin)
 }
 
@@ -53,6 +54,10 @@ gradlePlugin {
         register("androidLibraryHilt") {
             id = libs.plugins.android.library.hilt.get().pluginId
             implementationClass = "AndroidLibraryHiltConventionPlugin"
+        }
+        register("androidLibraryProtobuf") {
+            id = libs.plugins.android.library.protobuf.get().pluginId
+            implementationClass = "AndroidLibraryProtobufConventionPlugin"
         }
         register("androidLibraryRoom") {
             id = libs.plugins.android.library.room.get().pluginId
