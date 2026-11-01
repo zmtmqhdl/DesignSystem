@@ -1,10 +1,11 @@
 plugins {
     id("android.library.convention.plugin")
     id("android.library.hilt.convention.plugin")
+    id("android.library.room.convention.plugin")
 
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.protobuf)
-    alias(libs.plugins.room)
+//    alias(libs.plugins.room)
 }
 
 android {
@@ -15,9 +16,9 @@ android {
     }
 }
 
-room {
-    schemaDirectory("$projectDir/schemas")
-}
+//room {
+//    schemaDirectory("$projectDir/schemas")
+//}
 
 dependencies {
     implementation(project(":domain"))
@@ -31,15 +32,15 @@ dependencies {
     implementation(libs.protobuf.kotlin.lite)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.retrofit.core)
-    implementation(libs.room.ktx)
-    ksp(libs.room.compiler)
+//    implementation(libs.room.ktx)
+//    ksp(libs.room.compiler)
     implementation(libs.logging.interceptor)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit.kotlin.serialization)
     implementation(libs.androidx.paging.runtime)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
-    implementation(libs.room.paging)
+//    implementation(libs.room.paging)
 }
 
 protobuf {

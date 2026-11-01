@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.`kotlin-dsl`
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -21,40 +19,44 @@ kotlin {
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.ksp.gradlePlugin)
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.room.gradlePlugin)
-    compileOnly(libs.ksp.gradlePlugin)
 }
 
 gradlePlugin {
     plugins {
         // app
-        create("androidApplication") {
-            id = "android.application.convention.plugin"
+        register("androidApplication") {
+            id = libs.plugins.android.application.convention.get().pluginId
             implementationClass = "AndroidApplicationConventionPlugin"
         }
-        create("androidApplicationCompose") {
-            id = "android.application.compose.convention.plugin"
+        register("androidApplicationCompose") {
+            id = libs.plugins.android.application.compose.get().pluginId
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
-        create("androidApplicationHilt") {
-            id = "android.application.hilt.convention.plugin"
+        register("androidApplicationHilt") {
+            id = libs.plugins.android.application.hilt.get().pluginId
             implementationClass = "AndroidApplicationHiltConventionPlugin"
         }
 
         // library
-        create("androidLibrary") {
-            id = "android.library.convention.plugin"
+        register("androidLibrary") {
+            id = libs.plugins.android.library.convention.get().pluginId
             implementationClass = "AndroidLibraryConventionPlugin"
         }
-        create("androidLibraryCompose") {
-            id = "android.library.compose.convention.plugin"
+        register("androidLibraryCompose") {
+            id = libs.plugins.android.library.compose.get().pluginId
             implementationClass = "AndroidLibraryComposeConventionPlugin"
         }
-        create("androidLibraryHilt") {
-            id = "android.library.hilt.convention.plugin"
+        register("androidLibraryHilt") {
+            id = libs.plugins.android.library.hilt.get().pluginId
             implementationClass = "AndroidLibraryHiltConventionPlugin"
+        }
+        register("androidLibraryRoom") {
+            id = libs.plugins.android.library.room.get().pluginId
+            implementationClass = "AndroidLibraryRoomConventionPlugin"
         }
     }
 }

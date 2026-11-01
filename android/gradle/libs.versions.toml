@@ -86,3 +86,14 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 protobuf = { id = "com.google.protobuf", version = "0.10.0" }
 room = { id = "androidx.room", version.ref = "room" }
+
+# App
+android-application-convention = { id = "android.application.convention.plugin" }
+android-application-compose = { id = "android.application.compose.convention.plugin" }
+android-application-hilt = { id = "android.application.hilt.convention.plugin" }
+
+# Library
+android-library-convention = { id = "android.library.convention.plugin" }
+android-library-compose = { id = "android.library.compose.convention.plugin" }
+android-library-hilt = { id = "android.library.hilt.convention.plugin" }
+android-library-room = { id = "android.library.room.convention.plugin" }
