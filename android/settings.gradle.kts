@@ -18,15 +18,15 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
-
-
 }
 
 rootProject.name = "DesignSystem"
+includeBuild("build-logic")
+
 include(":app")
 include(":data")
 include(":presentation")
 include(":domain")
 include(":core")
-
 include(":common")
+
