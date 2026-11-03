@@ -5,10 +5,6 @@ plugins {
 
 android {
     namespace = "com.example.domain"
-
-    buildFeatures {
-        buildConfig = true
-    }
 }
 
 dependencies {

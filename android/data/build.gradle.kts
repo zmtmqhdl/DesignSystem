@@ -4,16 +4,11 @@ plugins {
     id("android.library.hilt.convention.plugin")
     id("android.library.protobuf.convention.plugin")
     id("android.library.room.convention.plugin")
-
-    alias(libs.plugins.kotlin.serialization)
+    id("android.library.serialization.convention.plugin")
 }
 
 android {
     namespace = "com.example.data"
-
-    buildFeatures {
-        buildConfig = true
-    }
 }
 
 dependencies {
