@@ -5,10 +5,6 @@ plugins {
 
 android {
     namespace = "com.example.core"
-
-    buildFeatures {
-        buildConfig = true
-    }
 }
 
 dependencies {

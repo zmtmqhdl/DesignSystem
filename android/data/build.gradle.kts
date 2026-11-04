@@ -4,16 +4,11 @@ plugins {
     id("android.library.hilt.convention.plugin")
     id("android.library.protobuf.convention.plugin")
     id("android.library.room.convention.plugin")
-
-    alias(libs.plugins.kotlin.serialization)
+    id("android.library.serialization.convention.plugin")
 }
 
 android {
     namespace = "com.example.data"
-
-    buildFeatures {
-        buildConfig = true
-    }
 }
 
 dependencies {
@@ -25,7 +20,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.retrofit.core)
     implementation(libs.logging.interceptor)
-    implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit.kotlin.serialization)
     implementation(libs.androidx.paging.runtime)
     implementation(libs.coil.compose)

@@ -11,46 +11,8 @@ extensions.configure<ApplicationExtension> {
 
     defaultConfig {
         applicationId = "com.example.designsystem"
-        targetSdk =37
         versionCode = 1
         versionName = "1.0.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    flavorDimensions += "env"
-    productFlavors {
-        create("dev") {
-            dimension = "env"
-            applicationIdSuffix = ".dev"
-            versionNameSuffix = "-dev"
-            resValue("string", "app_name", "DesignSystem (Dev)")
-        }
-        create("prod") {
-            dimension = "env"
-            resValue("string", "app_name", "DesignSystem")
-        }
-    }
-
-    buildTypes {
-        getByName("debug") {
-            isMinifyEnabled = false
-            applicationIdSuffix = ".debug"
-            versionNameSuffix = "-debug"
-        }
-        getByName("release") {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            signingConfig = signingConfigs.getByName("debug")
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-
-    buildFeatures {
-        buildConfig = true
-        resValues = true
     }
 }
 

@@ -1,4 +1,5 @@
-import com.example.buildLogic.libs
+package com.example.buildLogic
+
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 

@@ -5,10 +5,6 @@ plugins {
 
 android {
     namespace = "com.example.common"
-
-    buildFeatures {
-        buildConfig = true
-    }
 }
 
 dependencies {
@@ -16,7 +12,6 @@ dependencies {
 
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
-//    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.test.ext)

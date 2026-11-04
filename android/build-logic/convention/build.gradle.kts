@@ -67,5 +67,9 @@ gradlePlugin {
             id = libs.plugins.android.library.room.get().pluginId
             implementationClass = "AndroidLibraryRoomConventionPlugin"
         }
+        register("androidLibrarySerialization") {
+            id = libs.plugins.android.library.serialization.get().pluginId
+            implementationClass = "AndroidLibrarySerializationConventionPlugin"
+        }
     }
 }

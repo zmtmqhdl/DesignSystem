@@ -2,16 +2,11 @@ plugins {
     id("android.library.convention.plugin")
     id("android.library.compose.convention.plugin")
     id("android.library.hilt.convention.plugin")
-
-    alias(libs.plugins.kotlin.serialization)
+    id("android.library.serialization.convention.plugin")
 }
 
 android {
     namespace = "com.example.presentation"
-
-    buildFeatures {
-        buildConfig = true
-    }
 }
 
 dependencies {
