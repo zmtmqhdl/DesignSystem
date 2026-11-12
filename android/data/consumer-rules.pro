@@ -1,0 +1,1 @@
+-keep interface com.example.data.api.** { *; }
