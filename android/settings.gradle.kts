@@ -30,3 +30,4 @@ include(":domain")
 include(":core")
 include(":common")
 
+include(":macrobenchmark")
