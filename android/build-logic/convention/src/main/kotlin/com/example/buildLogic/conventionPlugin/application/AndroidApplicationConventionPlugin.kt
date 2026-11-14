@@ -11,8 +11,10 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
 
             extensions.configure<ApplicationExtension> {
                 configureKotlin(this)
-                defaultConfig.targetSdk = 37
-                defaultConfig.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                defaultConfig {
+                    targetSdk = 37
+                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                }
 
                 buildFeatures {
                     buildConfig = true

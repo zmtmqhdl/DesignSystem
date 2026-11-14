@@ -71,5 +71,11 @@ gradlePlugin {
             id = libs.plugins.android.library.serialization.get().pluginId
             implementationClass = "AndroidLibrarySerializationConventionPlugin"
         }
+
+        // libs.plugins.android.test
+        register("androidTest") {
+            id = libs.plugins.android.test.convention.get().pluginId
+            implementationClass = "AndroidTestConventionPlugin"
+        }
     }
 }
