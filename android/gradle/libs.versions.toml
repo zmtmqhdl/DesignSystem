@@ -86,6 +86,7 @@ room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", vers
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -107,4 +108,6 @@ android-library-hilt = { id = "android.library.hilt.convention.plugin" }
 android-library-protobuf = { id = "android.library.protobuf.convention.plugin" }
 android-library-room = { id = "android.library.room.convention.plugin" }
 android-library-serialization = { id = "android.library.serialization.convention.plugin" }
-android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
+
+# Test
+android-test-convention = { id = "android.test.convention.plugin"}

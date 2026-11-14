@@ -13,7 +13,6 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 configureKotlin(this)
 
                 defaultConfig {
-                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFiles("consumer-rules.pro")
                 }
             }

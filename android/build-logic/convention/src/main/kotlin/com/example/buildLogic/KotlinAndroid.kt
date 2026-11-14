@@ -15,7 +15,9 @@ internal fun Project.configureKotlin(
     commonExtension: CommonExtension,
 ) {
     commonExtension.apply {
-        compileSdk = 37
+        compileSdk {
+            version = release(37)
+        }
 
         defaultConfig.apply {
             minSdk = 26
