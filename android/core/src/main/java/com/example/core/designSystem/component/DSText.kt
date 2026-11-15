@@ -1,11 +1,13 @@
 package com.example.core.designSystem.component
 
 import androidx.compose.foundation.basicMarquee
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithCache
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -33,7 +35,6 @@ fun DSText(
 ) {
     val enableMarquee = marquee && !selectable
     val fadeWidth = 12.dp
-
     val transparent = Color.Transparent
     val greyOpacity900 = DSTheme.color.greyOpacity900
 
@@ -43,31 +44,27 @@ fun DSText(
             modifier = modifier
                 .conditional(enableMarquee) {
                     graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
-                        .drawWithCache {
+                        .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
+                        .drawWithContent {
+                            drawContent()
                             val edgeWidthPx = fadeWidth.toPx()
                             val contentWidth = size.width
 
-                            val gradientBrush = if (contentWidth > 0f) {
+                            if (contentWidth > 0f) {
                                 val startAlphaStop = (edgeWidthPx / contentWidth).coerceAtMost(0.5f)
                                 val endAlphaStop = (1f - (edgeWidthPx / contentWidth)).coerceAtLeast(0.5f)
-                                Brush.horizontalGradient(
-                                    0f to transparent,
-                                    startAlphaStop to greyOpacity900,
-                                    endAlphaStop to greyOpacity900,
-                                    1f to transparent
-                                )
-                            } else {
-                                null
-                            }
 
-                            onDrawWithContent {
-                                drawContent()
-                                if (gradientBrush != null) {
-                                    drawRect(
-                                        brush = gradientBrush,
-                                        blendMode = BlendMode.DstIn
-                                    )
-                                }
+                                drawRect(
+                                    brush = Brush.horizontalGradient(
+                                        colorStops = arrayOf(
+                                            0f to transparent,
+                                            startAlphaStop to greyOpacity900,
+                                            endAlphaStop to greyOpacity900,
+                                            1f to transparent
+                                        )
+                                    ),
+                                    blendMode = BlendMode.DstIn
+                                )
                             }
                         }
                         .basicMarquee(

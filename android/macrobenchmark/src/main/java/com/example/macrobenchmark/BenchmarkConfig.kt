@@ -1,5 +1,6 @@
 package com.example.macrobenchmark
 
 object BenchmarkConfig {
-    const val PACKAGE_NAME = "com.example.designsystem.dev"
+    const val PACKAGE_NAME_DEV = "com.example.designsystem.dev"
+    const val PACKAGE_NAME = "com.example.designsystem"
 }
