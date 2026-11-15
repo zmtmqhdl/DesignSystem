@@ -44,7 +44,6 @@ fun DSText(
             modifier = modifier
                 .conditional(enableMarquee) {
                     graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
-                        .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
                         .drawWithContent {
                             drawContent()
                             val edgeWidthPx = fadeWidth.toPx()
