@@ -26,8 +26,8 @@ fun DSContentLayout(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .windowInsetsPadding(insets = WindowInsets.systemBars)
-            .background(color = color.background)
+            .windowInsetsPadding(WindowInsets.systemBars)
+            .background(color.background)
     ) {
         content()
 
@@ -49,7 +49,7 @@ fun DSContentLayout(
                     contentAlignment = Alignment.Center
                 ) {
                     CircularProgressIndicator(
-                        modifier = Modifier.size(size = 48.dp),
+                        modifier = Modifier.size(48.dp),
                         color = color.loadingBackground,
                         strokeWidth = 2.dp
                     )

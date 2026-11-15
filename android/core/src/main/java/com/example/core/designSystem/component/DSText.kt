@@ -5,7 +5,7 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.util.extension.conditional
-import com.example.core.util.extension.onlyLayoutModifier
 
 @Composable
 fun DSText(
@@ -35,31 +34,40 @@ fun DSText(
     val enableMarquee = marquee && !selectable
     val fadeWidth = 12.dp
 
+    val transparent = Color.Transparent
+    val greyOpacity900 = DSTheme.color.greyOpacity900
+
     val content: @Composable () -> Unit = {
         Text(
             text = text,
             modifier = modifier
-                .onlyLayoutModifier()
                 .conditional(enableMarquee) {
                     graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
-                        .drawWithContent {
-                            drawContent()
+                        .drawWithCache {
                             val edgeWidthPx = fadeWidth.toPx()
                             val contentWidth = size.width
-                            if (contentWidth > 0f) {
+
+                            val gradientBrush = if (contentWidth > 0f) {
                                 val startAlphaStop = (edgeWidthPx / contentWidth).coerceAtMost(0.5f)
                                 val endAlphaStop = (1f - (edgeWidthPx / contentWidth)).coerceAtLeast(0.5f)
-                                drawRect(
-                                    brush = Brush.horizontalGradient(
-                                        colorStops = arrayOf(
-                                            0f to Color.Transparent,
-                                            startAlphaStop to Color.Black,
-                                            endAlphaStop to Color.Black,
-                                            1f to Color.Transparent
-                                        )
-                                    ),
-                                    blendMode = BlendMode.DstIn
+                                Brush.horizontalGradient(
+                                    0f to transparent,
+                                    startAlphaStop to greyOpacity900,
+                                    endAlphaStop to greyOpacity900,
+                                    1f to transparent
                                 )
+                            } else {
+                                null
+                            }
+
+                            onDrawWithContent {
+                                drawContent()
+                                if (gradientBrush != null) {
+                                    drawRect(
+                                        brush = gradientBrush,
+                                        blendMode = BlendMode.DstIn
+                                    )
+                                }
                             }
                         }
                         .basicMarquee(
@@ -90,7 +98,7 @@ fun DSText(
 fun TextPreview() {
     DSTheme {
         DSText(
-            text = "testtestestestest",
+            text = "test",
             marquee = true
         )
     }
