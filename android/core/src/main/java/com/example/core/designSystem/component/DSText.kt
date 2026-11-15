@@ -68,7 +68,8 @@ fun DSText(
                         }
                         .basicMarquee(
                             iterations = Int.MAX_VALUE,
-                            initialDelayMillis = marqueeDelayMillis
+                            initialDelayMillis = marqueeDelayMillis,
+                            repeatDelayMillis = 0
                         )
                 },
             color = color,

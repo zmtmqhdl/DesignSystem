@@ -39,7 +39,7 @@ fun MainScreen(
         snackBarState = snackBarState,
         padding = true
     ) {
-        repeat(100) {
+        repeat(1) {
             item {
                 Box(
                     modifier = Modifier.width(240.dp)
