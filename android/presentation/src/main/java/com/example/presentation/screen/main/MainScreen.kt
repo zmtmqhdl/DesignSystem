@@ -1,7 +1,9 @@
 package com.example.presentation.screen.main
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -12,6 +14,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
+import com.example.core.designSystem.component.BadgeSize
+import com.example.core.designSystem.component.BadgeVariant
+import com.example.core.designSystem.component.DSBadge
 import com.example.core.designSystem.component.DSScreen
 import com.example.core.designSystem.component.DSSnackBarDuration
 import com.example.core.designSystem.component.DSText
@@ -37,21 +42,151 @@ fun MainScreen(
             scrollVariant = ScrollVariant.NONE
         ),
         snackBarState = snackBarState,
-        padding = true
-    ) {
-        repeat(1) {
+        padding = true,
+        scrollContent = {
             item {
-                Box(
-                    modifier = Modifier.width(240.dp)
-                ) {
-                    DSText(
-                        text = "This is DSText marquee component",
-                        marquee = true,
-                        style = DSTheme.typography.typography5.bold
-                    )
-                }
+                DSBadge(
+                    text = "xsmall",
+                    variant = BadgeVariant.FILL,
+                    size = BadgeSize.XSMALL,
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+
+            item {
+                DSBadge(
+                    text = "small",
+                    variant = BadgeVariant.FILL,
+                    size = BadgeSize.SMALL
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+
+            item {
+                DSBadge(
+                    text = "medium",
+                    variant = BadgeVariant.FILL,
+                    size = BadgeSize.MEDIUM,
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+
+            item {
+                DSBadge(
+                    text = "large",
+                    variant = BadgeVariant.FILL,
+                    size = BadgeSize.LARGE
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+
+            item {
+                DSBadge(
+                    text = "xsmall",
+                    variant = BadgeVariant.WEAK,
+                    size = BadgeSize.XSMALL
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+
+            item {
+                DSBadge(
+                    text = "small",
+                    variant = BadgeVariant.WEAK,
+                    size = BadgeSize.SMALL
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+
+            item {
+                DSBadge(
+                    text = "medium",
+                    variant = BadgeVariant.WEAK,
+                    size = BadgeSize.MEDIUM,
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+
+            item {
+                DSBadge(
+                    text = "large",
+                    variant = BadgeVariant.WEAK,
+                    size = BadgeSize.LARGE
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+
+            item {
+                DSBadge(
+                    text = "xsmall",
+                    variant = BadgeVariant.WEAK,
+                    size = BadgeSize.XSMALL,
+                    isLoading = true
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+
+            item {
+                DSBadge(
+                    text = "small",
+                    variant = BadgeVariant.WEAK,
+                    size = BadgeSize.SMALL,
+                    isLoading = true
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+
+            item {
+                DSBadge(
+                    text = "medium",
+                    variant = BadgeVariant.WEAK,
+                    size = BadgeSize.MEDIUM,
+                    isLoading = true
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+
+            item {
+                DSBadge(
+                    text = "large",
+                    variant = BadgeVariant.WEAK,
+                    size = BadgeSize.LARGE,
+                    isLoading = true
+                )
             }
         }
-
-    }
+    )
 }

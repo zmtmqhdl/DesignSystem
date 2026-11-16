@@ -77,8 +77,8 @@ fun DSScreen(
     imePadding: Boolean = false,
     padding: Boolean = false,
     color: BackgroundColorSet = DSTheme.color.background,
-    content: @Composable () -> Unit = {},
     scrollContent: LazyListScope.() -> Unit = {},
+    content: @Composable () -> Unit = {},
 ) {
     val topBarScrollBehavior = rememberTopBarScrollBehavior(variant)
 

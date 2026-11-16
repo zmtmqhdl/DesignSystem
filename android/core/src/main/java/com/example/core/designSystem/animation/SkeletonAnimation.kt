@@ -63,18 +63,18 @@ fun Modifier.skeletonAnimation(
 
     return this
         .onGloballyPositioned { size = it.size }
-        .background(brush = shimmerBrush)
+        .background(shimmerBrush)
 }
 
 @Preview
 @Composable
-private fun SnackBarAnimationPreview() {
+private fun SkeletonAnimationPreview() {
     DSTheme {
         Column(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             DSText(
-                text = "Preview1",
+                text = "SkeletonAnimationPreview",
                 style = DSTheme.typography.typography1.bold,
                 modifier = Modifier.skeletonAnimation(isLoading = true)
             )
