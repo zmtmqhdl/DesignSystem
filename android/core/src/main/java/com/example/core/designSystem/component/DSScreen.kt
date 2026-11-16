@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -76,7 +77,8 @@ fun DSScreen(
     imePadding: Boolean = false,
     padding: Boolean = false,
     color: BackgroundColorSet = DSTheme.color.background,
-    content: @Composable () -> Unit,
+    scrollContent: LazyListScope.() -> Unit = {},
+    content: @Composable () -> Unit = {},
 ) {
     val topBarScrollBehavior = rememberTopBarScrollBehavior(variant)
 
@@ -128,9 +130,7 @@ fun DSScreen(
                     modifier = modifier,
                     state = lazyListState
                 ) {
-                    item {
-                        content()
-                    }
+                    scrollContent()
                 }
             }
 
