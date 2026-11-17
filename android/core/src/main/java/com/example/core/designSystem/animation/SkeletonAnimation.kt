@@ -36,7 +36,7 @@ fun Modifier.skeletonAnimation(
     val background = colorSet.background
     val highlight = colorSet.highlight
 
-    val transition = rememberInfiniteTransition(label = "skeletonAnimation")
+    val transition = rememberInfiniteTransition()
     var size by remember { mutableStateOf(IntSize.Zero) }
 
     val translateAnim by transition.animateFloat(
@@ -49,7 +49,6 @@ fun Modifier.skeletonAnimation(
             ),
             repeatMode = RepeatMode.Restart
         ),
-        label = "skeletonAnimation"
     )
 
     val shimmerBrush = Brush.linearGradient(

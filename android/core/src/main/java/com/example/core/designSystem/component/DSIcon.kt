@@ -15,12 +15,23 @@ import com.example.core.designSystem.animation.skeletonAnimation
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.icon.Search
 import com.example.core.designSystem.theme.DSTheme
-import com.example.core.util.extension.onlyLayoutModifier
 
+/**
+ * The overall layout size is determined by [boxSize].
+ *
+ * The icon size inside it is determined by [iconWidth] and [iconHeight].
+ *
+ * [ariaLabel] provides an accessibility description for the icon.
+ *
+ * Do not set the size through [modifier].
+ *
+ * use these parameters instead.
+ *
+ */
 @Composable
 fun DSIcon(
-    icon: ImageVector,
     modifier: Modifier = Modifier,
+    icon: ImageVector,
     boxSize: Dp = DSTheme.dimension.dimension32,
     iconWidth: Dp = DSTheme.dimension.dimension24,
     iconHeight: Dp = DSTheme.dimension.dimension24,
@@ -30,7 +41,6 @@ fun DSIcon(
 ) {
     Box(
         modifier = modifier
-            .onlyLayoutModifier()
             .size(boxSize)
             .skeletonAnimation(isLoading),
         contentAlignment = Alignment.Center
