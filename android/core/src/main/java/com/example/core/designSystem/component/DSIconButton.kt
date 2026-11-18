@@ -19,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.CornerRadius
@@ -35,7 +36,6 @@ import com.example.core.designSystem.icon.Close
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
 import com.example.core.util.extension.conditional
-import com.example.core.util.extension.onlyLayoutModifier
 
 enum class IconButtonVariant {
     CLEAR,
@@ -43,10 +43,20 @@ enum class IconButtonVariant {
     BORDER
 }
 
+/**
+ * Use [DSIconButton] to provide a button that uses an icon instead of text.
+ *
+ * The overall layout size is determined by [boxSize].
+ *
+ * The icon size inside it is determined by [iconWidth] and [iconHeight].
+ *
+ * [ariaLabel] provides an accessibility description for the icon.
+ *
+ */
 @Composable
 fun DSIconButton(
-    icon: ImageVector,
     modifier: Modifier = Modifier,
+    icon: ImageVector,
     onClick: () -> Unit,
     boxSize: Dp = DSTheme.dimension.dimension48,
     iconWidth: Dp = DSTheme.dimension.dimension24,
@@ -76,7 +86,6 @@ fun DSIconButton(
 
     Box(
         modifier = modifier
-            .onlyLayoutModifier()
             .graphicsLayer {
                 scaleX = scale
                 scaleY = scale
@@ -103,9 +112,10 @@ fun DSIconButton(
                 drawContent()
                 if (overlayAlpha > 0f) {
                     drawRoundRect(
-                        color = dimColor.copy(alpha = overlayAlpha),
+                        color = dimColor.copy(overlayAlpha),
                         cornerRadius = CornerRadius(
-                            x = corner.toPx()
+                            x = corner.toPx(),
+                            y = corner.toPx()
                         )
                     )
                 }
@@ -118,20 +128,18 @@ fun DSIconButton(
                 interactionSource = interactionSource,
                 indication = null,
                 onClick = onClick,
-            )
-            .semantics(mergeDescendants = true) { role = Role.Button },
+            ),
         contentAlignment = Alignment.Center
     ) {
-        if (!isLoading) {
-            Icon(
-                imageVector = icon,
-                contentDescription = ariaLabel,
-                modifier = Modifier
-                    .width(width = iconWidth)
-                    .height(height = iconHeight),
-                tint = colorSet.subColor
-            )
-        }
+        Icon(
+            imageVector = icon,
+            contentDescription = ariaLabel,
+            modifier = Modifier
+                .conditional(isLoading) { alpha(0f) }
+                .width(width = iconWidth)
+                .height(height = iconHeight),
+            tint = colorSet.subColor
+        )
     }
 }
 
@@ -144,9 +152,8 @@ private fun IconButtonPreview() {
             icon = Close,
             colorSet = DSTheme.color.grey,
             variant = IconButtonVariant.BORDER,
-            isLoading = true,
             onClick = { },
-            ariaLabel = "test"
+            ariaLabel = "close"
         )
     }
 }

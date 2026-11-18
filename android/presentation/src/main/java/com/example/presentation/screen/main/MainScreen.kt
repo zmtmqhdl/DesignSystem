@@ -17,14 +17,20 @@ import androidx.navigation3.runtime.NavKey
 import com.example.core.designSystem.component.BadgeSize
 import com.example.core.designSystem.component.BadgeVariant
 import com.example.core.designSystem.component.DSBadge
+import com.example.core.designSystem.component.DSIconButton
 import com.example.core.designSystem.component.DSScreen
 import com.example.core.designSystem.component.DSSnackBarDuration
 import com.example.core.designSystem.component.DSText
 import com.example.core.designSystem.component.DSTextField
+import com.example.core.designSystem.component.IconButtonVariant
 import com.example.core.designSystem.component.ScreenVariant
 import com.example.core.designSystem.component.ScrollVariant
 import com.example.core.designSystem.component.TextFieldVariant
 import com.example.core.designSystem.component.rememberDSSnackBarState
+import com.example.core.designSystem.icon.Info
+import com.example.core.designSystem.icon.Person
+import com.example.core.designSystem.icon.Refresh
+import com.example.core.designSystem.icon.Search
 import com.example.core.designSystem.theme.DSTheme
 import kotlinx.coroutines.delay
 
@@ -45,10 +51,11 @@ fun MainScreen(
         padding = true,
         scrollContent = {
             item {
-                DSBadge(
-                    text = "xsmall",
-                    variant = BadgeVariant.FILL,
-                    size = BadgeSize.XSMALL,
+                DSIconButton(
+                    icon = Search,
+                    variant = IconButtonVariant.CLEAR,
+                    onClick = {},
+                    ariaLabel = ""
                 )
             }
 
@@ -57,10 +64,11 @@ fun MainScreen(
             }
 
             item {
-                DSBadge(
-                    text = "small",
-                    variant = BadgeVariant.FILL,
-                    size = BadgeSize.SMALL
+                DSIconButton(
+                    icon = Refresh,
+                    variant = IconButtonVariant.FILL,
+                    onClick = {},
+                    ariaLabel = ""
                 )
             }
 
@@ -69,10 +77,11 @@ fun MainScreen(
             }
 
             item {
-                DSBadge(
-                    text = "medium",
-                    variant = BadgeVariant.FILL,
-                    size = BadgeSize.MEDIUM,
+                DSIconButton(
+                    icon = Person,
+                    variant = IconButtonVariant.BORDER,
+                    onClick = {},
+                    ariaLabel = ""
                 )
             }
 
@@ -81,109 +90,11 @@ fun MainScreen(
             }
 
             item {
-                DSBadge(
-                    text = "large",
-                    variant = BadgeVariant.FILL,
-                    size = BadgeSize.LARGE
-                )
-            }
-
-            item {
-                Spacer(modifier = Modifier.height(5.dp))
-            }
-
-            item {
-                DSBadge(
-                    text = "xsmall",
-                    variant = BadgeVariant.WEAK,
-                    size = BadgeSize.XSMALL
-                )
-            }
-
-            item {
-                Spacer(modifier = Modifier.height(5.dp))
-            }
-
-            item {
-                DSBadge(
-                    text = "small",
-                    variant = BadgeVariant.WEAK,
-                    size = BadgeSize.SMALL
-                )
-            }
-
-            item {
-                Spacer(modifier = Modifier.height(5.dp))
-            }
-
-            item {
-                DSBadge(
-                    text = "medium",
-                    variant = BadgeVariant.WEAK,
-                    size = BadgeSize.MEDIUM,
-                )
-            }
-
-            item {
-                Spacer(modifier = Modifier.height(5.dp))
-            }
-
-            item {
-                DSBadge(
-                    text = "large",
-                    variant = BadgeVariant.WEAK,
-                    size = BadgeSize.LARGE
-                )
-            }
-
-            item {
-                Spacer(modifier = Modifier.height(5.dp))
-            }
-
-            item {
-                DSBadge(
-                    text = "xsmall",
-                    variant = BadgeVariant.WEAK,
-                    size = BadgeSize.XSMALL,
-                    isLoading = true
-                )
-            }
-
-            item {
-                Spacer(modifier = Modifier.height(5.dp))
-            }
-
-            item {
-                DSBadge(
-                    text = "small",
-                    variant = BadgeVariant.WEAK,
-                    size = BadgeSize.SMALL,
-                    isLoading = true
-                )
-            }
-
-            item {
-                Spacer(modifier = Modifier.height(5.dp))
-            }
-
-            item {
-                DSBadge(
-                    text = "medium",
-                    variant = BadgeVariant.WEAK,
-                    size = BadgeSize.MEDIUM,
-                    isLoading = true
-                )
-            }
-
-            item {
-                Spacer(modifier = Modifier.height(5.dp))
-            }
-
-            item {
-                DSBadge(
-                    text = "large",
-                    variant = BadgeVariant.WEAK,
-                    size = BadgeSize.LARGE,
+                DSIconButton(
+                    icon = Info,
+                    variant = IconButtonVariant.BORDER,
+                    onClick = {},
+                    ariaLabel = "",
                     isLoading = true
                 )
             }

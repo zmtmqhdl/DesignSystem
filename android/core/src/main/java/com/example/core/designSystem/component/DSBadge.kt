@@ -80,7 +80,6 @@ private fun badgeStyle(badgeSize: BadgeSize): BadgeStyle {
  *
  * Do not set the size through [modifier].
  *
- * use these parameters instead.
  */
 @Composable
 fun DSBadge(

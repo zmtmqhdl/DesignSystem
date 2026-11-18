@@ -23,10 +23,6 @@ import com.example.core.designSystem.theme.DSTheme
  *
  * [ariaLabel] provides an accessibility description for the icon.
  *
- * Do not set the size through [modifier].
- *
- * use these parameters instead.
- *
  */
 @Composable
 fun DSIcon(
