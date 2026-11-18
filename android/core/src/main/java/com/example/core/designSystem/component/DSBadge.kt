@@ -78,9 +78,8 @@ private fun badgeStyle(badgeSize: BadgeSize): BadgeStyle {
  *
  * It is recommended to use short words to emphasize in the text.
  *
- * Always use the predefined [BadgeSize] values to determine the badge size.
+ * Do not set the size through [modifier].
  *
- * Do not specify custom height values.
  */
 @Composable
 fun DSBadge(
