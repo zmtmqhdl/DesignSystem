@@ -81,7 +81,6 @@ fun DSIconButton(
     val overlayAlpha by animateFloatAsState(
         targetValue = if (isPressed && !isLoading) 0.12f else 0f,
         animationSpec = tween(durationMillis = 80, easing = FastOutSlowInEasing),
-        label = "buttonOverlayAlpha"
     )
 
     Box(
@@ -120,8 +119,8 @@ fun DSIconButton(
                     )
                 }
             }
-            .clip(shape = iconButtonShape)
-            .skeletonAnimation(isLoading = isLoading)
+            .clip(iconButtonShape)
+            .skeletonAnimation(isLoading)
             .clickable(
                 enabled = !isLoading,
                 role = Role.Button,
@@ -136,8 +135,8 @@ fun DSIconButton(
             contentDescription = ariaLabel,
             modifier = Modifier
                 .conditional(isLoading) { alpha(0f) }
-                .width(width = iconWidth)
-                .height(height = iconHeight),
+                .width(iconWidth)
+                .height(iconHeight),
             tint = colorSet.subColor
         )
     }

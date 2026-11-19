@@ -15,10 +15,11 @@ import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.util.extension.onlyLayoutModifier
 
+
 @Composable
 fun DSImage(
-    model: Any,
     modifier: Modifier = Modifier,
+    model: Any,
     width: Dp = DSTheme.dimension.dimension32,
     height: Dp = DSTheme.dimension.dimension32,
     contentDescription: String,
@@ -41,7 +42,6 @@ fun DSImage(
     SubcomposeAsyncImage(
         model = model,
         modifier = modifier
-            .onlyLayoutModifier()
             .width(width)
             .height(height)
             .then(clickModifier),
