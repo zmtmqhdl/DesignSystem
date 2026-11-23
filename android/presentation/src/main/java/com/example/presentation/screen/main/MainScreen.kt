@@ -1,40 +1,21 @@
 package com.example.presentation.screen.main
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.text.input.rememberTextFieldState
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
-import com.example.core.designSystem.component.BadgeSize
-import com.example.core.designSystem.component.BadgeVariant
-import com.example.core.designSystem.component.DSBadge
-import com.example.core.designSystem.component.DSIconButton
+import com.example.core.designSystem.component.ButtonSize
+import com.example.core.designSystem.component.ButtonVariant
+import com.example.core.designSystem.component.DSButton
 import com.example.core.designSystem.component.DSScreen
-import com.example.core.designSystem.component.DSSnackBarDuration
-import com.example.core.designSystem.component.DSText
-import com.example.core.designSystem.component.DSTextField
-import com.example.core.designSystem.component.IconButtonVariant
 import com.example.core.designSystem.component.ScreenVariant
 import com.example.core.designSystem.component.ScrollVariant
-import com.example.core.designSystem.component.TextFieldVariant
 import com.example.core.designSystem.component.rememberDSSnackBarState
-import com.example.core.designSystem.icon.Info
-import com.example.core.designSystem.icon.Person
-import com.example.core.designSystem.icon.Refresh
-import com.example.core.designSystem.icon.Search
-import com.example.core.designSystem.theme.DSTheme
-import kotlinx.coroutines.delay
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
     backStack: NavBackStack<NavKey>
@@ -50,53 +31,20 @@ fun MainScreen(
         snackBarState = snackBarState,
         padding = true,
         scrollContent = {
-            item {
-                DSIconButton(
-                    icon = Search,
-                    variant = IconButtonVariant.CLEAR,
-                    onClick = {},
-                    ariaLabel = ""
-                )
-            }
-
-            item {
-                Spacer(modifier = Modifier.height(5.dp))
-            }
-
-            item {
-                DSIconButton(
-                    icon = Refresh,
-                    variant = IconButtonVariant.FILL,
-                    onClick = {},
-                    ariaLabel = ""
-                )
-            }
-
-            item {
-                Spacer(modifier = Modifier.height(5.dp))
-            }
-
-            item {
-                DSIconButton(
-                    icon = Person,
-                    variant = IconButtonVariant.BORDER,
-                    onClick = {},
-                    ariaLabel = ""
-                )
-            }
-
-            item {
-                Spacer(modifier = Modifier.height(5.dp))
-            }
-
-            item {
-                DSIconButton(
-                    icon = Info,
-                    variant = IconButtonVariant.BORDER,
-                    onClick = {},
-                    ariaLabel = "",
-                    isLoading = true
-                )
+            ButtonVariant.entries.forEach { variant ->
+                ButtonSize.entries.forEach { size ->
+                    item {
+                        DSButton(
+                            text = "${variant.name} ${size.name}",
+                            onClick = {},
+                            variant = variant,
+                            size = size,
+                        )
+                    }
+                    item {
+                        Spacer(modifier = Modifier.height(5.dp))
+                    }
+                }
             }
         }
     )

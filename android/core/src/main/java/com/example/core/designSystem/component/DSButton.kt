@@ -18,10 +18,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredHeight
-import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -35,15 +32,15 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextMotion
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.core.designSystem.animation.skeletonAnimation
 import com.example.core.designSystem.core.DSPreview
 import com.example.core.designSystem.theme.DSTheme
 import com.example.core.designSystem.theme.scheme.ColorSet
 import com.example.core.util.extension.conditional
-import com.example.core.util.extension.onlyLayoutModifier
 
 enum class ButtonVariant {
     FILL, WEAK
@@ -53,16 +50,73 @@ enum class ButtonSize {
     SMALL, MEDIUM, LARGE, XLARGE
 }
 
+private data class ButtonStyle(
+    val height: Dp,
+    val cornerRadius: Dp,
+    val horizontalPadding: Dp,
+    val verticalPadding: Dp,
+    val textStyle: TextStyle,
+)
+
+@Composable
+private fun buttonStyle(size: ButtonSize): ButtonStyle = when (size) {
+    ButtonSize.SMALL -> ButtonStyle(
+        height = DSTheme.dimension.dimension32,
+        cornerRadius = DSTheme.dimension.dimension8,
+        horizontalPadding = DSTheme.dimension.dimension10,
+        verticalPadding = DSTheme.dimension.dimension2,
+        textStyle = DSTheme.typography.typography7.medium.copy(
+            textMotion = TextMotion.Animated,
+        )
+    )
+    ButtonSize.MEDIUM -> ButtonStyle(
+        height = DSTheme.dimension.dimension38,
+        cornerRadius = DSTheme.dimension.dimension10,
+        horizontalPadding = DSTheme.dimension.dimension16,
+        verticalPadding = DSTheme.dimension.dimension2,
+        textStyle = DSTheme.typography.typography6.medium.copy(
+            textMotion = TextMotion.Animated,
+        )
+    )
+    ButtonSize.LARGE -> ButtonStyle(
+        height = DSTheme.dimension.dimension48,
+        cornerRadius = DSTheme.dimension.dimension14,
+        horizontalPadding = DSTheme.dimension.dimension16,
+        verticalPadding = DSTheme.dimension.dimension2,
+        textStyle = DSTheme.typography.typography5.medium.copy(
+            textMotion = TextMotion.Animated,
+        )
+    )
+    ButtonSize.XLARGE -> ButtonStyle(
+        height = DSTheme.dimension.dimension56,
+        cornerRadius = DSTheme.dimension.dimension16,
+        horizontalPadding = DSTheme.dimension.dimension15,
+        verticalPadding = DSTheme.dimension.dimension28,
+        textStyle = DSTheme.typography.typography5.medium.copy(
+            textMotion = TextMotion.Animated,
+        )
+    )
+}
+
+/**
+ *
+ * Use [DSButton] to trigger an action.
+ *
+ * Use [size] to choose the button's dimensions and text style, and [variant] with [colorSet] to choose its colors.
+ *
+ * Do not set the size through [modifier].
+ *
+ */
 @Composable
 fun DSButton(
+    modifier: Modifier = Modifier,
     text: String,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
     size: ButtonSize = ButtonSize.MEDIUM,
     variant: ButtonVariant = ButtonVariant.FILL,
     colorSet: ColorSet = DSTheme.color.blue,
     enabled: Boolean = true,
-    full: Boolean = false,
+    fillWidth: Boolean = false,
     fraction: Float = 1f,
     showLoader: Boolean = false,
     isLoading: Boolean = false,
@@ -70,13 +124,8 @@ fun DSButton(
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
     val pressedAlpha = 0.3f
+    val buttonStyle = buttonStyle(size)
     val pushedSize = 0.99f
-    val baseFontSize = when (size) {
-        ButtonSize.SMALL -> 14.sp
-        ButtonSize.MEDIUM -> 16.sp
-        ButtonSize.LARGE -> 18.sp
-        ButtonSize.XLARGE -> 20.sp
-    }
     val dimColor = DSTheme.color.greyOpacity900
 
     val scale by animateFloatAsState(
@@ -87,46 +136,18 @@ fun DSButton(
     val overlayAlpha by animateFloatAsState(
         targetValue = if (isPressed && enabled && !isLoading && !showLoader) 0.12f else 0f,
         animationSpec = tween(durationMillis = 80, easing = FastOutSlowInEasing),
-        label = "buttonOverlayAlpha"
     )
 
-    val corner = when (size) {
-        ButtonSize.SMALL -> DSTheme.dimension.dimension8
-        ButtonSize.MEDIUM -> DSTheme.dimension.dimension10
-        ButtonSize.LARGE -> DSTheme.dimension.dimension14
-        ButtonSize.XLARGE -> DSTheme.dimension.dimension16
-    }
-
-    val buttonShape = RoundedCornerShape(corner)
+    val buttonShape = RoundedCornerShape(buttonStyle.cornerRadius)
 
     Box(
         modifier = modifier
-            .onlyLayoutModifier()
             .graphicsLayer {
                 scaleX = scale
                 scaleY = scale
             }
-            .height(
-                when (size) {
-                    ButtonSize.SMALL -> DSTheme.dimension.dimension32
-                    ButtonSize.MEDIUM -> DSTheme.dimension.dimension38
-                    ButtonSize.LARGE -> DSTheme.dimension.dimension48
-                    ButtonSize.XLARGE -> DSTheme.dimension.dimension56
-                }
-            )
-            .conditional(full) {
-                fillMaxWidth(fraction)
-            }
-            .conditional(!full) {
-                width(
-                    when (size) {
-                        ButtonSize.SMALL -> DSTheme.dimension.dimension52
-                        ButtonSize.MEDIUM -> DSTheme.dimension.dimension64
-                        ButtonSize.LARGE -> DSTheme.dimension.dimension80
-                        ButtonSize.XLARGE -> DSTheme.dimension.dimension96
-                    }
-                )
-            }
+            .height(buttonStyle.height)
+            .conditional(fillWidth) { fillMaxWidth(fraction) }
             .conditional(!isLoading) {
                 alpha(if (enabled) 1f else pressedAlpha)
                 background(
@@ -142,7 +163,7 @@ fun DSButton(
                 if (overlayAlpha > 0f) {
                     drawRoundRect(
                         color = dimColor.copy(alpha = overlayAlpha),
-                        cornerRadius = CornerRadius(corner.toPx())
+                        cornerRadius = CornerRadius(buttonStyle.cornerRadius.toPx())
                     )
                 }
             }
@@ -163,46 +184,14 @@ fun DSButton(
                 DSText(
                     text = text,
                     modifier = Modifier.padding(
-                        horizontal = when (size) {
-                            ButtonSize.SMALL -> DSTheme.dimension.dimension10
-                            ButtonSize.MEDIUM,
-                            ButtonSize.LARGE -> DSTheme.dimension.dimension16
-
-                            ButtonSize.XLARGE -> DSTheme.dimension.dimension15
-                        },
-                        vertical = when (size) {
-                            ButtonSize.SMALL,
-                            ButtonSize.MEDIUM,
-                            ButtonSize.LARGE -> DSTheme.dimension.dimension2
-
-                            ButtonSize.XLARGE -> DSTheme.dimension.dimension28
-                        }
+                        horizontal = buttonStyle.horizontalPadding,
+                        vertical = buttonStyle.verticalPadding,
                     ),
                     color = when (variant) {
                         ButtonVariant.FILL -> colorSet.mainColor
                         ButtonVariant.WEAK -> colorSet.subColor
                     },
-                    style = when (size) {
-                        ButtonSize.SMALL -> DSTheme.typography.typography7.medium.copy(
-                            fontSize = baseFontSize,
-                            textMotion = TextMotion.Animated
-                        )
-
-                        ButtonSize.MEDIUM -> DSTheme.typography.typography6.medium.copy(
-                            fontSize = baseFontSize,
-                            textMotion = TextMotion.Animated
-                        )
-
-                        ButtonSize.LARGE -> DSTheme.typography.typography5.medium.copy(
-                            fontSize = baseFontSize,
-                            textMotion = TextMotion.Animated
-                        )
-
-                        ButtonSize.XLARGE -> DSTheme.typography.typography5.medium.copy(
-                            fontSize = baseFontSize,
-                            textMotion = TextMotion.Animated
-                        )
-                    }
+                    style = buttonStyle.textStyle
                 )
             }
         }
@@ -295,10 +284,10 @@ private fun ButtonLoader(
 
 @DSPreview
 @Composable
-fun ButtonPreview() {
+fun DSButtonPreview() {
     DSTheme {
         DSButton(
-            text = "Preview",
+            text = "DSButtonPreview",
             variant = ButtonVariant.WEAK,
             colorSet = DSTheme.color.blue,
             showLoader = true,

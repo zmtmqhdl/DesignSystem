@@ -145,14 +145,14 @@ fun DSIconButton(
 
 @DSPreview
 @Composable
-private fun IconButtonPreview() {
+private fun DSIconButtonPreview() {
     DSTheme {
         DSIconButton(
             icon = Close,
             colorSet = DSTheme.color.grey,
             variant = IconButtonVariant.BORDER,
             onClick = { },
-            ariaLabel = "close"
+            ariaLabel = "DSIconButtonPreview"
         )
     }
 }

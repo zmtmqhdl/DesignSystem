@@ -58,7 +58,7 @@ fun DSIconPreview() {
     DSTheme {
         DSIcon(
             icon = Search,
-            ariaLabel = "Search"
+            ariaLabel = "DSIconPreview"
         )
     }
 }

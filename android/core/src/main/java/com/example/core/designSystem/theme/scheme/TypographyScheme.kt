@@ -102,11 +102,11 @@ object DSMaxFontSize {
 
 @Immutable
 object DSFontWeight {
-    val light = FontWeight(weight = 100)
-    val regular = FontWeight(weight = 400)
-    val medium = FontWeight(weight = 500)
-    val semiBold = FontWeight(weight = 600)
-    val bold = FontWeight(weight = 700)
+    val light = FontWeight(100)
+    val regular = FontWeight(400)
+    val medium = FontWeight(500)
+    val semiBold = FontWeight(600)
+    val bold = FontWeight(700)
 }
 
 private fun textStyle(
@@ -117,7 +117,7 @@ private fun textStyle(
     fontRes: Int
 ): TextStyle {
     return TextStyle(
-        fontFamily = FontFamily(Font(resId = fontRes)),
+        fontFamily = FontFamily(Font(fontRes)),
         fontSize = fontSize.value.coerceAtMost(maxFontSize.value).sp,
         fontWeight = weight,
         lineHeight = lineHeight

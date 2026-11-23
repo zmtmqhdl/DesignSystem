@@ -96,7 +96,7 @@ fun DSBottomSheet(
                                 text = confirmText,
                                 onClick = { dismissWithAction(onConfirmClick) },
                                 colorSet = DSTheme.color.blue,
-                                full = true
+                                fillWidth = true
                             )
                         }
                     }
