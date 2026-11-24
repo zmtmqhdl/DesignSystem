@@ -90,8 +90,8 @@ private fun buttonStyle(size: ButtonSize): ButtonStyle = when (size) {
     ButtonSize.XLARGE -> ButtonStyle(
         height = DSTheme.dimension.dimension56,
         cornerRadius = DSTheme.dimension.dimension16,
-        horizontalPadding = DSTheme.dimension.dimension15,
-        verticalPadding = DSTheme.dimension.dimension28,
+        horizontalPadding = DSTheme.dimension.dimension28,
+        verticalPadding = DSTheme.dimension.dimension15,
         textStyle = DSTheme.typography.typography5.medium.copy(
             textMotion = TextMotion.Animated,
         )
@@ -177,24 +177,24 @@ fun DSButton(
             ),
         contentAlignment = Alignment.Center
     ) {
-        if (!isLoading) {
-            if (showLoader) {
-                ButtonLoader(size = size)
-            } else {
-                DSText(
-                    text = text,
-                    modifier = Modifier.padding(
-                        horizontal = buttonStyle.horizontalPadding,
-                        vertical = buttonStyle.verticalPadding,
-                    ),
-                    color = when (variant) {
-                        ButtonVariant.FILL -> colorSet.mainColor
-                        ButtonVariant.WEAK -> colorSet.subColor
-                    },
-                    style = buttonStyle.textStyle
-                )
-            }
+        if (showLoader) {
+            ButtonLoader(size)
         }
+
+        DSText(
+            text = text,
+            modifier = Modifier
+                .conditional(isLoading || showLoader) { alpha(0f) }
+                .padding(
+                    horizontal = buttonStyle.horizontalPadding,
+                    vertical = buttonStyle.verticalPadding,
+                ),
+            color = when (variant) {
+                ButtonVariant.FILL -> colorSet.mainColor
+                ButtonVariant.WEAK -> colorSet.subColor
+            },
+            style = buttonStyle.textStyle
+        )
     }
 }
 
@@ -211,26 +211,15 @@ private fun ButtonLoader(
     Row(
         horizontalArrangement = Arrangement.spacedBy(
             space = when (size) {
-                ButtonSize.SMALL,
-                ButtonSize.MEDIUM,
-                ButtonSize.LARGE -> 2.dp
-
-                ButtonSize.XLARGE -> 28.dp
+                ButtonSize.SMALL -> DSTheme.dimension.dimension3
+                ButtonSize.MEDIUM -> DSTheme.dimension.dimension4
+                ButtonSize.LARGE -> DSTheme.dimension.dimension5
+                ButtonSize.XLARGE -> DSTheme.dimension.dimension7
             }
-        ), verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.height(
-            height = when (size) {
-                ButtonSize.SMALL,
-                ButtonSize.MEDIUM -> 5.dp
-
-                ButtonSize.LARGE,
-                ButtonSize.XLARGE -> 8.dp
-            },
-        )
+        ),
     ) {
-        repeat(times = 3) { index ->
+        repeat(3) { index ->
             val delay = index * animationDelay
-
             val scale by infiniteTransition.animateFloat(
                 initialValue = 0.7f,
                 targetValue = 1.1f,
@@ -241,11 +230,10 @@ private fun ButtonLoader(
                         1.1f at (200 + delay)
                         0.7f at (400 + delay)
                         0.7f at duration
-                    }, repeatMode = RepeatMode.Restart
+                    },
+                    repeatMode = RepeatMode.Restart
                 ),
-                label = "scale$index"
             )
-
             val alpha by infiniteTransition.animateFloat(
                 initialValue = 0.2f,
                 targetValue = 1f,
@@ -256,25 +244,25 @@ private fun ButtonLoader(
                         1f at (200 + delay)
                         0.2f at (400 + delay)
                         0.2f at duration
-                    }, repeatMode = RepeatMode.Restart
+                    },
+                    repeatMode = RepeatMode.Restart
                 ),
-                label = "alpha$index"
             )
 
             Box(
                 modifier = Modifier
                     .size(
-                        size = when (size) {
+                        when (size) {
                             ButtonSize.SMALL,
-                            ButtonSize.MEDIUM -> 5.dp
+                            ButtonSize.MEDIUM -> DSTheme.dimension.dimension5
 
                             ButtonSize.LARGE,
-                            ButtonSize.XLARGE -> 8.dp
+                            ButtonSize.XLARGE -> DSTheme.dimension.dimension8
                         }
                     )
-                    .scale(scale = scale)
+                    .scale(scale)
                     .background(
-                        color = color.copy(alpha = alpha),
+                        color = color.copy(alpha),
                         shape = CircleShape
                     )
             )

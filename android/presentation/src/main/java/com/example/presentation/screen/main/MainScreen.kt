@@ -38,7 +38,24 @@ fun MainScreen(
                             text = "${variant.name} ${size.name}",
                             onClick = {},
                             variant = variant,
+                            size = size
+                        )
+                    }
+                    item {
+                        Spacer(modifier = Modifier.height(5.dp))
+                    }
+                }
+            }
+
+            ButtonVariant.entries.forEach { variant ->
+                ButtonSize.entries.forEach { size ->
+                    item {
+                        DSButton(
+                            text = "${variant.name} ${size.name}",
+                            onClick = {},
+                            variant = variant,
                             size = size,
+                            showLoader = true
                         )
                     }
                     item {
